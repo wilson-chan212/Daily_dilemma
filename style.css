@@ -85,7 +85,10 @@ button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
 
 /* Logo */
 .logo{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text)}
+.logo-mark{width:32px;height:32px;object-fit:contain;flex-shrink:0;border-radius:var(--radius-sm)}
 .logo-text{font-family:var(--font-display);font-size:1.2rem;font-weight:400}
+.btn-lang{padding-inline:.65rem;min-width:52px}
+#lang-toggle-label{font-size:.82rem;font-weight:700;letter-spacing:.02em}
 
 /* Icon buttons */
 .btn-icon{width:36px;height:36px;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);border-radius:var(--radius-full);transition:color var(--transition),background var(--transition)}

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Daily Dilemma</string>
+    <string name="title_activity_main">Daily Dilemma</string>
+    <string name="package_name">com.wilsonchan.dailydilemma</string>
+    <string name="custom_url_scheme">com.wilsonchan.dailydilemma</string>
+</resources>

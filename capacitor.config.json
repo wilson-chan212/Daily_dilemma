@@ -1,0 +1,7 @@
+{
+  "appId": "com.wilsonchan.dailydilemma",
+  "appName": "Daily Dilemma",
+  "webDir": "web",
+  "bundledWebRuntime": false
+}
+

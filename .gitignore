@@ -12,6 +12,12 @@ ios/App/Pods/
 ios/App/build/
 ios/App/DerivedData/
 
+# Capgo / signing files (never commit)
+cert.p12
+profile.mobileprovision
+AuthKey*.p8
+.capgo-credentials.json
+
 # OS / IDE
 .DS_Store
 Thumbs.db

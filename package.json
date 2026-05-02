@@ -1,0 +1,25 @@
+{
+  "name": "daily-dilemma",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Daily Dilemma (Capacitor wrapper)",
+  "scripts": {
+    "serve": "npx http-server . -p 5173 -c-1",
+    "cap:prep": "powershell -NoProfile -Command \"if (!(Test-Path web)) { mkdir web | Out-Null } ; Copy-Item -Force index.html,app.js,style.css,i18n.zh-hant.js -Destination web ; Copy-Item -Recurse -Force images,fonts,vendor -Destination web\"",
+    "cap:sync": "npm run cap:prep && npx cap sync",
+    "cap:android": "npx cap open android",
+    "cap:ios": "npx cap open ios",
+    "capgo:login": "npx @capgo/cli@latest login",
+    "capgo:credentials:ios": "npx @capgo/cli@latest build credentials save --platform ios --certificate ./cert.p12 --p12-password \"\" --provisioning-profile ./profile.mobileprovision --apple-key ./AuthKey.p8 --apple-key-id \"\" --apple-issuer-id \"\" --apple-team-id \"\"",
+    "capgo:build:ios": "npm run cap:sync && npx @capgo/cli@latest build com.wilsonchan.dailydilemma --platform ios --build-mode release"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.4.3",
+    "@capacitor/core": "^7.4.3",
+    "@capacitor/ios": "^7.4.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^7.4.3",
+    "@capgo/cli": "^7.94.6"
+  }
+}

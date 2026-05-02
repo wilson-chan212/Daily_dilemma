@@ -908,7 +908,179 @@ function getLocalDateKey(date = new Date()) {
   return `${y}-${m}-${d}`;
 }
 
+const ZH = window.APP_I18N_ZH_HANT || {};
+const SUPPORTED_LANGS = ['en', 'zh-Hant'];
+
+function detectLanguage() {
+  const nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+  return /^zh\b/i.test(nav) ? 'zh-Hant' : 'en';
+}
+
+function getLangPack(lang = 'en') {
+  if (lang === 'zh-Hant') return ZH;
+  return {};
+}
+
+function getUiText(lang = 'en') {
+  const en = {
+    htmlLang: 'en',
+    locale: 'en-US',
+    appTitle: 'Daily Dilemmas - Philosophy',
+    logoText: 'Daily Dilemmas',
+    languageToggle: '中文',
+    greetingLabel: 'Today\'s Dilemma',
+    weekPrefix: 'Week ',
+    weekSuffix: '',
+    splitTitle: 'How Others Chose',
+    yourTake: 'Your Take',
+    otherSide: 'Other Side',
+    philosopherSays: 'Philosopher Says',
+    goFurther: 'Go Further',
+    askFriend: 'Ask A Friend',
+    nextDilemma: 'Next Dilemma →',
+    historyTitle: 'History',
+    historyEmpty: 'No Answered Dilemmas Yet.\nChoose a side to see it here.',
+    clearHistoryConfirm: 'Clear your history on this device? This cannot be undone.',
+    today: 'Today',
+    yesterday: 'Yesterday',
+    chosePrefix: 'Chose: ',
+    shareTitle: 'Share Dilemma',
+    share: 'Share',
+    youChose: 'You Chose:',
+    brandName: 'Daily Dilemmas',
+    brandLine: 'Daily Dilemmas · Philosophy',
+    saveImage: 'Save Image',
+    copyLink: 'Copy Link',
+    copyText: 'Copy Text',
+    askFriendTitle: 'Ask A Friend',
+    askFriendIntro: 'Share today’s dilemma and see what they’d choose.',
+    send: 'Send',
+    copiedSend: 'Copied — Send It.',
+    copiedText: 'Text Copied.',
+    copiedLink: 'Link Copied.',
+    copyFailed: 'Could Not Copy.',
+    imageSaved: 'Image Saved.',
+    imageFailed: 'Could Not Generate Image.',
+    generating: 'Generating…',
+    keyConcepts: 'Key Concepts',
+    books: 'Books',
+    watch: 'Watch',
+    dilemmaImageAlt: 'Illustration for today\'s dilemma',
+  };
+  return lang === 'zh-Hant' ? { ...en, ...(ZH.ui || {}) } : en;
+}
+
+function getActiveLocale() {
+  return getUiText(state.lang).locale || 'en-US';
+}
+
+function getAllDilemmas() {
+  const zhDilemmas = getLangPack(state.lang).dilemmas;
+  if (state.lang === 'zh-Hant' && Array.isArray(zhDilemmas) && zhDilemmas.length === DILEMMAS.length) {
+    return zhDilemmas;
+  }
+  return DILEMMAS;
+}
+
+function getCounterargs() {
+  const zhCounterargs = getLangPack(state.lang).counterargs;
+  if (state.lang === 'zh-Hant' && Array.isArray(zhCounterargs) && zhCounterargs.length === COUNTERARGS.length) {
+    return zhCounterargs;
+  }
+  return COUNTERARGS;
+}
+
+function getQuotes1() {
+  const zhQuotes = getLangPack(state.lang).quotes1;
+  if (state.lang === 'zh-Hant' && Array.isArray(zhQuotes) && zhQuotes.length === PHILOSOPHER_QUOTES.length) {
+    return zhQuotes;
+  }
+  return PHILOSOPHER_QUOTES;
+}
+
+function getQuotes2() {
+  const zhQuotes = getLangPack(state.lang).quotes2;
+  if (state.lang === 'zh-Hant' && Array.isArray(zhQuotes) && zhQuotes.length === PHILOSOPHER_QUOTES_2.length) {
+    return zhQuotes;
+  }
+  return PHILOSOPHER_QUOTES_2;
+}
+
+function getThemes() {
+  const zhThemes = getLangPack(state.lang).weeklyThemes;
+  if (state.lang === 'zh-Hant' && Array.isArray(zhThemes) && zhThemes.length === WEEKLY_THEMES.length) {
+    return zhThemes;
+  }
+  return WEEKLY_THEMES;
+}
+
+function translateTerm(term) {
+  if (state.lang !== 'zh-Hant') return term;
+  const map = getLangPack(state.lang).termMap || {};
+  return map[term] || term;
+}
+
+function getGoFurther() {
+  if (state.lang !== 'zh-Hant') return GO_FURTHER;
+  const pack = getLangPack(state.lang);
+  const recs = Array.isArray(pack.zhRecommendations) ? pack.zhRecommendations : [];
+  return GO_FURTHER.map((entry, i) => {
+    const rec = recs[i] || {};
+    return {
+      terms: (entry.terms || []).map(translateTerm),
+      books: rec.books || entry.books,
+      videos: rec.videos || entry.videos,
+    };
+  });
+}
+
+const PHILOSOPHER_NAMES_ZH = {
+  'Alan Watts': '艾倫・瓦茲',
+  'Albert Camus': '阿爾貝・卡繆',
+  'Albert Einstein': '阿爾伯特・愛因斯坦',
+  'Aristotle': '亞里斯多德',
+  'Carl Jung': '卡爾・榮格',
+  'Cornel West': '康奈爾・韋斯特',
+  'Derek Parfit': '德瑞克・帕菲特',
+  'Emily Dickinson': '艾蜜莉・狄金生',
+  'Friedrich Nietzsche': '弗里德里希・尼采',
+  'George Bernard Shaw': '喬治・蕭伯納',
+  'Henry David Thoreau': '亨利・大衛・梭羅',
+  'Heraclitus': '赫拉克利特',
+  'Immanuel Kant': '伊曼努爾・康德',
+  'Jean-Paul Sartre': '尚-保羅・沙特',
+  'Jim Morrison': '吉姆・莫里森',
+  'John Steinbeck': '約翰・史坦貝克',
+  'Mahatma Gandhi': '聖雄甘地',
+  'Marcel Proust': '馬塞爾・普魯斯特',
+  'Oscar Wilde': '奧斯卡・王爾德',
+  'Peter Salovey': '彼得・薩洛維',
+  'Ralph Waldo Emerson': '拉爾夫・沃爾多・愛默生',
+  'René Descartes': '勒內・笛卡兒',
+  'Socrates': '蘇格拉底',
+  'Thomas Aquinas': '托馬斯・阿奎那',
+  'William Shakespeare': '威廉・莎士比亞',
+  'Simone de Beauvoir': '西蒙娜・德・波娃',
+  'John Stuart Mill': '約翰・斯圖爾特・彌爾',
+  'Marcus Aurelius': '馬可・奧理略',
+  'Epictetus': '愛比克泰德',
+  'Epicurus': '伊比鳩魯',
+  'Plato': '柏拉圖',
+  'Mary Wollstonecraft': '瑪麗・沃斯通克拉夫特',
+  'Joseph Hall': '約瑟夫・霍爾',
+  'John Morley': '約翰・莫利',
+  'Apostle Paul': '使徒保羅',
+  'Albert Schweitzer': '阿爾伯特・施韋澤',
+  'Confucius': '孔子',
+};
+
+function getDisplayAuthorName(author) {
+  if (state.lang !== 'zh-Hant') return author;
+  return PHILOSOPHER_NAMES_ZH[author] || author;
+}
+
 const state = {
+  lang: detectLanguage(),
   todayKey: getLocalDateKey(),
   todayIndex: 0,
   answered: false,
@@ -922,7 +1094,26 @@ const state = {
    ============================================= */
 const STORAGE_KEYS = {
   history: 'dailyDilemmas.history.v1',
+  lang: 'dailyDilemmas.lang.v1',
 };
+
+function loadLanguage() {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEYS.lang);
+    if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+  } catch {
+    // ignore
+  }
+  return detectLanguage();
+}
+
+function saveLanguage() {
+  try {
+    localStorage.setItem(STORAGE_KEYS.lang, state.lang);
+  } catch {
+    // ignore
+  }
+}
 
 function loadHistory() {
   try {
@@ -935,8 +1126,6 @@ function loadHistory() {
       item &&
       typeof item === 'object' &&
       typeof item.id === 'number' &&
-      typeof item.text === 'string' &&
-      typeof item.choice === 'string' &&
       typeof item.date === 'string' &&
       typeof item.time === 'string'
     );
@@ -954,7 +1143,7 @@ function saveHistory() {
 }
 
 function clearHistory() {
-  const ok = confirm('Clear your history on this device? This cannot be undone.');
+  const ok = confirm(getUiText(state.lang).clearHistoryConfirm);
   if (!ok) return;
 
   state.history = [];
@@ -967,9 +1156,9 @@ function clearHistory() {
 }
 
 // Determine today's dilemma via date-seed
-state.todayIndex = parseInt(state.todayKey.replace(/-/g, ''), 10) % DILEMMAS.length;
+state.todayIndex = parseInt(state.todayKey.replace(/-/g, ''), 10) % getAllDilemmas().length;
 
-function getDilemma() { return DILEMMAS[state.todayIndex]; }
+function getDilemma() { return getAllDilemmas()[state.todayIndex]; }
 
 /* =============================================
    DOM HELPERS (templates)
@@ -1051,19 +1240,20 @@ async function fetchVoteStats(dilemmaId) {
 function renderDate() {
   const d = new Date();
   document.getElementById('today-date').textContent =
-    d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    d.toLocaleDateString(getActiveLocale(), { weekday: 'long', month: 'long', day: 'numeric' });
 }
 
 function renderThemeAndTags(badgeId, tagsId) {
   const d = getDilemma();
-  const theme = WEEKLY_THEMES[state.todayIndex];
+  const theme = getThemes()[state.todayIndex];
+  const ui = getUiText(state.lang);
   const badge = document.getElementById(badgeId);
   if (badge) {
     badge.replaceChildren(cloneTpl('tpl-theme-badge'));
     const emojiEl = badge.querySelector('.theme-emoji');
     const nameEl = badge.querySelector('.theme-name');
     if (emojiEl) emojiEl.textContent = theme.emoji;
-    if (nameEl) nameEl.textContent = `Week ${theme.week} · ${theme.name}`;
+    if (nameEl) nameEl.textContent = `${ui.weekPrefix}${theme.week}${ui.weekSuffix} · ${theme.name}`;
     badge.style.setProperty('--theme-color', theme.color);
   }
   const tagsEl = document.getElementById(tagsId);
@@ -1080,9 +1270,10 @@ function renderThemeAndTags(badgeId, tagsId) {
 
 function renderDilemma() {
   const d = getDilemma();
+  const ui = getUiText(state.lang);
   document.getElementById('dilemma-text').textContent = d.text;
   document.getElementById('dilemma-image').src = d.image;
-  document.getElementById('dilemma-image').alt = 'Illustration for today\'s dilemma';
+  document.getElementById('dilemma-image').alt = ui.dilemmaImageAlt;
 
   // Theme badge + tags in greeting (top-right)
   renderThemeAndTags('theme-badge-greeting', 'greeting-tags');
@@ -1118,10 +1309,9 @@ function handleChoice(opt) {
   const now = new Date();
   state.history.push({
     id: d.id,
-    text: d.text,
-    choice: opt === 'a' ? d.optA : d.optB,
+    choiceKey: opt,
     date: state.todayKey,
-    time: now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
+    time: now.toLocaleTimeString(getActiveLocale(), { hour: '2-digit', minute: '2-digit' }),
   });
   saveHistory();
   // Send vote to Supabase (non-blocking)
@@ -1148,14 +1338,14 @@ function handleChoice(opt) {
     // Reflection image — reuse dilemma image
     const reflImg = document.getElementById('reflection-image');
     reflImg.src = d.image;
-    reflImg.alt = 'Illustration for today\'s dilemma';
+    reflImg.alt = getUiText(state.lang).dilemmaImageAlt;
 
     document.getElementById('chosen-label').textContent = opt === 'a' ? d.optA : d.optB;
     document.getElementById('chosen-question').textContent = d.text;
 
     document.getElementById('chosen-reflection').textContent = d.reflection[opt];
     // Two views — counterarg for the OTHER side
-    const ca = COUNTERARGS[state.todayIndex];
+    const ca = getCounterargs()[state.todayIndex];
     const other = opt === 'a' ? 'b' : 'a';
     document.getElementById('counterarg-text').textContent = ca ? ca[other] : '';
     renderPhilosopherQuote();
@@ -1200,14 +1390,14 @@ const PHILOSOPHER_PORTRAITS = {
 };
 
 function renderPhilosopherQuote() {
-  const q = PHILOSOPHER_QUOTES[state.todayIndex];
+  const q = getQuotes1()[state.todayIndex];
   if (!q) return;
   document.getElementById('pq-text').textContent = '\u201c' + q.text + '\u201d';
-  document.getElementById('pq-cite').textContent = '\u2014 ' + q.author;
-  const q2 = PHILOSOPHER_QUOTES_2[state.todayIndex];
+  document.getElementById('pq-cite').textContent = '\u2014 ' + getDisplayAuthorName(q.author);
+  const q2 = getQuotes2()[state.todayIndex];
   if (!q2) return;
   document.getElementById('pq-text-2').textContent = '\u201c' + q2.text + '\u201d';
-  document.getElementById('pq-cite-2').textContent = '\u2014 ' + q2.author;
+  document.getElementById('pq-cite-2').textContent = '\u2014 ' + getDisplayAuthorName(q2.author);
 
   // Philosopher portraits — one per quote.
   // Uses an <img> with onerror so a broken/missing remote portrait falls back
@@ -1326,9 +1516,19 @@ function closeHistory() {
 function escHistory(e) { if (e.key === 'Escape') closeHistory(); }
 
 function renderHistoryList() {
+  const ui = getUiText(state.lang);
   const container = document.getElementById('history-list');
   if (!state.history.length) {
     container.replaceChildren(cloneTpl('tpl-history-empty'));
+    const empty = container.querySelector('.history-empty');
+    if (empty) {
+      const [line1, line2] = ui.historyEmpty.split('\n');
+      empty.replaceChildren(document.createTextNode(line1 || ''));
+      if (line2) {
+        empty.appendChild(document.createElement('br'));
+        empty.appendChild(document.createTextNode(line2));
+      }
+    }
     return;
   }
 
@@ -1344,9 +1544,9 @@ function renderHistoryList() {
   container.replaceChildren();
   Object.entries(grouped).forEach(([date, items]) => {
     let label = date;
-    if (date === today) label = 'Today';
-    else if (date === yesterday) label = 'Yesterday';
-    else { const d = new Date(date + 'T00:00:00'); label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
+    if (date === today) label = ui.today;
+    else if (date === yesterday) label = ui.yesterday;
+    else { const d = new Date(date + 'T00:00:00'); label = d.toLocaleDateString(getActiveLocale(), { month: 'short', day: 'numeric', year: 'numeric' }); }
 
     const dateFrag = cloneTpl('tpl-history-date-group');
     const dateEl = dateFrag.querySelector('.history-date-group');
@@ -1359,9 +1559,11 @@ function renderHistoryList() {
       const choice = frag.querySelector('.history-item-choice');
       const time = frag.querySelector('.history-item-date');
       const text = frag.querySelector('.history-item-text');
-      if (choice) choice.textContent = `Chose: ${item.choice}`;
+      const localized = getAllDilemmas().find(d => d.id === item.id);
+      const selected = item.choiceKey ? (item.choiceKey === 'a' ? localized?.optA : localized?.optB) : item.choice;
+      if (choice) choice.textContent = `${ui.chosePrefix}${selected || ''}`;
       if (time) time.textContent = item.time;
-      if (text) text.textContent = item.text;
+      if (text) text.textContent = localized?.text || item.text || '';
       container.appendChild(frag);
     });
   });
@@ -1376,6 +1578,7 @@ document.getElementById('btn-clear-history').addEventListener('click', clearHist
    SHARE MODAL
    ============================================= */
 function openShare() {
+  const ui = getUiText(state.lang);
   const d = getDilemma();
   document.getElementById('sc-text').textContent = d.text;
   document.getElementById('sc-opt-a').textContent = 'A. ' + d.optA;
@@ -1384,6 +1587,8 @@ function openShare() {
   document.getElementById('ec-opt-a').textContent = 'A. ' + d.optA;
   document.getElementById('ec-opt-b').textContent = 'B. ' + d.optB;
   document.getElementById('share-hint').textContent = '';
+  const title = document.querySelector('#share-modal .modal-title');
+  if (title) title.textContent = ui.shareTitle;
 
   const overlay = document.getElementById('share-overlay');
   overlay.hidden = false; overlay.style.display = 'flex';
@@ -1410,37 +1615,44 @@ document.getElementById('share-overlay').addEventListener('click', e => {
 });
 
 document.getElementById('btn-download-card').addEventListener('click', async () => {
+  const ui = getUiText(state.lang);
   const btn = document.getElementById('btn-download-card');
-  btn.textContent = 'Generating…'; btn.disabled = true;
+  btn.textContent = ui.generating; btn.disabled = true;
   try {
     const canvas = await html2canvas(document.getElementById('export-card'), { scale: 2, useCORS: true, backgroundColor: null, logging: false });
     const link = document.createElement('a');
     link.download = 'daily-decision.png';
     link.href = canvas.toDataURL('image/png');
     link.click();
-    showHint('Image Saved.');
-  } catch { showHint('Could Not Generate Image.'); }
+    showHint(ui.imageSaved);
+  } catch { showHint(ui.imageFailed); }
   btn.replaceChildren(cloneTpl('tpl-download-btn-content'));
+  const saveTemplate = btn.querySelector('#label-save-image-template');
+  if (saveTemplate) saveTemplate.textContent = ui.saveImage;
   btn.disabled = false;
 });
 
 document.getElementById('btn-copy-link').addEventListener('click', () => {
+  const ui = getUiText(state.lang);
   const d = getDilemma();
   const url = `${location.href.split('#')[0]}#d=${d.id}`;
-  navigator.clipboard.writeText(url).then(() => showHint('Link Copied.')).catch(() => showHint('Could Not Copy.'));
+  navigator.clipboard.writeText(url).then(() => showHint(ui.copiedLink)).catch(() => showHint(ui.copyFailed));
 });
 
 document.getElementById('btn-copy-text').addEventListener('click', () => {
+  const ui = getUiText(state.lang);
   const d = getDilemma();
-  const text = `Daily Dilemmas · Philosophy\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\n— daily-dilemmas.philosophy`;
-  navigator.clipboard.writeText(text).then(() => showHint('Text Copied.')).catch(() => showHint('Could Not Copy.'));
+  const brand = ui.brandLine;
+  const text = `${brand}\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\n— daily-dilemmas.philosophy`;
+  navigator.clipboard.writeText(text).then(() => showHint(ui.copiedText)).catch(() => showHint(ui.copyFailed));
 });
 
 /* =============================================
    GO FURTHER RENDER
    ============================================= */
 function renderGoFurther() {
-  const gf = GO_FURTHER[state.todayIndex];
+  const ui = getUiText(state.lang);
+  const gf = getGoFurther()[state.todayIndex];
   if (!gf) return;
 
   // Clear previous content
@@ -1462,11 +1674,11 @@ function renderGoFurther() {
   }
 
   // Key concepts
-  const concepts = mkBlock('Key Concepts');
+  const concepts = mkBlock(ui.keyConcepts);
   const tagsWrap = document.createElement('div');
   tagsWrap.className = 'gf-tags';
   gf.terms.forEach(term => {
-    const q = encodeURIComponent(term + ' philosophy');
+    const q = encodeURIComponent(`${term} ${state.lang === 'zh-Hant' ? '哲學' : 'philosophy'}`);
     const frag = cloneTpl('tpl-go-further-tag');
     const a = frag.querySelector('a');
     if (a) {
@@ -1511,7 +1723,7 @@ function renderGoFurther() {
   }
 
   // Books
-  const books = mkBlock('Books');
+  const books = mkBlock(ui.books);
   const booksList = document.createElement('div');
   booksList.className = 'gf-list';
   gf.books.forEach(b => {
@@ -1531,13 +1743,16 @@ function renderGoFurther() {
   section.appendChild(books);
 
   // Watch
-  const watch = mkBlock('Watch');
+  const watch = mkBlock(ui.watch);
   const vidsList = document.createElement('div');
   vidsList.className = 'gf-list';
+  const videoSearchSuffix = state.lang === 'zh-Hant' ? '哲學' : 'philosophy';
   gf.videos.forEach(v => {
     const span = document.createElement('span');
     span.textContent = v.title;
-    vidsList.appendChild(mkListItem('video', v.url, span));
+    const query = encodeURIComponent(`${v.title} ${videoSearchSuffix}`);
+    const href = `https://www.youtube.com/results?search_query=${query}`;
+    vidsList.appendChild(mkListItem('video', href, span));
   });
   watch.appendChild(vidsList);
   section.appendChild(watch);
@@ -1551,7 +1766,7 @@ function renderGoFurther() {
 document.getElementById('btn-next').addEventListener('click', () => {
   // Cancel any pending choice animation
   if (state.pendingTimeout) { clearTimeout(state.pendingTimeout); state.pendingTimeout = null; }
-  state.todayIndex = (state.todayIndex + 1) % DILEMMAS.length;
+  state.todayIndex = (state.todayIndex + 1) % getAllDilemmas().length;
   state.answered = false;
   state.chosenOpt = null;
 
@@ -1575,11 +1790,16 @@ document.getElementById('btn-next').addEventListener('click', () => {
    ============================================= */
 
 function openChallenge() {
+  const ui = getUiText(state.lang);
   const d = getDilemma();
   document.getElementById('ch-dilemma-preview').textContent = d.text;
   document.getElementById('ch-opt-a').textContent = 'A. ' + d.optA;
   document.getElementById('ch-opt-b').textContent = 'B. ' + d.optB;
   document.getElementById('ch-hint').textContent = '';
+  const title = document.querySelector('#challenge-overlay .modal-title');
+  if (title) title.textContent = ui.askFriendTitle;
+  const intro = document.querySelector('#challenge-overlay .ch-intro');
+  if (intro) intro.textContent = ui.askFriendIntro;
 
   const overlay = document.getElementById('challenge-overlay');
   overlay.hidden = false; overlay.style.display = 'flex';
@@ -1601,6 +1821,9 @@ function showChallengeHint(msg) {
 
 function buildChallengeText() {
   const d = getDilemma();
+  if (state.lang === 'zh-Hant') {
+    return `今天這題，你會怎麼選？\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\n回覆 A 或 B。`;
+  }
   return `Today\'s decision — what would you choose?\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\nReply with A or B.`;
 }
 
@@ -1611,22 +1834,101 @@ document.getElementById('challenge-overlay').addEventListener('click', e => {
 });
 
 document.getElementById('btn-ch-copy').addEventListener('click', () => {
+  const ui = getUiText(state.lang);
   const text = buildChallengeText();
   navigator.clipboard.writeText(text)
-    .then(() => showChallengeHint('Copied — Send It.'))
-    .catch(() => showChallengeHint('Could Not Copy.'));
+    .then(() => showChallengeHint(ui.copiedSend))
+    .catch(() => showChallengeHint(ui.copyFailed));
 });
 
 document.getElementById('btn-ch-share').addEventListener('click', () => {
+  const ui = getUiText(state.lang);
   const text = buildChallengeText();
   if (navigator.share) {
-    navigator.share({ title: 'Daily Dilemmas · Philosophy', text })
+    navigator.share({ title: ui.brandLine, text })
       .catch(() => {});
   } else {
     navigator.clipboard.writeText(text)
-      .then(() => showChallengeHint('Copied — Send It.'))
-      .catch(() => showChallengeHint('Could Not Copy.'));
+      .then(() => showChallengeHint(ui.copiedSend))
+      .catch(() => showChallengeHint(ui.copyFailed));
   }
+});
+
+/* =============================================
+   LANGUAGE
+   ============================================= */
+function applyUIText() {
+  const ui = getUiText(state.lang);
+  document.documentElement.lang = ui.htmlLang || (state.lang === 'zh-Hant' ? 'zh-Hant' : 'en');
+  document.title = ui.appTitle;
+  const logoText = document.querySelector('.logo-text');
+  if (logoText) logoText.textContent = ui.logoText;
+  const shareTrigger = document.getElementById('label-share-trigger');
+  if (shareTrigger) shareTrigger.textContent = ui.share;
+  const youChose = document.getElementById('label-you-chose');
+  if (youChose) youChose.textContent = ui.youChose;
+  const shareCardBrand = document.getElementById('label-share-card-brand');
+  if (shareCardBrand) shareCardBrand.textContent = ui.brandName;
+  const exportCardBrand = document.getElementById('label-export-card-brand');
+  if (exportCardBrand) exportCardBrand.textContent = ui.brandName;
+  const shareFooterBrand = document.getElementById('label-share-footer-brand');
+  if (shareFooterBrand) shareFooterBrand.textContent = ui.brandLine.toLowerCase();
+  const exportFooterBrand = document.getElementById('label-export-footer-brand');
+  if (exportFooterBrand) exportFooterBrand.textContent = ui.brandLine.toLowerCase();
+  const saveImage = document.getElementById('label-save-image');
+  if (saveImage) saveImage.textContent = ui.saveImage;
+  const saveTemplate = document.getElementById('label-save-image-template');
+  if (saveTemplate) saveTemplate.textContent = ui.saveImage;
+  const copyLink = document.getElementById('label-copy-link');
+  if (copyLink) copyLink.textContent = ui.copyLink;
+  const copyText = document.getElementById('label-copy-text');
+  if (copyText) copyText.textContent = ui.copyText;
+  const chCopy = document.getElementById('label-ch-copy');
+  if (chCopy) chCopy.textContent = ui.copyText;
+  const langBtn = document.getElementById('lang-toggle-label');
+  if (langBtn) langBtn.textContent = ui.languageToggle;
+  const greeting = document.getElementById('greeting-label');
+  if (greeting) greeting.textContent = ui.greetingLabel;
+  const splitTitle = document.querySelector('#acc-split .acc-title');
+  if (splitTitle) splitTitle.textContent = ui.splitTitle;
+  const yourTake = document.getElementById('label-your-take');
+  if (yourTake) yourTake.textContent = ui.yourTake;
+  const otherSide = document.getElementById('label-other-side');
+  if (otherSide) otherSide.textContent = ui.otherSide;
+  const quoteTitle = document.querySelector('#acc-quote .acc-title');
+  if (quoteTitle) quoteTitle.textContent = ui.philosopherSays;
+  const gfTitle = document.querySelector('#acc-further .acc-title');
+  if (gfTitle) gfTitle.textContent = ui.goFurther;
+  const askLabel = document.getElementById('label-ask-friend');
+  if (askLabel) askLabel.textContent = ui.askFriend;
+  const nextLabel = document.getElementById('label-next-dilemma');
+  if (nextLabel) nextLabel.textContent = ui.nextDilemma;
+  const historyTitle = document.querySelector('.history-title');
+  if (historyTitle) historyTitle.textContent = ui.historyTitle;
+}
+
+function setLanguage(lang) {
+  if (!SUPPORTED_LANGS.includes(lang)) return;
+  state.lang = lang;
+  saveLanguage();
+  applyUIText();
+  renderDate();
+  renderDilemma();
+  if (state.answered) {
+    // Keep current choice view coherent after language switch.
+    state.answered = false;
+    const card = document.getElementById('dilemma-card');
+    const chosen = document.getElementById('chosen-state');
+    const sn = document.getElementById('sticky-next');
+    chosen.hidden = true; chosen.style.display = 'none';
+    sn.hidden = true; sn.style.display = 'none';
+    card.hidden = false; card.style.display = 'block';
+  }
+  renderHistoryList();
+}
+
+document.getElementById('btn-lang-toggle').addEventListener('click', () => {
+  setLanguage(state.lang === 'en' ? 'zh-Hant' : 'en');
 });
 
 /* =============================================
@@ -1636,7 +1938,7 @@ function checkDeepLink() {
   const match = location.hash.match(/[#&]d=(\d+)/);
   if (!match) return;
   const id = parseInt(match[1], 10);
-  const idx = DILEMMAS.findIndex(d => d.id === id);
+  const idx = getAllDilemmas().findIndex(d => d.id === id);
   if (idx !== -1) { state.todayIndex = idx; renderDilemma(); }
 }
 
@@ -1646,7 +1948,9 @@ function checkDeepLink() {
    INIT
    ============================================= */
 function init() {
+  state.lang = loadLanguage();
   state.history = loadHistory();
+  applyUIText();
   renderDate();
   renderDilemma();
   checkDeepLink();
