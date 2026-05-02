@@ -1,0 +1,20 @@
+node_modules/
+npm-debug.log*
+
+# Capacitor
+android/.gradle/
+android/.idea/
+android/local.properties
+android/capacitor-cordova-android-plugins/
+
+ios/Pods/
+ios/App/Pods/
+ios/App/build/
+ios/App/DerivedData/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+

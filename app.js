@@ -901,8 +901,15 @@ const DILEMMAS = [
 /* =============================================
    STATE
    ============================================= */
+function getLocalDateKey(date = new Date()) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
 const state = {
-  todayKey: new Date().toISOString().slice(0, 10),
+  todayKey: getLocalDateKey(),
   todayIndex: 0,
   answered: false,
   chosenOpt: null,
@@ -910,10 +917,133 @@ const state = {
   pendingTimeout: null,
 };
 
+/* =============================================
+   PERSISTENCE (localStorage)
+   ============================================= */
+const STORAGE_KEYS = {
+  history: 'dailyDilemmas.history.v1',
+};
+
+function loadHistory() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.history);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    // Soft-validate shape to avoid breaking if storage is corrupted.
+    return parsed.filter(item =>
+      item &&
+      typeof item === 'object' &&
+      typeof item.id === 'number' &&
+      typeof item.text === 'string' &&
+      typeof item.choice === 'string' &&
+      typeof item.date === 'string' &&
+      typeof item.time === 'string'
+    );
+  } catch {
+    return [];
+  }
+}
+
+function saveHistory() {
+  try {
+    localStorage.setItem(STORAGE_KEYS.history, JSON.stringify(state.history));
+  } catch {
+    // Ignore storage failures (private mode / quota / blocked).
+  }
+}
+
+function clearHistory() {
+  const ok = confirm('Clear your history on this device? This cannot be undone.');
+  if (!ok) return;
+
+  state.history = [];
+  try {
+    localStorage.removeItem(STORAGE_KEYS.history);
+  } catch {
+    // ignore
+  }
+  renderHistoryList();
+}
+
 // Determine today's dilemma via date-seed
 state.todayIndex = parseInt(state.todayKey.replace(/-/g, ''), 10) % DILEMMAS.length;
 
 function getDilemma() { return DILEMMAS[state.todayIndex]; }
+
+/* =============================================
+   DOM HELPERS (templates)
+   ============================================= */
+function tpl(id) {
+  const t = document.getElementById(id);
+  return t && t.content ? t.content : null;
+}
+
+function cloneTpl(id) {
+  const c = tpl(id);
+  return c ? c.cloneNode(true) : document.createDocumentFragment();
+}
+
+/* =============================================
+   SUPABASE (Postgres) — real vote percentages
+   ============================================= */
+const SUPABASE = {
+  // TODO: set these after you create a Supabase project
+  url: 'https://nreiswexmjhpxpmexgzx.supabase.co',
+  anonKey: 'sb_publishable_xCzm1Zk3j9LDh0KRyRpNDQ_xpBTUH4p'
+};
+
+function supabaseEnabled() {
+  return !!(SUPABASE.url && SUPABASE.anonKey);
+}
+
+async function supabaseRpc(fn, body) {
+  const res = await fetch(`${SUPABASE.url}/rest/v1/rpc/${fn}`, {
+    method: 'POST',
+    headers: {
+      apikey: SUPABASE.anonKey,
+      Authorization: `Bearer ${SUPABASE.anonKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(body ?? {}),
+  });
+  if (!res.ok) throw new Error(`Supabase RPC failed: ${res.status}`);
+  return await res.json();
+}
+
+async function submitVote(dilemmaId, choice) {
+  if (!supabaseEnabled()) return;
+  try {
+    await fetch(`${SUPABASE.url}/rest/v1/votes`, {
+      method: 'POST',
+      headers: {
+        apikey: SUPABASE.anonKey,
+        Authorization: `Bearer ${SUPABASE.anonKey}`,
+        'Content-Type': 'application/json',
+        Prefer: 'return=minimal',
+      },
+      body: JSON.stringify({ dilemma_id: dilemmaId, choice }),
+    });
+  } catch {
+    // ignore (offline / blocked / misconfigured)
+  }
+}
+
+async function fetchVoteStats(dilemmaId) {
+  if (!supabaseEnabled()) return null;
+  try {
+    // RPC returns: [{ choice: 'a'|'b', count: number }, ...]
+    const rows = await supabaseRpc('get_vote_stats', { dilemma_id: dilemmaId });
+    const a = rows?.find(r => r.choice === 'a')?.count ?? 0;
+    const b = rows?.find(r => r.choice === 'b')?.count ?? 0;
+    const total = a + b;
+    if (!total) return { a: 50, b: 50, total: 0 };
+    const pctA = Math.round((a / total) * 100);
+    return { a: pctA, b: 100 - pctA, total };
+  } catch {
+    return null;
+  }
+}
 
 /* =============================================
    RENDER
@@ -929,14 +1059,22 @@ function renderThemeAndTags(badgeId, tagsId) {
   const theme = WEEKLY_THEMES[state.todayIndex];
   const badge = document.getElementById(badgeId);
   if (badge) {
-    badge.innerHTML = `<span class="theme-emoji">${theme.emoji}</span><span class="theme-name">Week ${theme.week} · ${theme.name}</span>`;
+    badge.replaceChildren(cloneTpl('tpl-theme-badge'));
+    const emojiEl = badge.querySelector('.theme-emoji');
+    const nameEl = badge.querySelector('.theme-name');
+    if (emojiEl) emojiEl.textContent = theme.emoji;
+    if (nameEl) nameEl.textContent = `Week ${theme.week} · ${theme.name}`;
     badge.style.setProperty('--theme-color', theme.color);
   }
   const tagsEl = document.getElementById(tagsId);
   if (tagsEl && d.tags) {
-    tagsEl.innerHTML = d.tags.map(t =>
-      `<span class="dilemma-tag">${t}</span>`
-    ).join('');
+    tagsEl.replaceChildren();
+    d.tags.forEach(tag => {
+      const frag = cloneTpl('tpl-dilemma-tag');
+      const el = frag.querySelector('.dilemma-tag');
+      if (el) el.textContent = tag;
+      tagsEl.appendChild(frag);
+    });
   }
 }
 
@@ -950,20 +1088,25 @@ function renderDilemma() {
   renderThemeAndTags('theme-badge-greeting', 'greeting-tags');
 
   const optContainer = document.getElementById('dilemma-options');
-  optContainer.innerHTML = `
-    <button class="option-btn" data-opt="a" role="radio" aria-checked="false">
-      <span class="option-letter" data-opt="a">A</span>
-      <span>${d.optA}</span>
-    </button>
-    <button class="option-btn" data-opt="b" role="radio" aria-checked="false">
-      <span class="option-letter" data-opt="b">B</span>
-      <span>${d.optB}</span>
-    </button>
-  `;
+  optContainer.replaceChildren();
 
-  optContainer.querySelectorAll('.option-btn').forEach(btn => {
-    btn.addEventListener('click', () => handleChoice(btn.dataset.opt));
-  });
+  function makeOpt(opt, text) {
+    const frag = cloneTpl('tpl-option-btn');
+    const btn = frag.querySelector('button.option-btn');
+    const letter = frag.querySelector('.option-letter');
+    const label = frag.querySelector('.option-text');
+    btn.dataset.opt = opt;
+    if (letter) {
+      letter.dataset.opt = opt;
+      letter.textContent = opt.toUpperCase();
+    }
+    if (label) label.textContent = text;
+    btn.addEventListener('click', () => handleChoice(opt));
+    return btn;
+  }
+
+  optContainer.appendChild(makeOpt('a', d.optA));
+  optContainer.appendChild(makeOpt('b', d.optB));
 }
 
 function handleChoice(opt) {
@@ -980,6 +1123,9 @@ function handleChoice(opt) {
     date: state.todayKey,
     time: now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' }),
   });
+  saveHistory();
+  // Send vote to Supabase (non-blocking)
+  submitVote(d.id, opt);
 
   // Highlight chosen, dim other
   const btns = document.querySelectorAll('.option-btn');
@@ -1013,7 +1159,9 @@ function handleChoice(opt) {
     const other = opt === 'a' ? 'b' : 'a';
     document.getElementById('counterarg-text').textContent = ca ? ca[other] : '';
     renderPhilosopherQuote();
-    renderOthersSplit(opt);
+    renderOthersSplit(opt); // immediate (fallback) render
+    // Update split from real votes (if configured)
+    renderOthersSplitFromSupabase(d.id);
     renderGoFurther();
     // Show sticky next button
     const sn = document.getElementById('sticky-next');
@@ -1022,43 +1170,33 @@ function handleChoice(opt) {
 }
 
 const PHILOSOPHER_PORTRAITS = {
-  'Oscar Wilde': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Oscar_Wilde_by_Napoleon_Sarony._Three-quarter-length_photograph%2C_seated.jpg/120px-Oscar_Wilde_by_Napoleon_Sarony._Three-quarter-length_photograph%2C_seated.jpg',
-  'Immanuel Kant': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Immanuel_Kant_-_Gemaelde_1.jpg/120px-Immanuel_Kant_-_Gemaelde_1.jpg',
-  'Friedrich Nietzsche': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Nietzsche187a.jpg/120px-Nietzsche187a.jpg',
-  'Jean-Paul Sartre': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Jean_Paul_Sartre_1965.jpg/120px-Jean_Paul_Sartre_1965.jpg',
-  'Albert Camus': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg/120px-Albert_Camus%2C_gagnant_de_prix_Nobel%2C_portrait_en_buste%2C_pos%C3%A9_au_bureau%2C_faisant_face_%C3%A0_gauche%2C_cigarette_de_tabagisme.jpg',
-  'Heraclitus': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Heraclitus_b_4_compressed.jpg/120px-Heraclitus_b_4_compressed.jpg',
-  'Albert Einstein': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Albert_Einstein_Head_cleaned.jpg/120px-Albert_Einstein_Head_cleaned.jpg',
-  'Henry David Thoreau': 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Benjamin_D._Maxham_-_Henry_David_Thoreau_-_Restored.jpg/120px-Benjamin_D._Maxham_-_Henry_David_Thoreau_-_Restored.jpg',
-  'Cornel West': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Cornel_West_%2839223875064%29_%28cropped%29.jpg/120px-Cornel_West_%2839223875064%29_%28cropped%29.jpg',
-  'Derek Parfit': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Derek_Parfit_at_Harvard-April_21%2C_2015-Effective_Altruism_%28cropped%29.jpg/120px-Derek_Parfit_at_Harvard-April_21%2C_2015-Effective_Altruism_%28cropped%29.jpg',
-  'Socrates': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Socrates_Louvre.jpg/120px-Socrates_Louvre.jpg',
-  'Thomas Aquinas': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/St-thomas-aquinasFXD.jpg/120px-St-thomas-aquinasFXD.jpg',
-  'William Shakespeare': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/William_Shakespeare_by_John_Taylor%2C_edited.jpg/120px-William_Shakespeare_by_John_Taylor%2C_edited.jpg',
-  'George Bernard Shaw': 'https://upload.wikimedia.org/wikipedia/en/thumb/3/30/Bernard-Shaw-ILN-1911-original.jpg/120px-Bernard-Shaw-ILN-1911-original.jpg',
-  'Ralph Waldo Emerson': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Ralph_Waldo_Emerson_by_Josiah_Johnson_Hawes_1857.jpg/120px-Ralph_Waldo_Emerson_by_Josiah_Johnson_Hawes_1857.jpg',
-  'Alan Watts': 'https://upload.wikimedia.org/wikipedia/en/9/97/Alan_Watts.png',
-  'Emily Dickinson': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Black-white_photograph_of_Emily_Dickinson2.png/120px-Black-white_photograph_of_Emily_Dickinson2.png',
-  'Carl Jung': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/ETH-BIB-Jung%2C_Carl_Gustav_%281875-1961%29-Portrait-Portr_14163_%28cropped%29.tif/lossy-page1-120px-ETH-BIB-Jung%2C_Carl_Gustav_%281875-1961%29-Portrait-Portr_14163_%28cropped%29.tif.jpg',
-  'René Descartes': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg/120px-Frans_Hals_-_Portret_van_Ren%C3%A9_Descartes.jpg',
-  'Mahatma Gandhi': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Mahatma-Gandhi%2C_studio%2C_1931.jpg/120px-Mahatma-Gandhi%2C_studio%2C_1931.jpg',
-  'Marcel Proust': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Otto_Wegener_Proust_vers_1895_bis.jpg/120px-Otto_Wegener_Proust_vers_1895_bis.jpg',
-  'Jim Morrison': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Jim_Morrison_-_Young_Lion_%281967%29_%281%29.jpg/120px-Jim_Morrison_-_Young_Lion_%281967%29_%281%29.jpg',
-  'Aristotle': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Aristotle_Altemps_Inv8575.jpg/120px-Aristotle_Altemps_Inv8575.jpg',
-  'Confucius': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Confucius_Tang_Dynasty.jpg/120px-Confucius_Tang_Dynasty.jpg',
-  'Simone de Beauvoir': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Simone_de_Beauvoir2.png/120px-Simone_de_Beauvoir2.png',
-  'John Stuart Mill': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg/120px-John_Stuart_Mill_by_London_Stereoscopic_Company%2C_c1870.jpg',
-  'Epictetus': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Epictetus.jpg/120px-Epictetus.jpg',
-  'Epicurus': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Epikouros_BM_1843.jpg/120px-Epikouros_BM_1843.jpg',
-  'Marcus Aurelius': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Marcus_Aurelius_Glyptothek_Munich.jpg/120px-Marcus_Aurelius_Glyptothek_Munich.jpg',
-  'Plato': 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Plato_Silanion_Musei_Capitolini_MC1377.jpg/120px-Plato_Silanion_Musei_Capitolini_MC1377.jpg',
-  'Mary Wollstonecraft': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Mary_Wollstonecraft_by_John_Opie_%28c._1797%29.jpg/120px-Mary_Wollstonecraft_by_John_Opie_%28c._1797%29.jpg',
-  'Joseph Hall': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Joseph_Hall_by_Jan_van_der_Heyden.jpg/120px-Joseph_Hall_by_Jan_van_der_Heyden.jpg',
-  'Apostle Paul': 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Saint_Paul_Writing_His_Epistles_by_Valentin_de_Boulogne.jpg/120px-Saint_Paul_Writing_His_Epistles_by_Valentin_de_Boulogne.jpg',
-  'Albert Schweitzer': 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Bundesarchiv_Bild_183-D0116-0041-019%2C_Albert_Schweitzer.jpg/120px-Bundesarchiv_Bild_183-D0116-0041-019%2C_Albert_Schweitzer.jpg',
-  'John Morley': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/John_Morley%2C_Vanity_Fair%2C_1873-02-08.jpg/120px-John_Morley%2C_Vanity_Fair%2C_1873-02-08.jpg',
-  'Peter Salovey': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Yale_University_President_Peter_Salovey_at_the_Yale_University_Reserve_Officers%27_Training_Corps_Commissioning_Ceremony_in_New_Haven%2C_Conn%2C_May_23%2C_2016.jpg/120px-Yale_University_President_Peter_Salovey_at_the_Yale_University_Reserve_Officers%27_Training_Corps_Commissioning_Ceremony_in_New_Haven%2C_Conn%2C_May_23%2C_2016.jpg',
-  'John Steinbeck': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/John_Steinbeck_1939_%28cropped%29.jpg/120px-John_Steinbeck_1939_%28cropped%29.jpg',
+  // Local portrait folder (preferred). If an author is missing here,
+  // the UI falls back to initials automatically.
+  'Alan Watts': 'images/philosophers/alan-watts.png',
+  'Albert Camus': 'images/philosophers/albert-camus.jpg',
+  'Albert Einstein': 'images/philosophers/albert-einstein.jpg',
+  'Aristotle': 'images/philosophers/aristotle.jpg',
+  'Carl Jung': 'images/philosophers/carl-jung.jpg',
+  'Cornel West': 'images/philosophers/cornel-west.jpg',
+  'Derek Parfit': 'images/philosophers/derek-parfit.jpg',
+  'Emily Dickinson': 'images/philosophers/emily-dickinson.png',
+  'Friedrich Nietzsche': 'images/philosophers/friedrich-nietzsche.jpg',
+  'George Bernard Shaw': 'images/philosophers/george-bernard-shaw.jpg',
+  'Henry David Thoreau': 'images/philosophers/henry-david-thoreau.jpg',
+  'Heraclitus': 'images/philosophers/heraclitus.jpg',
+  'Immanuel Kant': 'images/philosophers/immanuel-kant.jpg',
+  'Jean-Paul Sartre': 'images/philosophers/jean-paul-sartre.jpg',
+  'Jim Morrison': 'images/philosophers/jim-morrison.jpg',
+  'John Steinbeck': 'images/philosophers/john-steinbeck.jpg',
+  'Mahatma Gandhi': 'images/philosophers/mahatma-gandhi.jpg',
+  'Marcel Proust': 'images/philosophers/marcel-proust.jpg',
+  'Oscar Wilde': 'images/philosophers/oscar-wilde.jpg',
+  'Peter Salovey': 'images/philosophers/peter-salovey.jpg',
+  'Ralph Waldo Emerson': 'images/philosophers/ralph-waldo-emerson.jpg',
+  'René Descartes': 'images/philosophers/ren-descartes.jpg',
+  'Socrates': 'images/philosophers/socrates.jpg',
+  'Thomas Aquinas': 'images/philosophers/thomas-aquinas.jpg',
+  'William Shakespeare': 'images/philosophers/william-shakespeare.jpg',
 };
 
 function renderPhilosopherQuote() {
@@ -1144,6 +1282,23 @@ function renderOthersSplit(chosenOpt) {
   document.getElementById('os-opt-b-label').textContent = 'B. ' + d.optB;
 }
 
+async function renderOthersSplitFromSupabase(dilemmaId) {
+  const stats = await fetchVoteStats(dilemmaId);
+  if (!stats) return;
+  const d = getDilemma();
+  const barA = document.getElementById('os-bar-a');
+  const barB = document.getElementById('os-bar-b');
+  barA.style.width = '0%'; barB.style.width = '0%';
+  setTimeout(() => {
+    barA.style.width = stats.a + '%';
+    barB.style.width = stats.b + '%';
+  }, 80);
+  document.getElementById('os-pct-a').textContent = stats.a + '%';
+  document.getElementById('os-pct-b').textContent = stats.b + '%';
+  document.getElementById('os-opt-a-label').textContent = 'A. ' + d.optA;
+  document.getElementById('os-opt-b-label').textContent = 'B. ' + d.optB;
+}
+
 /* =============================================
    HISTORY PANEL
    ============================================= */
@@ -1173,7 +1328,7 @@ function escHistory(e) { if (e.key === 'Escape') closeHistory(); }
 function renderHistoryList() {
   const container = document.getElementById('history-list');
   if (!state.history.length) {
-    container.innerHTML = '<p class="history-empty">No Answered Dilemmas Yet.<br>Choose a side to see it here.</p>';
+    container.replaceChildren(cloneTpl('tpl-history-empty'));
     return;
   }
 
@@ -1183,34 +1338,39 @@ function renderHistoryList() {
     grouped[item.date].push(item);
   });
 
-  const today = new Date().toISOString().slice(0, 10);
-  const yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+  const today = getLocalDateKey();
+  const yesterday = getLocalDateKey(new Date(Date.now() - 86400000));
 
-  let html = '';
+  container.replaceChildren();
   Object.entries(grouped).forEach(([date, items]) => {
     let label = date;
     if (date === today) label = 'Today';
     else if (date === yesterday) label = 'Yesterday';
     else { const d = new Date(date + 'T00:00:00'); label = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); }
 
-    html += `<p class="history-date-group">${label}</p>`;
+    const dateFrag = cloneTpl('tpl-history-date-group');
+    const dateEl = dateFrag.querySelector('.history-date-group');
+    if (dateEl) dateEl.textContent = label;
+    container.appendChild(dateFrag);
     items.forEach((item, i) => {
-      html += `
-        <div class="history-item" style="animation-delay:${i * 40}ms">
-          <div class="history-item-meta">
-            <span class="history-item-choice">Chose: ${item.choice}</span>
-            <span class="history-item-date">${item.time}</span>
-          </div>
-          <p class="history-item-text">${item.text}</p>
-        </div>`;
+      const frag = cloneTpl('tpl-history-item');
+      const root = frag.querySelector('.history-item');
+      if (root) root.style.animationDelay = `${i * 40}ms`;
+      const choice = frag.querySelector('.history-item-choice');
+      const time = frag.querySelector('.history-item-date');
+      const text = frag.querySelector('.history-item-text');
+      if (choice) choice.textContent = `Chose: ${item.choice}`;
+      if (time) time.textContent = item.time;
+      if (text) text.textContent = item.text;
+      container.appendChild(frag);
     });
   });
-  container.innerHTML = html;
 }
 
 document.getElementById('btn-history-toggle').addEventListener('click', openHistory);
 document.getElementById('btn-close-history').addEventListener('click', closeHistory);
 document.getElementById('history-overlay').addEventListener('click', closeHistory);
+document.getElementById('btn-clear-history').addEventListener('click', clearHistory);
 
 /* =============================================
    SHARE MODAL
@@ -1260,7 +1420,7 @@ document.getElementById('btn-download-card').addEventListener('click', async () 
     link.click();
     showHint('Image Saved.');
   } catch { showHint('Could Not Generate Image.'); }
-  btn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Save Image`;
+  btn.replaceChildren(cloneTpl('tpl-download-btn-content'));
   btn.disabled = false;
 });
 
@@ -1284,51 +1444,105 @@ function renderGoFurther() {
   if (!gf) return;
 
   // Clear previous content
-  document.getElementById('go-further-body').innerHTML = '';
+  const root = document.getElementById('go-further-body');
+  root.replaceChildren();
 
   const section = document.createElement('div');
   section.id = 'go-further-section';
   section.className = 'go-further';
 
-  // Terms — linked to Google search
-  const termsHtml = gf.terms.map(t => {
-    const q = encodeURIComponent(t + ' philosophy');
-    return `<a class="gf-tag gf-tag-link" href="https://www.google.com/search?q=${q}" target="_top" rel="noopener">${t}</a>`;
-  }).join('');
+  function mkBlock(label) {
+    const block = document.createElement('div');
+    block.className = 'gf-block';
+    const p = document.createElement('p');
+    p.className = 'gf-block-label';
+    p.textContent = label;
+    block.appendChild(p);
+    return block;
+  }
 
-  // Books — vertical list matching Watch section
-  const booksHtml = gf.books.map(b => {
+  // Key concepts
+  const concepts = mkBlock('Key Concepts');
+  const tagsWrap = document.createElement('div');
+  tagsWrap.className = 'gf-tags';
+  gf.terms.forEach(term => {
+    const q = encodeURIComponent(term + ' philosophy');
+    const frag = cloneTpl('tpl-go-further-tag');
+    const a = frag.querySelector('a');
+    if (a) {
+      a.href = `https://www.google.com/search?q=${q}`;
+      a.textContent = term;
+    }
+    tagsWrap.appendChild(frag);
+  });
+  concepts.appendChild(tagsWrap);
+  section.appendChild(concepts);
+
+  function mkListItem(iconType, href, textNode) {
+    const frag = cloneTpl('tpl-go-further-item');
+    const a = frag.querySelector('a');
+    const svg = frag.querySelector('svg');
+    const span = frag.querySelector('.gf-item-text');
+    if (a) a.href = href;
+    if (span) {
+      span.replaceChildren(textNode);
+    }
+    if (svg) {
+      // Fill SVG based on type
+      if (iconType === 'book') {
+        const p1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p1.setAttribute('d', 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20');
+        const p2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p2.setAttribute('d', 'M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z');
+        svg.appendChild(p1); svg.appendChild(p2);
+      } else if (iconType === 'video') {
+        const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        r.setAttribute('x', '2'); r.setAttribute('y', '7'); r.setAttribute('width', '20'); r.setAttribute('height', '15'); r.setAttribute('rx', '2');
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', 'M16 2l-4 5-4-5');
+        const poly = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        poly.setAttribute('points', '10 11 16 14 10 17 10 11');
+        poly.setAttribute('fill', 'currentColor');
+        poly.setAttribute('stroke', 'none');
+        svg.appendChild(r); svg.appendChild(p); svg.appendChild(poly);
+      }
+    }
+    return frag;
+  }
+
+  // Books
+  const books = mkBlock('Books');
+  const booksList = document.createElement('div');
+  booksList.className = 'gf-list';
+  gf.books.forEach(b => {
     const q = encodeURIComponent(b.title + ' ' + b.author);
-    return `<a class="gf-item gf-link" href="https://www.google.com/search?q=${q}" target="_top" rel="noopener">
-      <svg class="gf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
-      <span><strong>${b.title}</strong><br><span class="gf-meta">${b.author}</span></span>
-    </a>`;
-  }).join('');
+    const href = `https://www.google.com/search?q=${q}`;
+    const wrapper = document.createElement('span');
+    const strong = document.createElement('strong');
+    strong.textContent = b.title;
+    const br = document.createElement('br');
+    const meta = document.createElement('span');
+    meta.className = 'gf-meta';
+    meta.textContent = b.author;
+    wrapper.appendChild(strong); wrapper.appendChild(br); wrapper.appendChild(meta);
+    booksList.appendChild(mkListItem('book', href, wrapper));
+  });
+  books.appendChild(booksList);
+  section.appendChild(books);
 
-  // Videos
-  const videosHtml = gf.videos.map(v =>
-    `<a class="gf-item gf-link" href="${v.url}" target="_top" rel="noopener">
-      <svg class="gf-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="M16 2l-4 5-4-5"/><polygon points="10 11 16 14 10 17 10 11" fill="currentColor" stroke="none"/></svg>
-      <span>${v.title}</span>
-    </a>`
-  ).join('');
+  // Watch
+  const watch = mkBlock('Watch');
+  const vidsList = document.createElement('div');
+  vidsList.className = 'gf-list';
+  gf.videos.forEach(v => {
+    const span = document.createElement('span');
+    span.textContent = v.title;
+    vidsList.appendChild(mkListItem('video', v.url, span));
+  });
+  watch.appendChild(vidsList);
+  section.appendChild(watch);
 
-  section.innerHTML = `
-    <div class="gf-block">
-      <p class="gf-block-label">Key Concepts</p>
-      <div class="gf-tags">${termsHtml}</div>
-    </div>
-    <div class="gf-block">
-      <p class="gf-block-label">Books</p>
-      <div class="gf-list">${booksHtml}</div>
-    </div>
-    <div class="gf-block">
-      <p class="gf-block-label">Watch</p>
-      <div class="gf-list">${videosHtml}</div>
-    </div>
-  `;
-
-  document.getElementById('go-further-body').appendChild(section);
+  root.appendChild(section);
 }
 
 /* =============================================
@@ -1348,7 +1562,7 @@ document.getElementById('btn-next').addEventListener('click', () => {
   // Reset accordions
   document.querySelectorAll('.accordion').forEach(a => a.removeAttribute('open'));
   // Clear go-further body
-  document.getElementById('go-further-body').innerHTML = '';
+  document.getElementById('go-further-body').replaceChildren();
   chosen.hidden = true; chosen.style.display = 'none';
   sn.hidden = true; sn.style.display = 'none';
   card.hidden = false; card.style.display = 'block';
@@ -1359,16 +1573,6 @@ document.getElementById('btn-next').addEventListener('click', () => {
 /* =============================================
    CHALLENGE A FRIEND
    ============================================= */
-const STAKES = [
-  'loser buys coffee',
-  'loser does the dishes',
-  'loser picks the next movie',
-  'loser owes a favour',
-  'loser sends a voice note explaining themselves',
-  'loser has to text their hottest take to the group chat',
-  'loser owes a meal',
-  'loser has to read one philosophy book',
-];
 
 function openChallenge() {
   const d = getDilemma();
@@ -1442,6 +1646,7 @@ function checkDeepLink() {
    INIT
    ============================================= */
 function init() {
+  state.history = loadHistory();
   renderDate();
   renderDilemma();
   checkDeepLink();

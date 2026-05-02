@@ -280,6 +280,7 @@ button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
 @keyframes slideOut{from{transform:translateX(0)}to{transform:translateX(100%)}}
 
 .history-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-5) var(--space-6);border-bottom:1px solid var(--color-border);flex-shrink:0}
+.history-header-actions{display:flex;align-items:center;gap:var(--space-2)}
 .history-title{font-family:var(--font-display);font-size:var(--text-lg);font-style:italic;font-weight:400}
 .btn-close{width:32px;height:32px;display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);border-radius:var(--radius-full);transition:color var(--transition),background var(--transition)}
 .btn-close:hover{color:var(--color-text);background:var(--color-surface-offset)}
