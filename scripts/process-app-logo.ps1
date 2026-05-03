@@ -17,11 +17,11 @@ try {
   $work = [LogoBackground]::Ensure32Argb($bmp)
   try {
     [LogoBackground]::FloodFillEdgesTransparent($work)
-    [LogoBackground]::ExpandTransparencyIntoLightFringe($work, 64)
+    [LogoBackground]::ExpandTransparencyIntoLightFringe($work, 36)
 
     $web = [LogoBackground]::ResizeMax($work, 512)
     try {
-      [LogoBackground]::ExpandTransparencyIntoLightFringe($web, 32)
+      [LogoBackground]::ExpandTransparencyIntoLightFringe($web, 24)
       $webPath = Join-Path $imagesDir 'app-logo.png'
       $web.Save($webPath, [System.Drawing.Imaging.ImageFormat]::Png)
       Write-Host "Wrote $webPath"
@@ -31,7 +31,7 @@ try {
     $andPath = Join-Path $root 'android\app\src\main\res\drawable\app_logo.png'
     $android = [LogoBackground]::ResizeMax($work, 320)
     try {
-      [LogoBackground]::ExpandTransparencyIntoLightFringe($android, 32)
+      [LogoBackground]::ExpandTransparencyIntoLightFringe($android, 24)
       $android.Save($andPath, [System.Drawing.Imaging.ImageFormat]::Png)
       Write-Host "Wrote $andPath"
     }

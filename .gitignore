@@ -24,3 +24,6 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Local Gradle wrapper cache (do not commit)
+.gradle-local/
+

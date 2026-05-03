@@ -5,7 +5,7 @@
   "description": "Daily Dilemma (Capacitor wrapper)",
   "scripts": {
     "serve": "npx http-server . -p 5173 -c-1",
-    "cap:prep": "powershell -NoProfile -Command \"if (!(Test-Path web)) { mkdir web | Out-Null } ; Copy-Item -Force index.html,app.js,style.css,i18n.zh-hant.js -Destination web ; Copy-Item -Recurse -Force images,fonts,vendor -Destination web\"",
+    "cap:prep": "powershell -NoProfile -Command \"if (!(Test-Path web)) { mkdir web | Out-Null } ; Copy-Item -Force index.html,app.js,style.css,i18n.zh-hant.js -Destination web ; Copy-Item -Recurse -Force images,fonts,vendor,Legal -Destination web\"",
     "cap:sync": "npm run cap:prep && npx cap sync",
     "cap:android": "npx cap open android",
     "cap:ios": "npx cap open ios",
@@ -16,7 +16,8 @@
   "dependencies": {
     "@capacitor/android": "^7.4.3",
     "@capacitor/core": "^7.4.3",
-    "@capacitor/ios": "^7.4.3"
+    "@capacitor/ios": "^7.4.3",
+    "@capacitor/local-notifications": "^7.0.6"
   },
   "devDependencies": {
     "@capacitor/cli": "^7.4.3",

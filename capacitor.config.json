@@ -2,6 +2,10 @@
   "appId": "com.wilsonchan.dailydilemma",
   "appName": "Daily Dilemma",
   "webDir": "web",
-  "bundledWebRuntime": false
+  "bundledWebRuntime": false,
+  "backgroundColor": "#f5f4f0",
+  "android": {
+    "backgroundColor": "#f5f4f0"
+  }
 }
 

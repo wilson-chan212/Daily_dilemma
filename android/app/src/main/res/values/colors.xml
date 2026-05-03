@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash_background">#F0F0F5</color>
+    <!-- Match web app background / loading screen so the window is never solid black before paint. -->
+    <color name="app_window_bg">#f5f4f0</color>
+    <color name="splash_background">#f5f4f0</color>
 </resources>

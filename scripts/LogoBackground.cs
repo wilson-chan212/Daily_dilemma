@@ -32,8 +32,8 @@ public static class LogoBackground
         int mx = Math.Max(Math.Max(r, g), b);
         int mn = Math.Min(Math.Min(r, g), b);
         int sum = r + g + b;
-        if (sum > 752) return true;
-        if (sum > 736 && (mx - mn) < 22) return true;
+        if (sum > 746) return true;
+        if (sum > 724 && (mx - mn) < 28) return true;
         return false;
     }
 
@@ -93,13 +93,13 @@ public static class LogoBackground
         int sum = r + g + b;
         int mx = Math.Max(r, Math.Max(g, b));
         int mn = Math.Min(r, Math.Min(g, b));
-        if (sum < 728)
+        if (sum < 700)
             return false;
-        if (mx - mn > 34)
+        if (mx - mn > 42)
             return false;
-        if (sum >= 752)
+        if (sum >= 736)
             return true;
-        return sum >= 728 && (mx - mn) <= 26;
+        return sum >= 700 && (mx - mn) <= 34;
     }
 
     private static bool HasTransparentNeighbor(Bitmap bmp, int x, int y, int w, int h)

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Solid circle matching splash background so the system "icon" splash is visually blank. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+  <item>
+    <shape android:shape="oval">
+      <size android:width="200dp" android:height="200dp" />
+      <solid android:color="@color/splash_background" />
+    </shape>
+  </item>
+</layer-list>
