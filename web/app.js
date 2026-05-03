@@ -2,7 +2,7 @@ const APP_LOAD_STARTED_AT =
   typeof window !== 'undefined' && typeof window.__ddLoadT0 === 'number' ? window.__ddLoadT0 : Date.now();
 
 /* =============================================
-   WEEKLY THEMES  (5 dilemmas per week, 3 weeks)
+   WEEKLY THEMES  (5 dilemmas per week, 6 weeks)
    ============================================= */
 const WEEKLY_THEMES = [
   // Week 1 — dilemmas 1–5
@@ -41,6 +41,30 @@ const WEEKLY_THEMES = [
   { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
   { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
   { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
+  // Week 7 — dilemmas 31–33 — Future Ethics
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
+  // Week 8 — dilemmas 36–40 — Liberty & Public Life
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
+  // Week 9 — dilemmas 41–45 — Justice & Care
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
+  // Week 10 — dilemmas 46–50 — Technology & Meaning
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
 ];
 
 /* =============================================
@@ -107,6 +131,46 @@ const COUNTERARGS = [
   { a: 'A polished message that lands well is still a real act of care. Refusing every tool can be its own kind of vanity.', b: 'The wobble in handwritten words is part of the gift. A perfect draft they did not write to is admiration of the tool, not of them.' },
   // 30. Quiet donation
   { a: 'Anonymous giving is purer in motive, but invisibility teaches no one. Visible generosity can move others to give too.', b: 'Public giving risks turning a kindness into a performance. The applause is a small tax the recipient pays in dignity.' },
+  // 31. Designer child
+  { a: 'Enhancement markets become social pressure quickly. What begins as freedom for one family becomes obligation for every family that can afford it.', b: 'Refusing safe prevention can romanticize "nature" while passing avoidable suffering to someone who never consented to the risk.' },
+  // 32. Predictive surveillance
+  { a: 'A safer city bought with total visibility rewrites citizenship into permanent suspicion. Rights are most meaningful before fear arrives.', b: 'Privacy is hollow if people are too afraid to use public space. Protecting life may justify constraints that are transparent and accountable.' },
+  // 33. AI grief companion
+  { a: 'An AI echo can keep love present long enough for healing. Grief is not betrayal, and continuation can be a bridge rather than a prison.', b: 'Attachment to a simulation can freeze mourning in place. The relationship was with a person, not an endlessly generated resemblance.' },
+  // 34. Climate mirror
+  { a: 'Geoengineering can turn one emergency into another. A technology powerful enough to cool the planet is also powerful enough to redraw weather, power, and blame.', b: 'Purity about natural systems is cold comfort to people already losing homes. Refusing intervention can be another way the comfortable ask the vulnerable to wait.' },
+  // 35. Animal uplift
+  { a: 'Giving a species self-awareness is not automatically liberation. You may create new kinds of fear, grief, and captivity they never had to carry.', b: 'Leaving intelligence locked away because it complicates our ethics may be paternalism. If a being can flourish more deeply, why deny the door?' },
+  // 36. Quarantine order
+  { a: 'Emergency powers age badly. A rule justified by fear today can become the template for ordinary control tomorrow.', b: 'Freedom is relational. Your liberty to move can become someone else\'s exposure, especially when risk is invisible.' },
+  // 37. Robot caregiver
+  { a: 'Reliable care is not lesser because it is mechanical. Dignity may require consistency more than sentiment.', b: 'Care is more than tasks completed. Replacing presence with efficiency can teach the vulnerable that they are problems to be managed.' },
+  // 38. Deepfake ban
+  { a: 'A medium that destroys trust in evidence can poison public life faster than satire can repair it.', b: 'Broad bans on expression often protect the powerful first. The cure for manipulation can become a tool for silencing dissent.' },
+  // 39. Mood regulator
+  { a: 'Suffering is not sacred just because it is familiar. If a safe tool lets people live without needless anguish, refusing it can romanticize pain.', b: 'Emotions carry information, even when they hurt. Flattening them may produce calm at the cost of depth, warning, and art.' },
+  // 40. Space colony ticket
+  { a: 'Leaving can look selfish, but species-level survival may require people willing to cross the lonely bridge first.', b: 'A future elsewhere does not absolve obligations here. Escape can become a beautiful name for abandonment.' },
+  // 41. Wild suffering
+  { a: 'Nature is not automatically moral. If we can reduce agony without collapse, distance alone does not excuse inaction.', b: 'Ecosystems are not machines with obvious levers. Compassion without humility can damage the very lives it hopes to protect.' },
+  // 42. Cultural artifact
+  { a: 'A global museum can preserve and share human heritage beyond any single border. Access matters too.', b: 'Objects taken under unequal power carry that history in their display cases. Return can repair what preservation alone cannot.' },
+  // 43. Platform speech
+  { a: 'Misinformation is not just speech when it predictably harms people. Platforms shape reality and cannot pretend to be empty rooms.', b: 'Handing truth-policing to platforms invites quiet abuse. Error is dangerous, but centralized permission to speak is dangerous too.' },
+  // 44. Open-source medicine
+  { a: 'A patent system that keeps lifesaving treatment unaffordable has lost moral priority. People are not waiting rooms for incentives.', b: 'Breaking patents can save people now while weakening the reason someone funds the next cure. Future patients are also invisible stakeholders.' },
+  // 45. Blind hiring
+  { a: 'Blind review can reduce bias by forcing attention onto the work itself. Fairness sometimes needs less story, not more.', b: 'Context is not favoritism when obstacles were unequal. Ignoring hardship can turn neutrality into another advantage for the already advantaged.' },
+  // 46. Dream ads
+  { a: 'If the exchange is voluntary, selling a little mental space may be a reasonable price for care someone otherwise cannot afford.', b: 'Sleep is one of the last unmarketed refuges. Turning dreams into ad space crosses a boundary consent may not fully protect.' },
+  // 47. De-extinction
+  { a: 'Restoring a lost species can repair part of what humans broke and renew public commitment to conservation.', b: 'Reviving the dead can become a spectacle that drains attention from living species disappearing now.' },
+  // 48. Dementia archive
+  { a: 'Recording a life can preserve identity when memory fails. The archive may become a gift from the present self to the future family.', b: 'Total preservation can violate the privacy of a person who can no longer curate themselves. Not every memory is owed to love.' },
+  // 49. AI tutor
+  { a: 'A patient AI tutor can give every child individual attention no crowded classroom can match.', b: 'Teaching is not just content delivery. Children also learn trust, patience, and belonging from imperfect human presence.' },
+  // 50. Water rationing
+  { a: 'Shared scarcity requires shared limits. Without rules, the wealthy can buy comfort while everyone else learns restraint.', b: 'Rationing can punish careful households and invite bureaucracy into ordinary life. Local choice may adapt better than central control.' },
 ];
 /* =============================================
    RABBIT HOLE LINKS  (related dilemma index per dilemma)
@@ -143,6 +207,26 @@ const RABBIT_HOLES = [
   { idx: 11, label: 'On identity across change' },                // 28 → 12 Identity
   { idx: 4,  label: 'On honesty in the words we choose' },        // 29 → 5 Truth serum
   { idx: 16, label: 'On private acts and public reputation' },    // 30 → 17 Private trust
+  { idx: 31, label: 'On technology that protects and controls' },  // 31 → 32 Surveillance
+  { idx: 6,  label: 'On privacy when knowledge is tempting' },     // 32 → 7 Mind reading
+  { idx: 3,  label: 'On memory, grief, and identity' },            // 33 → 4 Memory
+  { idx: 39, label: 'On leaving Earth or repairing it' },          // 34 → 40 Space colony
+  { idx: 40, label: 'On compassion beyond humanity' },             // 35 → 41 Wild suffering
+  { idx: 31, label: 'On safety and civil liberty' },               // 36 → 32 Surveillance
+  { idx: 48, label: 'On care when machines become patient' },      // 37 → 49 AI tutor
+  { idx: 42, label: 'On speech, harm, and trust' },                // 38 → 43 Platform speech
+  { idx: 0,  label: 'On comfort and the price of feeling' },       // 39 → 1 Happiness Machine
+  { idx: 33, label: 'On saving the future from far away' },        // 40 → 34 Climate mirror
+  { idx: 46, label: 'On restoring what humans broke' },            // 41 → 47 De-extinction
+  { idx: 13, label: 'On justice after old wrongs' },               // 42 → 14 Justice
+  { idx: 37, label: 'On expression in a fragile public square' },  // 43 → 38 Deepfake ban
+  { idx: 10, label: 'On numbers, lives, and systems' },            // 44 → 11 Sacrifice
+  { idx: 19, label: 'On fairness when starting lines differ' },    // 45 → 20 Group inclusion
+  { idx: 38, label: 'On the market for inner life' },              // 46 → 39 Mood regulator
+  { idx: 40, label: 'On care for creatures beyond us' },           // 47 → 41 Wild suffering
+  { idx: 32, label: 'On memory that remains after us' },           // 48 → 33 AI grief
+  { idx: 24, label: 'On learning what you really know' },          // 49 → 25 Honest study
+  { idx: 33, label: 'On climate choices and collective limits' },  // 50 → 34 Climate mirror
 ];
 
 /* =============================================
@@ -260,6 +344,13 @@ const OTHERS_SPLIT = [
   { a: 46 }, { a: 28 },
   // 28–30
   { a: 39 }, { a: 52 }, { a: 64 },
+  // 31–33
+  { a: 57 }, { a: 46 }, { a: 62 },
+  // 34–50
+  { a: 41 }, { a: 58 }, { a: 49 }, { a: 35 }, { a: 44 },
+  { a: 63 }, { a: 52 }, { a: 47 }, { a: 38 }, { a: 56 },
+  { a: 68 }, { a: 31 }, { a: 54 }, { a: 43 }, { a: 61 },
+  { a: 36 }, { a: 59 },
 ];
 
 /* =============================================
@@ -626,6 +717,126 @@ const GO_FURTHER = [
       { title: 'Maimonides\' Eight Levels of Giving', url: 'https://www.youtube.com/watch?v=oYgAi0pUkfk' },
     ],
   },
+  // 31. Designer child
+  {
+    terms: ['Bioethics', 'Liberal Eugenics', 'Justice as Fairness', 'Parental Responsibility'],
+    books: [],
+    videos: [],
+  },
+  // 32. Predictive surveillance
+  {
+    terms: ['Panopticon', 'Civil Liberties', 'Public Safety', 'Proportionality Principle'],
+    books: [],
+    videos: [],
+  },
+  // 33. AI grief companion
+  {
+    terms: ['Continuing Bonds', 'Digital Afterlife', 'Authenticity', 'Ethics of Mourning'],
+    books: [],
+    videos: [],
+  },
+  // 34. Climate mirror
+  {
+    terms: ['Geoengineering', 'Climate Justice', 'Precautionary Principle', 'Collective Risk'],
+    books: [],
+    videos: [],
+  },
+  // 35. Animal uplift
+  {
+    terms: ['Animal Ethics', 'Moral Status', 'Cognitive Enhancement', 'Paternalism'],
+    books: [],
+    videos: [],
+  },
+  // 36. Quarantine order
+  {
+    terms: ['Public Health Ethics', 'Civil Liberty', 'Emergency Powers', 'Harm Principle'],
+    books: [],
+    videos: [],
+  },
+  // 37. Robot caregiver
+  {
+    terms: ['Care Ethics', 'Elder Care', 'Automation', 'Dignity'],
+    books: [],
+    videos: [],
+  },
+  // 38. Deepfake ban
+  {
+    terms: ['Free Speech', 'Deepfakes', 'Political Satire', 'Information Trust'],
+    books: [],
+    videos: [],
+  },
+  // 39. Mood regulator
+  {
+    terms: ['Neuroethics', 'Emotional Authenticity', 'Mental Health', 'Medical Enhancement'],
+    books: [],
+    videos: [],
+  },
+  // 40. Space colony ticket
+  {
+    terms: ['Longtermism', 'Duties to Home', 'Species Survival', 'Exploration Ethics'],
+    books: [],
+    videos: [],
+  },
+  // 41. Wild suffering
+  {
+    terms: ['Wild Animal Suffering', 'Ecological Humility', 'Compassion', 'Nonhuman Ethics'],
+    books: [],
+    videos: [],
+  },
+  // 42. Cultural artifact
+  {
+    terms: ['Repatriation', 'Cultural Heritage', 'Restorative Justice', 'Museum Ethics'],
+    books: [],
+    videos: [],
+  },
+  // 43. Platform speech
+  {
+    terms: ['Content Moderation', 'Misinformation', 'Free Expression', 'Platform Power'],
+    books: [],
+    videos: [],
+  },
+  // 44. Open-source medicine
+  {
+    terms: ['Patent Ethics', 'Access to Medicine', 'Innovation Incentives', 'Health Justice'],
+    books: [],
+    videos: [],
+  },
+  // 45. Blind hiring
+  {
+    terms: ['Meritocracy', 'Equality of Opportunity', 'Contextual Fairness', 'Bias Reduction'],
+    books: [],
+    videos: [],
+  },
+  // 46. Dream ads
+  {
+    terms: ['Mental Privacy', 'Commodification', 'Consent', 'Attention Economy'],
+    books: [],
+    videos: [],
+  },
+  // 47. De-extinction
+  {
+    terms: ['De-extinction', 'Conservation Ethics', 'Ecological Restoration', 'Moral Repair'],
+    books: [],
+    videos: [],
+  },
+  // 48. Dementia archive
+  {
+    terms: ['Narrative Identity', 'Dementia Ethics', 'Privacy After Decline', 'Family Memory'],
+    books: [],
+    videos: [],
+  },
+  // 49. AI tutor
+  {
+    terms: ['Education Ethics', 'Human Development', 'AI Tutoring', 'Relational Learning'],
+    books: [],
+    videos: [],
+  },
+  // 50. Water rationing
+  {
+    terms: ['Climate Adaptation', 'Resource Justice', 'Collective Responsibility', 'Scarcity Ethics'],
+    books: [],
+    videos: [],
+  },
 ];
 
 const DILEMMAS = [
@@ -899,6 +1110,186 @@ const DILEMMAS = [
     image: 'images/30-quiet-donation.png',
     tags: ['Generosity', 'Virtue', 'Influence'],
   },
+  {
+    id: 31,
+    text: 'You can safely edit your future child\'s genes to prevent major diseases and improve cognitive potential. Access is expensive, so only wealthy families can do it for now.',
+    optA: 'Use the enhancement',
+    optB: 'Refuse and keep natural chance',
+    reflection: { a: 'You chose prevention and possibility. Love can look like reducing risk - but your private choice may widen a public divide.', b: 'You protected equality in principle and accepted uncertainty in practice. Refusing control can also be a moral stand.' },
+    image: 'images/31-designer-child.png',
+    tags: ['Bioethics', 'Parenting', 'Justice'],
+  },
+  {
+    id: 32,
+    text: 'Your city can cut violent crime sharply by installing real-time facial recognition in all public spaces. The system works, but anonymity in daily life would largely disappear.',
+    optA: 'Deploy city-wide surveillance',
+    optB: 'Reject it to protect civil liberty',
+    reflection: { a: 'You prioritized immediate safety. Fewer victims now may come with a long tail of power that is hard to take back.', b: 'You defended freedom from constant tracking. Liberty stays intact - and so does the burden of preventable harm.' },
+    image: 'images/32-predictive-surveillance.png',
+    tags: ['Privacy', 'Policing', 'Rights'],
+  },
+  {
+    id: 33,
+    text: 'After someone you love dies, an AI companion trained on their voice and messages can keep talking with you indefinitely. It feels deeply comforting, but moving on becomes harder.',
+    optA: 'Keep the AI companion active',
+    optB: 'Say goodbye and archive it',
+    reflection: { a: 'You kept a living thread of connection. Comfort is real - and so is the question of whether healing needs distance.', b: 'You chose finality over simulation. Letting go hurts now, but it may protect the shape of memory over time.' },
+    image: 'images/33-ai-grief-companion.png',
+    tags: ['Grief', 'AI', 'Identity'],
+  },
+  {
+    id: 34,
+    text: 'A climate mirror in the upper atmosphere could cool the planet quickly, but it may shift rainfall patterns and no one can predict every consequence.',
+    optA: 'Launch the climate mirror',
+    optB: 'Reject the risky intervention',
+    reflection: { a: 'You chose action at planetary scale. It may buy time for millions, but the sky becomes a system humans now manage.', b: 'You refused to gamble with the atmosphere. Prudence protects against hubris, though delay has victims too.' },
+    image: 'images/34-climate-mirror.png',
+    tags: ['Climate', 'Risk', 'Responsibility'],
+  },
+  {
+    id: 35,
+    text: 'Scientists can raise one animal species to near-human intelligence. They may gain richer lives, but also new fears, rights, and suffering.',
+    optA: 'Give them higher intelligence',
+    optB: 'Leave them as they are',
+    reflection: { a: 'You opened the door to a deeper life. But every new capacity brings new needs the world may not be ready to honor.', b: 'You protected them from burdens they did not ask for. Still, restraint can look uncomfortably like keeping a door locked.' },
+    image: 'images/35-animal-uplift.png',
+    tags: ['Animals', 'Bioethics', 'Rights'],
+  },
+  {
+    id: 36,
+    text: 'During a dangerous outbreak, authorities can enforce a strict quarantine that saves lives but confines healthy people who may never get sick.',
+    optA: 'Enforce the quarantine',
+    optB: 'Preserve freedom of movement',
+    reflection: { a: 'You treated risk as shared. Some innocent freedom is restricted so vulnerable people can breathe safer.', b: 'You protected movement from emergency power. Liberty stays visible, but so does the danger carried by invisible infection.' },
+    image: 'images/36-quarantine-order.png',
+    tags: ['Public Health', 'Liberty', 'Community'],
+  },
+  {
+    id: 37,
+    text: 'A robot caregiver can look after your elderly parent perfectly: medicine, meals, safety, patience. Human care would be warmer but less reliable.',
+    optA: 'Choose the robot caregiver',
+    optB: 'Choose imperfect human care',
+    reflection: { a: 'You chose steadiness. Reliability is a form of love, even when it comes without a heartbeat.', b: 'You chose human presence. Imperfection remains, but so does the warmth of being cared for by another person.' },
+    image: 'images/37-robot-caregiver.png',
+    tags: ['Care', 'Aging', 'Automation'],
+  },
+  {
+    id: 38,
+    text: 'Deepfake videos are destabilizing elections. A law could ban realistic synthetic political media, but it would also restrict satire and protest art.',
+    optA: 'Ban political deepfakes',
+    optB: 'Protect synthetic expression',
+    reflection: { a: 'You defended public trust in what people see. Some creative freedom is narrowed so shared reality can survive.', b: 'You defended expression at the edge of new media. The risk is that manipulation wears the costume of creativity.' },
+    image: 'images/38-deepfake-ban.png',
+    tags: ['Speech', 'Media', 'Democracy'],
+  },
+  {
+    id: 39,
+    text: 'A neural implant can prevent intense anxiety and sadness. It is safe, but it also softens emotional highs and the creative depth that comes with struggle.',
+    optA: 'Install the mood regulator',
+    optB: 'Keep the full emotional range',
+    reflection: { a: 'You chose relief from the sharpest edges. A quieter mind may be worth the colors it slightly mutes.', b: 'You kept the whole weather of feeling. Depth remains, but so does the storm.' },
+    image: 'images/39-mood-regulator.png',
+    tags: ['Mental Health', 'Neurotech', 'Authenticity'],
+  },
+  {
+    id: 40,
+    text: 'You win a one-way ticket to the first space colony. It may help secure humanity\'s future, but you must leave everyone you love behind forever.',
+    optA: 'Join the colony',
+    optB: 'Stay on Earth',
+    reflection: { a: 'You stepped toward a future almost no one can see yet. Survival sometimes asks for lonely pioneers.', b: 'You stayed with the people who make a future worth having. The stars can wait; loyalty is closer.' },
+    image: 'images/40-space-colony-ticket.png',
+    tags: ['Space', 'Duty', 'Future'],
+  },
+  {
+    id: 41,
+    text: 'New technology can reduce suffering among wild animals, preventing disease and starvation. But intervening may disrupt ecosystems we barely understand.',
+    optA: 'Intervene to reduce suffering',
+    optB: 'Leave wild nature alone',
+    reflection: { a: 'You extended compassion beyond the human fence. Pain matters even when no one can ask for help.', b: 'You chose humility before a complex world. Not every suffering has a lever we can safely pull.' },
+    image: 'images/41-wild-suffering.png',
+    tags: ['Nature', 'Animals', 'Compassion'],
+  },
+  {
+    id: 42,
+    text: 'A famous artifact sits in a world museum where millions can see it. Its country of origin says it was taken under empire and must come home.',
+    optA: 'Keep it in the museum',
+    optB: 'Return it to its origin',
+    reflection: { a: 'You preserved broad access and stable care. Shared heritage stays visible to the world, though the wound remains nearby.', b: 'You chose repair over display. Some objects belong first to the people whose history was taken with them.' },
+    image: 'images/42-cultural-artifact.png',
+    tags: ['Culture', 'History', 'Justice'],
+  },
+  {
+    id: 43,
+    text: 'A social platform can remove harmful misinformation before it spreads, but doing so gives a private company major power over public debate.',
+    optA: 'Remove harmful misinformation',
+    optB: 'Protect open debate',
+    reflection: { a: 'You treated speech as action with consequences. The feed becomes safer, but the gatekeeper grows stronger.', b: 'You kept debate open, including its errors. Freedom breathes easier, but falsehood travels with it.' },
+    image: 'images/43-platform-speech.png',
+    tags: ['Speech', 'Platforms', 'Truth'],
+  },
+  {
+    id: 44,
+    text: 'A company owns the patent for a lifesaving medicine and charges more than many patients can pay. Hackers can release the formula for free.',
+    optA: 'Release the formula',
+    optB: 'Respect the patent',
+    reflection: { a: 'You chose lives now over ownership rules. The medicine reaches people, even if the system that made it is shaken.', b: 'You protected incentives for future cures. The rule holds, while some people remain priced outside relief.' },
+    image: 'images/44-open-source-medicine.png',
+    tags: ['Healthcare', 'Property', 'Justice'],
+  },
+  {
+    id: 45,
+    text: 'A hiring system can hide names, schools, and backgrounds to reduce bias. But it also hides hardship someone overcame and context that may matter.',
+    optA: 'Use blind hiring',
+    optB: 'Include personal context',
+    reflection: { a: 'You forced attention onto the work. The cleaner process may miss the distance some people traveled to get there.', b: 'You allowed the whole story into the room. Context can correct unfairness, but it can also invite new bias.' },
+    image: 'images/45-blind-hiring.png',
+    tags: ['Work', 'Fairness', 'Opportunity'],
+  },
+  {
+    id: 46,
+    text: 'A sleep clinic can cure your insomnia for free if you allow harmless ads to appear inside your dreams. Paying to avoid them is too expensive.',
+    optA: 'Accept ads in dreams',
+    optB: 'Protect your sleeping mind',
+    reflection: { a: 'You bought rest with a private corner of attention. Relief arrives, but the market follows you into sleep.', b: 'You protected the last quiet room of the mind. The boundary stays clear, though the sleepless nights remain.' },
+    image: 'images/46-dream-ads.png',
+    tags: ['Privacy', 'Markets', 'Sleep'],
+  },
+  {
+    id: 47,
+    text: 'Scientists can bring back an extinct animal. It may inspire conservation, but the money could protect endangered species that are still alive.',
+    optA: 'Revive the extinct species',
+    optB: 'Protect living species first',
+    reflection: { a: 'You chose restoration and wonder. Bringing one lost creature back may remind people what extinction means.', b: 'You chose the living over the lost. Repair begins where help can still prevent an ending.' },
+    image: 'images/47-de-extinction.png',
+    tags: ['Conservation', 'Science', 'Nature'],
+  },
+  {
+    id: 48,
+    text: 'Before dementia progresses, you can record every memory for your family to access later. It preserves your story, but also exposes private thoughts you may one day be unable to explain.',
+    optA: 'Create the full archive',
+    optB: 'Keep some memories private',
+    reflection: { a: 'You turned memory into an inheritance. The people you love may know you more fully, including parts you once kept quiet.', b: 'You left mystery intact. Love does not require total access, even when time is taking pieces away.' },
+    image: 'images/48-dementia-archive.png',
+    tags: ['Memory', 'Family', 'Privacy'],
+  },
+  {
+    id: 49,
+    text: 'An AI tutor can personalize every lesson for every child and raise test scores dramatically. Human teachers would become mentors with less classroom control.',
+    optA: 'Let AI lead the lessons',
+    optB: 'Keep humans at the center',
+    reflection: { a: 'You chose precise attention for every student. Learning may accelerate, though the classroom becomes less human-led.', b: 'You protected education as a relationship. Progress may be slower, but children still learn from a person.' },
+    image: 'images/49-ai-tutor.png',
+    tags: ['Education', 'AI', 'Childhood'],
+  },
+  {
+    id: 50,
+    text: 'A severe drought is coming. The city can ration household water equally, including for wealthy homes with gardens and pools, or rely on voluntary restraint.',
+    optA: 'Impose equal rationing',
+    optB: 'Trust voluntary restraint',
+    reflection: { a: 'You made scarcity a shared discipline. Everyone gives something up before comfort becomes a privilege.', b: 'You trusted people to adapt without force. Freedom remains, but unequal sacrifice may follow.' },
+    image: 'images/50-water-rationing.png',
+    tags: ['Climate', 'Fairness', 'Community'],
+  },
 ];
 
 /* =============================================
@@ -911,12 +1302,24 @@ function getLocalDateKey(date = new Date()) {
   return `${y}-${m}-${d}`;
 }
 
+function getYesterdayDateKey(from = new Date()) {
+  const d = new Date(from.getTime());
+  d.setDate(d.getDate() - 1);
+  return getLocalDateKey(d);
+}
+
 const ZH = window.APP_I18N_ZH_HANT || {};
 const SUPPORTED_LANGS = ['en', 'zh-Hant'];
 
 function detectLanguage() {
   const nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
-  return /^zh\b/i.test(nav) ? 'zh-Hant' : 'en';
+  const normalized = String(nav).toLowerCase().replace('_', '-');
+  const isTraditionalChinese =
+    normalized.startsWith('zh-hant') ||
+    normalized.startsWith('zh-tw') ||
+    normalized.startsWith('zh-hk') ||
+    normalized.startsWith('zh-mo');
+  return isTraditionalChinese ? 'zh-Hant' : 'en';
 }
 
 function getLangPack(lang = 'en') {
@@ -979,7 +1382,6 @@ function getUiText(lang = 'en') {
     notifyTitle: 'Daily Dilemma',
     notifyBody: 'A new dilemma is waiting for you today.',
     reminderTimeLabel: 'Reminder Time',
-    reminderTimePlaceholder: 'Select time',
     reminderPleasePickTime: 'Choose a reminder time below.',
     meridiemAm: 'AM',
     meridiemPm: 'PM',
@@ -995,11 +1397,37 @@ function getUiText(lang = 'en') {
     ariaAppStore: 'App Store',
     ariaPlayStore: 'Google Play',
     languageAction: 'Language',
+    userFeedbackAction: 'User feedback',
+    feedbackPrompt: 'Your message',
+    feedbackPlaceholder: 'Share a thought, a bug, or a suggestion…',
+    feedbackThanks: 'Thanks for your feedback!',
+    feedbackUnavailable: 'Feedback could not be sent because the app is not connected to the server.',
+    feedbackSendFailed: 'Could not send feedback. Check your connection and try again.',
+    feedbackDismiss: 'Got it',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
     emailMe: 'Email Me',
     emailPlaceholder: 'your@email.com',
     legalMissing: 'Legal content was not found in the Legal folder yet.',
+    topicSuggestAction: 'Suggest tomorrow',
+    topicSuggestPlaceholder: 'e.g. friendship, exams, Hong Kong…',
+    topicSuggestFind: 'Find themes',
+    topicSuggestModalTitle: 'Vote for tomorrow’s dilemma',
+    topicSuggestClosestTheme: 'Closest theme:',
+    topicSuggestVoteTomorrow: 'Vote for tomorrow',
+    topicSuggestTapPreview: 'Tap to read full dilemma',
+    topicSuggestSubmitVote: 'Submit vote for tomorrow',
+    topicSuggestBack: 'Back',
+    topicSuggestSaved: 'Your vote was recorded for tomorrow’s featured dilemma.',
+    topicSuggestEmpty: 'Pick a quick theme or type a topic and tap Find again.',
+    topicSuggestBlocked: 'That topic is a bit heavy for this app. Try a lighter theme.',
+    topicSuggestNoMatch: 'No close match — choose a theme below.',
+    topicSuggestQuickLabel: 'Quick themes:',
+    topicSuggestPickThemeFirst: 'Choose a theme first.',
+    topicSuggestVoteUnavailable: 'Connect the app to the server to vote.',
+    topicSuggestVoteFailed: 'Could not save your vote. Try again.',
+    suggestTomorrowSticky: 'Suggest tomorrow',
+    closeTopicModal: 'Close',
   };
   return lang === 'zh-Hant' ? { ...en, ...(ZH.ui || {}) } : en;
 }
@@ -1124,8 +1552,6 @@ const LEGAL_DOCS = {
       'Legal/privacy-policy.md',
       'Legal/PrivacyPolicy.txt',
       'Legal/privacy_policy.txt',
-      'Legal/Policy Policy.txt',
-      'Legal/Policy Policy.md',
     ],
     zhCandidates: [
       'Legal/Privacy Policy.zh-Hant.txt',
@@ -1159,7 +1585,7 @@ const legalState = {
 };
 
 const state = {
-  lang: detectLanguage(),
+  lang: 'en',
   todayKey: getLocalDateKey(),
   todayIndex: 0,
   answered: false,
@@ -1168,9 +1594,18 @@ const state = {
   reminderEnabled: false,
   reminderTime: '',
   reminderPanelOpen: false,
+  feedbackPanelOpen: false,
+  topicSuggestPanelOpen: false,
+  /** Community-scheduled dilemma index for today (null = use date hash). */
+  scheduledDilemmaIndex: null,
   isNative: false,
   pendingTimeout: null,
 };
+
+/** Last tag matched in “Suggest a topic” (for voting + local stats only). */
+let topicSuggestLastTag = null;
+/** Dilemma index selected in modal detail view (pending vote). */
+let topicSuggestPendingVoteIndex = null;
 
 /* =============================================
    PERSISTENCE (localStorage)
@@ -1180,7 +1615,24 @@ const STORAGE_KEYS = {
   lang: 'dailyDilemmas.lang.v1',
   reminderEnabled: 'dailyDilemmas.reminderEnabled.v1',
   reminderTime: 'dailyDilemmas.reminderTime.v1',
+  voterId: 'dailyDilemmas.voterClientId.v1',
+  topicTagStats: 'dailyDilemmas.topicTagStats.v1',
 };
+
+function getOrCreateVoterClientId() {
+  try {
+    let id = localStorage.getItem(STORAGE_KEYS.voterId);
+    if (id && id.length >= 8) return id;
+    const arr = new Uint8Array(16);
+    if (typeof crypto !== 'undefined' && crypto.getRandomValues) crypto.getRandomValues(arr);
+    else for (let i = 0; i < 16; i++) arr[i] = Math.floor(Math.random() * 256);
+    id = Array.from(arr, b => b.toString(16).padStart(2, '0')).join('');
+    localStorage.setItem(STORAGE_KEYS.voterId, id);
+    return id;
+  } catch {
+    return `anon-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+}
 
 function loadLanguage() {
   try {
@@ -1283,8 +1735,250 @@ function clearHistory() {
   renderHistoryList();
 }
 
-// Determine today's dilemma via date-seed
-state.todayIndex = parseInt(state.todayKey.replace(/-/g, ''), 10) % getAllDilemmas().length;
+/* =============================================
+   SUGGEST A TOPIC — approved tag match (no public free text)
+   Optional: pick one curated dilemma for “tomorrow” on this device only.
+   ============================================= */
+const APPROVED_TOPIC_TAGS = [
+  {
+    id: 'relationships',
+    labelEn: 'Relationships & trust',
+    labelZh: '關係與信任',
+    keywords: ['relationship', 'relationships', 'love', 'marriage', 'married', 'dating', 'date', 'partner', 'couple', 'romance', 'wedding', 'boyfriend', 'girlfriend', 'crush', 'heartbreak', 'breakup', '戀愛', '愛情', '結婚', '伴侶', '男友', '女友', '夫妻', '戀人'],
+    dilemmaIndices: [6, 15, 16, 27, 28],
+  },
+  {
+    id: 'family',
+    labelEn: 'Family & home',
+    labelZh: '家庭與家',
+    keywords: ['family', 'parent', 'mother', 'father', 'sibling', 'kids', 'home', '家庭', '父母', '家人', '爸', '媽', '兄弟', '姊妹'],
+    dilemmaIndices: [15, 19, 27],
+  },
+  {
+    id: 'work',
+    labelEn: 'Work & career',
+    labelZh: '工作與事業',
+    keywords: ['work', 'job', 'career', 'office', 'boss', 'colleague', 'salary', 'workplace', '工作', '職場', '同事', '老闆', '辦公室'],
+    dilemmaIndices: [20, 23, 25],
+  },
+  {
+    id: 'school',
+    labelEn: 'School & learning',
+    labelZh: '學校與學習',
+    keywords: ['school', 'exam', 'exams', 'test', 'study', 'university', 'college', 'grade', 'class', 'teacher', 'homework', '學校', '考試', '測驗', '學習', '同學', '老師'],
+    dilemmaIndices: [19, 24, 26],
+  },
+  {
+    id: 'ethics',
+    labelEn: 'Justice & rules',
+    labelZh: '正義與規則',
+    keywords: ['justice', 'law', 'crime', 'police', 'court', 'moral', 'ethics', 'rules', 'fair', 'fairness', '正義', '法律', '犯罪', '懲罰'],
+    dilemmaIndices: [1, 8, 13, 18],
+  },
+  {
+    id: 'tech',
+    labelEn: 'Tech & AI',
+    labelZh: '科技與人工智能',
+    keywords: ['tech', 'technology', 'ai', 'internet', 'phone', 'app', 'apps', 'computer', 'robot', 'vr', 'virtual', 'simulation', 'algorithm', 'data', '科技', '人工智能', '手機', '程式', '演算法'],
+    dilemmaIndices: [0, 9, 14, 17, 28],
+  },
+  {
+    id: 'identity',
+    labelEn: 'Self & identity',
+    labelZh: '自我與身份',
+    keywords: ['identity', 'self', 'who am', 'memory', 'change', 'body', 'brain', 'soul', '我是誰', '記憶', '身分', '自己'],
+    dilemmaIndices: [2, 3, 5, 11],
+  },
+  {
+    id: 'meaning',
+    labelEn: 'Meaning & happiness',
+    labelZh: '意義與快樂',
+    keywords: ['happiness', 'happy', 'meaning', 'purpose', 'life', 'worth', 'lonely', 'loneliness', 'death', 'die', 'mortality', '快樂', '意義', '孤獨', '幸福'],
+    dilemmaIndices: [0, 7, 22],
+  },
+  {
+    id: 'social',
+    labelEn: 'Social & online',
+    labelZh: '社交與網上',
+    keywords: ['social', 'instagram', 'online', 'post', 'viral', 'influencer', 'feed', 'media', '社交', '網上', '限時', '貼文'],
+    dilemmaIndices: [17, 21],
+  },
+  {
+    id: 'courage',
+    labelEn: 'Courage & inclusion',
+    labelZh: '勇氣與共融',
+    keywords: ['courage', 'brave', 'bully', 'bullying', 'defend', 'stand up', 'inclusion', 'group', 'team', '勇氣', '欺凌', '站出來', '團隊'],
+    dilemmaIndices: [10, 19, 26],
+  },
+  {
+    id: 'honesty',
+    labelEn: 'Honesty & truth',
+    labelZh: '誠實與真相',
+    keywords: ['honest', 'honesty', 'truth', 'lie', 'lying', 'fake', 'integrity', '誠實', '謊言', '真話'],
+    dilemmaIndices: [4, 15, 24],
+  },
+  {
+    id: 'freedom',
+    labelEn: 'Freedom & choice',
+    labelZh: '自由與選擇',
+    keywords: ['free will', 'freedom', 'choose', 'choice', 'control', 'path', 'future', '自由', '選擇', '未來'],
+    dilemmaIndices: [8, 20, 21],
+  },
+  {
+    id: 'money',
+    labelEn: 'Money & giving',
+    labelZh: '金錢與付出',
+    keywords: ['money', 'buy', 'rich', 'luxury', 'cheap', 'donate', 'charity', 'giving', '錢', '奢侈', '捐獻', '捐款'],
+    dilemmaIndices: [22, 29],
+  },
+  {
+    id: 'hk_life',
+    labelEn: 'Daily life (HK)',
+    labelZh: '本地日常',
+    keywords: ['hong kong', ' hongkong', 'hk ', ' hk', 'mtr', 'commute', '香港', '港鐵', '地鐵'],
+    dilemmaIndices: [15, 17, 21, 22],
+  },
+];
+
+const TOPIC_INPUT_BLOCK_SUBSTRINGS = [
+  'suicide', 'kill myself', 'kill yourself', 'rape', 'porn', 'porno', 'sexual', 'nazi', 'terror', 'bomb', 'weapon', 'drug deal',
+  '自殺', '色情', '強姦',
+];
+
+function normalizeTopicInput(raw) {
+  return String(raw || '')
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, ' ');
+}
+
+function isTopicInputBlocked(normalized) {
+  if (!normalized) return false;
+  for (let i = 0; i < TOPIC_INPUT_BLOCK_SUBSTRINGS.length; i += 1) {
+    if (normalized.includes(TOPIC_INPUT_BLOCK_SUBSTRINGS[i])) return true;
+  }
+  return false;
+}
+
+function matchApprovedTopicTag(normalized) {
+  if (!normalized) return null;
+  let best = null;
+  let bestScore = 0;
+  for (let t = 0; t < APPROVED_TOPIC_TAGS.length; t += 1) {
+    const tag = APPROVED_TOPIC_TAGS[t];
+    let score = 0;
+    for (let k = 0; k < tag.keywords.length; k += 1) {
+      const low = tag.keywords[k].toLowerCase();
+      if (low && normalized.includes(low)) score += 2;
+    }
+    if (score > bestScore) {
+      bestScore = score;
+      best = tag;
+    }
+  }
+  return bestScore > 0 ? best : null;
+}
+
+function tagDisplayLabel(tag) {
+  if (!tag) return '';
+  return state.lang === 'zh-Hant' ? tag.labelZh : tag.labelEn;
+}
+
+function pickThreeDilemmaIndices(pool, seed) {
+  const unique = [...new Set(pool)].filter(i => i >= 0 && i < getAllDilemmas().length);
+  const n = getAllDilemmas().length;
+  let s = Math.abs(seed) % 2147483647 || 1;
+  function rnd() {
+    s = (s * 48271) % 2147483647;
+    return s / 2147483647;
+  }
+  const arr = [...unique];
+  for (let i = arr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(rnd() * (i + 1));
+    const tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+  }
+  let out = arr.slice(0, 3);
+  let fill = 0;
+  while (out.length < 3 && fill < n) {
+    if (!out.includes(fill)) out.push(fill);
+    fill += 1;
+  }
+  return out.slice(0, 3);
+}
+
+function suggestIndicesForTag(tag) {
+  const seed =
+    parseInt(String(state.todayKey).replace(/-/g, ''), 10) +
+    tag.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
+  return pickThreeDilemmaIndices(tag.dilemmaIndices, seed);
+}
+
+function incrementTopicTagStat(tagId) {
+  if (!tagId) return;
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.topicTagStats);
+    let o = {};
+    if (raw) {
+      const p = JSON.parse(raw);
+      if (typeof p === 'object' && p !== null) o = p;
+    }
+    o[tagId] = (o[tagId] || 0) + 1;
+    localStorage.setItem(STORAGE_KEYS.topicTagStats, JSON.stringify(o));
+  } catch {
+    // ignore
+  }
+}
+
+function getTomorrowDateKey(fromKey = state.todayKey) {
+  const parts = String(fromKey).split('-').map(Number);
+  const dt = new Date(parts[0], parts[1] - 1, parts[2]);
+  dt.setDate(dt.getDate() + 1);
+  return getLocalDateKey(dt);
+}
+
+function computeEffectiveTodayIndex(dateKey = state.todayKey) {
+  const len = getAllDilemmas().length;
+  if (Number.isInteger(state.scheduledDilemmaIndex)) {
+    const idx = state.scheduledDilemmaIndex;
+    if (idx >= 0 && idx < len) return idx;
+  }
+  return getTodayIndexFromKey(dateKey);
+}
+
+function getTodayIndexFromKey(dateKey = state.todayKey) {
+  return parseInt(String(dateKey).replace(/-/g, ''), 10) % getAllDilemmas().length;
+}
+
+function findTodayAnswerEntry() {
+  const todayId = getDilemma().id;
+  for (let i = state.history.length - 1; i >= 0; i -= 1) {
+    const item = state.history[i];
+    if (item && item.id === todayId && item.date === state.todayKey) return item;
+  }
+  return null;
+}
+
+function reseedTodayIfNeeded() {
+  const nextTodayKey = getLocalDateKey();
+  if (nextTodayKey === state.todayKey) return false;
+  state.todayKey = nextTodayKey;
+  state.scheduledDilemmaIndex = null;
+  state.todayIndex = getTodayIndexFromKey(nextTodayKey);
+  const todayEntry = findTodayAnswerEntry();
+  state.answered = !!todayEntry;
+  state.chosenOpt = todayEntry ? todayEntry.choiceKey : null;
+  fetchScheduledDilemmaForToday().then(() => {
+    if (state.answered) return;
+    state.todayIndex = computeEffectiveTodayIndex(state.todayKey);
+    renderDilemma();
+  });
+  return true;
+}
+
+// Today’s index: community winner (loaded async) or date hash
+state.todayIndex = computeEffectiveTodayIndex(state.todayKey);
 
 function getDilemma() { return getAllDilemmas()[state.todayIndex]; }
 
@@ -1428,10 +2122,13 @@ function refreshReminderWheel() {
   syncReminderWheelFromState();
 }
 
-function syncReminderPanelVisibility() {
-  const controls = document.getElementById('overflow-reminder-controls');
-  if (!controls) return;
-  controls.hidden = !state.reminderPanelOpen;
+function syncOverflowSubpanels() {
+  const reminderControls = document.getElementById('overflow-reminder-controls');
+  if (reminderControls) reminderControls.hidden = !state.reminderPanelOpen;
+  const feedbackControls = document.getElementById('overflow-feedback-controls');
+  if (feedbackControls) feedbackControls.hidden = !state.feedbackPanelOpen;
+  const topicControls = document.getElementById('overflow-topic-suggest-controls');
+  if (topicControls) topicControls.hidden = !state.topicSuggestPanelOpen;
 }
 
 function closeOverflowMenu() {
@@ -1439,9 +2136,11 @@ function closeOverflowMenu() {
   const toggle = document.getElementById('btn-overflow-toggle');
   if (!panel || !toggle) return;
   state.reminderPanelOpen = false;
+  state.feedbackPanelOpen = false;
+  state.topicSuggestPanelOpen = false;
   panel.hidden = true;
   toggle.setAttribute('aria-expanded', 'false');
-  syncReminderPanelVisibility();
+  syncOverflowSubpanels();
 }
 
 function openOverflowMenu() {
@@ -1450,7 +2149,265 @@ function openOverflowMenu() {
   if (!panel || !toggle) return;
   panel.hidden = false;
   toggle.setAttribute('aria-expanded', 'true');
-  syncReminderPanelVisibility();
+  syncOverflowSubpanels();
+}
+
+function toggleUserFeedbackPanel() {
+  state.reminderPanelOpen = false;
+  state.topicSuggestPanelOpen = false;
+  state.feedbackPanelOpen = !state.feedbackPanelOpen;
+  syncOverflowSubpanels();
+  applyUIText();
+  if (state.feedbackPanelOpen) {
+    const ta = document.getElementById('feedback-text');
+    if (ta) requestAnimationFrame(() => ta.focus());
+  }
+}
+
+function topicSuggestModalEls() {
+  return {
+    themeLine: document.getElementById('topic-suggest-theme-line-modal'),
+    themeLabel: document.getElementById('topic-suggest-theme-label-modal'),
+    candidates: document.getElementById('topic-suggest-candidates-modal'),
+    status: document.getElementById('topic-suggest-status-modal'),
+    chips: document.getElementById('topic-suggest-quick-themes-modal'),
+    quickLabel: document.getElementById('label-topic-suggest-quick-modal'),
+  };
+}
+
+function resetTopicSuggestModal() {
+  topicSuggestLastTag = null;
+  topicSuggestPendingVoteIndex = null;
+  hideTopicSuggestDetailModal(false);
+  const { themeLine, candidates, status, chips, quickLabel } = topicSuggestModalEls();
+  if (themeLine) themeLine.hidden = true;
+  if (candidates) {
+    candidates.replaceChildren();
+    candidates.hidden = false;
+  }
+  if (status) {
+    status.hidden = true;
+    status.textContent = '';
+  }
+  if (chips) {
+    chips.hidden = true;
+    chips.replaceChildren();
+  }
+  if (quickLabel) quickLabel.hidden = true;
+}
+
+function hideTopicSuggestDetailModal(showList = true) {
+  const detail = document.getElementById('topic-suggest-detail-modal');
+  if (detail) detail.hidden = true;
+  topicSuggestPendingVoteIndex = null;
+  const { candidates } = topicSuggestModalEls();
+  if (candidates && showList) candidates.hidden = false;
+}
+
+function showTopicSuggestDetailModal(dilemmaIndex) {
+  const dilemmas = getAllDilemmas();
+  const d = dilemmas[dilemmaIndex];
+  if (!d) return;
+  topicSuggestPendingVoteIndex = dilemmaIndex;
+  const { candidates, status } = topicSuggestModalEls();
+  if (candidates) candidates.hidden = true;
+  if (status) status.hidden = true;
+  const detail = document.getElementById('topic-suggest-detail-modal');
+  const qEl = document.getElementById('topic-suggest-detail-text');
+  const aEl = document.getElementById('topic-suggest-detail-opt-a');
+  const bEl = document.getElementById('topic-suggest-detail-opt-b');
+  if (qEl) qEl.textContent = d.text;
+  if (aEl) aEl.textContent = `A. ${d.optA}`;
+  if (bEl) bEl.textContent = `B. ${d.optB}`;
+  if (detail) detail.hidden = false;
+  const backBtn = document.getElementById('btn-topic-suggest-back');
+  if (backBtn) requestAnimationFrame(() => backBtn.focus());
+}
+
+function openTopicSuggestModal(options = {}) {
+  const { showQuickThemes = false } = options;
+  const overlay = document.getElementById('topic-suggest-modal');
+  if (!overlay) return;
+  resetTopicSuggestModal();
+  overlay.hidden = false;
+  overlay.style.display = 'flex';
+  applyUIText();
+  if (showQuickThemes) {
+    showQuickThemeChipsModal();
+  }
+  document.body.style.overflow = 'hidden';
+}
+
+function closeTopicSuggestModal() {
+  const overlay = document.getElementById('topic-suggest-modal');
+  if (!overlay) return;
+  overlay.hidden = true;
+  overlay.style.display = 'none';
+  resetTopicSuggestModal();
+  document.body.style.overflow = '';
+}
+
+function toggleTopicSuggestPanel() {
+  state.reminderPanelOpen = false;
+  state.feedbackPanelOpen = false;
+  state.topicSuggestPanelOpen = !state.topicSuggestPanelOpen;
+  syncOverflowSubpanels();
+  applyUIText();
+  if (!state.topicSuggestPanelOpen) {
+    const inp = document.getElementById('topic-suggest-input');
+    if (inp) inp.value = '';
+  } else {
+    const inp = document.getElementById('topic-suggest-input');
+    if (inp) requestAnimationFrame(() => inp && inp.focus());
+  }
+}
+
+function truncateTopicSnippet(text, max = 96) {
+  const s = String(text || '').replace(/\s+/g, ' ').trim();
+  if (s.length <= max) return s;
+  return `${s.slice(0, max - 1)}…`;
+}
+
+function renderTopicSuggestCandidatesModal(indices) {
+  hideTopicSuggestDetailModal(false);
+  const { candidates } = topicSuggestModalEls();
+  if (!candidates) return;
+  candidates.replaceChildren();
+  candidates.hidden = false;
+  const detail = document.getElementById('topic-suggest-detail-modal');
+  if (detail) detail.hidden = true;
+  topicSuggestPendingVoteIndex = null;
+  const dilemmas = getAllDilemmas();
+  const ui = getUiText(state.lang);
+  indices.forEach(idx => {
+    const d = dilemmas[idx];
+    if (!d) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'topic-suggest-candidate-btn';
+    btn.dataset.dilemmaIndex = String(idx);
+    const title = document.createElement('span');
+    title.className = 'topic-suggest-candidate-title';
+    title.textContent = truncateTopicSnippet(d.text, 100);
+    const sub = document.createElement('span');
+    sub.className = 'topic-suggest-candidate-action';
+    sub.textContent = ui.topicSuggestTapPreview || 'Tap to read full dilemma';
+    btn.appendChild(title);
+    btn.appendChild(sub);
+    btn.addEventListener('click', () => showTopicSuggestDetailModal(idx));
+    candidates.appendChild(btn);
+  });
+}
+
+function showTopicSuggestThemeModal(tag) {
+  const { themeLine, themeLabel } = topicSuggestModalEls();
+  if (!themeLine || !themeLabel) return;
+  themeLine.hidden = false;
+  const ui = getUiText(state.lang);
+  const prefix = ui.topicSuggestClosestTheme || 'Closest theme:';
+  themeLabel.textContent = `${prefix} ${tagDisplayLabel(tag)}`;
+}
+
+function showQuickThemeChipsModal() {
+  const ui = getUiText(state.lang);
+  const { quickLabel, chips, status } = topicSuggestModalEls();
+  if (quickLabel) {
+    quickLabel.hidden = false;
+    quickLabel.textContent = ui.topicSuggestQuickLabel || 'Quick themes:';
+  }
+  if (!chips) return;
+  chips.hidden = false;
+  chips.replaceChildren();
+  APPROVED_TOPIC_TAGS.slice(0, 8).forEach(tag => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'topic-suggest-chip';
+    b.dataset.tagId = tag.id;
+    b.textContent = tagDisplayLabel(tag);
+    b.addEventListener('click', () => {
+      topicSuggestLastTag = tag;
+      showTopicSuggestThemeModal(tag);
+      renderTopicSuggestCandidatesModal(suggestIndicesForTag(tag));
+      if (status) {
+        status.hidden = true;
+        status.textContent = '';
+      }
+    });
+    chips.appendChild(b);
+  });
+}
+
+function runTopicSuggestLookup() {
+  const input = document.getElementById('topic-suggest-input');
+  openTopicSuggestModal();
+  const { status } = topicSuggestModalEls();
+  const ui = getUiText(state.lang);
+  const normalized = normalizeTopicInput(input && input.value);
+  if (status) {
+    status.hidden = false;
+    status.textContent = '';
+  }
+  if (!normalized) {
+    if (status) status.textContent = ui.topicSuggestEmpty || 'Pick a quick theme or type a topic and tap Find again.';
+    showQuickThemeChipsModal();
+    return;
+  }
+  if (isTopicInputBlocked(normalized)) {
+    if (status) status.textContent = ui.topicSuggestBlocked || 'That topic is a bit heavy for this app. Try a lighter theme.';
+    resetTopicSuggestModal();
+    showQuickThemeChipsModal();
+    return;
+  }
+  const tag = matchApprovedTopicTag(normalized);
+  if (!tag) {
+    if (status) status.textContent = ui.topicSuggestNoMatch || 'No close match — choose a theme below.';
+    topicSuggestLastTag = null;
+    const { themeLine, candidates } = topicSuggestModalEls();
+    if (themeLine) themeLine.hidden = true;
+    if (candidates) candidates.replaceChildren();
+    showQuickThemeChipsModal();
+    return;
+  }
+  topicSuggestLastTag = tag;
+  showTopicSuggestThemeModal(tag);
+  renderTopicSuggestCandidatesModal(suggestIndicesForTag(tag));
+  const { chips, quickLabel } = topicSuggestModalEls();
+  if (chips) chips.hidden = true;
+  if (quickLabel) quickLabel.hidden = true;
+  if (status) status.hidden = true;
+}
+
+async function confirmTomorrowDilemmaIndex(dilemmaIndex) {
+  const ui = getUiText(state.lang);
+  const tag = topicSuggestLastTag;
+  if (!tag) {
+    openFeedbackFlash(ui.topicSuggestPickThemeFirst || 'Choose a theme first.', 'error');
+    return;
+  }
+  if (dilemmaIndex == null || !Number.isInteger(dilemmaIndex)) {
+    openFeedbackFlash(ui.topicSuggestPickThemeFirst || 'Choose a dilemma first.', 'error');
+    return;
+  }
+  incrementTopicTagStat(tag.id);
+  if (!supabaseEnabled()) {
+    openFeedbackFlash(ui.topicSuggestVoteUnavailable || 'Connect the app to the server to vote.', 'error');
+    return;
+  }
+  try {
+    await submitTomorrowDilemmaVoteByIndex(dilemmaIndex);
+    openFeedbackFlash(ui.topicSuggestSaved || 'Your vote was recorded for tomorrow’s featured dilemma.', 'success');
+    closeTopicSuggestModal();
+    closeOverflowMenu();
+    const inp = document.getElementById('topic-suggest-input');
+    if (inp) inp.value = '';
+  } catch {
+    openFeedbackFlash(ui.topicSuggestVoteFailed || 'Could not save your vote. Try again.', 'error');
+  }
+}
+
+function submitTopicSuggestVoteFromDetail() {
+  if (topicSuggestPendingVoteIndex == null) return;
+  confirmTomorrowDilemmaIndex(topicSuggestPendingVoteIndex);
 }
 
 /* =============================================
@@ -1609,24 +2566,30 @@ async function openDailyReminderControls() {
     return;
   }
 
+  state.feedbackPanelOpen = false;
+  state.topicSuggestPanelOpen = false;
   const configured = state.reminderEnabled && isValidReminderTimeValue(state.reminderTime);
   if (configured) {
     state.reminderPanelOpen = !state.reminderPanelOpen;
   } else {
     state.reminderPanelOpen = true;
   }
-  syncReminderPanelVisibility();
+  syncOverflowSubpanels();
   refreshReminderWheel();
 }
 
 /* =============================================
    SUPABASE (Postgres) — real vote percentages
+   Set window.__DD_SUPABASE = { url, anonKey } in HTML before app.js (do not commit secrets).
    ============================================= */
-const SUPABASE = {
-  // TODO: set these after you create a Supabase project
-  url: 'https://nreiswexmjhpxpmexgzx.supabase.co',
-  anonKey: 'sb_publishable_xCzm1Zk3j9LDh0KRyRpNDQ_xpBTUH4p'
-};
+function readSupabaseConfig() {
+  const o = typeof window !== 'undefined' ? window.__DD_SUPABASE : null;
+  const url = o && typeof o.url === 'string' ? o.url.trim() : '';
+  const anonKey = o && typeof o.anonKey === 'string' ? o.anonKey.trim() : '';
+  return { url, anonKey };
+}
+
+const SUPABASE = readSupabaseConfig();
 
 function supabaseEnabled() {
   return !!(SUPABASE.url && SUPABASE.anonKey);
@@ -1680,10 +2643,124 @@ async function fetchVoteStats(dilemmaId) {
   }
 }
 
+function parseScheduledDilemmaIdRow(rows) {
+  const row = rows && rows[0];
+  if (!row || typeof row !== 'object') return null;
+  if (Object.prototype.hasOwnProperty.call(row, 'get_scheduled_dilemma_for_day')) {
+    return row.get_scheduled_dilemma_for_day;
+  }
+  const k = Object.keys(row)[0];
+  return k !== undefined ? row[k] : null;
+}
+
+/** Loads winning dilemma for today's calendar (requires votes with target_date = today). */
+async function fetchScheduledDilemmaForToday() {
+  state.scheduledDilemmaIndex = null;
+  if (!supabaseEnabled()) return;
+  try {
+    const rows = await supabaseRpc('get_scheduled_dilemma_for_day', { p_show_date: state.todayKey });
+    const rawId = parseScheduledDilemmaIdRow(rows);
+    if (rawId == null) return;
+    const numId = Number(rawId);
+    if (!Number.isFinite(numId)) return;
+    const idx = getAllDilemmas().findIndex(d => d.id === numId);
+    if (idx !== -1) state.scheduledDilemmaIndex = idx;
+  } catch {
+    state.scheduledDilemmaIndex = null;
+  }
+}
+
+async function submitTomorrowDilemmaVoteByIndex(dilemmaIndex) {
+  if (!supabaseEnabled()) return false;
+  const dilemmas = getAllDilemmas();
+  const d = dilemmas[dilemmaIndex];
+  if (!d) return false;
+  const targetDate = getTomorrowDateKey(state.todayKey);
+  await supabaseRpc('upsert_tomorrow_dilemma_vote', {
+    p_target_date: targetDate,
+    p_dilemma_id: d.id,
+    p_voter_client_id: getOrCreateVoterClientId(),
+  });
+  return true;
+}
+
+const FEEDBACK_MAX_LEN = 2000;
+
+function closeFeedbackFlash() {
+  const overlay = document.getElementById('feedback-flash-overlay');
+  if (!overlay || overlay.hidden) return;
+  overlay.hidden = true;
+  overlay.style.display = 'none';
+}
+
+function openFeedbackFlash(message, variant = 'success') {
+  const overlay = document.getElementById('feedback-flash-overlay');
+  const modal = document.getElementById('feedback-flash-modal');
+  const msgEl = document.getElementById('feedback-flash-message');
+  const iconOk = document.getElementById('feedback-flash-icon-success');
+  const iconWarn = document.getElementById('feedback-flash-icon-notice');
+  if (!overlay || !modal || !msgEl) return;
+  msgEl.textContent = message;
+  const err = variant === 'error';
+  modal.classList.toggle('feedback-flash-modal--success', !err);
+  modal.classList.toggle('feedback-flash-modal--error', err);
+  if (iconOk) iconOk.hidden = err;
+  if (iconWarn) iconWarn.hidden = !err;
+  overlay.hidden = false;
+  overlay.style.display = 'flex';
+  const okBtn = document.getElementById('btn-feedback-flash-ok');
+  if (okBtn) okBtn.focus();
+}
+
+async function submitFeedbackToSupabase(message, locale) {
+  if (!supabaseEnabled()) return false;
+  const safe = message.trim().slice(0, FEEDBACK_MAX_LEN);
+  if (!safe) return false;
+  const res = await fetch(`${SUPABASE.url}/rest/v1/feedback`, {
+    method: 'POST',
+    headers: {
+      apikey: SUPABASE.anonKey,
+      Authorization: `Bearer ${SUPABASE.anonKey}`,
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify({
+      body: safe,
+      locale: locale === 'zh-Hant' ? 'zh-Hant' : 'en',
+    }),
+  });
+  if (!res.ok) throw new Error(`Supabase feedback failed: ${res.status}`);
+  return true;
+}
+
+async function sendUserFeedback() {
+  const ta = document.getElementById('feedback-text');
+  if (!ta) return;
+  const text = ta.value.trim();
+  if (!text) {
+    ta.focus();
+    return;
+  }
+  const ui = getUiText(state.lang);
+  if (!supabaseEnabled()) {
+    openFeedbackFlash(ui.feedbackUnavailable || 'Feedback is not available.', 'error');
+    return;
+  }
+  try {
+    await submitFeedbackToSupabase(text, state.lang);
+    ta.value = '';
+    closeOverflowMenu();
+    openFeedbackFlash(ui.feedbackThanks || 'Thanks for your feedback!', 'success');
+  } catch {
+    openFeedbackFlash(ui.feedbackSendFailed || 'Could not send feedback.', 'error');
+  }
+}
+
 /* =============================================
    RENDER
    ============================================= */
 function renderDate() {
+  reseedTodayIfNeeded();
   const d = new Date();
   document.getElementById('today-date').textContent =
     d.toLocaleDateString(getActiveLocale(), { weekday: 'long', month: 'long', day: 'numeric' });
@@ -1691,7 +2768,8 @@ function renderDate() {
 
 function renderThemeAndTags(badgeId, tagsId) {
   const d = getDilemma();
-  const theme = getThemes()[state.todayIndex];
+  const themes = getThemes();
+  const theme = themes[state.todayIndex] || themes[0] || { week: 1, name: '', color: '#888', emoji: '' };
   const ui = getUiText(state.lang);
   const badge = document.getElementById(badgeId);
   if (badge) {
@@ -1746,12 +2824,82 @@ function renderDilemma() {
   optContainer.appendChild(makeOpt('b', d.optB));
 }
 
+/** Shows reflection / accordions / sticky bar after A or B (also used to restore UI from history). */
+function finalizeChosenState(opt, d) {
+  try {
+    const card = document.getElementById('dilemma-card');
+    const chosen = document.getElementById('chosen-state');
+    if (card) {
+      card.hidden = true;
+      card.style.display = 'none';
+    }
+    if (chosen) {
+      chosen.hidden = false;
+      chosen.style.display = 'flex';
+    }
+
+    const reflImg = document.getElementById('reflection-image');
+    if (reflImg) {
+      reflImg.src = d.image;
+      reflImg.alt = getUiText(state.lang).dilemmaImageAlt;
+    }
+
+    const chosenLabel = document.getElementById('chosen-label');
+    const chosenQuestion = document.getElementById('chosen-question');
+    const chosenReflection = document.getElementById('chosen-reflection');
+    const counterargEl = document.getElementById('counterarg-text');
+    if (chosenLabel) chosenLabel.textContent = opt === 'a' ? d.optA : d.optB;
+    if (chosenQuestion) chosenQuestion.textContent = d.text;
+    const reflText = d.reflection && d.reflection[opt];
+    if (chosenReflection) chosenReflection.textContent = reflText != null ? reflText : '';
+
+    const caList = getCounterargs();
+    const ca = caList[state.todayIndex];
+    const other = opt === 'a' ? 'b' : 'a';
+    if (counterargEl) counterargEl.textContent = ca && ca[other] != null ? ca[other] : '';
+
+    renderPhilosopherQuote();
+    renderOthersSplit(opt);
+    renderOthersSplitFromSupabase(d.id);
+    renderGoFurther();
+
+    const sn = document.getElementById('sticky-next');
+    if (sn) {
+      sn.hidden = false;
+      sn.style.display = 'flex';
+    }
+  } catch (err) {
+    console.error('finalizeChosenState', err);
+  }
+}
+
+/** If history already has today’s answer for the current dilemma, sync flags and UI (e.g. after reload). */
+function syncAnsweredUiFromHistoryIfNeeded() {
+  const entry = findTodayAnswerEntry();
+  if (!entry || state.answered) return;
+  const d = getDilemma();
+  if (entry.id !== d.id) return;
+  state.answered = true;
+  state.chosenOpt = entry.choiceKey;
+  finalizeChosenState(entry.choiceKey, d);
+}
+
 function handleChoice(opt) {
+  reseedTodayIfNeeded();
+  const existing = findTodayAnswerEntry();
+  const d = getDilemma();
+  if (existing && existing.id === d.id) {
+    if (!state.answered) {
+      state.answered = true;
+      state.chosenOpt = existing.choiceKey;
+      finalizeChosenState(existing.choiceKey, d);
+    }
+    return;
+  }
   if (state.answered) return;
   state.answered = true;
   state.chosenOpt = opt;
 
-  const d = getDilemma();
   const now = new Date();
   state.history.push({
     id: d.id,
@@ -1760,10 +2908,8 @@ function handleChoice(opt) {
     time: now.toLocaleTimeString(getActiveLocale(), { hour: '2-digit', minute: '2-digit' }),
   });
   saveHistory();
-  // Send vote to Supabase (non-blocking)
   submitVote(d.id, opt);
 
-  // Highlight chosen, dim other
   const btns = document.querySelectorAll('.option-btn');
   btns.forEach(btn => {
     if (btn.dataset.opt === opt) {
@@ -1774,34 +2920,13 @@ function handleChoice(opt) {
     }
   });
 
-  // After short pause, show chosen state
+  if (state.pendingTimeout) {
+    clearTimeout(state.pendingTimeout);
+    state.pendingTimeout = null;
+  }
   state.pendingTimeout = setTimeout(() => {
-    const card = document.getElementById('dilemma-card');
-    const chosen = document.getElementById('chosen-state');
-    card.hidden = true; card.style.display = 'none';
-    chosen.hidden = false; chosen.style.display = 'flex';
-
-    // Reflection image — reuse dilemma image
-    const reflImg = document.getElementById('reflection-image');
-    reflImg.src = d.image;
-    reflImg.alt = getUiText(state.lang).dilemmaImageAlt;
-
-    document.getElementById('chosen-label').textContent = opt === 'a' ? d.optA : d.optB;
-    document.getElementById('chosen-question').textContent = d.text;
-
-    document.getElementById('chosen-reflection').textContent = d.reflection[opt];
-    // Two views — counterarg for the OTHER side
-    const ca = getCounterargs()[state.todayIndex];
-    const other = opt === 'a' ? 'b' : 'a';
-    document.getElementById('counterarg-text').textContent = ca ? ca[other] : '';
-    renderPhilosopherQuote();
-    renderOthersSplit(opt); // immediate (fallback) render
-    // Update split from real votes (if configured)
-    renderOthersSplitFromSupabase(d.id);
-    renderGoFurther();
-    // Show sticky next button
-    const sn = document.getElementById('sticky-next');
-    sn.hidden = false; sn.style.display = 'flex';
+    state.pendingTimeout = null;
+    finalizeChosenState(opt, d);
   }, 800);
 }
 
@@ -1836,28 +2961,19 @@ const PHILOSOPHER_PORTRAITS = {
 };
 
 function renderPhilosopherQuote() {
-  const q = getQuotes1()[state.todayIndex];
-  if (!q) return;
-  document.getElementById('pq-text').textContent = '\u201c' + q.text + '\u201d';
-  document.getElementById('pq-cite').textContent = '\u2014 ' + getDisplayAuthorName(q.author);
+  const q1 = getQuotes1()[state.todayIndex];
   const q2 = getQuotes2()[state.todayIndex];
-  if (!q2) return;
-  document.getElementById('pq-text-2').textContent = '\u201c' + q2.text + '\u201d';
-  document.getElementById('pq-cite-2').textContent = '\u2014 ' + getDisplayAuthorName(q2.author);
 
-  // Philosopher portraits — one per quote.
-  // Uses an <img> with onerror so a broken/missing remote portrait falls back
-  // to a styled initials avatar. Guarantees the slot is never empty/broken.
   function applyPortrait(elId, author) {
     const el = document.getElementById(elId);
     if (!el) return;
-    const url = PHILOSOPHER_PORTRAITS[author];
-    // Reset prior state
+    const name = typeof author === 'string' ? author : '';
+    const url = name ? PHILOSOPHER_PORTRAITS[name] : null;
     el.style.cssText = '';
     el.textContent = '';
     el.classList.remove('philosopher-avatar--initials');
 
-    const initials = (author || '?')
+    const initials = (name || '?')
       .split(' ')
       .filter(Boolean)
       .map(w => w[0])
@@ -1881,19 +2997,47 @@ function renderPhilosopherQuote() {
     }
 
     const img = document.createElement('img');
-    img.alt = author;
+    img.alt = name;
     img.loading = 'lazy';
     img.decoding = 'async';
     img.className = 'philosopher-avatar-img';
     img.referrerPolicy = 'no-referrer';
     img.onerror = function () {
-      // Remote/broken URL — fall back to initials so the slot is never empty.
       showInitials();
     };
     img.src = url;
     el.appendChild(img);
   }
-  applyPortrait('philosopher-avatar-1', q.author);
+
+  const t1 = document.getElementById('pq-text');
+  const c1 = document.getElementById('pq-cite');
+  const t2 = document.getElementById('pq-text-2');
+  const c2 = document.getElementById('pq-cite-2');
+
+  if (!q1) {
+    if (t1) t1.textContent = '';
+    if (c1) c1.textContent = '';
+    if (t2) t2.textContent = '';
+    if (c2) c2.textContent = '';
+    applyPortrait('philosopher-avatar-1', null);
+    applyPortrait('philosopher-avatar-2', null);
+    return;
+  }
+
+  if (t1) t1.textContent = '\u201c' + q1.text + '\u201d';
+  if (c1) c1.textContent = '\u2014 ' + getDisplayAuthorName(q1.author);
+
+  if (!q2) {
+    if (t2) t2.textContent = '';
+    if (c2) c2.textContent = '';
+    applyPortrait('philosopher-avatar-1', q1.author);
+    applyPortrait('philosopher-avatar-2', null);
+    return;
+  }
+
+  if (t2) t2.textContent = '\u201c' + q2.text + '\u201d';
+  if (c2) c2.textContent = '\u2014 ' + getDisplayAuthorName(q2.author);
+  applyPortrait('philosopher-avatar-1', q1.author);
   applyPortrait('philosopher-avatar-2', q2.author);
 }
 
@@ -1985,7 +3129,7 @@ function renderHistoryList() {
   });
 
   const today = getLocalDateKey();
-  const yesterday = getLocalDateKey(new Date(Date.now() - 86400000));
+  const yesterday = getYesterdayDateKey();
 
   container.replaceChildren();
   Object.entries(grouped).forEach(([date, items]) => {
@@ -2085,7 +3229,7 @@ function sendLegalEmail() {
   }
   const subject = encodeURIComponent(legalState.title || 'Daily Dilemma Legal');
   const body = encodeURIComponent(legalState.content || '');
-  location.href = `mailto:${encodeURIComponent(email)}?subject=${subject}&body=${body}`;
+  location.href = `mailto:${email}?subject=${subject}&body=${body}`;
 }
 
 document.getElementById('btn-privacy-policy').addEventListener('click', () => {
@@ -2477,7 +3621,47 @@ function applyUIText() {
   const linkPlay = document.getElementById('link-footer-play-store');
   if (linkPlay) linkPlay.setAttribute('aria-label', ui.ariaPlayStore || 'Google Play');
   refreshReminderWheel();
-  syncReminderPanelVisibility();
+  syncOverflowSubpanels();
+  const userFeedbackActionEl = document.getElementById('label-user-feedback-action');
+  if (userFeedbackActionEl) userFeedbackActionEl.textContent = ui.userFeedbackAction || 'User feedback';
+  const feedbackBtn = document.getElementById('btn-user-feedback');
+  if (feedbackBtn) {
+    const fbLabel = ui.userFeedbackAction || 'User feedback';
+    feedbackBtn.setAttribute('aria-label', fbLabel);
+    feedbackBtn.setAttribute('title', fbLabel);
+    feedbackBtn.classList.toggle('is-active', !!state.feedbackPanelOpen);
+  }
+  const topicSuggestActionEl = document.getElementById('label-topic-suggest-action');
+  if (topicSuggestActionEl) topicSuggestActionEl.textContent = ui.topicSuggestAction || 'Suggest a topic';
+  const topicSuggestBtn = document.getElementById('btn-topic-suggest');
+  if (topicSuggestBtn) {
+    const tsLabel = ui.topicSuggestAction || 'Suggest a topic';
+    topicSuggestBtn.setAttribute('aria-label', tsLabel);
+    topicSuggestBtn.setAttribute('title', tsLabel);
+    topicSuggestBtn.classList.toggle('is-active', !!state.topicSuggestPanelOpen);
+  }
+  const topicSuggestModalTitle = document.getElementById('topic-suggest-modal-title');
+  if (topicSuggestModalTitle) topicSuggestModalTitle.textContent = ui.topicSuggestModalTitle || 'Vote for tomorrow’s dilemma';
+  const topicSuggestInput = document.getElementById('topic-suggest-input');
+  if (topicSuggestInput) topicSuggestInput.setAttribute('placeholder', ui.topicSuggestPlaceholder || '');
+  const topicSuggestFindSpan = document.getElementById('label-topic-suggest-find');
+  if (topicSuggestFindSpan) topicSuggestFindSpan.textContent = ui.topicSuggestFind || 'Find themes';
+  const suggestSticky = document.getElementById('label-suggest-tomorrow-sticky');
+  if (suggestSticky) suggestSticky.textContent = ui.suggestTomorrowSticky || 'Suggest tomorrow';
+  const closeTopicBtn = document.getElementById('btn-close-topic-suggest-modal');
+  if (closeTopicBtn) closeTopicBtn.setAttribute('aria-label', ui.closeTopicModal || 'Close');
+  const labelBack = document.getElementById('label-topic-suggest-back');
+  if (labelBack) labelBack.textContent = ui.topicSuggestBack || 'Back';
+  const labelSubmit = document.getElementById('label-topic-suggest-submit-vote');
+  if (labelSubmit) labelSubmit.textContent = ui.topicSuggestSubmitVote || 'Submit vote for tomorrow';
+  const feedbackPromptEl = document.getElementById('label-feedback-prompt');
+  if (feedbackPromptEl) feedbackPromptEl.textContent = ui.feedbackPrompt || 'Your message';
+  const feedbackTa = document.getElementById('feedback-text');
+  if (feedbackTa) feedbackTa.setAttribute('placeholder', ui.feedbackPlaceholder || '');
+  const sendFeedbackSpan = document.getElementById('label-send-feedback');
+  if (sendFeedbackSpan) sendFeedbackSpan.textContent = ui.send || 'Send';
+  const feedbackFlashOk = document.getElementById('label-feedback-flash-ok');
+  if (feedbackFlashOk) feedbackFlashOk.textContent = ui.feedbackDismiss || 'Got it';
   const historyAction = document.getElementById('label-history-action');
   if (historyAction) historyAction.textContent = ui.historyAction || ui.historyTitle;
   const historyTitle = document.querySelector('.history-title');
@@ -2508,6 +3692,53 @@ document.getElementById('btn-lang-toggle').addEventListener('click', () => {
   closeOverflowMenu();
   setLanguage(state.lang === 'en' ? 'zh-Hant' : 'en');
 });
+document.getElementById('btn-user-feedback').addEventListener('click', () => {
+  toggleUserFeedbackPanel();
+});
+const btnTopicSuggest = document.getElementById('btn-topic-suggest');
+if (btnTopicSuggest) {
+  btnTopicSuggest.addEventListener('click', () => {
+    toggleTopicSuggestPanel();
+  });
+}
+const btnTopicSuggestFind = document.getElementById('btn-topic-suggest-find');
+if (btnTopicSuggestFind) {
+  btnTopicSuggestFind.addEventListener('click', () => runTopicSuggestLookup());
+}
+const topicSuggestInputEl = document.getElementById('topic-suggest-input');
+if (topicSuggestInputEl) {
+  topicSuggestInputEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      runTopicSuggestLookup();
+    }
+  });
+}
+const btnSuggestTomorrowSticky = document.getElementById('btn-suggest-tomorrow-sticky');
+if (btnSuggestTomorrowSticky) {
+  btnSuggestTomorrowSticky.addEventListener('click', () => {
+    openTopicSuggestModal({ showQuickThemes: true });
+  });
+}
+const btnCloseTopicModal = document.getElementById('btn-close-topic-suggest-modal');
+if (btnCloseTopicModal) {
+  btnCloseTopicModal.addEventListener('click', () => closeTopicSuggestModal());
+}
+const topicSuggestModalOverlay = document.getElementById('topic-suggest-modal');
+if (topicSuggestModalOverlay) {
+  topicSuggestModalOverlay.addEventListener('click', e => {
+    if (e.target === topicSuggestModalOverlay) closeTopicSuggestModal();
+  });
+}
+document.getElementById('btn-topic-suggest-back')?.addEventListener('click', () => {
+  hideTopicSuggestDetailModal(true);
+});
+document.getElementById('btn-topic-suggest-submit-vote')?.addEventListener('click', () => {
+  submitTopicSuggestVoteFromDetail();
+});
+document.getElementById('btn-send-feedback').addEventListener('click', () => {
+  sendUserFeedback().catch(() => {});
+});
 document.getElementById('btn-daily-reminder').addEventListener('click', () => {
   openDailyReminderControls().catch(() => {
     alert(getUiText(state.lang).notifyUnsupported);
@@ -2533,8 +3764,20 @@ document.addEventListener('click', e => {
   const menu = document.getElementById('overflow-menu');
   if (menu && !menu.contains(e.target)) closeOverflowMenu();
 });
+document.getElementById('btn-feedback-flash-ok').addEventListener('click', closeFeedbackFlash);
+document.getElementById('feedback-flash-overlay').addEventListener('click', e => {
+  if (e.target === document.getElementById('feedback-flash-overlay')) closeFeedbackFlash();
+});
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
+    const detail = document.getElementById('topic-suggest-detail-modal');
+    if (detail && !detail.hidden) {
+      hideTopicSuggestDetailModal(true);
+      e.preventDefault();
+      return;
+    }
+    closeTopicSuggestModal();
+    closeFeedbackFlash();
     closeOverflowMenu();
     closeLegal();
   }
@@ -2554,7 +3797,7 @@ function checkDeepLink() {
 function hideLoadingScreen() {
   const screen = document.getElementById('loading-screen');
   if (!screen) return;
-  const MIN_READING_MS = 3000;
+  const MIN_READING_MS = 500;
   const elapsed = Date.now() - APP_LOAD_STARTED_AT;
   const remaining = Math.max(0, MIN_READING_MS - elapsed);
   const fadeMs = 420;
@@ -2593,9 +3836,21 @@ function init() {
       applyUIText();
     });
   }
+  const loadingScreen = document.getElementById('loading-screen');
+  if (loadingScreen) loadingScreen.classList.add('loading-screen--ready');
   renderDate();
   renderDilemma();
   checkDeepLink();
+  function refreshTodayAfterScheduleFetch() {
+    if (location.hash.match(/[#&]d=\d+/)) return;
+    if (state.answered) return;
+    state.todayIndex = computeEffectiveTodayIndex(state.todayKey);
+    renderDilemma();
+    syncAnsweredUiFromHistoryIfNeeded();
+  }
+  fetchScheduledDilemmaForToday()
+    .then(() => refreshTodayAfterScheduleFetch())
+    .catch(() => refreshTodayAfterScheduleFetch());
   hideLoadingScreen();
 }
 init();

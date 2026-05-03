@@ -4,6 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>window.__ddLoadT0 = Date.now();</script>
+  <script>
+    /* Supabase client config (publishable key is client-safe; RLS enforces access. Never use service_role in the app.) */
+    window.__DD_SUPABASE = {
+      url: 'https://hugwmuhjphxeqrjjcfmu.supabase.co',
+      anonKey: 'sb_publishable_WzfZjJiX4rKv8puLpwqwKg_XKsgeocl',
+    };
+  </script>
   <title>Daily Dilemmas - Philosophy</title>
   <link rel="icon" href="images/app-logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="images/app-logo.png" />
@@ -84,6 +91,36 @@
             <span id="label-language-action">Language</span>
             <span class="overflow-action-chip" id="lang-toggle-label">中文</span>
           </button>
+          <button class="overflow-action" id="btn-user-feedback" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+            </svg>
+            <span id="label-user-feedback-action">User feedback</span>
+          </button>
+          <div class="overflow-feedback-row" id="overflow-feedback-controls" hidden>
+            <label id="label-feedback-prompt" for="feedback-text">Your message</label>
+            <textarea id="feedback-text" class="overflow-feedback-textarea" rows="4" maxlength="2000" autocomplete="off"></textarea>
+            <div class="overflow-reminder-actions">
+              <button class="overflow-reminder-action-btn" id="btn-send-feedback" type="button">
+                <span id="label-send-feedback">Send</span>
+              </button>
+            </div>
+          </div>
+          <button class="overflow-action" id="btn-topic-suggest" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span id="label-topic-suggest-action">Suggest tomorrow</span>
+          </button>
+          <div class="overflow-topic-suggest-row" id="overflow-topic-suggest-controls" hidden>
+            <div class="topic-suggest-input-row">
+              <input type="text" id="topic-suggest-input" class="topic-suggest-input" maxlength="80" autocomplete="off" aria-label="Topic keywords" />
+              <button class="overflow-reminder-action-btn" id="btn-topic-suggest-find" type="button">
+                <span id="label-topic-suggest-find">Find themes</span>
+              </button>
+            </div>
+          </div>
           <button class="overflow-action" id="btn-privacy-policy" type="button">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -271,12 +308,17 @@
         </div>
 
         <!-- spacer so sticky button doesn't overlap content -->
-        <div style="height:72px"></div>
+        <div style="height:88px"></div>
       </div>
 
-      <!-- Sticky next button (shown when chosen state active) -->
+      <!-- Sticky next + suggest (shown when chosen state active) -->
       <div class="sticky-next" id="sticky-next" hidden style="display:none">
-        <button class="btn-next" id="btn-next"><span id="label-next-dilemma">Next Dilemma →</span></button>
+        <div class="sticky-next-row">
+          <button type="button" class="btn-next btn-next--secondary" id="btn-suggest-tomorrow-sticky">
+            <span id="label-suggest-tomorrow-sticky">Suggest tomorrow</span>
+          </button>
+          <button type="button" class="btn-next" id="btn-next"><span id="label-next-dilemma">Next Dilemma →</span></button>
+        </div>
       </div>
     </div>
 
@@ -324,6 +366,24 @@
         <button class="share-btn share-btn-primary legal-send-btn" id="btn-send-legal-email" type="button">Send</button>
       </div>
       <button class="share-btn share-btn-secondary" id="btn-email-legal" type="button">Email Me</button>
+    </div>
+  </div>
+
+  <!-- Feedback thank-you / notice -->
+  <div class="modal-overlay" id="feedback-flash-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="feedback-flash-message">
+    <div class="modal feedback-flash-modal feedback-flash-modal--success" id="feedback-flash-modal">
+      <div class="feedback-flash-visual" aria-hidden="true">
+        <span class="feedback-flash-icon feedback-flash-icon--success" id="feedback-flash-icon-success">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2.5 2.5L16 9"/></svg>
+        </span>
+        <span class="feedback-flash-icon feedback-flash-icon--notice" id="feedback-flash-icon-notice" hidden>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16h.01"/></svg>
+        </span>
+      </div>
+      <p class="feedback-flash-message" id="feedback-flash-message"></p>
+      <button class="share-btn share-btn-primary feedback-flash-btn" id="btn-feedback-flash-ok" type="button">
+        <span id="label-feedback-flash-ok">Got it</span>
+      </button>
     </div>
   </div>
 
@@ -503,6 +563,35 @@
     </svg>
     <span id="label-save-image-template">Save Image</span>
   </template>
+
+  <div class="topic-suggest-modal-overlay" id="topic-suggest-modal" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="topic-suggest-modal-title">
+    <div class="topic-suggest-modal-panel">
+      <div class="topic-suggest-modal-header">
+        <h2 class="topic-suggest-modal-title" id="topic-suggest-modal-title">Vote for tomorrow’s dilemma</h2>
+        <button type="button" class="btn-close-topic-modal" id="btn-close-topic-suggest-modal" aria-label="Close">×</button>
+      </div>
+      <div class="topic-suggest-modal-body">
+        <p id="topic-suggest-theme-line-modal" class="topic-suggest-theme-line" hidden><span id="topic-suggest-theme-label-modal"></span></p>
+        <p class="topic-suggest-quick-label" id="label-topic-suggest-quick-modal" hidden></p>
+        <div class="topic-suggest-quick-themes" id="topic-suggest-quick-themes-modal" hidden></div>
+        <div class="topic-suggest-candidates topic-suggest-candidates--modal" id="topic-suggest-candidates-modal"></div>
+        <div id="topic-suggest-detail-modal" class="topic-suggest-detail" hidden>
+          <button type="button" class="topic-suggest-back" id="btn-topic-suggest-back">
+            <span id="label-topic-suggest-back">Back</span>
+          </button>
+          <p class="topic-suggest-detail-q" id="topic-suggest-detail-text"></p>
+          <div class="topic-suggest-detail-options">
+            <p class="topic-suggest-detail-opt" id="topic-suggest-detail-opt-a"></p>
+            <p class="topic-suggest-detail-opt" id="topic-suggest-detail-opt-b"></p>
+          </div>
+          <button type="button" class="topic-suggest-submit-vote" id="btn-topic-suggest-submit-vote">
+            <span id="label-topic-suggest-submit-vote">Submit vote for tomorrow</span>
+          </button>
+        </div>
+        <p class="topic-suggest-status" id="topic-suggest-status-modal" role="status" aria-live="polite" hidden></p>
+      </div>
+    </div>
+  </div>
 
   <script src="i18n.zh-hant.js"></script>
   <script src="app.js"></script>
