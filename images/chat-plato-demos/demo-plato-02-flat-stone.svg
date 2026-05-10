@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+  <!-- Style 2: soft flat shapes, warm stone bust -->
+  <rect width="256" height="256" rx="28" fill="#f3ebe3"/>
+  <ellipse cx="128" cy="98" rx="52" ry="58" fill="#e8d4bc" stroke="#a08062" stroke-width="2.5"/>
+  <path d="M76 118c10 36 32 52 52 52s42-16 52-52" fill="#dcc5a8" stroke="#a08062" stroke-width="2" stroke-linecap="round"/>
+  <ellipse cx="108" cy="92" rx="5" ry="6" fill="#5c4a3a"/>
+  <ellipse cx="148" cy="92" rx="5" ry="6" fill="#5c4a3a"/>
+  <path d="M112 118c8 10 24 10 32 0" stroke="#8b735f" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M64 168c0-28 28-48 64-48s64 20 64 48v52H64V168z" fill="#d4c0a4" stroke="#a08062" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M90 96c6-18 22-28 38-28s32 10 38 28" stroke="#c49a6c" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>

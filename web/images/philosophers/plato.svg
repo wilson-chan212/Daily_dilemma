@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+  <!-- Minimal classical bust: warm stone tones, matches app illustration style -->
+  <circle cx="40" cy="28" r="18" fill="#ead9c4" stroke="#9a7b5c" stroke-width="1.75"/>
+  <path d="M28 44c2-10 10-16 12-16s10 6 12 16" stroke="#9a7b5c" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  <path d="M22 52c0-8 8-14 18-14s18 6 18 14v14H22V52z" fill="#d8c4a8" stroke="#9a7b5c" stroke-width="1.75"/>
+  <ellipse cx="34" cy="26" rx="2.2" ry="2.5" fill="#5c4a3a"/>
+  <ellipse cx="46" cy="26" rx="2.2" ry="2.5" fill="#5c4a3a"/>
+  <path d="M36 34c2 2 6 2 8 0" stroke="#7d6654" stroke-width="1.25" stroke-linecap="round" fill="none"/>
+  <path d="M25 18c3-6 12-8 15-8s12 2 15 8" stroke="#b8956e" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

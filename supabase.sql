@@ -54,114 +54,200 @@ for insert
 to anon
 with check (true);
 
+-- Some Supabase projects do not auto-grant table privileges to anon for new tables.
+-- Make insert explicit; keep reads disabled for anon.
+revoke all on table public.feedback from anon;
+grant insert on table public.feedback to anon;
 
--- ============================================================
--- TOMORROW'S FEATURED DILEMMA (community vote)
--- ============================================================
--- Concept:
---   • Users vote for which dilemma_id should be the "featured" card on a FUTURE calendar day.
---   • Rows use target_date = that future day (YYYY-MM-DD in the user's app, local date key).
---   • One vote per device/client_id per target_date (upsert overwrites).
---   • On day D, the app calls get_scheduled_dilemma_for_day(D) which picks the dilemma_id
---     with the highest vote count; ties break by lower dilemma_id.
---
--- How to "calculate" the winner in SQL:
---   SELECT dilemma_id, COUNT(*) AS votes
---   FROM public.tomorrow_dilemma_votes
---   WHERE target_date = '2026-05-04'
---   GROUP BY dilemma_id
---   ORDER BY votes DESC, dilemma_id ASC
---   LIMIT 1;
---
--- The RPC below does this in one call for the client app.
--- ============================================================
-
-create table if not exists public.tomorrow_dilemma_votes (
-  target_date date not null,
-  dilemma_id int not null check (dilemma_id >= 1 and dilemma_id < 100000),
-  voter_client_id text not null check (char_length(voter_client_id) >= 8 and char_length(voter_client_id) <= 128),
+-- 6) AI usage quota (per device per day)
+create table if not exists public.ai_usage_daily (
+  device_id text not null,
+  day date not null,
+  count int not null default 0 check (count >= 0),
   updated_at timestamptz not null default now(),
-  primary key (target_date, voter_client_id)
+  primary key (device_id, day)
 );
 
-create index if not exists tomorrow_dilemma_votes_target_idx on public.tomorrow_dilemma_votes (target_date);
-create index if not exists tomorrow_dilemma_votes_target_dilemma_idx on public.tomorrow_dilemma_votes (target_date, dilemma_id);
+alter table public.ai_usage_daily enable row level security;
 
-alter table public.tomorrow_dilemma_votes enable row level security;
+-- No client-side access required; the Edge Function updates this table using service role.
+revoke all on table public.ai_usage_daily from anon;
 
--- No direct anon reads/writes; use SECURITY DEFINER functions only.
-drop policy if exists "no direct anon" on public.tomorrow_dilemma_votes;
-create policy "no direct anon"
-on public.tomorrow_dilemma_votes
-for all
-to anon
-using (false)
-with check (false);
-
--- Upsert one vote (anon calls RPC only)
-create or replace function public.upsert_tomorrow_dilemma_vote(
-  p_target_date date,
-  p_dilemma_id int,
-  p_voter_client_id text
-)
-returns void
+-- Atomic quota increment (1 call from Edge Function)
+-- NOTE: Use positional args ($1/$2) to avoid ambiguity with column names.
+create or replace function public.increment_ai_usage_daily(device_id text, limit_per_day int default 50)
+returns table(allowed boolean, count int, remaining int)
 language plpgsql
 security definer
 set search_path = public
 as $$
+declare
+  d date := (now() at time zone 'utc')::date;
+  new_count int;
 begin
-  insert into public.tomorrow_dilemma_votes (target_date, dilemma_id, voter_client_id)
-  values (p_target_date, p_dilemma_id, p_voter_client_id)
-  on conflict (target_date, voter_client_id)
-  do update set
-    dilemma_id = excluded.dilemma_id,
-    updated_at = now();
+  -- Try to insert a new row with count=1, but only update if below limit.
+  insert into public.ai_usage_daily(device_id, day, count)
+  values ($1, d, 1)
+  on conflict (device_id, day) do update
+    set count = public.ai_usage_daily.count + 1,
+        updated_at = now()
+    where public.ai_usage_daily.count < $2
+  returning public.ai_usage_daily.count into new_count;
+
+  if new_count is null then
+    select public.ai_usage_daily.count into new_count
+    from public.ai_usage_daily
+    where public.ai_usage_daily.device_id = $1
+      and public.ai_usage_daily.day = d;
+    return query select false, coalesce(new_count, $2), 0;
+  end if;
+
+  return query select true, new_count, greatest(0, $2 - new_count);
 end;
 $$;
 
-revoke all on function public.upsert_tomorrow_dilemma_vote(date, int, text) from public;
-grant execute on function public.upsert_tomorrow_dilemma_vote(date, int, text) to anon;
+revoke all on function public.increment_ai_usage_daily(text, int) from public;
+grant execute on function public.increment_ai_usage_daily(text, int) to anon;
 
--- Winner for the calendar day the dilemma is SHOWN (target_date = that day)
-create or replace function public.get_scheduled_dilemma_for_day(p_show_date date)
-returns int
-language sql
-stable
+-- Atomic quota increment v2 (renamed params to avoid ambiguity in some Postgres setups)
+create or replace function public.increment_ai_usage_daily_v2(p_device_id text, p_limit_per_day int default 50)
+returns table(allowed boolean, count int, remaining int)
+language plpgsql
 security definer
 set search_path = public
 as $$
-  with agg as (
-    select dilemma_id, count(*)::bigint as c
-    from public.tomorrow_dilemma_votes
-    where target_date = p_show_date
-    group by dilemma_id
-  ),
-  top as (
-    select dilemma_id from agg
-    order by c desc, dilemma_id asc
-    limit 1
-  )
-  select dilemma_id from top;
+declare
+  d date := (now() at time zone 'utc')::date;
+  new_count int;
+begin
+  insert into public.ai_usage_daily(device_id, day, count)
+  values (p_device_id, d, 1)
+  on conflict (device_id, day) do update
+    set count = public.ai_usage_daily.count + 1,
+        updated_at = now()
+    where public.ai_usage_daily.count < p_limit_per_day
+  returning public.ai_usage_daily.count into new_count;
+
+  if new_count is null then
+    select public.ai_usage_daily.count into new_count
+    from public.ai_usage_daily
+    where public.ai_usage_daily.device_id = p_device_id
+      and public.ai_usage_daily.day = d;
+
+    return query select false, coalesce(new_count, p_limit_per_day), 0;
+  end if;
+
+  return query select true, new_count, greatest(0, p_limit_per_day - new_count);
+end;
 $$;
 
-revoke all on function public.get_scheduled_dilemma_for_day(date) from public;
-grant execute on function public.get_scheduled_dilemma_for_day(date) to anon;
+revoke all on function public.increment_ai_usage_daily_v2(text, int) from public;
+grant execute on function public.increment_ai_usage_daily_v2(text, int) to anon;
 
--- Optional: full tally for UI (leaderboard for one target day)
-create or replace function public.get_tomorrow_vote_stats(p_target_date date)
-returns table (dilemma_id int, vote_count bigint)
+-- 7) Bookmarks (anonymous, device-scoped via X-Device-Id header)
+-- Client must send header: X-Device-Id: <dd_device_id>
+create table if not exists public.bookmarks (
+  id bigint generated by default as identity primary key,
+  device_id text not null,
+  item_type text not null check (item_type in ('dilemma','quote','concept','book','video')),
+  item_key text not null,
+  dilemma_id int,
+  locale text,
+  payload jsonb not null default '{}'::jsonb,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (device_id, item_type, item_key)
+);
+
+create index if not exists bookmarks_device_id_idx on public.bookmarks (device_id);
+create index if not exists bookmarks_device_type_idx on public.bookmarks (device_id, item_type);
+
+create or replace function public.set_updated_at()
+returns trigger
+language plpgsql
+as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+drop trigger if exists set_bookmarks_updated_at on public.bookmarks;
+create trigger set_bookmarks_updated_at
+before update on public.bookmarks
+for each row
+execute function public.set_updated_at();
+
+alter table public.bookmarks enable row level security;
+
+-- Device id is provided as a request header. PostgREST exposes request headers via GUC:
+-- current_setting('request.headers', true) -> JSON
+create or replace function public.request_device_id()
+returns text
 language sql
 stable
-security definer
-set search_path = public
 as $$
-  select v.dilemma_id, count(*)::bigint
-  from public.tomorrow_dilemma_votes v
-  where v.target_date = p_target_date
-  group by v.dilemma_id
-  order by vote_count desc, dilemma_id asc;
+  select nullif(trim((current_setting('request.headers', true)::json ->> 'x-device-id')::text), '');
 $$;
 
-revoke all on function public.get_tomorrow_vote_stats(date) from public;
-grant execute on function public.get_tomorrow_vote_stats(date) to anon;
+drop policy if exists "device select bookmarks" on public.bookmarks;
+create policy "device select bookmarks"
+on public.bookmarks
+for select
+to anon
+using (device_id = public.request_device_id());
 
+drop policy if exists "device insert bookmarks" on public.bookmarks;
+create policy "device insert bookmarks"
+on public.bookmarks
+for insert
+to anon
+with check (device_id = public.request_device_id());
+
+drop policy if exists "device update bookmarks" on public.bookmarks;
+create policy "device update bookmarks"
+on public.bookmarks
+for update
+to anon
+using (device_id = public.request_device_id())
+with check (device_id = public.request_device_id());
+
+drop policy if exists "device delete bookmarks" on public.bookmarks;
+create policy "device delete bookmarks"
+on public.bookmarks
+for delete
+to anon
+using (device_id = public.request_device_id());
+
+revoke all on table public.bookmarks from anon;
+grant select, insert, update, delete on table public.bookmarks to anon;
+
+-- 8) Learned concepts (Knowledge Map; device-scoped via X-Device-Id, same as bookmarks)
+create table if not exists public.learned_concepts (
+  id bigint generated by default as identity primary key,
+  device_id text not null,
+  concept_key text not null check (char_length(trim(concept_key)) > 0 and char_length(concept_key) <= 240),
+  created_at timestamptz not null default now(),
+  unique (device_id, concept_key)
+);
+
+create index if not exists learned_concepts_device_id_idx on public.learned_concepts (device_id);
+
+alter table public.learned_concepts enable row level security;
+
+drop policy if exists "device select learned_concepts" on public.learned_concepts;
+create policy "device select learned_concepts"
+on public.learned_concepts
+for select
+to anon
+using (device_id = public.request_device_id());
+
+drop policy if exists "device insert learned_concepts" on public.learned_concepts;
+create policy "device insert learned_concepts"
+on public.learned_concepts
+for insert
+to anon
+with check (device_id = public.request_device_id());
+
+revoke all on table public.learned_concepts from anon;
+grant select, insert on table public.learned_concepts to anon;

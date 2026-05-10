@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="980" viewBox="0 0 390 980" role="img" aria-labelledby="title03 desc03">
+  <title id="title03">Plato &#8212; Key achievements</title>
+  <desc id="desc03">Minimal bullet-style layout listing Plato&apos;s main achievements.</desc>
+  <rect width="390" height="980" fill="#f5f4f0"/>
+  <foreignObject x="0" y="0" width="390" height="980">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;padding:32px 28px 44px;font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.6;color:#1e1c18;background:#f5f4f0;">
+      <p style="margin:0 0 20px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#7a7874;">Plato &#183; Profile</p>
+      <h1 style="margin:0 0 20px;font-family:'DM Serif Display',Georgia,serif;font-size:24px;font-weight:400;color:#1e1c18;">Key achievements</h1>
+      <ul style="margin:0;padding:0;list-style:none;">
+        <li style="margin:0 0 22px;padding:0 0 0 22px;position:relative;border-bottom:1px solid #eeecea;padding-bottom:22px;">
+          <span style="position:absolute;left:0;top:7px;width:8px;height:8px;border:1.5px solid #6b5b4f;border-radius:50%;background:transparent;box-sizing:border-box;"></span>
+          <strong style="color:#6b5b4f;">Founded the Academy,</strong> one of antiquity&apos;s most famous centers of learning (often popularly called the first &quot;university-like&quot; institution in the Greek world).
+        </li>
+        <li style="margin:0 0 22px;padding:0 0 0 22px;position:relative;border-bottom:1px solid #eeecea;padding-bottom:22px;">
+          <span style="position:absolute;left:0;top:7px;width:8px;height:8px;border:1.5px solid #6b5b4f;border-radius:50%;background:transparent;box-sizing:border-box;"></span>
+          Developed a unified agenda spanning <strong>ethics, political philosophy, metaphysics, epistemology, psychology</strong>, and philosophy of education&#8212;often within single dialogues.
+        </li>
+        <li style="margin:0 0 22px;padding:0 0 0 22px;position:relative;border-bottom:1px solid #eeecea;padding-bottom:22px;">
+          <span style="position:absolute;left:0;top:7px;width:8px;height:8px;border:1.5px solid #6b5b4f;border-radius:50%;background:transparent;box-sizing:border-box;"></span>
+          Produced a corpus whose literary form (<strong>dialogue</strong>) became a model for philosophy as collaborative inquiry and staged disagreement.
+        </li>
+        <li style="margin:0;padding:0 0 0 22px;position:relative;">
+          <span style="position:absolute;left:0;top:7px;width:8px;height:8px;border:1.5px solid #6b5b4f;border-radius:50%;background:transparent;box-sizing:border-box;"></span>
+          Introduced enduring philosophical devices&#8212;especially the <strong>Theory of Forms</strong>, the <strong>tripartite soul</strong>, and thought experiments like the <strong>Allegory of the Cave</strong>&#8212;that shaped Neoplatonism, Christian theology, and modern debates about realism and education.
+        </li>
+      </ul>
+    </div>
+  </foreignObject>
+</svg>

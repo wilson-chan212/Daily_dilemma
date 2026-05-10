@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="826" viewBox="0 0 390 826" role="img" aria-labelledby="t d">
+  <title id="t">Plato brief introduction graphic demo</title>
+  <desc id="d">Full introductory paragraph with infographic-style layout.</desc>
+  <defs>
+      <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#faf9f7"/><stop offset="1" stop-color="#f5f4f0"/></linearGradient>
+      <pattern id="g2dots" width="18" height="18" patternUnits="userSpaceOnUse">
+        <circle cx="2" cy="2" r="1.2" fill="#6b5b4f" opacity="0.055"/>
+      </pattern>
+    </defs><rect width="390" height="826" fill="url(#g2)"/><rect width="390" height="826" fill="url(#g2dots)"/><ellipse cx="78" cy="210" rx="118" ry="88" fill="#4a87a8" fill-opacity="0.06"/><ellipse cx="318" cy="360" rx="88" ry="72" fill="#c5603a" fill-opacity="0.045"/><g transform="translate(278,12) scale(0.82)" fill="none" stroke="#6b5b4f" stroke-width="2" stroke-linecap="round"><path d="M4 40c8-28 28-36 44-28"/><path d="M12 40c6-16 18-22 32-18"/><ellipse cx="46" cy="10" rx="6" ry="6" fill="#c5603a" fill-opacity="0.25" stroke="none"/></g><line x1="18" y1="292" x2="18" y2="668" stroke="#eeecea" stroke-width="2" stroke-dasharray="5 9" opacity="0.85"/><circle cx="18" cy="332" r="4.5" fill="#4a87a8" opacity="0.55"/><circle cx="18" cy="498" r="4.5" fill="#6b5b4f" opacity="0.45"/><circle cx="18" cy="652" r="4.5" fill="#c5603a" opacity="0.5"/><foreignObject x="0" y="0" width="390" height="278">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:#1e1c18;font-size:14.5px;line-height:1.68;">
+      <div style="padding:18px 16px 8px;">
+        <p style="margin:0 0 10px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7a7874;">Plato &#183; Profile</p>
+        <div style="margin-top:12px;">
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:7px;"><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #4a87a8;background:#4a87a812;box-shadow:0 0 0 2px #4a87a840;min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#faf9f7;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a87a8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h14l2 3v12l-9-4-9 4V7l2-3z"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#1e1c18;font-weight:700;text-align:center;max-width:84px;">Brief introduction</span>
+    </div><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #dbd9d4;background:#faf9f7;box-shadow:0 2px 8px rgba(0,0,0,.04);min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#f5f4f0;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6b5b4f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 L10 10 L14 14 L20 6"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#7a7874;font-weight:600;text-align:center;max-width:84px;">Early life</span>
+    </div><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #dbd9d4;background:#faf9f7;box-shadow:0 2px 8px rgba(0,0,0,.04);min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#f5f4f0;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c5603a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4h4v2l2 2v10H8V8l2-2zM11 15h2"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#7a7874;font-weight:600;text-align:center;max-width:84px;">Key achievements</span>
+    </div><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #dbd9d4;background:#faf9f7;box-shadow:0 2px 8px rgba(0,0,0,.04);min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#f5f4f0;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a87a8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M5 9l2 2M19 9l-2 2M6 16l2-2M18 16l-2-2M12 12v9"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#7a7874;font-weight:600;text-align:center;max-width:84px;">Main ideas</span>
+    </div></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:7px;"><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #dbd9d4;background:#faf9f7;box-shadow:0 2px 8px rgba(0,0,0,.04);min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#f5f4f0;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#6b5b4f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5h8v8H8zM10 8h4M10 11h4M10 14h4"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#7a7874;font-weight:600;text-align:center;max-width:84px;">Key concepts</span>
+    </div><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #dbd9d4;background:#faf9f7;box-shadow:0 2px 8px rgba(0,0,0,.04);min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#f5f4f0;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c5603a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6h7v12H5zM13 6h7v12h-7zM9 10h6M9 14h6"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#7a7874;font-weight:600;text-align:center;max-width:84px;">Suggested books</span>
+    </div><div style="display:flex;flex-direction:column;align-items:center;gap:5px;padding:7px 3px;border-radius:14px;border:1px solid #dbd9d4;background:#faf9f7;box-shadow:0 2px 8px rgba(0,0,0,.04);min-height:68px;justify-content:flex-start;">
+      <span style="display:flex;width:34px;height:34px;border-radius:11px;align-items:center;justify-content:center;background:#f5f4f0;"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#4a87a8" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 8l8 5-8 5zM6 6h4v12H6z"/></svg></span>
+      <span style="font-size:8px;line-height:1.15;color:#7a7874;font-weight:600;text-align:center;max-width:84px;">Suggested videos</span>
+    </div></div>
+  </div>
+        <div style="margin-top:12px;display:flex;flex-wrap:nowrap;justify-content:space-between;gap:6px;">
+          <span style="flex:1;min-width:0;text-align:center;padding:8px 6px;border-radius:999px;border:1px solid #dbd9d4;background:#faf9f7;font-size:10px;font-weight:700;color:#4a87a8;letter-spacing:0.03em;box-shadow:0 1px 4px rgba(0,0,0,.04);">Dialogue</span><span style="flex:1;min-width:0;text-align:center;padding:8px 6px;border-radius:999px;border:1px solid #dbd9d4;background:#faf9f7;font-size:10px;font-weight:700;color:#c5603a;letter-spacing:0.03em;box-shadow:0 1px 4px rgba(0,0,0,.04);">Justice</span><span style="flex:1;min-width:0;text-align:center;padding:8px 6px;border-radius:999px;border:1px solid #dbd9d4;background:#faf9f7;font-size:10px;font-weight:700;color:#4a87a8;letter-spacing:0.03em;box-shadow:0 1px 4px rgba(0,0,0,.04);">Knowledge</span><span style="flex:1;min-width:0;text-align:center;padding:8px 6px;border-radius:999px;border:1px solid #dbd9d4;background:#faf9f7;font-size:10px;font-weight:700;color:#c5603a;letter-spacing:0.03em;box-shadow:0 1px 4px rgba(0,0,0,.04);">Good</span>
+        </div>
+      </div>
+    </div>
+  </foreignObject><foreignObject x="0" y="278" width="390" height="548">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:#1e1c18;font-size:14.5px;line-height:1.68;">
+      <div style="box-sizing:border-box;min-height:548px;background:#f5f4f0;padding:0 14px 6px 12px;display:flex;flex-direction:column;justify-content:flex-start;">
+        <div style="display:flex;gap:10px;align-items:stretch;margin-bottom:12px;">
+    <div style="flex:0 0 30px;display:flex;flex-direction:column;align-items:center;">
+      <div style="width:26px;height:26px;border-radius:50%;background:#4a87a818;border:2px solid #4a87a8;color:#4a87a8;font:700 11px 'DM Sans',Arial,sans-serif;display:flex;align-items:center;justify-content:center;">I</div>
+      <div style="width:2px;flex:1;min-height:26px;background:linear-gradient(180deg,#4a87a850,#eeecea);margin:5px 0;border-radius:1px;"></div>
+    </div>
+    <div style="flex:1;min-width:0;border-radius:16px;background:#faf9f7;border:1px solid #dbd9d4;box-shadow:0 6px 22px rgba(0,0,0,.06);overflow:hidden;">
+      <div style="height:2px;background:#4a87a8;"></div>
+      <div style="padding:11px 13px 13px;font-size:12.5px;line-height:1.72;letter-spacing:.012em;color:#1e1c18;">Plato is one of the most influential philosophers in the European tradition and a defining shaper of how &quot;philosophy&quot; is practiced as systematic argument in dialogue form.</div>
+    </div>
+  </div>
+        <div style="display:flex;gap:10px;align-items:stretch;margin-bottom:12px;">
+    <div style="flex:0 0 30px;display:flex;flex-direction:column;align-items:center;">
+      <div style="width:26px;height:26px;border-radius:50%;background:#6b5b4f18;border:2px solid #6b5b4f;color:#6b5b4f;font:700 11px 'DM Sans',Arial,sans-serif;display:flex;align-items:center;justify-content:center;">II</div>
+      <div style="width:2px;flex:1;min-height:26px;background:linear-gradient(180deg,#6b5b4f50,#eeecea);margin:5px 0;border-radius:1px;"></div>
+    </div>
+    <div style="flex:1;min-width:0;border-radius:16px;background:#faf9f7;border:1px solid #dbd9d4;box-shadow:0 6px 22px rgba(0,0,0,.06);overflow:hidden;">
+      <div style="height:2px;background:#6b5b4f;"></div>
+      <div style="padding:11px 13px 13px;font-size:12.5px;line-height:1.72;letter-spacing:.012em;color:#1e1c18;">His writings are almost entirely <strong style="font-weight:700;color:#6b5b4f">dialogues</strong>, many starring <strong style="font-weight:700;color:#6b5b4f">Socrates</strong>, blending drama, rhetoric critique, and arguments about <strong style="font-weight:700;color:#6b5b4f">justice</strong>, <strong style="font-weight:700;color:#6b5b4f">knowledge</strong>, <strong style="font-weight:700;color:#6b5b4f">love</strong>, <strong style="font-weight:700;color:#6b5b4f">death and the soul</strong>, and the <strong style="font-weight:700;color:#6b5b4f">ideal community</strong>.</div>
+    </div>
+  </div>
+        <div style="display:flex;gap:10px;align-items:stretch;margin-bottom:0;">
+    <div style="flex:0 0 30px;display:flex;flex-direction:column;align-items:center;">
+      <div style="width:26px;height:26px;border-radius:50%;background:#c5603a18;border:2px solid #c5603a;color:#c5603a;font:700 11px 'DM Sans',Arial,sans-serif;display:flex;align-items:center;justify-content:center;">III</div>
+      
+    </div>
+    <div style="flex:1;min-width:0;border-radius:16px;background:#faf9f7;border:1px solid #dbd9d4;box-shadow:0 6px 22px rgba(0,0,0,.06);overflow:hidden;">
+      <div style="height:2px;background:#c5603a;"></div>
+      <div style="padding:11px 13px 13px;font-size:12.5px;line-height:1.72;letter-spacing:.012em;color:#1e1c18;">Interpreters disagree on how literally to take some proposals (for example in the <em>Republic</em>), but the texts persistently press the reader to ask what makes a life and a city <strong style="font-weight:700;color:#6b5b4f">good</strong>, not merely powerful or pleasant.</div>
+    </div>
+  </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

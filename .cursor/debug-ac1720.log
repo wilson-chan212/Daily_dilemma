@@ -1,0 +1,10 @@
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5500/"},"timestamp":1778403432293}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5500/"},"timestamp":1778403449346}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"web/app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5173/"},"timestamp":1778403520263}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5500/"},"timestamp":1778403529124}
+{"sessionId":"ac1720","runId":"initial-audit","hypothesisId":"H1","location":"web/app.js:3377","message":"Philosophy Profile result missing required globals","data":{"hasModel":false,"hasEngine":false,"answerCount":12,"path":"/"},"timestamp":1778403545115}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5500/"},"timestamp":1778403631737}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5500/"},"timestamp":1778403638354}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5500/"},"timestamp":1778403674395}
+{"sessionId":"ac1720","runId":"load-check","hypothesisId":"H3","location":"app.js:3","message":"App bundle loaded","data":{"path":"/","href":"http://127.0.0.1:5173/"},"timestamp":1778403703203}
+{"sessionId":"ac1720","runId":"initial-audit","hypothesisId":"H2","location":"app.js:3381","message":"Philosophy Profile result narrative built","data":{"typeCode":"OTFC","toneGroup":"blue","answerCount":12,"path":"/"},"timestamp":1778403711785}

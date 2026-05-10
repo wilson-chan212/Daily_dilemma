@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="780" viewBox="0 0 390 780" role="img" aria-labelledby="title01 desc01">
+  <title id="title01">Plato &#8212; Brief introduction</title>
+  <desc id="desc01">Minimal typographic card with full introductory text about Plato.</desc>
+  <rect width="390" height="780" fill="#f5f4f0"/>
+  <foreignObject x="0" y="0" width="390" height="780">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;padding:32px 28px 40px;font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.65;color:#1e1c18;background:#f5f4f0;">
+      <p style="margin:0 0 20px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#7a7874;">Plato &#183; Profile</p>
+      <h1 style="margin:0 0 12px;font-family:'DM Serif Display',Georgia,serif;font-size:26px;font-weight:400;line-height:1.2;color:#1e1c18;">Brief introduction</h1>
+      <div style="width:48px;height:2px;background:#c5603a;margin-bottom:22px;border-radius:1px;"></div>
+      <p style="margin:0;color:#1e1c18;">
+        Plato is one of the most influential philosophers in the European tradition and a defining shaper of how &quot;philosophy&quot; is practiced as systematic argument in dialogue form. His writings are almost entirely <strong>dialogues</strong>, many starring <strong>Socrates</strong>, blending drama, rhetoric critique, and arguments about <strong>justice</strong>, <strong>knowledge</strong>, <strong>love</strong>, <strong>death and the soul</strong>, and the <strong>ideal community</strong>. Interpreters disagree on how literally to take some proposals (for example in the <em>Republic</em>), but the texts persistently press the reader to ask what makes a life and a city <strong>good</strong>, not merely powerful or pleasant.
+      </p>
+    </div>
+  </foreignObject>
+</svg>

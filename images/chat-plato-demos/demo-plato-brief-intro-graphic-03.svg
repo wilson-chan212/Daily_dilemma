@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="1260" viewBox="0 0 390 1260" role="img" aria-labelledby="t d">
+  <title id="t">Plato brief introduction graphic demo</title>
+  <desc id="d">Full introductory paragraph with infographic-style layout.</desc>
+  <rect x="0" y="0" width="56" height="1260" fill="#faf9f7"/><line x1="55.5" y1="0" x2="55.5" y2="1260" stroke="#dbd9d4"/><circle cx="28" cy="120" r="6" fill="#4a87a8"/><circle cx="28" cy="260" r="6" fill="#6b5b4f"/><circle cx="28" cy="420" r="6" fill="#c5603a"/><text x="28" y="200" text-anchor="middle" fill="#7a7874" font-family="DM Sans" font-size="11" transform="rotate(-90 28 200)">INTRO</text><rect x="56" y="0" width="334" height="1260" fill="#f5f4f0"/><foreignObject x="56" y="0" width="334" height="200">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:#1e1c18;font-size:14.5px;line-height:1.68;">
+      <div style="padding:28px 22px 8px 6px;">
+        <p style="margin:0 0 12px;font-size:10px;letter-spacing:0.14em;text-transform:uppercase;color:#7a7874;">Plato &#183; Profile</p>
+        <h1 style="margin:0;font-family:'DM Serif Display',Georgia,serif;font-size:32px;line-height:1.1;color:#1e1c18;">Brief<br/>introduction</h1>
+        <div style="margin-top:16px;height:4px;width:56px;background:#c5603a;border-radius:2px;"></div>
+      </div>
+    </div>
+  </foreignObject><foreignObject x="56" y="200" width="334" height="280">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:#1e1c18;font-size:14.5px;line-height:1.68;">
+      <div style="padding:0 20px 0 6px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="flex-shrink:0;font-family:'DM Serif Display',Georgia,serif;font-size:42px;line-height:1;color:#4a87a8;opacity:.35;">1</span>
+          <p style="margin:8px 0 0;">Plato is one of the most influential philosophers in the European tradition and a defining shaper of how &quot;philosophy&quot; is practiced as systematic argument in dialogue form.</p>
+        </div>
+      </div>
+    </div>
+  </foreignObject><foreignObject x="56" y="460" width="334" height="320">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:#1e1c18;font-size:14.5px;line-height:1.68;">
+      <div style="padding:0 20px 0 6px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="flex-shrink:0;font-family:'DM Serif Display',Georgia,serif;font-size:42px;line-height:1;color:#6b5b4f;opacity:.35;">2</span>
+          <div style="margin-top:4px;">
+            <p style="margin:0;padding:16px;border-left:3px solid #c5603a;background:#faf9f7;border-radius:0 16px 16px 0;">His writings are almost entirely <strong style="font-weight:700;color:#6b5b4f">dialogues</strong>, many starring <strong style="font-weight:700;color:#6b5b4f">Socrates</strong>, blending drama, rhetoric critique, and arguments about <strong style="font-weight:700;color:#6b5b4f">justice</strong>, <strong style="font-weight:700;color:#6b5b4f">knowledge</strong>, <strong style="font-weight:700;color:#6b5b4f">love</strong>, <strong style="font-weight:700;color:#6b5b4f">death and the soul</strong>, and the <strong style="font-weight:700;color:#6b5b4f">ideal community</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </foreignObject><foreignObject x="56" y="780" width="334" height="460">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;font-family:'DM Sans',system-ui,-apple-system,sans-serif;color:#1e1c18;font-size:14.5px;line-height:1.68;">
+      <div style="padding:0 20px 40px 6px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;">
+          <span style="flex-shrink:0;font-family:'DM Serif Display',Georgia,serif;font-size:42px;line-height:1;color:#c5603a;opacity:.35;">3</span>
+          <p style="margin:8px 0 0;">Interpreters disagree on how literally to take some proposals (for example in the <em>Republic</em>), but the texts persistently press the reader to ask what makes a life and a city <strong style="font-weight:700;color:#6b5b4f">good</strong>, not merely powerful or pleasant.</p>
+        </div>
+      </div>
+    </div>
+  </foreignObject>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+  <!-- Style 1: single-weight line bust, classical philosopher -->
+  <rect width="256" height="256" rx="28" fill="#faf8f5"/>
+  <g stroke="#3a3530" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M128 46c-22 0-40 16-40 36 0 8 2 15 6 21-4 6-6 14-6 22 0 26 18 48 40 48s40-22 40-48c0-8-2-16-6-22 4-6 6-13 6-21 0-20-18-36-40-36z"/>
+    <path d="M88 118c0 0 8 28 40 28s40-28 40-28"/>
+    <path d="M104 96c0 6 5 10 11 10s11-4 11-10"/>
+    <path d="M130 96c0 6 5 10 11 10s11-4 11-10"/>
+    <path d="M118 122c6 8 14 12 22 0"/>
+    <path d="M128 44v-6"/>
+    <path d="M70 168c4-22 26-38 58-38s54 16 58 38v46H70V168z"/>
+    <path d="M82 168c0-14 20-24 46-24s46 10 46 24"/>
+  </g>
+</svg>

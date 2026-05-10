@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="390" height="820" viewBox="0 0 390 820" role="img" aria-labelledby="title02 desc02">
+  <title id="title02">Plato &#8212; Early life</title>
+  <desc id="desc02">Minimal card with left accent bar and biographical text.</desc>
+  <rect width="390" height="820" fill="#faf9f7"/>
+  <rect x="0" y="0" width="3" height="820" fill="#4a87a8" aria-hidden="true"/>
+  <foreignObject x="0" y="0" width="390" height="820">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="box-sizing:border-box;padding:32px 28px 40px 36px;font-family:'DM Sans',system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.65;color:#1e1c18;background:#faf9f7;">
+      <p style="margin:0 0 20px;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#7a7874;">Plato &#183; Profile</p>
+      <h1 style="margin:0 0 8px;font-family:'DM Sans',system-ui,sans-serif;font-size:22px;font-weight:600;letter-spacing:-0.02em;color:#1e1c18;">Early life</h1>
+      <p style="margin:0 0 24px;font-size:13px;color:#7a7874;line-height:1.5;">Biography &amp; turning points</p>
+      <p style="margin:0;color:#1e1c18;">
+        Plato was born into an <strong>aristocratic Athenian</strong> milieu during the Peloponnesian War era. Biographical detail is partly legendary, but the standard story stresses an early interest in <strong>politics</strong>, shattered by <strong>Socrates&apos; trial and execution (399 BCE)</strong>&#8212;an event Plato portrayed as a civic and moral crisis. Later traditions describe travels (often cited: <strong>Italy/Sicily</strong>, sometimes <strong>Egypt</strong>) that influenced his views on governance and mathematics. He returned to Athens and founded the <strong>Academy</strong> around <strong>387 BCE</strong>, creating an enduring institutional center for mathematics and philosophy.
+      </p>
+    </div>
+  </foreignObject>
+</svg>

@@ -1,0 +1,26 @@
+Portraits for the five AI chat guides are copies of files from Wikimedia Commons
+(public domain or marked PD on Commons). Source pages:
+
+  plato.jpg
+    https://commons.wikimedia.org/wiki/File:Plato_Silanion_Musei_Capitolini_MC1377.jpg
+    (500px derivative of original upload; Luni marble bust after Silanion)
+
+  aristotle.jpg
+    https://commons.wikimedia.org/wiki/File:Aristotle_Altemps_Inv8575.jpg
+    (500px derivative; Roman copy, Palazzo Altemps)
+
+  socrates.jpg
+    https://commons.wikimedia.org/wiki/File:Socrates_Louvre.jpg
+    (Marble, Roman copy after a Greek original)
+    Also referenced beside “Early life” in the in-app Plato profile reader.
+
+  confucius.jpg
+    https://commons.wikimedia.org/wiki/File:Half_Portraits_of_the_Great_Sage_and_Virtuous_Men_of_Old_-_Confucius.jpg
+    (500px derivative; Yuan dynasty album leaf “half portrait” 半身像, anonymous,
+    National Palace Museum scan; PD-Art faithful reproduction on Commons)
+
+  immanuel-kant.jpg
+    https://commons.wikimedia.org/wiki/File:Immanuel_Kant_(painted_portrait).jpg
+    (circa 1790; PD-Art)
+
+See each Commons file page for full author, date, and license details.

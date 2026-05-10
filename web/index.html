@@ -5,10 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>window.__ddLoadT0 = Date.now();</script>
   <script>
-    /* Supabase client config (publishable key is client-safe; RLS enforces access. Never use service_role in the app.) */
+    /* Supabase client config (client-safe anon key; RLS enforces access. Never use service_role in the app.)
+       Use the JWT anon key (starts with eyJ) — required for Edge Functions (AI chat). The sb_publishable_* key works for some REST calls but is rejected by the functions gateway. Copy from Dashboard → Project Settings → API. */
     window.__DD_SUPABASE = {
-      url: 'https://hugwmuhjphxeqrjjcfmu.supabase.co',
-      anonKey: 'sb_publishable_WzfZjJiX4rKv8puLpwqwKg_XKsgeocl',
+      url: 'https://nreiswexmjhpxpmexgzx.supabase.co',
+      anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5yZWlzd2V4bWpocHhwbWV4Z3p4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2MTk4MDUsImV4cCI6MjA5MzE5NTgwNX0.MsM0kmi71kG49N4eE5s7QVFuU12EfGpl7JAoRAjES-U',
     };
   </script>
   <title>Daily Dilemmas - Philosophy</title>
@@ -49,6 +50,12 @@
               <path d="M12 8v4l3 3"></path><circle cx="12" cy="12" r="9"></circle>
             </svg>
             <span id="label-history-action">History</span>
+          </button>
+          <button class="overflow-action" id="btn-bookmarks-toggle" type="button">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M6 3.5h12A1.5 1.5 0 0 1 19.5 5v17l-7.5-4.25L4.5 22V5A1.5 1.5 0 0 1 6 3.5z"></path>
+            </svg>
+            <span id="label-bookmarks-action">Bookmarks</span>
           </button>
           <button class="overflow-action" id="btn-daily-reminder" type="button">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -106,21 +113,6 @@
               </button>
             </div>
           </div>
-          <button class="overflow-action" id="btn-topic-suggest" type="button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-            <span id="label-topic-suggest-action">Suggest tomorrow</span>
-          </button>
-          <div class="overflow-topic-suggest-row" id="overflow-topic-suggest-controls" hidden>
-            <div class="topic-suggest-input-row">
-              <input type="text" id="topic-suggest-input" class="topic-suggest-input" maxlength="80" autocomplete="off" aria-label="Topic keywords" />
-              <button class="overflow-reminder-action-btn" id="btn-topic-suggest-find" type="button">
-                <span id="label-topic-suggest-find">Find themes</span>
-              </button>
-            </div>
-          </div>
           <button class="overflow-action" id="btn-privacy-policy" type="button">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
@@ -156,7 +148,9 @@
     </div>
   </header>
 
-  <main class="main" id="main-view">
+  <main class="main app-main--tabs" id="main-view">
+
+    <section id="tab-panel-dilemma" class="app-tab-panel app-tab-panel--dilemma" role="tabpanel" aria-labelledby="tab-btn-dilemma">
 
     <section class="greeting">
       <div class="greeting-left">
@@ -199,7 +193,10 @@
         </div>
 
         <div class="chosen-header">
-          <p class="chosen-sub"><span id="label-you-chose">You Chose:</span> <strong id="chosen-label"></strong></p>
+          <div class="chosen-header-top">
+            <p class="chosen-sub"><span id="label-you-chose">You Chose:</span> <strong id="chosen-label"></strong></p>
+            <div class="chosen-bookmark-slot" id="chosen-bookmark-slot"></div>
+          </div>
           <p class="chosen-question" id="chosen-question"></p>
         </div>
 
@@ -307,24 +304,246 @@
           </button>
         </div>
 
-        <!-- spacer so sticky button doesn't overlap content -->
-        <div style="height:88px"></div>
+        <!-- spacer so sticky button + tab bar don't overlap content -->
+        <div class="chosen-state-tab-spacer" aria-hidden="true"></div>
       </div>
 
       <!-- Sticky next + suggest (shown when chosen state active) -->
       <div class="sticky-next" id="sticky-next" hidden style="display:none">
         <div class="sticky-next-row">
-          <button type="button" class="btn-next btn-next--secondary" id="btn-suggest-tomorrow-sticky">
-            <span id="label-suggest-tomorrow-sticky">Suggest tomorrow</span>
-          </button>
           <button type="button" class="btn-next" id="btn-next"><span id="label-next-dilemma">Next Dilemma →</span></button>
         </div>
       </div>
     </div>
 
+    </section>
 
+    <section id="tab-panel-chat" class="app-tab-panel app-tab-panel--chat" role="tabpanel" aria-labelledby="tab-btn-chat" hidden>
+      <div class="modal ai-modal ai-chat-shell">
+      <div class="modal-header ai-modal-header">
+        <svg class="ai-modal-chat-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 5.25h12a1.5 1.5 0 011.5 1.5V11.25a1.5 1.5 0 01-1.5 1.5H11.5L3.75 18.25l2.75-5.5H6A1.5 1.5 0 0 0 4.5 11.25V6.75A1.5 1.5 0 0 1 6 5.25z" />
+          <circle cx="9" cy="9.35" r="1.05" fill="currentColor" />
+          <circle cx="12" cy="9.35" r="1.05" fill="currentColor" />
+          <circle cx="15" cy="9.35" r="1.05" fill="currentColor" />
+        </svg>
+        <h2 class="modal-title ai-modal-title" id="ai-title">Chat with Philosopher</h2>
+        <div class="ai-modal-header-actions">
+          <button type="button" class="btn-ai-chat-font" id="btn-ai-chat-font" aria-label="Text size" title="Text size">
+            <span class="btn-ai-chat-font-lg" aria-hidden="true">A</span><span class="btn-ai-chat-font-sm" aria-hidden="true">a</span>
+          </button>
+          <button type="button" class="btn-ai-clear-chat" id="btn-ai-clear-chat" aria-label="Clear chat" title="Clear chat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 16h10l1-16"/><path d="M10 11v6"/><path d="M14 11v6"/>
+            </svg>
+          </button>
+          <button class="btn-close" id="btn-close-ai" type="button" aria-label="Back to Daily Dilemma">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="ai-subtitle-row">
+        <p class="ai-subtitle" id="ai-subtitle">Ask about today dilemma, your own questions or anything!</p>
+        <button type="button" class="btn-plato-reader" id="btn-plato-reader" aria-label="Plato profile reader" title="Plato profile">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+          <span id="label-plato-reader-btn">Plato</span>
+        </button>
+      </div>
+      <div class="ai-philosopher-picker">
+        <span class="ai-philosopher-label" id="ai-philosopher-label"></span>
+        <div class="ai-philosopher-chips" id="ai-philosopher-chips" role="radiogroup" aria-label=""></div>
+      </div>
+      <div class="ai-chat-layout">
+        <div class="ai-chat-scroll">
+          <div class="ai-thread" id="ai-thread" role="log" aria-live="polite">
+            <div class="ai-thread-scroll" id="ai-thread-scroll">
+              <div class="ai-thread-messages" id="ai-thread-messages"></div>
+              <div class="ai-thinking" id="ai-thinking-row" hidden>
+                <div class="ai-thinking-inner">
+                  <img class="ai-msg-avatar ai-thinking-avatar" id="ai-thinking-avatar" src="images/philosophers/plato.jpg" width="40" height="40" alt="" decoding="async" referrerpolicy="no-referrer" />
+                  <div class="ai-thinking-bubble" role="status">
+                    <span class="ai-thinking-text" id="ai-thinking-text">Plato is thinking…</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="ai-chat-footer">
+          <form class="ai-compose" id="ai-compose">
+            <input class="ai-input" id="ai-input" type="text" maxlength="600" autocomplete="off" placeholder="Ask a question…" />
+            <button class="share-btn share-btn-primary ai-send-btn" id="btn-ai-send" type="submit">Send</button>
+          </form>
+          <div class="ai-starters-row">
+            <div class="ai-starters" id="ai-starters" role="group" aria-label="Suggested questions"></div>
+            <button type="button" class="btn-ai-starters-refresh" id="btn-ai-new-starters" aria-label="New suggestions">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M23 4v6h-6"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L21 15"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <p class="share-hint" id="ai-hint"></p>
+      </div>
+      </div>
+    </section>
+
+    <section id="tab-panel-profile" class="app-tab-panel app-tab-panel--profile" role="tabpanel" aria-labelledby="tab-btn-profile" hidden>
+
+    <!-- Philosophy Profile -->
+    <section class="profile-view" id="profile-view" aria-live="polite">
+      <div class="profile-test-card" id="profile-test-card">
+        <div class="profile-test-image-wrap">
+          <img class="profile-test-image" id="profile-question-image" src="" alt="" loading="eager" />
+        </div>
+        <div class="profile-test-body">
+          <div class="profile-test-top">
+            <p class="profile-kicker" id="profile-question-kicker">My Philosophy Profile</p>
+            <p class="profile-progress" id="profile-question-progress">1 / 12</p>
+          </div>
+          <h2 class="profile-question" id="profile-question-text"></h2>
+          <div class="profile-options" id="profile-options"></div>
+        </div>
+      </div>
+
+      <article class="profile-result-card" id="profile-result-card" hidden>
+        <div class="profile-result-hero">
+          <div class="profile-result-copy">
+            <h2 class="profile-result-title" id="profile-result-title"></h2>
+            <p class="profile-result-sub" id="profile-result-sub"></p>
+            <p class="profile-framing" id="profile-framing">
+              This isn’t a diagnosis. It’s a mirror of your value trade-offs in these scenarios.
+            </p>
+          </div>
+          <div class="profile-result-visual">
+            <div class="profile-result-visual-meta">
+              <p class="profile-result-kicker" id="profile-result-kicker">Your Philosophy Mirror</p>
+              <div class="profile-type-row">
+                <span class="profile-type-code" id="profile-type-code">OTFS</span>
+              </div>
+              <p class="profile-tone-group" id="profile-tone-group" hidden></p>
+            </div>
+            <div class="profile-result-image-frame">
+              <img class="profile-result-image" id="profile-result-image" src="" alt="" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-result-section">
+          <p class="profile-section-label" id="profile-dims-section-label">Your Dimensions</p>
+          <div class="profile-dims" id="profile-dims"></div>
+        </div>
+
+        <div class="profile-blind-spot">
+          <div class="profile-blind-spot-label" id="profile-blind-spot-label">
+            <span class="profile-blind-spot-icon" aria-hidden="true">👁</span>
+            <span class="profile-blind-spot-label-text">Blind<br>Spot</span>
+          </div>
+          <p id="profile-blind-spot-text"></p>
+        </div>
+
+        <div class="profile-result-section">
+          <p class="profile-section-label" id="profile-thinkers-label">Thinkers You Echo</p>
+          <div class="profile-thinker-grid" id="profile-thinker-grid"></div>
+        </div>
+
+        <button class="profile-share-btn" id="btn-profile-share" type="button">Share with Friends</button>
+        <button class="profile-primary-btn" id="btn-profile-restart" type="button">Retake profile test</button>
+        <p class="profile-result-private" id="profile-private-note">Private · Only you can see your results</p>
+
+        <details class="profile-debug" id="profile-debug" hidden>
+          <summary>Debug</summary>
+          <pre id="profile-debug-pre"></pre>
+        </details>
+      </article>
+    </section>
+
+    </section>
+
+    <section id="tab-panel-knowledge" class="app-tab-panel app-tab-panel--knowledge" role="tabpanel" aria-labelledby="tab-btn-knowledge" hidden>
+      <div class="knowledge-modal knowledge-modal--tab" id="knowledge-modal">
+        <div class="knowledge-header">
+          <div class="knowledge-title-wrap">
+            <h2 class="knowledge-title" id="knowledge-title">Knowledge Mind Map</h2>
+            <p class="knowledge-sub" id="knowledge-sub">Trace the shape of your thinking.</p>
+          </div>
+          <div class="knowledge-hud" id="knowledge-hud" aria-label="Explorer progress">
+            <div class="knowledge-level-badge">
+              <span class="knowledge-level-label">Lv.</span>
+              <strong id="knowledge-level">1</strong>
+            </div>
+            <div class="knowledge-xp-wrap">
+              <div class="knowledge-xp-top">
+                <span id="knowledge-rank-title">Novice Cartographer</span>
+                <span id="knowledge-xp-text">0 / 100 XP</span>
+              </div>
+              <div class="knowledge-xp-bar" aria-hidden="true"><span id="knowledge-xp-fill"></span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="knowledge-grid">
+          <div class="knowledge-canvas" id="knowledge-canvas" aria-label="Mind map canvas">
+            <svg id="knowledge-svg" viewBox="0 0 1200 720" role="img" aria-label="Knowledge mind map">
+              <defs>
+                <filter id="km-shadow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,.18)"/>
+                </filter>
+              </defs>
+              <g id="knowledge-viewport"></g>
+            </svg>
+            <div class="knowledge-legend" aria-hidden="true">
+              <div class="knowledge-legend-row"><span class="kl-dot kl-dot-node"></span><span>Concept</span></div>
+              <div class="knowledge-legend-row"><span class="kl-dot kl-dot-link"></span><span>Link</span></div>
+              <div class="knowledge-legend-row"><span class="kl-dot kl-dot-locked"></span><span>Locked</span></div>
+            </div>
+          </div>
+
+          <!-- (Removed: map insight / counts / shuffle controls) -->
+        </div>
+      </div>
+    </section>
 
   </main>
+
+  <nav class="app-tab-bar" id="app-tab-bar" role="tablist" aria-label="Main sections">
+    <button type="button" class="app-tab is-active" role="tab" id="tab-btn-dilemma" aria-controls="tab-panel-dilemma" aria-selected="true">
+      <span class="app-tab-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+      </span>
+      <span class="app-tab-label" id="label-tab-dilemma">Daily Dilemma</span>
+    </button>
+    <button type="button" class="app-tab" role="tab" id="tab-btn-chat" aria-controls="tab-panel-chat" aria-selected="false" tabindex="-1">
+      <span class="app-tab-icon" aria-hidden="true">
+        <svg class="app-tab-chat-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 5.25h12a1.5 1.5 0 011.5 1.5V11.25a1.5 1.5 0 01-1.5 1.5H11.5L3.75 18.25l2.75-5.5H6A1.5 1.5 0 0 0 4.5 11.25V6.75A1.5 1.5 0 0 1 6 5.25z" />
+          <circle cx="9" cy="9.35" r="1.05" fill="currentColor" />
+          <circle cx="12" cy="9.35" r="1.05" fill="currentColor" />
+          <circle cx="15" cy="9.35" r="1.05" fill="currentColor" />
+        </svg>
+      </span>
+      <span class="app-tab-label" id="label-tab-chat">Chat with Philosopher</span>
+    </button>
+    <button type="button" class="app-tab" role="tab" id="tab-btn-profile" aria-controls="tab-panel-profile" aria-selected="false" tabindex="-1">
+      <span class="app-tab-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4 7.2 17.9l.9-5.4-3.9-3.8 5.4-.8L12 3z"/></svg>
+      </span>
+      <span class="app-tab-label" id="label-tab-profile">My Philosophy Profile</span>
+    </button>
+    <button type="button" class="app-tab" role="tab" id="tab-btn-knowledge" aria-controls="tab-panel-knowledge" aria-selected="false" tabindex="-1">
+      <span class="app-tab-icon" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2v20"></path>
+          <path d="M2 12h20"></path>
+          <path d="M4.5 7.5c2.5-2.5 12.5-2.5 15 0"></path>
+          <path d="M4.5 16.5c2.5 2.5 12.5 2.5 15 0"></path>
+        </svg>
+      </span>
+      <span class="app-tab-label" id="label-tab-knowledge">Knowledge Map</span>
+    </button>
+  </nav>
 
   <!-- History Panel -->
   <aside class="history-panel" id="history-panel" hidden style="display:none">
@@ -349,6 +568,50 @@
   </aside>
   <div class="history-overlay" id="history-overlay" hidden style="display:none"></div>
 
+  <!-- Bookmarks Modal -->
+  <div class="modal-overlay" id="bookmarks-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-label="Bookmarks">
+    <div class="modal bookmarks-modal" id="bookmarks-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="bookmarks-title">Bookmarks</h2>
+        <button class="btn-close" id="btn-close-bookmarks" aria-label="Close" title="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="bookmarks-tabs" id="bookmarks-tabs" role="tablist" aria-label="Bookmark categories">
+        <!-- filled by JS -->
+      </div>
+      <div class="bookmarks-grid" id="bookmarks-grid">
+        <!-- filled by JS -->
+      </div>
+      <p class="history-empty" id="bookmarks-empty">No bookmarks yet.</p>
+    </div>
+  </div>
+
+  <!-- Plato profile reader (Chat tab, when Plato is guide) -->
+  <div class="modal-overlay plato-reader-overlay" id="plato-reader-overlay" hidden style="display:none">
+    <div class="modal plato-reader-sheet" role="dialog" aria-modal="true" aria-labelledby="plato-reader-kicker">
+      <div class="plato-reader-head">
+        <div class="plato-reader-head-text">
+          <p class="plato-reader-kicker" id="plato-reader-kicker">Plato · Profile</p>
+        </div>
+        <div class="plato-reader-actions">
+          <button type="button" class="btn-ai-chat-font" id="btn-plato-reader-font" aria-label="Text size" title="Text size">
+            <span class="btn-ai-chat-font-lg" aria-hidden="true">A</span><span class="btn-ai-chat-font-sm" aria-hidden="true">a</span>
+          </button>
+          <button type="button" class="btn-close" id="btn-close-plato-reader" aria-label="Close">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <nav class="plato-reader-nav" id="plato-reader-nav" aria-label="Profile sections"></nav>
+      <div class="plato-reader-scroll" id="plato-reader-scroll"></div>
+    </div>
+  </div>
+
   <!-- Legal Modal -->
   <div class="modal-overlay" id="legal-overlay" hidden style="display:none" role="dialog" aria-modal="true">
     <div class="modal legal-modal">
@@ -366,6 +629,26 @@
         <button class="share-btn share-btn-primary legal-send-btn" id="btn-send-legal-email" type="button">Send</button>
       </div>
       <button class="share-btn share-btn-secondary" id="btn-email-legal" type="button">Email Me</button>
+    </div>
+  </div>
+
+  <!-- Concept Note Modal -->
+  <div class="modal-overlay" id="concept-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="concept-title">
+    <div class="modal concept-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="concept-title">Concept</h2>
+        <button class="btn-close" id="btn-close-concept" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="concept-body">
+        <p class="concept-note" id="concept-note"></p>
+      </div>
+      <div class="concept-actions">
+        <a class="share-btn share-btn-secondary" id="concept-learn-more" href="#" target="_blank" rel="noopener noreferrer">Learn More</a>
+      </div>
     </div>
   </div>
 
@@ -547,7 +830,7 @@
   </template>
 
   <template id="tpl-go-further-tag">
-    <a class="gf-tag gf-tag-link" target="_blank" rel="noopener noreferrer"></a>
+    <button class="gf-tag gf-tag-link" type="button"></button>
   </template>
 
   <template id="tpl-go-further-item">
@@ -564,36 +847,13 @@
     <span id="label-save-image-template">Save Image</span>
   </template>
 
-  <div class="topic-suggest-modal-overlay" id="topic-suggest-modal" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="topic-suggest-modal-title">
-    <div class="topic-suggest-modal-panel">
-      <div class="topic-suggest-modal-header">
-        <h2 class="topic-suggest-modal-title" id="topic-suggest-modal-title">Vote for tomorrow’s dilemma</h2>
-        <button type="button" class="btn-close-topic-modal" id="btn-close-topic-suggest-modal" aria-label="Close">×</button>
-      </div>
-      <div class="topic-suggest-modal-body">
-        <p id="topic-suggest-theme-line-modal" class="topic-suggest-theme-line" hidden><span id="topic-suggest-theme-label-modal"></span></p>
-        <p class="topic-suggest-quick-label" id="label-topic-suggest-quick-modal" hidden></p>
-        <div class="topic-suggest-quick-themes" id="topic-suggest-quick-themes-modal" hidden></div>
-        <div class="topic-suggest-candidates topic-suggest-candidates--modal" id="topic-suggest-candidates-modal"></div>
-        <div id="topic-suggest-detail-modal" class="topic-suggest-detail" hidden>
-          <button type="button" class="topic-suggest-back" id="btn-topic-suggest-back">
-            <span id="label-topic-suggest-back">Back</span>
-          </button>
-          <p class="topic-suggest-detail-q" id="topic-suggest-detail-text"></p>
-          <div class="topic-suggest-detail-options">
-            <p class="topic-suggest-detail-opt" id="topic-suggest-detail-opt-a"></p>
-            <p class="topic-suggest-detail-opt" id="topic-suggest-detail-opt-b"></p>
-          </div>
-          <button type="button" class="topic-suggest-submit-vote" id="btn-topic-suggest-submit-vote">
-            <span id="label-topic-suggest-submit-vote">Submit vote for tomorrow</span>
-          </button>
-        </div>
-        <p class="topic-suggest-status" id="topic-suggest-status-modal" role="status" aria-live="polite" hidden></p>
-      </div>
-    </div>
-  </div>
-
   <script src="i18n.zh-hant.js"></script>
+  <script src="data/concept-notes.en.js"></script>
+  <script src="data/concept-notes.zh-hant.js"></script>
+  <script src="data/philosopher-profile-scroll.en.js"></script>
+  <script src="data/philosopher-profile-scroll.zh-hant.js"></script>
+  <script src="data/philosophy-profile.model.en.js"></script>
+  <script src="data/philosophy-profile.engine.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

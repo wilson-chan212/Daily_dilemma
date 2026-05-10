@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <!-- B: Conversation — plain rear bubble + front bubble with tail and dots -->
+  <path
+    stroke="currentColor"
+    stroke-width="1.55"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M12.25 9.75h6.25a1.2 1.2 0 011.2 1.2v3.85a1.2 1.2 0 01-1.2 1.2h-6.25a1.2 1.2 0 01-1.2-1.2v-3.85a1.2 1.2 0 011.2-1.2z"
+  />
+  <path
+    stroke="currentColor"
+    stroke-width="1.55"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    d="M5.75 3.25h6.75a1.35 1.35 0 011.35 1.35v4.9a1.35 1.35 0 01-1.35 1.35H8.35L2.85 14.5l2.9-3.65H5.75A1.35 1.35 0 0 0 4.4 9.5V4.6a1.35 1.35 0 0 1 1.35-1.35z"
+  />
+  <circle cx="7.65" cy="7.9" r="0.95" fill="currentColor" />
+  <circle cx="9.95" cy="7.9" r="0.95" fill="currentColor" />
+  <circle cx="12.25" cy="7.9" r="0.95" fill="currentColor" />
+</svg>

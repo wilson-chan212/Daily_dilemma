@@ -68,6 +68,145 @@ const WEEKLY_THEMES = [
 ];
 
 /* =============================================
+   PHILOSOPHY PROFILE QUESTIONS
+   ============================================= */
+const PHILOSOPHY_PROFILE_QUESTIONS = [
+  {
+    id: 'pp-w1-self-happiness-tradeoff',
+    week: 1,
+    theme: 'Self & Happiness',
+    image: 'images/philosophy-profile/pp-01-self-happiness.png',
+    prompt: 'You can choose one life path for the next 5 years. Which feels more “right,” even if it costs you something?',
+    optA: 'Choose the path that maximizes daily well-being and stability, even if it limits big ambitions.',
+    optB: 'Choose the path that maximizes meaning and personal growth, even if it brings more stress and uncertainty.',
+  },
+  {
+    id: 'pp-w2-freedom-mind-self-control',
+    week: 2,
+    theme: 'Freedom & Mind',
+    image: 'images/philosophy-profile/pp-02-freedom-mind.png',
+    prompt: 'A clinic offers a safe, reversible procedure that reliably reduces destructive impulses (addiction, rage, compulsive spending). You qualify. Do you take it?',
+    optA: 'Yes—freedom is the ability to live by my values, not by my impulses.',
+    optB: 'No—changing my mind to fit a “better” version risks turning me into someone else.',
+  },
+  {
+    id: 'pp-w3-justice-reality-truth-cost',
+    week: 3,
+    theme: 'Justice & Reality',
+    image: 'images/philosophy-profile/pp-03-justice-reality.png',
+    prompt: 'You have proof that a widely believed “feel-good” story about a public figure is false. Revealing the truth will harm trust and morale but improve accuracy. What do you do?',
+    optA: 'Reveal it—society should be built on reality, even when reality disappoints.',
+    optB: 'Hold it back—some shared stories are socially valuable even if imperfectly true.',
+  },
+  {
+    id: 'pp-w4-honesty-character-loyalty',
+    week: 4,
+    theme: 'Honesty & Character',
+    image: 'images/philosophy-profile/pp-04-honesty-character.png',
+    prompt: 'A close friend asks you to vouch for them in a high-stakes situation. You know they will probably fail—and it could harm others. What do you do?',
+    optA: 'Be honest about the risk, even if it damages the friendship.',
+    optB: 'Support them fully—loyalty means standing with someone when it matters most.',
+  },
+  {
+    id: 'pp-w5-self-mastery-virtue-rule-bending',
+    week: 5,
+    theme: 'Self-Mastery & Virtue',
+    image: 'images/philosophy-profile/pp-05-self-mastery-virtue.png',
+    prompt: 'You can quietly bend a rule to help your team succeed. No one will be harmed, and everyone does it. What do you do?',
+    optA: 'Follow the rule—virtue is consistency, not outcomes.',
+    optB: 'Bend it—virtue includes practical wisdom about when rules miss the point.',
+  },
+  {
+    id: 'pp-w6-wisdom-courage-speaking-up',
+    week: 6,
+    theme: 'Wisdom & Courage',
+    image: 'images/philosophy-profile/pp-06-wisdom-courage.png',
+    prompt: 'In a group you depend on, a popular belief is clearly wrong and will lead to a bad decision. Speaking up risks ridicule and exclusion. What do you do?',
+    optA: 'Speak up—courage means protecting what’s true and right despite social cost.',
+    optB: 'Stay quiet—wisdom means choosing battles and preserving influence for later.',
+  },
+  {
+    id: 'pp-w7-future-ethics-generation-burden',
+    week: 7,
+    theme: 'Future Ethics',
+    image: 'images/philosophy-profile/pp-07-future-ethics.png',
+    prompt: 'A policy would significantly improve lives for people 100 years from now, but requires real sacrifices from people alive today who are already struggling. Do you support it?',
+    optA: 'Yes—future people matter; we should not treat time as a moral discount.',
+    optB: 'No—ethics starts with present suffering; you can’t demand heroism from the vulnerable.',
+  },
+  {
+    id: 'pp-w8-liberty-public-life-speech',
+    week: 8,
+    theme: 'Liberty & Public Life',
+    image: 'images/philosophy-profile/pp-08-liberty-public-life.png',
+    prompt: 'A city considers banning a kind of “legal but corrosive” public behavior (e.g., aggressive misinformation campaigns) to protect democracy. Where do you land?',
+    optA: 'Allow it—liberty includes tolerating harmful expression unless it’s direct violence.',
+    optB: 'Restrict it—public life needs guardrails; freedom without trust destroys itself.',
+  },
+  {
+    id: 'pp-w9-justice-care-equal-treatment',
+    week: 9,
+    theme: 'Justice & Care',
+    image: 'images/philosophy-profile/pp-09-justice-care.png',
+    prompt: 'Two people break the same rule. One had far fewer resources and faced harsher circumstances. Should the response differ?',
+    optA: 'No—justice means equal treatment; exceptions become bias and favoritism.',
+    optB: 'Yes—justice must consider context; equal treatment can be unequal in effect.',
+  },
+  {
+    id: 'pp-w10-technology-meaning-human-worth',
+    week: 10,
+    theme: 'Technology & Meaning',
+    image: 'images/philosophy-profile/pp-10-technology-meaning.png',
+    prompt: 'An AI system can do most jobs better than humans. Society can guarantee comfort without work. What should we treat as “success”?',
+    optA: 'Success is maximizing well-being; we should redesign life around flourishing without traditional work.',
+    optB: 'Success requires human contribution; a life without needed effort risks emptiness and lost dignity.',
+  },
+  {
+    id: 'pp-w11-truth-plain-speech-social-ease',
+    week: 11,
+    theme: 'Truth & Trust',
+    image: 'images/philosophy-profile/pp-11-plain-speech-social-ease.png',
+    prompt:
+      'You notice a colleague’s mistake will embarrass them in an upcoming meeting. You could correct them privately now, or stay quiet and let the moment pass unless asked.',
+    optA: 'Speak plainly now—respect includes helping someone avoid a public wound.',
+    optB: 'Stay quiet unless it harms others—trust includes not forcing truth into every interaction.',
+  },
+  {
+    id: 'pp-w12-freedom-consent-paternalism',
+    week: 12,
+    theme: 'Choice & Protection',
+    image: 'images/philosophy-profile/pp-12-consent-paternalism.png',
+    prompt:
+      'A popular product is addictive for some users. Regulators could require blunt safeguards (limits, warnings, friction) that affect everyone. What do you favor?',
+    optA: 'Default to informed consent—people choose risk with clear information; heavy-handed limits infantilize adults.',
+    optB: 'Protect people first—design and defaults should reduce predictable harm even when “choice” technically exists.',
+  },
+];
+
+const PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR = 'images/philosophy-profile-soft-rounded/';
+
+/** Result hero: one soft-rounded illustration per engine archetype (palette matches model `toneGroup`). */
+const PHILOSOPHY_PROFILE_ARCHETYPE_IMAGE = {
+  stoicArchitect: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-01-stoic-architect.png',
+  principledRealist: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-02-principled-realist.png',
+  civicGuardian: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-03-civic-guardian.png',
+  careCentered: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-04-care-centered.png',
+  relationalProtector: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-05-relational-protector.png',
+  freedomFirst: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-06-freedom-first.png',
+  disciplinedBuilder: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-07-disciplined-builder.png',
+  meaningSeeker: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-08-meaning-seeker.png',
+  pragmaticReformer: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-09-pragmatic-reformer.png',
+  longtermSteward: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-10-longterm-steward.png',
+  harmonizer: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-11-harmonizer.png',
+  balancedIntegrator: PHILOSOPHY_PROFILE_SOFT_ROUNDED_DIR + 'pp-arch-12-balanced-integrator.png',
+};
+
+function getPhilosophyProfileSoftImageForArchetype(archetypeId) {
+  if (!archetypeId) return '';
+  return PHILOSOPHY_PROFILE_ARCHETYPE_IMAGE[archetypeId] || '';
+}
+
+/* =============================================
    COUNTERARGUMENT NUDGES
    ============================================= */
 const COUNTERARGS = [
@@ -278,6 +417,46 @@ const PHILOSOPHER_QUOTES = [
   { text: 'To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.', author: 'Ralph Waldo Emerson' },
   // 30. Quiet donation
   { text: 'The best way to find yourself is to lose yourself in the service of others.', author: 'Mahatma Gandhi' },
+  // 31. Designer child
+  { text: 'Act so that the effects of your action are compatible with the permanence of genuine human life.', author: 'Hans Jonas' },
+  // 32. Predictive surveillance
+  { text: 'Visibility is a trap.', author: 'Michel Foucault' },
+  // 33. AI grief companion
+  { text: 'Life can only be understood backwards; but it must be lived forwards.', author: 'Søren Kierkegaard' },
+  // 34. Climate mirror
+  { text: 'The obligation of endurance gives us the right to know.', author: 'Rachel Carson' },
+  // 35. Animal uplift
+  { text: 'The question is not, Can they reason? nor, Can they talk? but, Can they suffer?', author: 'Jeremy Bentham' },
+  // 36. Quarantine order
+  { text: 'The only purpose for which power can be rightfully exercised over any member of a civilized community, against his will, is to prevent harm to others.', author: 'John Stuart Mill' },
+  // 37. Robot caregiver
+  { text: 'Without friends no one would choose to live, though he had all other goods.', author: 'Aristotle' },
+  // 38. Deepfake ban
+  { text: 'The sad truth is that most evil is done by people who never make up their minds to be good or evil.', author: 'Hannah Arendt' },
+  // 39. Mood regulator
+  { text: 'One must still have chaos in oneself to be able to give birth to a dancing star.', author: 'Friedrich Nietzsche' },
+  // 40. Space colony ticket
+  { text: 'The Earth is the cradle of humanity, but mankind cannot stay in the cradle forever.', author: 'Konstantin Tsiolkovsky' },
+  // 41. Wild suffering
+  { text: 'Until he extends the circle of his compassion to all living things, man will not himself find peace.', author: 'Albert Schweitzer' },
+  // 42. Cultural artifact
+  { text: 'There is no document of civilization which is not at the same time a document of barbarism.', author: 'Walter Benjamin' },
+  // 43. Platform speech
+  { text: 'He who knows only his own side of the case knows little of that.', author: 'John Stuart Mill' },
+  // 44. Open-source medicine
+  { text: 'The idea that some lives matter less is the root of all that is wrong with the world.', author: 'Paul Farmer' },
+  // 45. Blind hiring
+  { text: 'Justice is the first virtue of social institutions, as truth is of systems of thought.', author: 'John Rawls' },
+  // 46. Dream ads
+  { text: 'In the kingdom of ends everything has either a price or a dignity.', author: 'Immanuel Kant' },
+  // 47. De-extinction
+  { text: 'A thing is right when it tends to preserve the integrity, stability, and beauty of the biotic community.', author: 'Aldo Leopold' },
+  // 48. Dementia archive
+  { text: 'Memory is the treasury and guardian of all things.', author: 'Cicero' },
+  // 49. AI tutor
+  { text: 'Education is not preparation for life; education is life itself.', author: 'John Dewey' },
+  // 50. Water rationing
+  { text: 'What is common to the greatest number has the least care bestowed upon it.', author: 'Aristotle' },
 ];
 
 /* =============================================
@@ -329,6 +508,46 @@ const PHILOSOPHER_QUOTES_2 = [
   { text: 'Employ your time in improving yourself by other men\'s writings, so that you shall gain easily what others have laboured hard for.', author: 'Socrates' },
   // 30. Quiet donation
   { text: 'The only ones among you who will be really happy are those who will have sought and found how to serve.', author: 'Albert Schweitzer' },
+  // 31. Designer child
+  { text: 'The deepest moral objection to enhancement lies less in the perfection it seeks than in the human disposition it expresses.', author: 'Michael Sandel' },
+  // 32. Predictive surveillance
+  { text: 'They who can give up essential liberty to obtain a little temporary safety deserve neither liberty nor safety.', author: 'Benjamin Franklin' },
+  // 33. AI grief companion
+  { text: 'No one ever told me that grief felt so like fear.', author: 'C.S. Lewis' },
+  // 34. Climate mirror
+  { text: 'With great power there must also come great responsibility.', author: 'Voltaire' },
+  // 35. Animal uplift
+  { text: 'Justice is not only about how human beings treat one another.', author: 'Martha Nussbaum' },
+  // 36. Quarantine order
+  { text: 'The right to swing my fist ends where the other man\'s nose begins.', author: 'Oliver Wendell Holmes Jr.' },
+  // 37. Robot caregiver
+  { text: 'Caring involves stepping out of one\'s own personal frame of reference into the other\'s.', author: 'Nel Noddings' },
+  // 38. Deepfake ban
+  { text: 'If liberty means anything at all, it means the right to tell people what they do not want to hear.', author: 'George Orwell' },
+  // 39. Mood regulator
+  { text: 'The wound is the place where the Light enters you.', author: 'Rumi' },
+  // 40. Space colony ticket
+  { text: 'The world is a book, and those who do not travel read only one page.', author: 'Augustine of Hippo' },
+  // 41. Wild suffering
+  { text: 'The assumption that animals are without rights and the illusion that our treatment of them has no moral significance is a positively outrageous example of Western crudity.', author: 'Arthur Schopenhauer' },
+  // 42. Cultural artifact
+  { text: 'Culture belongs to all of us, but it begins somewhere.', author: 'Kwame Anthony Appiah' },
+  // 43. Platform speech
+  { text: 'Freedom of opinion is a farce unless factual information is guaranteed.', author: 'Hannah Arendt' },
+  // 44. Open-source medicine
+  { text: 'If we can prevent something bad without sacrificing anything of comparable moral importance, we ought to do it.', author: 'Peter Singer' },
+  // 45. Blind hiring
+  { text: 'The realization of justice requires the removal of manifest injustice.', author: 'Amartya Sen' },
+  // 46. Dream ads
+  { text: 'The medium is the message.', author: 'Marshall McLuhan' },
+  // 47. De-extinction
+  { text: 'In nature nothing exists alone.', author: 'Rachel Carson' },
+  // 48. Dementia archive
+  { text: 'We tell ourselves stories in order to live.', author: 'Joan Didion' },
+  // 49. AI tutor
+  { text: 'The classroom remains the most radical space of possibility in the academy.', author: 'bell hooks' },
+  // 50. Water rationing
+  { text: 'What makes it possible for people to cooperate is trust that others will also do their part.', author: 'Elinor Ostrom' },
 ];
 
 /* =============================================
@@ -720,122 +939,242 @@ const GO_FURTHER = [
   // 31. Designer child
   {
     terms: ['Bioethics', 'Liberal Eugenics', 'Justice as Fairness', 'Parental Responsibility'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'The Case Against Perfection', author: 'Michael Sandel' },
+      { title: 'The Imperative of Responsibility', author: 'Hans Jonas' },
+    ],
+    videos: [
+      { title: 'Genetic Engineering Will Change Everything Forever - CRISPR', url: 'https://www.youtube.com/watch?v=jAhjPd4uNFY' },
+      { title: 'Michael Sandel - The Case Against Perfection', url: 'https://www.youtube.com/watch?v=G9M4S5IRZ8A' },
+    ],
   },
   // 32. Predictive surveillance
   {
     terms: ['Panopticon', 'Civil Liberties', 'Public Safety', 'Proportionality Principle'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Discipline and Punish', author: 'Michel Foucault' },
+      { title: 'The Age of Surveillance Capitalism', author: 'Shoshana Zuboff' },
+    ],
+    videos: [
+      { title: 'Michel Foucault: The Panopticon', url: 'https://www.youtube.com/watch?v=FUyB0Tsj6jE' },
+      { title: 'How China Tracks Everyone', url: 'https://www.youtube.com/watch?v=CLo3e1Pak-Y' },
+    ],
   },
   // 33. AI grief companion
   {
     terms: ['Continuing Bonds', 'Digital Afterlife', 'Authenticity', 'Ethics of Mourning'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'A Grief Observed', author: 'C.S. Lewis' },
+      { title: 'The Year of Magical Thinking', author: 'Joan Didion' },
+    ],
+    videos: [
+      { title: 'Digital Afterlife: When AI Recreates the Dead', url: 'https://www.youtube.com/watch?v=0p8HZVCZSkc' },
+      { title: 'What Grief Does to Your Brain', url: 'https://www.youtube.com/watch?v=4GDTbtePHUU' },
+    ],
   },
   // 34. Climate mirror
   {
     terms: ['Geoengineering', 'Climate Justice', 'Precautionary Principle', 'Collective Risk'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Under a White Sky', author: 'Elizabeth Kolbert' },
+      { title: 'The Planet Remade', author: 'Oliver Morton' },
+    ],
+    videos: [
+      { title: 'Geoengineering: A Horrible Idea We Might Have to Do', url: 'https://www.youtube.com/watch?v=dSu5sXmsur4' },
+      { title: 'Can Geoengineering Save Us from Climate Change?', url: 'https://www.youtube.com/watch?v=aln6QVEgstw' },
+    ],
   },
   // 35. Animal uplift
   {
     terms: ['Animal Ethics', 'Moral Status', 'Cognitive Enhancement', 'Paternalism'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Animal Liberation', author: 'Peter Singer' },
+      { title: 'Frontiers of Justice', author: 'Martha Nussbaum' },
+    ],
+    videos: [
+      { title: 'Peter Singer: The Why and How of Animal Rights', url: 'https://www.youtube.com/watch?v=gxxPYCxDdcM' },
+      { title: 'The Ethics of Animal Enhancement', url: 'https://www.youtube.com/watch?v=uQW6D4nN8Cc' },
+    ],
   },
   // 36. Quarantine order
   {
     terms: ['Public Health Ethics', 'Civil Liberty', 'Emergency Powers', 'Harm Principle'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'On Liberty', author: 'John Stuart Mill' },
+      { title: 'The Rules of Contagion', author: 'Adam Kucharski' },
+    ],
+    videos: [
+      { title: 'Public Health Ethics: Thinking about Bioethics', url: 'https://www.youtube.com/watch?v=06hS5Tz3ShE' },
+      { title: 'John Stuart Mill and the Harm Principle', url: 'https://www.youtube.com/watch?v=Kg_47J6sy3A' },
+    ],
   },
   // 37. Robot caregiver
   {
     terms: ['Care Ethics', 'Elder Care', 'Automation', 'Dignity'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Caring', author: 'Nel Noddings' },
+      { title: 'Alone Together', author: 'Sherry Turkle' },
+    ],
+    videos: [
+      { title: 'Can Robots Care for Us?', url: 'https://www.youtube.com/watch?v=TRzBk_KuIaM' },
+      { title: 'Sherry Turkle: Connected, but Alone?', url: 'https://www.youtube.com/watch?v=t7Xr3AsBEK4' },
+    ],
   },
   // 38. Deepfake ban
   {
     terms: ['Free Speech', 'Deepfakes', 'Political Satire', 'Information Trust'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'On Liberty', author: 'John Stuart Mill' },
+      { title: 'Truth and Politics', author: 'Hannah Arendt' },
+    ],
+    videos: [
+      { title: 'Deepfakes and the Future of Truth', url: 'https://www.youtube.com/watch?v=gLoI9hAX9dw' },
+      { title: 'Free Speech: Crash Course Government and Politics', url: 'https://www.youtube.com/watch?v=Zeeq0qaEaLw' },
+    ],
   },
   // 39. Mood regulator
   {
     terms: ['Neuroethics', 'Emotional Authenticity', 'Mental Health', 'Medical Enhancement'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Brave New World', author: 'Aldous Huxley' },
+      { title: 'Listening to Prozac', author: 'Peter D. Kramer' },
+    ],
+    videos: [
+      { title: 'Neuroethics: Ethics and the Brain', url: 'https://www.youtube.com/watch?v=3yNQ4VZ6Zp4' },
+      { title: 'What Antidepressants Actually Do', url: 'https://www.youtube.com/watch?v=q5NkUPMDoO4' },
+    ],
   },
   // 40. Space colony ticket
   {
     terms: ['Longtermism', 'Duties to Home', 'Species Survival', 'Exploration Ethics'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'The Precipice', author: 'Toby Ord' },
+      { title: 'The Case for Space', author: 'Robert Zubrin' },
+    ],
+    videos: [
+      { title: 'Elon Musk: Making Humans a Multiplanetary Species', url: 'https://www.youtube.com/watch?v=H7Uyfqi_TE8' },
+      { title: 'Longtermism: The Future of Humanity', url: 'https://www.youtube.com/watch?v=vvehj0KvzKQ' },
+    ],
   },
   // 41. Wild suffering
   {
     terms: ['Wild Animal Suffering', 'Ecological Humility', 'Compassion', 'Nonhuman Ethics'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'The Expanding Circle', author: 'Peter Singer' },
+      { title: 'A Sand County Almanac', author: 'Aldo Leopold' },
+    ],
+    videos: [
+      { title: 'Should We Intervene in Nature to Help Wild Animals?', url: 'https://www.youtube.com/watch?v=cp1qpzXe2Yw' },
+      { title: 'Aldo Leopold and the Land Ethic', url: 'https://www.youtube.com/watch?v=4k2o6d4lZJ0' },
+    ],
   },
   // 42. Cultural artifact
   {
     terms: ['Repatriation', 'Cultural Heritage', 'Restorative Justice', 'Museum Ethics'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Loot', author: 'Sharon Waxman' },
+      { title: 'Cosmopolitanism', author: 'Kwame Anthony Appiah' },
+    ],
+    videos: [
+      { title: 'Should Museums Return Their Colonial Artefacts?', url: 'https://www.youtube.com/watch?v=HO0q2F0P-hA' },
+      { title: 'The British Museum and Repatriation', url: 'https://www.youtube.com/watch?v=YQ0z0NQKe3A' },
+    ],
   },
   // 43. Platform speech
   {
     terms: ['Content Moderation', 'Misinformation', 'Free Expression', 'Platform Power'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'The Constitution of Knowledge', author: 'Jonathan Rauch' },
+      { title: 'Custodians of the Internet', author: 'Tarleton Gillespie' },
+    ],
+    videos: [
+      { title: 'How Platforms Decide What Counts as Misinformation', url: 'https://www.youtube.com/watch?v=leX541Dr2rU' },
+      { title: 'The Future of Free Speech Online', url: 'https://www.youtube.com/watch?v=H8zT9b8M2qA' },
+    ],
   },
   // 44. Open-source medicine
   {
     terms: ['Patent Ethics', 'Access to Medicine', 'Innovation Incentives', 'Health Justice'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Pathologies of Power', author: 'Paul Farmer' },
+      { title: 'The Life You Can Save', author: 'Peter Singer' },
+    ],
+    videos: [
+      { title: 'Why Are Prescription Drugs So Expensive?', url: 'https://www.youtube.com/watch?v=3tK_UHD1pD8' },
+      { title: 'Paul Farmer: On Health and Human Rights', url: 'https://www.youtube.com/watch?v=V3xrxA8mF5U' },
+    ],
   },
   // 45. Blind hiring
   {
     terms: ['Meritocracy', 'Equality of Opportunity', 'Contextual Fairness', 'Bias Reduction'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'A Theory of Justice', author: 'John Rawls' },
+      { title: 'The Idea of Justice', author: 'Amartya Sen' },
+    ],
+    videos: [
+      { title: 'John Rawls: A Theory of Justice', url: 'https://www.youtube.com/watch?v=5-JQ17X6VNg' },
+      { title: 'How Blind Auditions Changed Orchestras', url: 'https://www.youtube.com/watch?v=QxG2kX9G9dA' },
+    ],
   },
   // 46. Dream ads
   {
     terms: ['Mental Privacy', 'Commodification', 'Consent', 'Attention Economy'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'The Attention Merchants', author: 'Tim Wu' },
+      { title: 'The Medium is the Massage', author: 'Marshall McLuhan' },
+    ],
+    videos: [
+      { title: 'The Attention Economy Explained', url: 'https://www.youtube.com/watch?v=50f4mDgHc4M' },
+      { title: 'Marshall McLuhan: The Medium is the Message', url: 'https://www.youtube.com/watch?v=ImaH51F4HBw' },
+    ],
   },
   // 47. De-extinction
   {
     terms: ['De-extinction', 'Conservation Ethics', 'Ecological Restoration', 'Moral Repair'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Bring Back the King', author: 'Helen Pilcher' },
+      { title: 'A Sand County Almanac', author: 'Aldo Leopold' },
+    ],
+    videos: [
+      { title: 'Should We Bring Extinct Animals Back to Life?', url: 'https://www.youtube.com/watch?v=8oLhvD6Kn3E' },
+      { title: 'De-Extinction: Bringing Back the Mammoth', url: 'https://www.youtube.com/watch?v=Hjwyb5BbS6g' },
+    ],
   },
   // 48. Dementia archive
   {
     terms: ['Narrative Identity', 'Dementia Ethics', 'Privacy After Decline', 'Family Memory'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'The Self and Memory', author: 'John Locke' },
+      { title: 'Still Alice', author: 'Lisa Genova' },
+    ],
+    videos: [
+      { title: 'What Is Dementia?', url: 'https://www.youtube.com/watch?v=HobxLbPhrMc' },
+      { title: 'The Ethics of Memory and Identity', url: 'https://www.youtube.com/watch?v=17CBP_JMCvk' },
+    ],
   },
   // 49. AI tutor
   {
     terms: ['Education Ethics', 'Human Development', 'AI Tutoring', 'Relational Learning'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Democracy and Education', author: 'John Dewey' },
+      { title: 'Teaching to Transgress', author: 'bell hooks' },
+    ],
+    videos: [
+      { title: 'How AI Could Save Education', url: 'https://www.youtube.com/watch?v=hJP5GqnTrNo' },
+      { title: 'John Dewey and Progressive Education', url: 'https://www.youtube.com/watch?v=opXKmwg8VQM' },
+    ],
   },
   // 50. Water rationing
   {
     terms: ['Climate Adaptation', 'Resource Justice', 'Collective Responsibility', 'Scarcity Ethics'],
-    books: [],
-    videos: [],
+    books: [
+      { title: 'Governing the Commons', author: 'Elinor Ostrom' },
+      { title: 'The Uninhabitable Earth', author: 'David Wallace-Wells' },
+    ],
+    videos: [
+      { title: 'Elinor Ostrom: Governing the Commons', url: 'https://www.youtube.com/watch?v=ByXM47Ri1Kc' },
+      { title: 'How Cape Town Avoided Running Out of Water', url: 'https://www.youtube.com/watch?v=O7m7Fo6I6rU' },
+    ],
   },
 ];
 
@@ -1368,9 +1707,9 @@ function getUiText(lang = 'en') {
     imageSaved: 'Image Saved.',
     imageFailed: 'Could Not Generate Image.',
     generating: 'Generating…',
-    keyConcepts: 'Key Concepts',
+    keyConcepts: 'Concepts',
     books: 'Books',
-    watch: 'Watch',
+    watch: 'Videos',
     dilemmaImageAlt: 'Illustration for today\'s dilemma',
     notifyEnable: 'Enable daily reminder',
     notifyDisable: 'Disable daily reminder',
@@ -1387,6 +1726,17 @@ function getUiText(lang = 'en') {
     meridiemPm: 'PM',
     menuOpen: 'Open menu',
     historyAction: 'History',
+    bookmarksAction: 'Bookmarks',
+    bookmarksTitle: 'Bookmarks',
+    bookmarksEmpty: 'No bookmarks yet.',
+    bookmarksGroupDilemmas: 'Questions',
+    bookmarksGroupQuotes: 'Quotes',
+    bookmarksGroupConcepts: 'Concepts',
+    bookmarksGroupBooks: 'Books',
+    bookmarksGroupVideos: 'Videos',
+    bookmarkAdd: 'Bookmark',
+    bookmarkRemove: 'Remove',
+    bookmarkOpenConceptAria: 'Open concept notes',
     dailyReminderAction: 'Daily Reminder',
     removeDailyReminder: 'Remove Daily Reminder',
     addReminder: 'Add',
@@ -1398,6 +1748,59 @@ function getUiText(lang = 'en') {
     ariaPlayStore: 'Google Play',
     languageAction: 'Language',
     userFeedbackAction: 'User feedback',
+    aiAssistantAction: 'Chat with Philosopher',
+    mainTabBarAria: 'Main sections',
+    mainTabDilemma: 'Daily Dilemma',
+    mainTabChat: 'Chat with Philosopher',
+    mainTabProfile: 'My Philosophy Profile',
+    mainTabKnowledge: 'Knowledge Map',
+    aiCloseToDilemmaAria: 'Back to Daily Dilemma',
+    aiCloseToDilemmaTitle: '',
+    aiTitle: 'Chat with Philosopher',
+    aiSubtitle: 'Ask about today dilemma, your own questions or anything!',
+    aiSwitchGuideConfirm: 'Switch your guide to {{name}}?',
+    aiStartNewWithGuideConfirm: 'Start a new conversation with {{name}}? This clears only this guide’s messages for today’s dilemma. Your other guides’ chats stay saved.\n\nClick OK to start fresh, or Cancel to keep your saved chat with this guide.',
+    aiPhilosopherLabel: '',
+    aiPhilosopherGroupAria: 'Choose which philosopher shapes replies',
+    aiPhilosopherNames: {
+      aristotle: 'Aristotle',
+      plato: 'Plato',
+      socrates: 'Socrates',
+      confucius: 'Confucius',
+      kant: 'Kant',
+      descartes: 'Descartes',
+      nietzsche: 'Nietzsche',
+      marx: 'Marx',
+    },
+    aiThinking: {
+      aristotle: 'Aristotle is thinking…',
+      plato: 'Plato is thinking…',
+      socrates: 'Socrates is thinking…',
+      confucius: 'Confucius is thinking…',
+      kant: 'Kant is thinking…',
+      descartes: 'Descartes is thinking…',
+      nietzsche: 'Nietzsche is thinking…',
+      marx: 'Marx is thinking…',
+    },
+    aiPlatoThinking: 'Plato is thinking…',
+    aiStarter1: 'Why might someone pick the other side?',
+    aiStarter2: 'What should I weigh most here?',
+    aiStarter3: 'Explain this dilemma in plain words.',
+    aiStartersLabel: 'Suggested questions',
+    aiChatFontAria: 'Text size',
+    aiChatFontTitle: 'Cycle text size',
+    aiChatFontSmall: 'Small',
+    aiChatFontMedium: 'Medium',
+    aiChatFontLarge: 'Large',
+    aiNewStartersAria: 'New suggested questions',
+    aiNewStartersTitle: 'Pick two random suggestions',
+    aiClearChatAria: 'Clear chat',
+    aiClearChatTitle: 'Clear chat',
+    aiClearChatConfirm: 'Clear all chat records? This cannot be undone.',
+    aiClearedHint: 'Cleared.',
+    aiPlaceholder: 'Ask a question…',
+    aiUnavailable: 'AI chat is not available because the app is not connected to the server.',
+    aiSendFailed: 'Could not send message. Check your connection and try again.',
     feedbackPrompt: 'Your message',
     feedbackPlaceholder: 'Share a thought, a bug, or a suggestion…',
     feedbackThanks: 'Thanks for your feedback!',
@@ -1406,28 +1809,49 @@ function getUiText(lang = 'en') {
     feedbackDismiss: 'Got it',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
+    philosophyProfileAction: 'My Philosophy Profile',
+    profileImageAlt: 'Illustration for this philosophy profile question',
+    profileToneGreen: 'Care & connection',
+    profileToneYellow: 'Freedom & flourishing',
+    profileToneBlue: 'Order & stewardship',
+    profileToneRed: 'Truth & reform',
     emailMe: 'Email Me',
     emailPlaceholder: 'your@email.com',
     legalMissing: 'Legal content was not found in the Legal folder yet.',
-    topicSuggestAction: 'Suggest tomorrow',
-    topicSuggestPlaceholder: 'e.g. friendship, exams, Hong Kong…',
-    topicSuggestFind: 'Find themes',
-    topicSuggestModalTitle: 'Vote for tomorrow’s dilemma',
-    topicSuggestClosestTheme: 'Closest theme:',
-    topicSuggestVoteTomorrow: 'Vote for tomorrow',
-    topicSuggestTapPreview: 'Tap to read full dilemma',
-    topicSuggestSubmitVote: 'Submit vote for tomorrow',
-    topicSuggestBack: 'Back',
-    topicSuggestSaved: 'Your vote was recorded for tomorrow’s featured dilemma.',
-    topicSuggestEmpty: 'Pick a quick theme or type a topic and tap Find again.',
-    topicSuggestBlocked: 'That topic is a bit heavy for this app. Try a lighter theme.',
-    topicSuggestNoMatch: 'No close match — choose a theme below.',
-    topicSuggestQuickLabel: 'Quick themes:',
-    topicSuggestPickThemeFirst: 'Choose a theme first.',
-    topicSuggestVoteUnavailable: 'Connect the app to the server to vote.',
-    topicSuggestVoteFailed: 'Could not save your vote. Try again.',
-    suggestTomorrowSticky: 'Suggest tomorrow',
-    closeTopicModal: 'Close',
+    platoReaderKicker: 'Plato · Profile',
+    platoReaderTitle: 'Plato',
+    platoReaderBtn: 'Plato',
+    platoReaderBtnAria: 'Open Plato profile reader',
+    platoReaderBtnTitle: 'Plato — profile',
+    philosopherReaderBtnAria: 'Open {{name}} profile reader',
+    philosopherReaderBtnTitle: '{{name}} — profile',
+    platoReaderNavAria: 'Profile sections',
+    platoReaderCloseAria: 'Close',
+    platoReaderPillDialogue: 'Dialogue',
+    platoReaderPillJustice: 'Justice',
+    platoReaderPillKnowledge: 'Knowledge',
+    platoReaderPillGood: 'Good',
+    platoReaderTitleIntro: 'Introduction',
+    platoReaderTitleEarly: 'Early Life',
+    platoReaderTitleAchieve: 'Achievement',
+    platoReaderTitleIdeas: 'Ideas',
+    platoReaderTitleConcepts: 'Concepts',
+    platoReaderTitleBooks: 'Books',
+    platoReaderTitleVideos: 'Videos',
+    platoReaderBodyIntro:
+      '<p><strong>Athens · Academy · Dialogue</strong> — Plato (c. 428–348 BCE) is best known for philosophical dialogues and founding the Academy in Athens.</p><p>His texts dramatize inquiry: characters argue, revisit definitions, and face puzzles—so readers train judgment, not only absorb doctrines.</p>',
+    platoReaderBodyEarly:
+      '<p>Born into an aristocratic Athenian family, Plato encountered politics early—and <strong>Socrates</strong> redirected him toward relentless questioning.</p><p>After Socrates’ death, Plato traveled, returned, and built the Academy as a stable home for mathematics, ethics, and statecraft.</p>',
+    platoReaderBodyAchieve:
+      '<p><strong>The Academy</strong> educated generations (notably Aristotle) and blended rigorous proof-culture with ethical formation.</p><p>His dialogues survived as foundational texts—preserving Socrates as a literary hero while advancing metaphysics, psychology, and political philosophy.</p>',
+    platoReaderBodyIdeas:
+      '<p>Plato is famous for <strong>Forms</strong>—stable intelligible patterns behind shifting appearances—and for linking knowledge, virtue, and psychological order.</p><p>Politically, he explores guardianship, education, and stability—often controversial today, always argued within dramatic context rather than as slogans.</p>',
+    platoReaderBodyConcepts:
+      '<ul class="plato-reader-ul"><li><strong>Form (eidos)</strong> — intelligible structure; object of refined understanding.</li><li><strong>Dialectic</strong> — disciplined discourse testing definitions and assumptions.</li><li><strong>Justice / soul</strong> — harmony of parts; education shaping desire and reason.</li></ul>',
+    platoReaderBodyBooks:
+      `<ul class="plato-reader-ul"><li><a href="https://www.google.com/search?q=${encodeURIComponent('Plato Republic dialogue')}" target="_blank" rel="noopener noreferrer">Republic</a> — justice, education, city & soul; cave & divided line imagery.</li><li><a href="https://www.google.com/search?q=${encodeURIComponent('Plato Symposium dialogue')}" target="_blank" rel="noopener noreferrer">Symposium</a> — love ascending toward wisdom.</li><li><a href="https://www.google.com/search?q=${encodeURIComponent('Plato Phaedo')}" target="_blank" rel="noopener noreferrer">Phaedo</a> — soul, death, and the philosophical life.</li><li><a href="https://www.google.com/search?q=${encodeURIComponent('Plato Meno dialogue')}" target="_blank" rel="noopener noreferrer">Meno</a> / <a href="https://www.google.com/search?q=${encodeURIComponent('Plato Theaetetus dialogue')}" target="_blank" rel="noopener noreferrer">Theaetetus</a> — what knowledge is; how inquiry works.</li></ul>`,
+    platoReaderBodyVideos:
+      '<p>Starter searches on YouTube (opens in a new tab):</p><ul class="plato-reader-ul"><li><a href="https://www.youtube.com/results?search_query=Plato+allegory+of+the+cave+explained" target="_blank" rel="noopener noreferrer">Allegory of the cave — overview</a></li><li><a href="https://www.youtube.com/results?search_query=Plato+Theory+of+Forms+introduction" target="_blank" rel="noopener noreferrer">Theory of Forms — introduction</a></li><li><a href="https://www.youtube.com/results?search_query=Plato+Republic+Ring+of+Gyges" target="_blank" rel="noopener noreferrer">Republic — Ring of Gyges / justice</a></li></ul>',
   };
   return lang === 'zh-Hant' ? { ...en, ...(ZH.ui || {}) } : en;
 }
@@ -1442,6 +1866,16 @@ function getAllDilemmas() {
     return zhDilemmas;
   }
   return DILEMMAS;
+}
+
+function decorativeDilemmaImageForStableId(stableId) {
+  const dilemmas = getAllDilemmas();
+  const n = dilemmas.length;
+  if (!n) return '';
+  const sid = Number(stableId);
+  const idx = Number.isFinite(sid) ? Math.abs(sid) % n : 0;
+  const img = dilemmas[idx] && dilemmas[idx].image;
+  return typeof img === 'string' && img.trim() ? img.trim() : '';
 }
 
 function getCounterargs() {
@@ -1595,17 +2029,17 @@ const state = {
   reminderTime: '',
   reminderPanelOpen: false,
   feedbackPanelOpen: false,
-  topicSuggestPanelOpen: false,
-  /** Community-scheduled dilemma index for today (null = use date hash). */
-  scheduledDilemmaIndex: null,
   isNative: false,
   pendingTimeout: null,
+  mainTab: 'dilemma',
+  profileActive: false,
+  knowledgeMapSeed: null,
+  profileQuestionIndex: 0,
+  profileAnswers: [],
+  bookmarksLoaded: false,
+  bookmarks: new Map(), // key: `${item_type}|${item_key}` => row
+  bookmarksView: 'dilemma', // 'dilemma' | 'quote' | 'concept' | 'book' | 'video'
 };
-
-/** Last tag matched in “Suggest a topic” (for voting + local stats only). */
-let topicSuggestLastTag = null;
-/** Dilemma index selected in modal detail view (pending vote). */
-let topicSuggestPendingVoteIndex = null;
 
 /* =============================================
    PERSISTENCE (localStorage)
@@ -1615,24 +2049,8 @@ const STORAGE_KEYS = {
   lang: 'dailyDilemmas.lang.v1',
   reminderEnabled: 'dailyDilemmas.reminderEnabled.v1',
   reminderTime: 'dailyDilemmas.reminderTime.v1',
-  voterId: 'dailyDilemmas.voterClientId.v1',
-  topicTagStats: 'dailyDilemmas.topicTagStats.v1',
+  exploredConcepts: 'dailyDilemmas.exploredConcepts.v1',
 };
-
-function getOrCreateVoterClientId() {
-  try {
-    let id = localStorage.getItem(STORAGE_KEYS.voterId);
-    if (id && id.length >= 8) return id;
-    const arr = new Uint8Array(16);
-    if (typeof crypto !== 'undefined' && crypto.getRandomValues) crypto.getRandomValues(arr);
-    else for (let i = 0; i < 16; i++) arr[i] = Math.floor(Math.random() * 256);
-    id = Array.from(arr, b => b.toString(16).padStart(2, '0')).join('');
-    localStorage.setItem(STORAGE_KEYS.voterId, id);
-    return id;
-  } catch {
-    return `anon-${Date.now()}-${Math.random().toString(16).slice(2)}`;
-  }
-}
 
 function loadLanguage() {
   try {
@@ -1701,14 +2119,22 @@ function loadHistory() {
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    // Soft-validate shape to avoid breaking if storage is corrupted.
-    return parsed.filter(item =>
-      item &&
-      typeof item === 'object' &&
-      typeof item.id === 'number' &&
-      typeof item.date === 'string' &&
-      typeof item.time === 'string'
-    );
+    // Soft-validate + migrate older shapes:
+    // - v0 may have used `choice` instead of `choiceKey`
+    // - we must ensure `choiceKey` is 'a' or 'b' to avoid defaulting UI to B
+    const out = [];
+    parsed.forEach(item => {
+      if (!item || typeof item !== 'object') return;
+      const id = item.id;
+      const date = item.date;
+      const time = item.time;
+      const rawChoice = item.choiceKey ?? item.choice;
+      const choiceKey = rawChoice === 'a' || rawChoice === 'b' ? rawChoice : null;
+      if (typeof id !== 'number' || typeof date !== 'string' || typeof time !== 'string') return;
+      if (!choiceKey) return;
+      out.push({ id, date, time, choiceKey });
+    });
+    return out;
   } catch {
     return [];
   }
@@ -1735,218 +2161,6 @@ function clearHistory() {
   renderHistoryList();
 }
 
-/* =============================================
-   SUGGEST A TOPIC — approved tag match (no public free text)
-   Optional: pick one curated dilemma for “tomorrow” on this device only.
-   ============================================= */
-const APPROVED_TOPIC_TAGS = [
-  {
-    id: 'relationships',
-    labelEn: 'Relationships & trust',
-    labelZh: '關係與信任',
-    keywords: ['relationship', 'relationships', 'love', 'marriage', 'married', 'dating', 'date', 'partner', 'couple', 'romance', 'wedding', 'boyfriend', 'girlfriend', 'crush', 'heartbreak', 'breakup', '戀愛', '愛情', '結婚', '伴侶', '男友', '女友', '夫妻', '戀人'],
-    dilemmaIndices: [6, 15, 16, 27, 28],
-  },
-  {
-    id: 'family',
-    labelEn: 'Family & home',
-    labelZh: '家庭與家',
-    keywords: ['family', 'parent', 'mother', 'father', 'sibling', 'kids', 'home', '家庭', '父母', '家人', '爸', '媽', '兄弟', '姊妹'],
-    dilemmaIndices: [15, 19, 27],
-  },
-  {
-    id: 'work',
-    labelEn: 'Work & career',
-    labelZh: '工作與事業',
-    keywords: ['work', 'job', 'career', 'office', 'boss', 'colleague', 'salary', 'workplace', '工作', '職場', '同事', '老闆', '辦公室'],
-    dilemmaIndices: [20, 23, 25],
-  },
-  {
-    id: 'school',
-    labelEn: 'School & learning',
-    labelZh: '學校與學習',
-    keywords: ['school', 'exam', 'exams', 'test', 'study', 'university', 'college', 'grade', 'class', 'teacher', 'homework', '學校', '考試', '測驗', '學習', '同學', '老師'],
-    dilemmaIndices: [19, 24, 26],
-  },
-  {
-    id: 'ethics',
-    labelEn: 'Justice & rules',
-    labelZh: '正義與規則',
-    keywords: ['justice', 'law', 'crime', 'police', 'court', 'moral', 'ethics', 'rules', 'fair', 'fairness', '正義', '法律', '犯罪', '懲罰'],
-    dilemmaIndices: [1, 8, 13, 18],
-  },
-  {
-    id: 'tech',
-    labelEn: 'Tech & AI',
-    labelZh: '科技與人工智能',
-    keywords: ['tech', 'technology', 'ai', 'internet', 'phone', 'app', 'apps', 'computer', 'robot', 'vr', 'virtual', 'simulation', 'algorithm', 'data', '科技', '人工智能', '手機', '程式', '演算法'],
-    dilemmaIndices: [0, 9, 14, 17, 28],
-  },
-  {
-    id: 'identity',
-    labelEn: 'Self & identity',
-    labelZh: '自我與身份',
-    keywords: ['identity', 'self', 'who am', 'memory', 'change', 'body', 'brain', 'soul', '我是誰', '記憶', '身分', '自己'],
-    dilemmaIndices: [2, 3, 5, 11],
-  },
-  {
-    id: 'meaning',
-    labelEn: 'Meaning & happiness',
-    labelZh: '意義與快樂',
-    keywords: ['happiness', 'happy', 'meaning', 'purpose', 'life', 'worth', 'lonely', 'loneliness', 'death', 'die', 'mortality', '快樂', '意義', '孤獨', '幸福'],
-    dilemmaIndices: [0, 7, 22],
-  },
-  {
-    id: 'social',
-    labelEn: 'Social & online',
-    labelZh: '社交與網上',
-    keywords: ['social', 'instagram', 'online', 'post', 'viral', 'influencer', 'feed', 'media', '社交', '網上', '限時', '貼文'],
-    dilemmaIndices: [17, 21],
-  },
-  {
-    id: 'courage',
-    labelEn: 'Courage & inclusion',
-    labelZh: '勇氣與共融',
-    keywords: ['courage', 'brave', 'bully', 'bullying', 'defend', 'stand up', 'inclusion', 'group', 'team', '勇氣', '欺凌', '站出來', '團隊'],
-    dilemmaIndices: [10, 19, 26],
-  },
-  {
-    id: 'honesty',
-    labelEn: 'Honesty & truth',
-    labelZh: '誠實與真相',
-    keywords: ['honest', 'honesty', 'truth', 'lie', 'lying', 'fake', 'integrity', '誠實', '謊言', '真話'],
-    dilemmaIndices: [4, 15, 24],
-  },
-  {
-    id: 'freedom',
-    labelEn: 'Freedom & choice',
-    labelZh: '自由與選擇',
-    keywords: ['free will', 'freedom', 'choose', 'choice', 'control', 'path', 'future', '自由', '選擇', '未來'],
-    dilemmaIndices: [8, 20, 21],
-  },
-  {
-    id: 'money',
-    labelEn: 'Money & giving',
-    labelZh: '金錢與付出',
-    keywords: ['money', 'buy', 'rich', 'luxury', 'cheap', 'donate', 'charity', 'giving', '錢', '奢侈', '捐獻', '捐款'],
-    dilemmaIndices: [22, 29],
-  },
-  {
-    id: 'hk_life',
-    labelEn: 'Daily life (HK)',
-    labelZh: '本地日常',
-    keywords: ['hong kong', ' hongkong', 'hk ', ' hk', 'mtr', 'commute', '香港', '港鐵', '地鐵'],
-    dilemmaIndices: [15, 17, 21, 22],
-  },
-];
-
-const TOPIC_INPUT_BLOCK_SUBSTRINGS = [
-  'suicide', 'kill myself', 'kill yourself', 'rape', 'porn', 'porno', 'sexual', 'nazi', 'terror', 'bomb', 'weapon', 'drug deal',
-  '自殺', '色情', '強姦',
-];
-
-function normalizeTopicInput(raw) {
-  return String(raw || '')
-    .trim()
-    .toLowerCase()
-    .replace(/\s+/g, ' ');
-}
-
-function isTopicInputBlocked(normalized) {
-  if (!normalized) return false;
-  for (let i = 0; i < TOPIC_INPUT_BLOCK_SUBSTRINGS.length; i += 1) {
-    if (normalized.includes(TOPIC_INPUT_BLOCK_SUBSTRINGS[i])) return true;
-  }
-  return false;
-}
-
-function matchApprovedTopicTag(normalized) {
-  if (!normalized) return null;
-  let best = null;
-  let bestScore = 0;
-  for (let t = 0; t < APPROVED_TOPIC_TAGS.length; t += 1) {
-    const tag = APPROVED_TOPIC_TAGS[t];
-    let score = 0;
-    for (let k = 0; k < tag.keywords.length; k += 1) {
-      const low = tag.keywords[k].toLowerCase();
-      if (low && normalized.includes(low)) score += 2;
-    }
-    if (score > bestScore) {
-      bestScore = score;
-      best = tag;
-    }
-  }
-  return bestScore > 0 ? best : null;
-}
-
-function tagDisplayLabel(tag) {
-  if (!tag) return '';
-  return state.lang === 'zh-Hant' ? tag.labelZh : tag.labelEn;
-}
-
-function pickThreeDilemmaIndices(pool, seed) {
-  const unique = [...new Set(pool)].filter(i => i >= 0 && i < getAllDilemmas().length);
-  const n = getAllDilemmas().length;
-  let s = Math.abs(seed) % 2147483647 || 1;
-  function rnd() {
-    s = (s * 48271) % 2147483647;
-    return s / 2147483647;
-  }
-  const arr = [...unique];
-  for (let i = arr.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(rnd() * (i + 1));
-    const tmp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = tmp;
-  }
-  let out = arr.slice(0, 3);
-  let fill = 0;
-  while (out.length < 3 && fill < n) {
-    if (!out.includes(fill)) out.push(fill);
-    fill += 1;
-  }
-  return out.slice(0, 3);
-}
-
-function suggestIndicesForTag(tag) {
-  const seed =
-    parseInt(String(state.todayKey).replace(/-/g, ''), 10) +
-    tag.id.split('').reduce((a, c) => a + c.charCodeAt(0), 0);
-  return pickThreeDilemmaIndices(tag.dilemmaIndices, seed);
-}
-
-function incrementTopicTagStat(tagId) {
-  if (!tagId) return;
-  try {
-    const raw = localStorage.getItem(STORAGE_KEYS.topicTagStats);
-    let o = {};
-    if (raw) {
-      const p = JSON.parse(raw);
-      if (typeof p === 'object' && p !== null) o = p;
-    }
-    o[tagId] = (o[tagId] || 0) + 1;
-    localStorage.setItem(STORAGE_KEYS.topicTagStats, JSON.stringify(o));
-  } catch {
-    // ignore
-  }
-}
-
-function getTomorrowDateKey(fromKey = state.todayKey) {
-  const parts = String(fromKey).split('-').map(Number);
-  const dt = new Date(parts[0], parts[1] - 1, parts[2]);
-  dt.setDate(dt.getDate() + 1);
-  return getLocalDateKey(dt);
-}
-
-function computeEffectiveTodayIndex(dateKey = state.todayKey) {
-  const len = getAllDilemmas().length;
-  if (Number.isInteger(state.scheduledDilemmaIndex)) {
-    const idx = state.scheduledDilemmaIndex;
-    if (idx >= 0 && idx < len) return idx;
-  }
-  return getTodayIndexFromKey(dateKey);
-}
-
 function getTodayIndexFromKey(dateKey = state.todayKey) {
   return parseInt(String(dateKey).replace(/-/g, ''), 10) % getAllDilemmas().length;
 }
@@ -1964,21 +2178,16 @@ function reseedTodayIfNeeded() {
   const nextTodayKey = getLocalDateKey();
   if (nextTodayKey === state.todayKey) return false;
   state.todayKey = nextTodayKey;
-  state.scheduledDilemmaIndex = null;
   state.todayIndex = getTodayIndexFromKey(nextTodayKey);
   const todayEntry = findTodayAnswerEntry();
   state.answered = !!todayEntry;
   state.chosenOpt = todayEntry ? todayEntry.choiceKey : null;
-  fetchScheduledDilemmaForToday().then(() => {
-    if (state.answered) return;
-    state.todayIndex = computeEffectiveTodayIndex(state.todayKey);
-    renderDilemma();
-  });
+  if (!state.answered) renderDilemma();
   return true;
 }
 
-// Today’s index: community winner (loaded async) or date hash
-state.todayIndex = computeEffectiveTodayIndex(state.todayKey);
+// Today’s index: date hash
+state.todayIndex = getTodayIndexFromKey(state.todayKey);
 
 function getDilemma() { return getAllDilemmas()[state.todayIndex]; }
 
@@ -2127,8 +2336,6 @@ function syncOverflowSubpanels() {
   if (reminderControls) reminderControls.hidden = !state.reminderPanelOpen;
   const feedbackControls = document.getElementById('overflow-feedback-controls');
   if (feedbackControls) feedbackControls.hidden = !state.feedbackPanelOpen;
-  const topicControls = document.getElementById('overflow-topic-suggest-controls');
-  if (topicControls) topicControls.hidden = !state.topicSuggestPanelOpen;
 }
 
 function closeOverflowMenu() {
@@ -2137,7 +2344,6 @@ function closeOverflowMenu() {
   if (!panel || !toggle) return;
   state.reminderPanelOpen = false;
   state.feedbackPanelOpen = false;
-  state.topicSuggestPanelOpen = false;
   panel.hidden = true;
   toggle.setAttribute('aria-expanded', 'false');
   syncOverflowSubpanels();
@@ -2154,7 +2360,6 @@ function openOverflowMenu() {
 
 function toggleUserFeedbackPanel() {
   state.reminderPanelOpen = false;
-  state.topicSuggestPanelOpen = false;
   state.feedbackPanelOpen = !state.feedbackPanelOpen;
   syncOverflowSubpanels();
   applyUIText();
@@ -2162,252 +2367,6 @@ function toggleUserFeedbackPanel() {
     const ta = document.getElementById('feedback-text');
     if (ta) requestAnimationFrame(() => ta.focus());
   }
-}
-
-function topicSuggestModalEls() {
-  return {
-    themeLine: document.getElementById('topic-suggest-theme-line-modal'),
-    themeLabel: document.getElementById('topic-suggest-theme-label-modal'),
-    candidates: document.getElementById('topic-suggest-candidates-modal'),
-    status: document.getElementById('topic-suggest-status-modal'),
-    chips: document.getElementById('topic-suggest-quick-themes-modal'),
-    quickLabel: document.getElementById('label-topic-suggest-quick-modal'),
-  };
-}
-
-function resetTopicSuggestModal() {
-  topicSuggestLastTag = null;
-  topicSuggestPendingVoteIndex = null;
-  hideTopicSuggestDetailModal(false);
-  const { themeLine, candidates, status, chips, quickLabel } = topicSuggestModalEls();
-  if (themeLine) themeLine.hidden = true;
-  if (candidates) {
-    candidates.replaceChildren();
-    candidates.hidden = false;
-  }
-  if (status) {
-    status.hidden = true;
-    status.textContent = '';
-  }
-  if (chips) {
-    chips.hidden = true;
-    chips.replaceChildren();
-  }
-  if (quickLabel) quickLabel.hidden = true;
-}
-
-function hideTopicSuggestDetailModal(showList = true) {
-  const detail = document.getElementById('topic-suggest-detail-modal');
-  if (detail) detail.hidden = true;
-  topicSuggestPendingVoteIndex = null;
-  const { candidates } = topicSuggestModalEls();
-  if (candidates && showList) candidates.hidden = false;
-}
-
-function showTopicSuggestDetailModal(dilemmaIndex) {
-  const dilemmas = getAllDilemmas();
-  const d = dilemmas[dilemmaIndex];
-  if (!d) return;
-  topicSuggestPendingVoteIndex = dilemmaIndex;
-  const { candidates, status } = topicSuggestModalEls();
-  if (candidates) candidates.hidden = true;
-  if (status) status.hidden = true;
-  const detail = document.getElementById('topic-suggest-detail-modal');
-  const qEl = document.getElementById('topic-suggest-detail-text');
-  const aEl = document.getElementById('topic-suggest-detail-opt-a');
-  const bEl = document.getElementById('topic-suggest-detail-opt-b');
-  if (qEl) qEl.textContent = d.text;
-  if (aEl) aEl.textContent = `A. ${d.optA}`;
-  if (bEl) bEl.textContent = `B. ${d.optB}`;
-  if (detail) detail.hidden = false;
-  const backBtn = document.getElementById('btn-topic-suggest-back');
-  if (backBtn) requestAnimationFrame(() => backBtn.focus());
-}
-
-function openTopicSuggestModal(options = {}) {
-  const { showQuickThemes = false } = options;
-  const overlay = document.getElementById('topic-suggest-modal');
-  if (!overlay) return;
-  resetTopicSuggestModal();
-  overlay.hidden = false;
-  overlay.style.display = 'flex';
-  applyUIText();
-  if (showQuickThemes) {
-    showQuickThemeChipsModal();
-  }
-  document.body.style.overflow = 'hidden';
-}
-
-function closeTopicSuggestModal() {
-  const overlay = document.getElementById('topic-suggest-modal');
-  if (!overlay) return;
-  overlay.hidden = true;
-  overlay.style.display = 'none';
-  resetTopicSuggestModal();
-  document.body.style.overflow = '';
-}
-
-function toggleTopicSuggestPanel() {
-  state.reminderPanelOpen = false;
-  state.feedbackPanelOpen = false;
-  state.topicSuggestPanelOpen = !state.topicSuggestPanelOpen;
-  syncOverflowSubpanels();
-  applyUIText();
-  if (!state.topicSuggestPanelOpen) {
-    const inp = document.getElementById('topic-suggest-input');
-    if (inp) inp.value = '';
-  } else {
-    const inp = document.getElementById('topic-suggest-input');
-    if (inp) requestAnimationFrame(() => inp && inp.focus());
-  }
-}
-
-function truncateTopicSnippet(text, max = 96) {
-  const s = String(text || '').replace(/\s+/g, ' ').trim();
-  if (s.length <= max) return s;
-  return `${s.slice(0, max - 1)}…`;
-}
-
-function renderTopicSuggestCandidatesModal(indices) {
-  hideTopicSuggestDetailModal(false);
-  const { candidates } = topicSuggestModalEls();
-  if (!candidates) return;
-  candidates.replaceChildren();
-  candidates.hidden = false;
-  const detail = document.getElementById('topic-suggest-detail-modal');
-  if (detail) detail.hidden = true;
-  topicSuggestPendingVoteIndex = null;
-  const dilemmas = getAllDilemmas();
-  const ui = getUiText(state.lang);
-  indices.forEach(idx => {
-    const d = dilemmas[idx];
-    if (!d) return;
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'topic-suggest-candidate-btn';
-    btn.dataset.dilemmaIndex = String(idx);
-    const title = document.createElement('span');
-    title.className = 'topic-suggest-candidate-title';
-    title.textContent = truncateTopicSnippet(d.text, 100);
-    const sub = document.createElement('span');
-    sub.className = 'topic-suggest-candidate-action';
-    sub.textContent = ui.topicSuggestTapPreview || 'Tap to read full dilemma';
-    btn.appendChild(title);
-    btn.appendChild(sub);
-    btn.addEventListener('click', () => showTopicSuggestDetailModal(idx));
-    candidates.appendChild(btn);
-  });
-}
-
-function showTopicSuggestThemeModal(tag) {
-  const { themeLine, themeLabel } = topicSuggestModalEls();
-  if (!themeLine || !themeLabel) return;
-  themeLine.hidden = false;
-  const ui = getUiText(state.lang);
-  const prefix = ui.topicSuggestClosestTheme || 'Closest theme:';
-  themeLabel.textContent = `${prefix} ${tagDisplayLabel(tag)}`;
-}
-
-function showQuickThemeChipsModal() {
-  const ui = getUiText(state.lang);
-  const { quickLabel, chips, status } = topicSuggestModalEls();
-  if (quickLabel) {
-    quickLabel.hidden = false;
-    quickLabel.textContent = ui.topicSuggestQuickLabel || 'Quick themes:';
-  }
-  if (!chips) return;
-  chips.hidden = false;
-  chips.replaceChildren();
-  APPROVED_TOPIC_TAGS.slice(0, 8).forEach(tag => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.className = 'topic-suggest-chip';
-    b.dataset.tagId = tag.id;
-    b.textContent = tagDisplayLabel(tag);
-    b.addEventListener('click', () => {
-      topicSuggestLastTag = tag;
-      showTopicSuggestThemeModal(tag);
-      renderTopicSuggestCandidatesModal(suggestIndicesForTag(tag));
-      if (status) {
-        status.hidden = true;
-        status.textContent = '';
-      }
-    });
-    chips.appendChild(b);
-  });
-}
-
-function runTopicSuggestLookup() {
-  const input = document.getElementById('topic-suggest-input');
-  openTopicSuggestModal();
-  const { status } = topicSuggestModalEls();
-  const ui = getUiText(state.lang);
-  const normalized = normalizeTopicInput(input && input.value);
-  if (status) {
-    status.hidden = false;
-    status.textContent = '';
-  }
-  if (!normalized) {
-    if (status) status.textContent = ui.topicSuggestEmpty || 'Pick a quick theme or type a topic and tap Find again.';
-    showQuickThemeChipsModal();
-    return;
-  }
-  if (isTopicInputBlocked(normalized)) {
-    if (status) status.textContent = ui.topicSuggestBlocked || 'That topic is a bit heavy for this app. Try a lighter theme.';
-    resetTopicSuggestModal();
-    showQuickThemeChipsModal();
-    return;
-  }
-  const tag = matchApprovedTopicTag(normalized);
-  if (!tag) {
-    if (status) status.textContent = ui.topicSuggestNoMatch || 'No close match — choose a theme below.';
-    topicSuggestLastTag = null;
-    const { themeLine, candidates } = topicSuggestModalEls();
-    if (themeLine) themeLine.hidden = true;
-    if (candidates) candidates.replaceChildren();
-    showQuickThemeChipsModal();
-    return;
-  }
-  topicSuggestLastTag = tag;
-  showTopicSuggestThemeModal(tag);
-  renderTopicSuggestCandidatesModal(suggestIndicesForTag(tag));
-  const { chips, quickLabel } = topicSuggestModalEls();
-  if (chips) chips.hidden = true;
-  if (quickLabel) quickLabel.hidden = true;
-  if (status) status.hidden = true;
-}
-
-async function confirmTomorrowDilemmaIndex(dilemmaIndex) {
-  const ui = getUiText(state.lang);
-  const tag = topicSuggestLastTag;
-  if (!tag) {
-    openFeedbackFlash(ui.topicSuggestPickThemeFirst || 'Choose a theme first.', 'error');
-    return;
-  }
-  if (dilemmaIndex == null || !Number.isInteger(dilemmaIndex)) {
-    openFeedbackFlash(ui.topicSuggestPickThemeFirst || 'Choose a dilemma first.', 'error');
-    return;
-  }
-  incrementTopicTagStat(tag.id);
-  if (!supabaseEnabled()) {
-    openFeedbackFlash(ui.topicSuggestVoteUnavailable || 'Connect the app to the server to vote.', 'error');
-    return;
-  }
-  try {
-    await submitTomorrowDilemmaVoteByIndex(dilemmaIndex);
-    openFeedbackFlash(ui.topicSuggestSaved || 'Your vote was recorded for tomorrow’s featured dilemma.', 'success');
-    closeTopicSuggestModal();
-    closeOverflowMenu();
-    const inp = document.getElementById('topic-suggest-input');
-    if (inp) inp.value = '';
-  } catch {
-    openFeedbackFlash(ui.topicSuggestVoteFailed || 'Could not save your vote. Try again.', 'error');
-  }
-}
-
-function submitTopicSuggestVoteFromDetail() {
-  if (topicSuggestPendingVoteIndex == null) return;
-  confirmTomorrowDilemmaIndex(topicSuggestPendingVoteIndex);
 }
 
 /* =============================================
@@ -2567,7 +2526,6 @@ async function openDailyReminderControls() {
   }
 
   state.feedbackPanelOpen = false;
-  state.topicSuggestPanelOpen = false;
   const configured = state.reminderEnabled && isValidReminderTimeValue(state.reminderTime);
   if (configured) {
     state.reminderPanelOpen = !state.reminderPanelOpen;
@@ -2595,33 +2553,63 @@ function supabaseEnabled() {
   return !!(SUPABASE.url && SUPABASE.anonKey);
 }
 
+function supabaseHeaders(extra = null) {
+  const headers = {
+    apikey: SUPABASE.anonKey,
+    Authorization: `Bearer ${SUPABASE.anonKey}`,
+  };
+  const deviceId = getDeviceId?.();
+  if (deviceId) headers['X-Device-Id'] = deviceId;
+  if (extra && typeof extra === 'object') Object.assign(headers, extra);
+  return headers;
+}
+
+/** Edge Function CORS allow-lists only certain headers; omit X-Device-Id here (deviceId stays in JSON body). */
+function supabaseFunctionsHeaders(extra = null) {
+  const headers = {
+    apikey: SUPABASE.anonKey,
+    Authorization: `Bearer ${SUPABASE.anonKey}`,
+  };
+  if (extra && typeof extra === 'object') Object.assign(headers, extra);
+  return headers;
+}
+
 async function supabaseRpc(fn, body) {
   const res = await fetch(`${SUPABASE.url}/rest/v1/rpc/${fn}`, {
     method: 'POST',
     headers: {
-      apikey: SUPABASE.anonKey,
-      Authorization: `Bearer ${SUPABASE.anonKey}`,
+      ...supabaseHeaders(),
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(body ?? {}),
   });
-  if (!res.ok) throw new Error(`Supabase RPC failed: ${res.status}`);
-  return await res.json();
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase RPC failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  // "void" RPCs often return 204 No Content.
+  if (res.status === 204) return null;
+  const txt = await res.text();
+  if (!txt || !txt.trim()) return null;
+  return JSON.parse(txt);
 }
 
 async function submitVote(dilemmaId, choice) {
   if (!supabaseEnabled()) return;
   try {
-    await fetch(`${SUPABASE.url}/rest/v1/votes`, {
+    const res = await fetch(`${SUPABASE.url}/rest/v1/votes`, {
       method: 'POST',
       headers: {
-        apikey: SUPABASE.anonKey,
-        Authorization: `Bearer ${SUPABASE.anonKey}`,
+        ...supabaseHeaders(),
         'Content-Type': 'application/json',
         Prefer: 'return=minimal',
       },
       body: JSON.stringify({ dilemma_id: dilemmaId, choice }),
     });
+    if (!res.ok) {
+      const detail = await readSupabaseErrorText(res);
+      console.error(`Supabase votes insert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+    }
   } catch {
     // ignore (offline / blocked / misconfigured)
   }
@@ -2641,47 +2629,6 @@ async function fetchVoteStats(dilemmaId) {
   } catch {
     return null;
   }
-}
-
-function parseScheduledDilemmaIdRow(rows) {
-  const row = rows && rows[0];
-  if (!row || typeof row !== 'object') return null;
-  if (Object.prototype.hasOwnProperty.call(row, 'get_scheduled_dilemma_for_day')) {
-    return row.get_scheduled_dilemma_for_day;
-  }
-  const k = Object.keys(row)[0];
-  return k !== undefined ? row[k] : null;
-}
-
-/** Loads winning dilemma for today's calendar (requires votes with target_date = today). */
-async function fetchScheduledDilemmaForToday() {
-  state.scheduledDilemmaIndex = null;
-  if (!supabaseEnabled()) return;
-  try {
-    const rows = await supabaseRpc('get_scheduled_dilemma_for_day', { p_show_date: state.todayKey });
-    const rawId = parseScheduledDilemmaIdRow(rows);
-    if (rawId == null) return;
-    const numId = Number(rawId);
-    if (!Number.isFinite(numId)) return;
-    const idx = getAllDilemmas().findIndex(d => d.id === numId);
-    if (idx !== -1) state.scheduledDilemmaIndex = idx;
-  } catch {
-    state.scheduledDilemmaIndex = null;
-  }
-}
-
-async function submitTomorrowDilemmaVoteByIndex(dilemmaIndex) {
-  if (!supabaseEnabled()) return false;
-  const dilemmas = getAllDilemmas();
-  const d = dilemmas[dilemmaIndex];
-  if (!d) return false;
-  const targetDate = getTomorrowDateKey(state.todayKey);
-  await supabaseRpc('upsert_tomorrow_dilemma_vote', {
-    p_target_date: targetDate,
-    p_dilemma_id: d.id,
-    p_voter_client_id: getOrCreateVoterClientId(),
-  });
-  return true;
 }
 
 const FEEDBACK_MAX_LEN = 2000;
@@ -2712,6 +2659,15 @@ function openFeedbackFlash(message, variant = 'success') {
   if (okBtn) okBtn.focus();
 }
 
+async function readSupabaseErrorText(res) {
+  try {
+    const txt = await res.text();
+    return txt && txt.trim() ? txt.trim() : '';
+  } catch {
+    return '';
+  }
+}
+
 async function submitFeedbackToSupabase(message, locale) {
   if (!supabaseEnabled()) return false;
   const safe = message.trim().slice(0, FEEDBACK_MAX_LEN);
@@ -2719,8 +2675,7 @@ async function submitFeedbackToSupabase(message, locale) {
   const res = await fetch(`${SUPABASE.url}/rest/v1/feedback`, {
     method: 'POST',
     headers: {
-      apikey: SUPABASE.anonKey,
-      Authorization: `Bearer ${SUPABASE.anonKey}`,
+      ...supabaseHeaders(),
       'Content-Type': 'application/json',
       Prefer: 'return=minimal',
     },
@@ -2729,8 +2684,343 @@ async function submitFeedbackToSupabase(message, locale) {
       locale: locale === 'zh-Hant' ? 'zh-Hant' : 'en',
     }),
   });
-  if (!res.ok) throw new Error(`Supabase feedback failed: ${res.status}`);
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase feedback failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
   return true;
+}
+
+/* =============================================
+   BOOKMARKS (Supabase, device-scoped)
+   ============================================= */
+function bookmarkMapKey(itemType, itemKey) {
+  return `${itemType}|${itemKey}`;
+}
+
+function isBookmarked(itemType, itemKey) {
+  return state.bookmarks.has(bookmarkMapKey(itemType, itemKey));
+}
+
+function setBookmarkRow(rowOrNull, itemType, itemKey) {
+  const k = bookmarkMapKey(itemType, itemKey);
+  if (!rowOrNull) {
+    state.bookmarks.delete(k);
+    return;
+  }
+  state.bookmarks.set(k, rowOrNull);
+}
+
+async function fetchBookmarksFromSupabase() {
+  if (!supabaseEnabled()) return [];
+  const res = await fetch(`${SUPABASE.url}/rest/v1/bookmarks?select=*&order=updated_at.desc`, {
+    method: 'GET',
+    headers: supabaseHeaders(),
+  });
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase bookmarks fetch failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  return await res.json();
+}
+
+async function ensureBookmarksLoaded() {
+  if (state.bookmarksLoaded) return;
+  try {
+    const rows = await fetchBookmarksFromSupabase();
+    state.bookmarks.clear();
+    rows.forEach((r) => {
+      if (!r || typeof r !== 'object') return;
+      const t = r.item_type;
+      const k = r.item_key;
+      if (typeof t !== 'string' || typeof k !== 'string') return;
+      setBookmarkRow(r, t, k);
+    });
+    state.bookmarksLoaded = true;
+  } catch (err) {
+    console.error(err);
+    // Leave bookmarks unloaded; UI can still work best-effort with optimistic updates.
+  }
+}
+
+async function upsertBookmarkToSupabase(row) {
+  if (!supabaseEnabled()) return null;
+  const res = await fetch(`${SUPABASE.url}/rest/v1/bookmarks?on_conflict=device_id,item_type,item_key`, {
+    method: 'POST',
+    headers: {
+      ...supabaseHeaders(),
+      'Content-Type': 'application/json',
+      Prefer: 'resolution=merge-duplicates,return=representation',
+    },
+    body: JSON.stringify(row),
+  });
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase bookmarks upsert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  const txt = await res.text();
+  const rows = txt && txt.trim() ? JSON.parse(txt) : null;
+  return Array.isArray(rows) && rows[0] ? rows[0] : null;
+}
+
+/**
+ * Delete a bookmark row. Pass either:
+ * - A row object from GET bookmarks (uses `id`; avoids filter/encoding mismatches on `item_key`), or
+ * - (itemType, itemKey) strings for toggles that may run before a row id is cached.
+ * PostgREST returns 2xx even when zero rows match filters; we use return=representation and require a deleted row.
+ */
+async function deleteBookmarkFromSupabase(itemTypeOrRow, itemKeyMaybe) {
+  if (!supabaseEnabled()) return false;
+  const deviceId = getDeviceId();
+  let url;
+  const hasRowId =
+    itemTypeOrRow &&
+    typeof itemTypeOrRow === 'object' &&
+    itemTypeOrRow.id != null &&
+    String(itemTypeOrRow.id).trim() !== '';
+  if (hasRowId) {
+    url = `${SUPABASE.url}/rest/v1/bookmarks?id=eq.${encodeURIComponent(String(itemTypeOrRow.id))}`;
+  } else {
+    const itemType = typeof itemTypeOrRow === 'string' ? itemTypeOrRow : '';
+    const itemKey = typeof itemKeyMaybe === 'string' ? itemKeyMaybe : '';
+    if (!itemType || !itemKey) return false;
+    url =
+      `${SUPABASE.url}/rest/v1/bookmarks?` +
+      `device_id=eq.${encodeURIComponent(deviceId)}` +
+      `&item_type=eq.${encodeURIComponent(itemType)}` +
+      `&item_key=eq.${encodeURIComponent(itemKey)}`;
+  }
+  const res = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      ...supabaseHeaders(),
+      Prefer: 'return=representation',
+    },
+  });
+  const txt = await res.text();
+  if (!res.ok) {
+    throw new Error(
+      `Supabase bookmarks delete failed: ${res.status}${txt && txt.trim() ? ` — ${txt.trim()}` : ''}`,
+    );
+  }
+  let deleted = null;
+  if (txt && txt.trim()) {
+    try {
+      deleted = JSON.parse(txt);
+    } catch {
+      deleted = null;
+    }
+  }
+  const gotRow =
+    (Array.isArray(deleted) && deleted.length > 0) ||
+    (deleted && typeof deleted === 'object' && !Array.isArray(deleted) && deleted.id != null);
+  if (!gotRow) {
+    throw new Error('Supabase bookmarks delete matched no rows');
+  }
+  return true;
+}
+
+/* =============================================
+   LEARNED CONCEPTS (Supabase, device-scoped; Knowledge Map)
+   ============================================= */
+async function fetchLearnedConceptsFromSupabase() {
+  if (!supabaseEnabled()) return [];
+  const res = await fetch(`${SUPABASE.url}/rest/v1/learned_concepts?select=concept_key`, {
+    method: 'GET',
+    headers: supabaseHeaders(),
+  });
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase learned_concepts fetch failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  return await res.json();
+}
+
+async function upsertLearnedConceptKeysToSupabase(keys) {
+  if (!supabaseEnabled()) return;
+  const deviceId = getDeviceId();
+  const uniq = [...new Set((keys || []).filter((k) => typeof k === 'string' && k.trim()))];
+  if (!uniq.length) return;
+  const chunkSize = 100;
+  for (let i = 0; i < uniq.length; i += chunkSize) {
+    const chunk = uniq.slice(i, i + chunkSize);
+    const body = chunk.map((concept_key) => ({ device_id: deviceId, concept_key }));
+    const res = await fetch(`${SUPABASE.url}/rest/v1/learned_concepts?on_conflict=device_id,concept_key`, {
+      method: 'POST',
+      headers: {
+        ...supabaseHeaders(),
+        'Content-Type': 'application/json',
+        Prefer: 'resolution=merge-duplicates,return=minimal',
+      },
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const detail = await readSupabaseErrorText(res);
+      throw new Error(`Supabase learned_concepts upsert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+    }
+  }
+}
+
+/** Pull server keys into localStorage; push any local-only keys (same device header as bookmarks). */
+async function mergeLearnedConceptsFromSupabase() {
+  if (!supabaseEnabled()) return;
+  try {
+    const rows = await fetchLearnedConceptsFromSupabase();
+    const serverKeys = new Set(
+      (Array.isArray(rows) ? rows : [])
+        .map((r) => (r && typeof r.concept_key === 'string' ? r.concept_key.trim() : ''))
+        .filter(Boolean),
+    );
+    const local = getExploredConcepts();
+    let changed = false;
+    for (const k of serverKeys) {
+      if (!local.has(k)) {
+        local.add(k);
+        changed = true;
+      }
+    }
+    if (changed) {
+      saveExploredConcepts(local);
+      renderKnowledgeHud();
+    }
+    const toPush = [...local].filter((k) => !serverKeys.has(k));
+    if (toPush.length) await upsertLearnedConceptKeysToSupabase(toPush);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function toggleBookmark(itemType, itemKey, payload, options = null) {
+  const opts = options && typeof options === 'object' ? options : {};
+  const dilemmaId = typeof opts.dilemmaId === 'number' ? opts.dilemmaId : null;
+
+  await ensureBookmarksLoaded();
+
+  if (isBookmarked(itemType, itemKey)) {
+    try {
+      await deleteBookmarkFromSupabase(itemType, itemKey);
+      setBookmarkRow(null, itemType, itemKey);
+    } catch (err) {
+      console.error(err);
+    }
+    return isBookmarked(itemType, itemKey);
+  }
+
+  const deviceId = getDeviceId();
+  const row = {
+    device_id: deviceId,
+    item_type: itemType,
+    item_key: itemKey,
+    dilemma_id: dilemmaId,
+    locale: state.lang === 'zh-Hant' ? 'zh-Hant' : 'en',
+    payload: payload && typeof payload === 'object' ? payload : {},
+  };
+
+  // Optimistic update
+  setBookmarkRow(row, itemType, itemKey);
+  try {
+    const saved = await upsertBookmarkToSupabase(row);
+    if (saved) setBookmarkRow(saved, itemType, itemKey);
+  } catch (err) {
+    console.error(err);
+  }
+  return true;
+}
+
+function makeBookmarkIconSvg(filled = false) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '18');
+  svg.setAttribute('height', '18');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.classList.add('bm-icon');
+  if (filled) svg.classList.add('bm-icon--filled');
+
+  const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  path.setAttribute('d', 'M6 3.5h12a1.5 1.5 0 0 1 1.5 1.5v17l-7.5-4.25L4.5 22V5A1.5 1.5 0 0 1 6 3.5z');
+  path.setAttribute('fill', filled ? 'currentColor' : 'none');
+  path.setAttribute('stroke', 'currentColor');
+  path.setAttribute('stroke-width', '1.8');
+  path.setAttribute('stroke-linejoin', 'round');
+  svg.appendChild(path);
+  return svg;
+}
+
+function setBookmarkBtnActive(btn, active) {
+  if (!btn) return;
+  btn.classList.toggle('is-active', !!active);
+  const svg = btn.querySelector('svg.bm-icon');
+  if (!svg) return;
+  const shouldBeFilled = !!active;
+  const alreadyFilled = svg.classList.contains('bm-icon--filled');
+  if (alreadyFilled === shouldBeFilled) return;
+  svg.replaceWith(makeBookmarkIconSvg(shouldBeFilled));
+}
+
+/** Keeps dilemma bookmark icons in sync (question card + answered / chosen view share one bookmark key). */
+function refreshDilemmaBookmarkButtons() {
+  try {
+    const d = getDilemma();
+    if (!d) return;
+    const itemType = 'dilemma';
+    const itemKey = `dilemma:${d.id}`;
+    const active = isBookmarked(itemType, itemKey);
+    document.querySelectorAll('.bm-btn--dilemma, .bm-btn--chosen').forEach((btn) => {
+      setBookmarkBtnActive(btn, active);
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function attachChosenStateBookmark(d) {
+  try {
+    const slot = document.getElementById('chosen-bookmark-slot');
+    if (!slot || !d) return;
+    slot.querySelector('.bm-btn--chosen')?.remove();
+    ensureBookmarksLoaded();
+    const ui = getUiText(state.lang);
+    const itemType = 'dilemma';
+    const itemKey = `dilemma:${d.id}`;
+    const payload = { id: d.id, text: d.text, image: d.image, optA: d.optA, optB: d.optB };
+    const btn = makeBookmarkBtn({
+      itemType,
+      itemKey,
+      payload,
+      dilemmaId: d.id,
+      ariaLabel: ui.bookmarkAdd || 'Bookmark',
+      className: 'bm-btn--chosen-row bm-btn--chosen',
+    });
+    setBookmarkBtnActive(btn, isBookmarked(itemType, itemKey));
+    slot.appendChild(btn);
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+function makeBookmarkBtn({ itemType, itemKey, payload, ariaLabel, dilemmaId, className }) {
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = `btn-icon bm-btn${className ? ` ${className}` : ''}`;
+  btn.setAttribute('aria-label', ariaLabel);
+  btn.title = ariaLabel;
+  btn.appendChild(makeBookmarkIconSvg(isBookmarked(itemType, itemKey)));
+  btn.addEventListener('click', async (e) => {
+    e.stopPropagation();
+    btn.disabled = true;
+    try {
+      const active = await toggleBookmark(itemType, itemKey, payload, { dilemmaId });
+      if (itemType === 'dilemma') {
+        refreshDilemmaBookmarkButtons();
+      } else {
+        setBookmarkBtnActive(btn, active);
+      }
+    } finally {
+      btn.disabled = false;
+    }
+  });
+  return btn;
 }
 
 async function sendUserFeedback() {
@@ -2751,8 +3041,11 @@ async function sendUserFeedback() {
     ta.value = '';
     closeOverflowMenu();
     openFeedbackFlash(ui.feedbackThanks || 'Thanks for your feedback!', 'success');
-  } catch {
-    openFeedbackFlash(ui.feedbackSendFailed || 'Could not send feedback.', 'error');
+  } catch (err) {
+    console.error(err);
+    const msg = ui.feedbackSendFailed || 'Could not send feedback.';
+    const detail = err && typeof err.message === 'string' ? err.message : '';
+    openFeedbackFlash(detail ? `${msg}\n\n${detail}` : msg, 'error');
   }
 }
 
@@ -2802,6 +3095,30 @@ function renderDilemma() {
   // Theme badge + tags in greeting (top-right)
   renderThemeAndTags('theme-badge-greeting', 'greeting-tags');
 
+  // Bookmark (top-right corner)
+  try {
+    const card = document.getElementById('dilemma-card');
+    if (card) {
+      card.querySelector('.bm-btn--dilemma')?.remove();
+      ensureBookmarksLoaded();
+      const itemType = 'dilemma';
+      const itemKey = `dilemma:${d.id}`;
+      const payload = { id: d.id, text: d.text, image: d.image, optA: d.optA, optB: d.optB };
+      const btn = makeBookmarkBtn({
+        itemType,
+        itemKey,
+        payload,
+        dilemmaId: d.id,
+        ariaLabel: ui.bookmarkAdd || 'Bookmark',
+        className: 'bm-btn--corner bm-btn--dilemma',
+      });
+      setBookmarkBtnActive(btn, isBookmarked(itemType, itemKey));
+      card.appendChild(btn);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
   const optContainer = document.getElementById('dilemma-options');
   optContainer.replaceChildren();
 
@@ -2822,6 +3139,514 @@ function renderDilemma() {
 
   optContainer.appendChild(makeOpt('a', d.optA));
   optContainer.appendChild(makeOpt('b', d.optB));
+}
+
+function syncProfilePanelContent() {
+  if (state.profileAnswers.length >= PHILOSOPHY_PROFILE_QUESTIONS.length) {
+    renderProfileResult();
+  } else {
+    renderProfileQuestion();
+  }
+}
+
+function activateChatPanel() {
+  const d = getDilemma();
+  renderAiPhilosopherChips();
+  aiRenderThread(d.id);
+  aiSetHint('');
+  aiSetThinking(false);
+  refreshAiStarters();
+  const input = document.getElementById('ai-input');
+  if (input) requestAnimationFrame(() => input.focus());
+}
+
+function setMainTab(tab) {
+  const allowed = ['dilemma', 'chat', 'profile', 'knowledge'];
+  const next = allowed.includes(tab) ? tab : 'dilemma';
+  state.mainTab = next;
+  state.profileActive = next === 'profile';
+
+  const panelDilemma = document.getElementById('tab-panel-dilemma');
+  const panelChat = document.getElementById('tab-panel-chat');
+  const panelProfile = document.getElementById('tab-panel-profile');
+  const panelKnowledge = document.getElementById('tab-panel-knowledge');
+  const btnDilemma = document.getElementById('tab-btn-dilemma');
+  const btnChat = document.getElementById('tab-btn-chat');
+  const btnProfile = document.getElementById('tab-btn-profile');
+  const btnKnowledge = document.getElementById('tab-btn-knowledge');
+  const stickyNext = document.getElementById('sticky-next');
+
+  const map = [
+    ['dilemma', btnDilemma, panelDilemma],
+    ['chat', btnChat, panelChat],
+    ['profile', btnProfile, panelProfile],
+    ['knowledge', btnKnowledge, panelKnowledge],
+  ];
+
+  map.forEach(([name, btn, panel]) => {
+    const active = name === next;
+    if (panel) panel.hidden = !active;
+    if (btn) {
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-selected', active ? 'true' : 'false');
+      btn.tabIndex = active ? 0 : -1;
+    }
+  });
+
+  document.body.classList.toggle('is-profile-mode', next === 'profile');
+
+  if (stickyNext) {
+    if (next !== 'dilemma' || !state.answered) {
+      stickyNext.hidden = true;
+      stickyNext.style.display = 'none';
+    } else {
+      stickyNext.hidden = false;
+      stickyNext.style.display = 'flex';
+    }
+  }
+
+  if (next === 'chat') {
+    activateChatPanel();
+  }
+
+  if (next === 'profile') {
+    syncProfilePanelContent();
+    requestAnimationFrame(() => {
+      const view = document.getElementById('profile-view');
+      if (view) view.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  if (next === 'knowledge') {
+    activateKnowledgeTab();
+  }
+}
+
+function openProfileTab() {
+  closeOverflowMenu();
+  if (state.pendingTimeout) {
+    clearTimeout(state.pendingTimeout);
+    state.pendingTimeout = null;
+  }
+  setMainTab('profile');
+}
+
+function openKnowledgeTab() {
+  closeOverflowMenu();
+  if (state.pendingTimeout) {
+    clearTimeout(state.pendingTimeout);
+    state.pendingTimeout = null;
+  }
+  setMainTab('knowledge');
+}
+
+const PHILOSOPHY_RESULT_TONE_CLASSES = [
+  'profile-result-card--tone-green',
+  'profile-result-card--tone-yellow',
+  'profile-result-card--tone-blue',
+  'profile-result-card--tone-red',
+];
+
+function clearPhilosophyResultTone(card) {
+  if (!card) return;
+  for (const c of PHILOSOPHY_RESULT_TONE_CLASSES) card.classList.remove(c);
+  delete card.dataset.philosophyTone;
+}
+
+function applyPhilosophyResultTone(card, tone) {
+  if (!card) return;
+  clearPhilosophyResultTone(card);
+  const allowed = new Set(['green', 'yellow', 'blue', 'red']);
+  const t = allowed.has(tone) ? tone : 'green';
+  card.classList.add('profile-result-card--tone-' + t);
+  card.dataset.philosophyTone = t;
+}
+
+function getPhilosophyProfileQuestionCopy(q, lang) {
+  if (!q || lang !== 'zh-Hant') {
+    return { theme: q.theme, prompt: q.prompt, optA: q.optA, optB: q.optB };
+  }
+  const rows = getLangPack('zh-Hant').philosophyProfileQuestions;
+  if (!Array.isArray(rows)) {
+    return { theme: q.theme, prompt: q.prompt, optA: q.optA, optB: q.optB };
+  }
+  const loc = rows.find((r) => r.id === q.id);
+  if (!loc) {
+    return { theme: q.theme, prompt: q.prompt, optA: q.optA, optB: q.optB };
+  }
+  return {
+    theme: loc.theme || q.theme,
+    prompt: loc.prompt || q.prompt,
+    optA: loc.optA || q.optA,
+    optB: loc.optB || q.optB,
+  };
+}
+
+function startPhilosophyProfile() {
+  closeOverflowMenu();
+  if (state.pendingTimeout) {
+    clearTimeout(state.pendingTimeout);
+    state.pendingTimeout = null;
+  }
+  state.profileQuestionIndex = 0;
+  state.profileAnswers = [];
+  setMainTab('profile');
+  renderProfileQuestion();
+  requestAnimationFrame(() => {
+    const view = document.getElementById('profile-view');
+    if (view) view.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
+function renderProfileQuestion() {
+  const q = PHILOSOPHY_PROFILE_QUESTIONS[state.profileQuestionIndex] || PHILOSOPHY_PROFILE_QUESTIONS[0];
+  if (!q) return;
+
+  const testCard = document.getElementById('profile-test-card');
+  const resultCard = document.getElementById('profile-result-card');
+  const image = document.getElementById('profile-question-image');
+  const kicker = document.getElementById('profile-question-kicker');
+  const progress = document.getElementById('profile-question-progress');
+  const text = document.getElementById('profile-question-text');
+  const options = document.getElementById('profile-options');
+  const ui = getUiText(state.lang);
+
+  if (testCard) testCard.hidden = false;
+  if (resultCard) {
+    resultCard.hidden = true;
+    clearPhilosophyResultTone(resultCard);
+  }
+  if (image) {
+    image.src = q.image;
+    image.alt = ui.profileImageAlt || 'Illustration for this profile question';
+  }
+  const pq = getPhilosophyProfileQuestionCopy(q, state.lang);
+  // Philosophy Profile: show theme only (no week label).
+  if (kicker) kicker.textContent = `${pq.theme}`;
+  if (progress) progress.textContent = `${state.profileQuestionIndex + 1} / ${PHILOSOPHY_PROFILE_QUESTIONS.length}`;
+  if (text) text.textContent = pq.prompt;
+  if (!options) return;
+
+  options.replaceChildren();
+
+  function makeProfileOpt(opt, label) {
+    const frag = cloneTpl('tpl-option-btn');
+    const btn = frag.querySelector('button.option-btn');
+    const letter = frag.querySelector('.option-letter');
+    const optionText = frag.querySelector('.option-text');
+    btn.classList.add('profile-option-btn');
+    btn.dataset.opt = opt;
+    if (letter) {
+      letter.dataset.opt = opt;
+      letter.textContent = opt.toUpperCase();
+    }
+    if (optionText) optionText.textContent = label;
+    btn.addEventListener('click', () => handleProfileAnswer(opt));
+    return btn;
+  }
+
+  options.appendChild(makeProfileOpt('a', pq.optA));
+  options.appendChild(makeProfileOpt('b', pq.optB));
+}
+
+function handleProfileAnswer(opt) {
+  const q = PHILOSOPHY_PROFILE_QUESTIONS[state.profileQuestionIndex];
+  if (!q) return;
+  state.profileAnswers.push({ id: q.id, choiceKey: opt });
+  if (state.profileQuestionIndex < PHILOSOPHY_PROFILE_QUESTIONS.length - 1) {
+    state.profileQuestionIndex += 1;
+    renderProfileQuestion();
+    return;
+  }
+  renderProfileResult();
+}
+
+function renderProfileResult() {
+  const testCard = document.getElementById('profile-test-card');
+  const resultCard = document.getElementById('profile-result-card');
+  if (testCard) testCard.hidden = true;
+  if (resultCard) {
+    resultCard.hidden = false;
+    resultCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  // Dynamic result content (deterministic + explainable; no runtime AI).
+  try {
+    const model = window.PHILOSOPHY_PROFILE_MODEL_EN;
+    const engine = window.PhilosophyProfileEngine;
+    if (!model || !engine) return;
+
+    const includeDebug = /[?&]debugProfile=1\b/.test(location.search);
+    const res = engine.buildNarrative(model, state.profileAnswers, { includeDebug });
+
+    applyPhilosophyResultTone(resultCard, res.toneGroup);
+
+    const ui = getUiText(state.lang);
+    const kickerEl = document.getElementById('profile-result-kicker');
+    const typeCodeEl = document.getElementById('profile-type-code');
+    const dimsEl = document.getElementById('profile-dims');
+    const titleEl = document.getElementById('profile-result-title');
+    const subEl = document.getElementById('profile-result-sub');
+    const framingEl = document.getElementById('profile-framing');
+    const dimsSectionLabelEl = document.getElementById('profile-dims-section-label');
+    const imgEl = document.getElementById('profile-result-image');
+    const bsLabelEl = document.getElementById('profile-blind-spot-label');
+    const bsTextEl = document.getElementById('profile-blind-spot-text');
+    const thinkersLabelEl = document.getElementById('profile-thinkers-label');
+    const thinkerGridEl = document.getElementById('profile-thinker-grid');
+    const privateEl = document.getElementById('profile-private-note');
+    const shareBtn = document.getElementById('btn-profile-share');
+    const debugDetails = document.getElementById('profile-debug');
+    const debugPre = document.getElementById('profile-debug-pre');
+
+    if (kickerEl) kickerEl.textContent = res.kicker || (ui.profileResultKicker || 'Your Philosophy Mirror');
+    if (typeCodeEl) typeCodeEl.textContent = res.typeCode || '';
+    const toneGroupEl = document.getElementById('profile-tone-group');
+    if (toneGroupEl) {
+      const tk = res.toneGroup || 'green';
+      const toneUi = {
+        green: ui.profileToneGreen,
+        yellow: ui.profileToneYellow,
+        blue: ui.profileToneBlue,
+        red: ui.profileToneRed,
+      };
+      const lbl = toneUi[tk] || '';
+      toneGroupEl.textContent = lbl;
+      toneGroupEl.hidden = !lbl;
+    }
+    if (titleEl) titleEl.textContent = res.archetype && res.archetype.title ? `You are a ${res.archetype.title}` : (ui.profileResultTitleFallback || 'Your Philosophy Mirror');
+    if (subEl) subEl.textContent = (res.archetype && res.archetype.sub) || '';
+    if (privateEl) privateEl.textContent = (res.sections && res.sections.privateNote) || privateEl.textContent;
+    if (framingEl) {
+      framingEl.textContent =
+        res.framingLine ||
+        'This isn’t a diagnosis. It’s a mirror of your value trade-offs in these scenarios.';
+    }
+    if (dimsSectionLabelEl) {
+      dimsSectionLabelEl.textContent =
+        res.dimensionsSectionLabel || dimsSectionLabelEl.textContent || 'Your Dimensions';
+    }
+
+    if (dimsEl) {
+      dimsEl.replaceChildren();
+      const dims = Array.isArray(res.dimensions) ? res.dimensions : [];
+      function makeProfileDimPole(side, label, sym, hint) {
+        const pole = document.createElement('div');
+        pole.className = `profile-dim-pole profile-dim-pole--${side}`;
+        const top = document.createElement('div');
+        top.className = 'profile-dim-pole-top';
+        const icon = document.createElement('span');
+        icon.className = 'profile-dim-pole-icon';
+        icon.setAttribute('aria-hidden', 'true');
+        icon.textContent = sym || '';
+        const lab = document.createElement('span');
+        lab.className = 'profile-dim-pole-label';
+        lab.textContent = label;
+        top.appendChild(icon);
+        top.appendChild(lab);
+        pole.appendChild(top);
+        if (hint) {
+          const hi = document.createElement('p');
+          hi.className = 'profile-dim-pole-hint';
+          hi.textContent = hint;
+          pole.appendChild(hi);
+        }
+        return pole;
+      }
+      for (const d of dims) {
+        const row = document.createElement('div');
+        row.className = 'profile-dim';
+
+        const head = document.createElement('div');
+        head.className = 'profile-dim-head';
+
+        const name = document.createElement('div');
+        name.className = 'profile-dim-name';
+
+        const title = document.createElement('span');
+        title.className = 'profile-dim-title';
+        title.textContent = `${d.left} vs ${d.right}`;
+
+        const code = document.createElement('span');
+        code.className = 'profile-dim-code';
+        code.setAttribute('title', 'Letter for your four-letter type from this row');
+        code.textContent = d.code || '';
+
+        name.appendChild(title);
+        if (d.code) name.appendChild(code);
+
+        head.appendChild(name);
+
+        const p = Math.max(0, Math.min(100, Math.round(Number(d.pctLeft))));
+        const bar = document.createElement('div');
+        bar.className = 'profile-dim-bar';
+        bar.style.gridTemplateColumns = `${p}% ${100 - p}%`;
+        const segLeft = document.createElement('div');
+        segLeft.className = 'profile-dim-bar-seg profile-dim-bar-seg--left';
+        segLeft.setAttribute('aria-hidden', 'true');
+        const segRight = document.createElement('div');
+        segRight.className = 'profile-dim-bar-seg profile-dim-bar-seg--right';
+        segRight.setAttribute('aria-hidden', 'true');
+        bar.appendChild(segLeft);
+        bar.appendChild(segRight);
+
+        const poles = document.createElement('div');
+        poles.className = 'profile-dim-poles';
+        poles.appendChild(makeProfileDimPole('left', d.left, d.leftSymbol, d.leftHint));
+        poles.appendChild(makeProfileDimPole('right', d.right, d.rightSymbol, d.rightHint));
+
+        row.appendChild(head);
+        row.appendChild(bar);
+        row.appendChild(poles);
+        dimsEl.appendChild(row);
+      }
+    }
+
+    // Result hero: archetype soft-rounded art (fallback: legacy question illustration).
+    if (imgEl) {
+      const aid = res.archetype && res.archetype.id;
+      let src = getPhilosophyProfileSoftImageForArchetype(aid);
+      if (!src) {
+        const qid = res.archetype && res.archetype.heroImageQuestionId;
+        const q = PHILOSOPHY_PROFILE_QUESTIONS.find((x) => x.id === qid) || PHILOSOPHY_PROFILE_QUESTIONS[0];
+        src = (q && q.image) || '';
+      }
+      if (src) imgEl.src = src;
+      imgEl.alt = ui.profileImageAlt || 'Illustration for this philosophy profile question';
+    }
+
+    if (bsLabelEl) {
+      const lbl = (res.sections && res.sections.blindSpotLabel) || 'Blind Spot'
+      const textEl = bsLabelEl.querySelector && bsLabelEl.querySelector('.profile-blind-spot-label-text')
+      if (textEl) textEl.innerHTML = String(lbl).replace(/\s+/g, '<br>')
+    }
+    if (bsTextEl) bsTextEl.textContent = (res.sections && res.sections.blindSpot) || '';
+
+    if (thinkersLabelEl) thinkersLabelEl.textContent = (res.sections && res.sections.thinkersLabel) || thinkersLabelEl.textContent;
+    if (thinkerGridEl) {
+      thinkerGridEl.replaceChildren();
+      const thinkers = (res.sections && res.sections.thinkers) || [];
+
+      const portraitBase = location.pathname.includes('/web/') ? 'images/philosophers/' : 'web/images/philosophers/';
+
+      for (const t of thinkers) {
+        const card = document.createElement('div');
+        card.className = 'profile-thinker-card';
+
+        const avatar = document.createElement('div');
+        avatar.className = 'profile-thinker-avatar';
+
+        const nameStr = String((t && t.name) || '').trim()
+        const initialsText = (nameStr || '?')
+          .split(/\s+/)
+          .filter(Boolean)
+          .slice(0, 2)
+          .map(s => s[0].toUpperCase())
+          .join('')
+
+        function showInitials() {
+          avatar.style.backgroundImage = ''
+          avatar.replaceChildren()
+          const initials = document.createElement('span')
+          initials.className = 'profile-thinker-initials'
+          initials.textContent = initialsText
+          avatar.appendChild(initials)
+        }
+
+        // Auto portrait lookup: <kebab-name>.(jpg|png|webp). Falls back to initials.
+        const slug = nameStr
+          .toLowerCase()
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+
+        const candidates = slug
+          ? [`${portraitBase}${slug}.jpg`, `${portraitBase}${slug}.png`, `${portraitBase}${slug}.webp`]
+          : []
+
+        function tryLoad(idx) {
+          if (idx >= candidates.length) return showInitials()
+          const url = candidates[idx]
+          const img = new Image()
+          img.onload = () => {
+            avatar.style.backgroundImage = `url('${url}')`
+            avatar.setAttribute('aria-label', nameStr)
+          }
+          img.onerror = () => tryLoad(idx + 1)
+          img.src = url
+        }
+
+        if (candidates.length) tryLoad(0)
+        else showInitials()
+
+        card.appendChild(avatar);
+
+        const copy = document.createElement('div');
+        const name = document.createElement('strong');
+        name.textContent = t.name || 'Thinker';
+        const note = document.createElement('p');
+        note.textContent = t.note || '';
+        copy.appendChild(name);
+        copy.appendChild(note);
+        card.appendChild(copy);
+        thinkerGridEl.appendChild(card);
+      }
+    }
+
+    if (debugDetails) {
+      const show = includeDebug && res.debug
+      debugDetails.hidden = !show
+      if (show && debugPre) debugPre.textContent = JSON.stringify(res.debug, null, 2)
+    }
+
+    // Share with Friends (reuse share modal & export-card)
+    if (shareBtn && !shareBtn.dataset.bound) {
+      shareBtn.dataset.bound = '1';
+      shareBtn.addEventListener('click', () => {
+        try {
+          const m = window.PHILOSOPHY_PROFILE_MODEL_EN;
+          const eng = window.PhilosophyProfileEngine;
+          if (!m || !eng) return;
+          const fresh = eng.buildNarrative(m, state.profileAnswers, { includeDebug: false });
+
+          const overlay = document.getElementById('share-overlay');
+          const title = document.querySelector('#share-modal .modal-title');
+          if (title) title.textContent = 'Share your Philosophy Profile';
+
+          const line1 = fresh.typeCode ? `My Philosophy Profile: ${fresh.typeCode}` : 'My Philosophy Profile';
+          const line2 = fresh.archetype && fresh.archetype.title ? fresh.archetype.title : '';
+          const shareText = `${line1}\n${line2}`.trim();
+
+          document.getElementById('sc-text').textContent = shareText;
+          document.getElementById('ec-text').textContent = shareText;
+
+          const dims = Array.isArray(fresh.dimensions) ? fresh.dimensions : [];
+          const top2 = dims.slice().sort((a, b) => Math.abs((a.pctLeft || 50) - 50) - Math.abs((b.pctLeft || 50) - 50)).reverse().slice(0, 2);
+          const optA = top2[0] ? `${top2[0].left} vs ${top2[0].right}` : '';
+          const optB = top2[1] ? `${top2[1].left} vs ${top2[1].right}` : '';
+          document.getElementById('sc-opt-a').textContent = optA;
+          document.getElementById('sc-opt-b').textContent = optB;
+          document.getElementById('ec-opt-a').textContent = optA;
+          document.getElementById('ec-opt-b').textContent = optB;
+
+          const hint = document.getElementById('share-hint');
+          if (hint) hint.textContent = '';
+
+          if (overlay) {
+            overlay.hidden = false; overlay.style.display = 'flex';
+            document.addEventListener('keydown', function esc(e) {
+              if (e.key !== 'Escape') return;
+              overlay.hidden = true; overlay.style.display = 'none';
+              document.removeEventListener('keydown', esc);
+            });
+          }
+        } catch (e) {
+          console.error('profile share', e);
+        }
+      });
+    }
+  } catch (err) {
+    console.error('renderProfileResult dynamic', err);
+  }
 }
 
 /** Shows reflection / accordions / sticky bar after A or B (also used to restore UI from history). */
@@ -2862,12 +3687,16 @@ function finalizeChosenState(opt, d) {
     renderOthersSplit(opt);
     renderOthersSplitFromSupabase(d.id);
     renderGoFurther();
+    const dilemmaIdx = getAllDilemmas().findIndex((x) => x.id === d.id);
+    markConceptsLearnedForDilemmaAtIndex(dilemmaIdx);
 
     const sn = document.getElementById('sticky-next');
     if (sn) {
       sn.hidden = false;
       sn.style.display = 'flex';
     }
+
+    attachChosenStateBookmark(d);
   } catch (err) {
     console.error('finalizeChosenState', err);
   }
@@ -2939,6 +3768,7 @@ const PHILOSOPHER_PORTRAITS = {
   'Aristotle': 'images/philosophers/aristotle.jpg',
   'Carl Jung': 'images/philosophers/carl-jung.jpg',
   'Cornel West': 'images/philosophers/cornel-west.jpg',
+  'Confucius': 'images/philosophers/confucius.jpg',
   'Derek Parfit': 'images/philosophers/derek-parfit.jpg',
   'Emily Dickinson': 'images/philosophers/emily-dickinson.png',
   'Friedrich Nietzsche': 'images/philosophers/friedrich-nietzsche.jpg',
@@ -2949,16 +3779,89 @@ const PHILOSOPHER_PORTRAITS = {
   'Jean-Paul Sartre': 'images/philosophers/jean-paul-sartre.jpg',
   'Jim Morrison': 'images/philosophers/jim-morrison.jpg',
   'John Steinbeck': 'images/philosophers/john-steinbeck.jpg',
+  'Karl Marx': 'images/philosophers/karl-marx.jpg',
   'Mahatma Gandhi': 'images/philosophers/mahatma-gandhi.jpg',
   'Marcel Proust': 'images/philosophers/marcel-proust.jpg',
   'Oscar Wilde': 'images/philosophers/oscar-wilde.jpg',
   'Peter Salovey': 'images/philosophers/peter-salovey.jpg',
+  'Plato': 'images/philosophers/plato.jpg',
   'Ralph Waldo Emerson': 'images/philosophers/ralph-waldo-emerson.jpg',
   'René Descartes': 'images/philosophers/ren-descartes.jpg',
   'Socrates': 'images/philosophers/socrates.jpg',
   'Thomas Aquinas': 'images/philosophers/thomas-aquinas.jpg',
   'William Shakespeare': 'images/philosophers/william-shakespeare.jpg',
 };
+
+function createAuthorAvatarNode(author) {
+  const name = typeof author === 'string' ? author : '';
+  const url = name ? PHILOSOPHER_PORTRAITS[name] : null;
+  const initials = (name || '?')
+    .split(' ')
+    .filter(Boolean)
+    .map(w => w[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase();
+
+  const el = document.createElement('div');
+  el.className = 'bm-item-media bm-item-media--avatar';
+
+  if (!url) {
+    el.classList.add('bm-item-media--initials');
+    el.textContent = initials || '•';
+    return el;
+  }
+
+  const img = document.createElement('img');
+  img.className = 'bm-item-media-img';
+  img.alt = name;
+  img.loading = 'lazy';
+  img.decoding = 'async';
+  img.referrerPolicy = 'no-referrer';
+  img.onerror = function () {
+    el.replaceChildren();
+    el.classList.add('bm-item-media--initials');
+    el.textContent = initials || '•';
+  };
+  img.src = url;
+  el.appendChild(img);
+  return el;
+}
+
+function createSymbolSvg(kind) {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '18');
+  svg.setAttribute('height', '18');
+  svg.setAttribute('aria-hidden', 'true');
+  svg.setAttribute('focusable', 'false');
+  svg.classList.add('bm-item-media-icon');
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p.setAttribute('fill', 'none');
+  p.setAttribute('stroke', 'currentColor');
+  p.setAttribute('stroke-width', '1.8');
+  p.setAttribute('stroke-linecap', 'round');
+  p.setAttribute('stroke-linejoin', 'round');
+
+  if (kind === 'concept') {
+    p.setAttribute('d', 'M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12c.6.5 1 1.2 1 2v1h6v-1c0-.8.4-1.5 1-2a7 7 0 0 0-4-12z');
+  } else if (kind === 'book') {
+    p.setAttribute('d', 'M4 19.5A2.5 2.5 0 0 1 6.5 17H20M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z');
+  } else if (kind === 'video') {
+    p.setAttribute('d', 'M3 7h18v12H3zM10 10l6 3-6 3z');
+  } else {
+    p.setAttribute('d', 'M6 3.5h12A1.5 1.5 0 0 1 19.5 5v17l-7.5-4.25L4.5 22V5A1.5 1.5 0 0 1 6 3.5z');
+  }
+  svg.appendChild(p);
+  return svg;
+}
+
+function bookmarkSubtitle(row) {
+  const p = row && typeof row.payload === 'object' ? row.payload : {};
+  if (row.item_type === 'book') return p.author || '';
+  if (row.item_type === 'quote') return p.author ? `— ${getDisplayAuthorName(p.author)}` : '';
+  return '';
+}
 
 function renderPhilosopherQuote() {
   const q1 = getQuotes1()[state.todayIndex];
@@ -3039,6 +3942,40 @@ function renderPhilosopherQuote() {
   if (c2) c2.textContent = '\u2014 ' + getDisplayAuthorName(q2.author);
   applyPortrait('philosopher-avatar-1', q1.author);
   applyPortrait('philosopher-avatar-2', q2.author);
+
+  // Quote bookmarks (each row)
+  try {
+    const ui = getUiText(state.lang);
+    ensureBookmarksLoaded();
+    const d = getDilemma();
+    const body = document.querySelector('#acc-quote .pq-accordion-body');
+    if (!body) return;
+    const row1 = body.querySelector('.philosopher-row');
+    const row2 = body.querySelector('.philosopher-row.philosopher-row-2');
+
+    function attach(rowEl, quoteObj, n) {
+      if (!rowEl || !quoteObj) return;
+      rowEl.querySelector(`.bm-btn--quote-${n}`)?.remove();
+      const itemType = 'quote';
+      const itemKey = `quote:${d.id}:${n}`;
+      const payload = { dilemmaId: d.id, n, text: quoteObj.text, author: quoteObj.author };
+      const btn = makeBookmarkBtn({
+        itemType,
+        itemKey,
+        payload,
+        dilemmaId: d.id,
+        ariaLabel: ui.bookmarkAdd || 'Bookmark',
+        className: `bm-btn--inline bm-btn--quote bm-btn--quote-${n}`,
+      });
+      setBookmarkBtnActive(btn, isBookmarked(itemType, itemKey));
+      rowEl.appendChild(btn);
+    }
+
+    attach(row1, q1, 1);
+    attach(row2, q2, 2);
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 function renderOthersSplit(chosenOpt) {
@@ -3173,6 +4110,246 @@ document.getElementById('history-overlay').addEventListener('click', closeHistor
 document.getElementById('btn-clear-history').addEventListener('click', clearHistory);
 
 /* =============================================
+   BOOKMARKS PANEL
+   ============================================= */
+function openBookmarks() {
+  const overlay = document.getElementById('bookmarks-overlay');
+  if (!overlay) return;
+  overlay.hidden = false;
+  overlay.style.display = 'flex';
+  renderBookmarksList();
+}
+
+function closeBookmarks() {
+  const overlay = document.getElementById('bookmarks-overlay');
+  if (!overlay || overlay.hidden) return;
+  overlay.hidden = true;
+  overlay.style.display = 'none';
+}
+
+function bookmarkDisplayTitle(row) {
+  const p = row && typeof row.payload === 'object' ? row.payload : {};
+  if (row.item_type === 'dilemma') return p.text || '';
+  if (row.item_type === 'quote') return (p.text ? `“${p.text}”` : '');
+  if (row.item_type === 'concept') return p.label || p.termKey || '';
+  if (row.item_type === 'book') return p.title ? `${p.title}${p.author ? ` — ${p.author}` : ''}` : '';
+  if (row.item_type === 'video') return p.title || '';
+  return '';
+}
+
+async function renderBookmarksList() {
+  const emptyEl = document.getElementById('bookmarks-empty');
+  const grid = document.getElementById('bookmarks-grid');
+  const tabs = document.getElementById('bookmarks-tabs');
+  if (!grid) return;
+  const ui = getUiText(state.lang);
+
+  try {
+  if (tabs) tabs.replaceChildren();
+  grid.replaceChildren();
+
+  // Refresh from Supabase (best-effort)
+  await ensureBookmarksLoaded();
+  try {
+    const rows = await fetchBookmarksFromSupabase();
+    state.bookmarks.clear();
+    rows.forEach((r) => {
+      if (!r || typeof r !== 'object') return;
+      if (typeof r.item_type !== 'string' || typeof r.item_key !== 'string') return;
+      setBookmarkRow(r, r.item_type, r.item_key);
+    });
+    state.bookmarksLoaded = true;
+  } catch (err) {
+    console.error(err);
+  }
+
+  const rows = [...state.bookmarks.values()]
+    .filter(r => r && typeof r === 'object' && typeof r.item_type === 'string')
+    .sort((a, b) => String(b.updated_at || '').localeCompare(String(a.updated_at || '')));
+
+  if (!rows.length) {
+    if (emptyEl) {
+      emptyEl.hidden = false;
+      emptyEl.textContent = ui.bookmarksEmpty || 'No bookmarks yet.';
+    }
+    return;
+  }
+  if (emptyEl) emptyEl.hidden = true;
+
+  const order = ['dilemma', 'quote', 'concept', 'book', 'video'];
+  const labels = {
+    dilemma: ui.bookmarksGroupDilemmas || 'Question',
+    quote: ui.bookmarksGroupQuotes || 'Quote',
+    concept: ui.bookmarksGroupConcepts || 'Concept',
+    book: ui.bookmarksGroupBooks || 'Book',
+    video: ui.bookmarksGroupVideos || 'Video',
+  };
+
+  // Tabs on top (5 options)
+  // Important: do NOT auto-switch tabs based on availability.
+  // If a user picks "Books" and there are none, we should show the empty state for Books.
+  if (!order.includes(state.bookmarksView)) state.bookmarksView = 'dilemma';
+
+  if (tabs) {
+    order.forEach((t) => {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bm-tab';
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-selected', t === state.bookmarksView ? 'true' : 'false');
+      btn.textContent = labels[t] || t;
+      btn.addEventListener('click', () => {
+        state.bookmarksView = t;
+        renderBookmarksList();
+      });
+      if (t === state.bookmarksView) btn.classList.add('is-active');
+      tabs.appendChild(btn);
+    });
+  }
+
+  // Full-width list for selected type
+  grid.className = 'bookmarks-grid bookmarks-grid--single';
+  const t = state.bookmarksView;
+
+  const col = document.createElement('div');
+  col.className = 'bm-col bm-col--single';
+
+  const colList = document.createElement('div');
+  colList.className = 'bm-col-list bm-col-list--single';
+
+  const items = rows.filter(r => r.item_type === t);
+  if (!items.length) {
+    const em = document.createElement('p');
+    em.className = 'bm-col-empty';
+    em.textContent = ui.bookmarksEmpty || '—';
+    colList.appendChild(em);
+  } else {
+    items.forEach((row) => {
+      const item = document.createElement('div');
+      item.className = 'bm-item';
+
+      // Media (image / portrait / symbol)
+      const payload = row && typeof row.payload === 'object' ? row.payload : {};
+      let media = null;
+      if (row.item_type === 'dilemma' && typeof payload.image === 'string' && payload.image) {
+        const wrap = document.createElement('div');
+        wrap.className = 'bm-item-media bm-item-media--thumb';
+        const img = document.createElement('img');
+        img.className = 'bm-item-media-img';
+        img.alt = '';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.src = payload.image;
+        wrap.appendChild(img);
+        media = wrap;
+      } else if (row.item_type === 'quote') {
+        media = createAuthorAvatarNode(payload.author);
+      } else if (row.item_type === 'concept') {
+        const wrap = document.createElement('div');
+        wrap.className = 'bm-item-media bm-item-media--symbol';
+        wrap.appendChild(createSymbolSvg('concept'));
+        media = wrap;
+      } else if (row.item_type === 'book') {
+        const wrap = document.createElement('div');
+        wrap.className = 'bm-item-media bm-item-media--symbol';
+        wrap.appendChild(createSymbolSvg('book'));
+        media = wrap;
+      } else if (row.item_type === 'video') {
+        const wrap = document.createElement('div');
+        wrap.className = 'bm-item-media bm-item-media--symbol';
+        wrap.appendChild(createSymbolSvg('video'));
+        media = wrap;
+      }
+      if (media) item.appendChild(media);
+
+      // Text (title + optional subtitle)
+      const textWrap = document.createElement('div');
+      textWrap.className = 'bm-item-text';
+      const title = document.createElement('p');
+      title.className = 'bm-item-title';
+      title.textContent = bookmarkDisplayTitle(row) || '';
+      const sub = bookmarkSubtitle(row);
+      textWrap.appendChild(title);
+      if (sub) {
+        const meta = document.createElement('p');
+        meta.className = 'bm-item-sub';
+        meta.textContent = sub;
+        textWrap.appendChild(meta);
+      }
+      item.appendChild(textWrap);
+
+      const remove = document.createElement('button');
+      remove.type = 'button';
+      remove.className = 'bm-item-remove';
+      remove.textContent = ui.bookmarkRemove || 'Remove';
+      remove.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        remove.disabled = true;
+        try {
+          await deleteBookmarkFromSupabase(row);
+          setBookmarkRow(null, row.item_type, row.item_key);
+          await renderBookmarksList();
+        } catch (err) {
+          console.error(err);
+        } finally {
+          remove.disabled = false;
+        }
+      });
+
+      if (row.item_type === 'concept') {
+        const term =
+          (typeof payload.termKey === 'string' && payload.termKey.trim()
+            ? payload.termKey.trim()
+            : typeof row.item_key === 'string' && row.item_key.startsWith('concept:')
+              ? row.item_key.slice('concept:'.length)
+              : '');
+        if (term) {
+          item.classList.add('bm-item--clickable');
+          item.setAttribute('role', 'button');
+          item.setAttribute('tabindex', '0');
+          const ariaOpen = ui.bookmarkOpenConceptAria || 'Open concept notes';
+          const titleText = bookmarkDisplayTitle(row) || term;
+          item.setAttribute('aria-label', `${ariaOpen}: ${titleText}`);
+          const openFromBookmark = () => {
+            closeBookmarks();
+            openConcept(term);
+          };
+          item.addEventListener('click', (e) => {
+            if (e.target.closest('.bm-item-remove')) return;
+            openFromBookmark();
+          });
+          item.addEventListener('keydown', (e) => {
+            if (e.target !== item) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openFromBookmark();
+            }
+          });
+        }
+      }
+
+      item.appendChild(remove);
+      colList.appendChild(item);
+    });
+  }
+
+  col.appendChild(colList);
+  grid.appendChild(col);
+  } finally {
+    refreshDilemmaBookmarkButtons();
+  }
+}
+
+document.getElementById('btn-bookmarks-toggle')?.addEventListener('click', () => {
+  closeOverflowMenu();
+  openBookmarks();
+});
+document.getElementById('btn-close-bookmarks')?.addEventListener('click', closeBookmarks);
+document.getElementById('bookmarks-overlay')?.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('bookmarks-overlay')) closeBookmarks();
+});
+
+/* =============================================
    LEGAL
    ============================================= */
 async function loadLegalContent(type) {
@@ -3292,7 +4469,7 @@ document.getElementById('btn-download-card').addEventListener('click', async () 
   try {
     const canvas = await html2canvas(document.getElementById('export-card'), { scale: 2, useCORS: true, backgroundColor: null, logging: false });
     const link = document.createElement('a');
-    link.download = 'daily-decision.png';
+    link.download = (state.profileActive ? 'philosophy-profile.png' : 'daily-decision.png');
     link.href = canvas.toDataURL('image/png');
     link.click();
     showHint(ui.imageSaved);
@@ -3325,6 +4502,7 @@ function renderGoFurther() {
   const ui = getUiText(state.lang);
   const gf = getGoFurther()[state.todayIndex];
   if (!gf) return;
+  const gfRaw = GO_FURTHER[state.todayIndex];
 
   // Clear previous content
   const root = document.getElementById('go-further-body');
@@ -3348,13 +4526,13 @@ function renderGoFurther() {
   const concepts = mkBlock(ui.keyConcepts);
   const tagsWrap = document.createElement('div');
   tagsWrap.className = 'gf-tags';
-  gf.terms.forEach(term => {
-    const q = encodeURIComponent(`${term} ${state.lang === 'zh-Hant' ? '哲學' : 'philosophy'}`);
+  const terms = (gfRaw && Array.isArray(gfRaw.terms)) ? gfRaw.terms : gf.terms;
+  terms.forEach((termKey) => {
     const frag = cloneTpl('tpl-go-further-tag');
-    const a = frag.querySelector('a');
-    if (a) {
-      a.href = `https://www.google.com/search?q=${q}`;
-      a.textContent = term;
+    const btn = frag.querySelector('button');
+    if (btn) {
+      btn.textContent = translateTerm(termKey);
+      btn.addEventListener('click', () => openConcept(termKey));
     }
     tagsWrap.appendChild(frag);
   });
@@ -3408,7 +4586,28 @@ function renderGoFurther() {
     meta.className = 'gf-meta';
     meta.textContent = b.author;
     wrapper.appendChild(strong); wrapper.appendChild(br); wrapper.appendChild(meta);
-    booksList.appendChild(mkListItem('book', href, wrapper));
+    const row = document.createElement('div');
+    row.className = 'gf-row';
+    row.appendChild(mkListItem('book', href, wrapper));
+    try {
+      ensureBookmarksLoaded();
+      const itemType = 'book';
+      const itemKey = `book:${b.title}|${b.author}`;
+      const payload = { title: b.title, author: b.author, href };
+      const bm = makeBookmarkBtn({
+        itemType,
+        itemKey,
+        payload,
+        dilemmaId: getDilemma().id,
+        ariaLabel: ui.bookmarkAdd || 'Bookmark',
+        className: 'bm-btn--row',
+      });
+      setBookmarkBtnActive(bm, isBookmarked(itemType, itemKey));
+      row.appendChild(bm);
+    } catch (err) {
+      console.error(err);
+    }
+    booksList.appendChild(row);
   });
   books.appendChild(booksList);
   section.appendChild(books);
@@ -3423,13 +4622,1564 @@ function renderGoFurther() {
     span.textContent = v.title;
     const query = encodeURIComponent(`${v.title} ${videoSearchSuffix}`);
     const href = `https://www.youtube.com/results?search_query=${query}`;
-    vidsList.appendChild(mkListItem('video', href, span));
+    const row = document.createElement('div');
+    row.className = 'gf-row';
+    row.appendChild(mkListItem('video', href, span));
+    try {
+      ensureBookmarksLoaded();
+      const itemType = 'video';
+      const itemKey = `video:${v.title}`;
+      const rawUrl = (gfRaw && Array.isArray(gfRaw.videos))
+        ? (gfRaw.videos.find(x => x && x.title === v.title)?.url || '')
+        : '';
+      const payload = { title: v.title, href, url: rawUrl || '' };
+      const bm = makeBookmarkBtn({
+        itemType,
+        itemKey,
+        payload,
+        dilemmaId: getDilemma().id,
+        ariaLabel: ui.bookmarkAdd || 'Bookmark',
+        className: 'bm-btn--row',
+      });
+      setBookmarkBtnActive(bm, isBookmarked(itemType, itemKey));
+      row.appendChild(bm);
+    } catch (err) {
+      console.error(err);
+    }
+    vidsList.appendChild(row);
   });
   watch.appendChild(vidsList);
   section.appendChild(watch);
 
   root.appendChild(section);
 }
+
+function getConceptNote(term) {
+  if (state.lang === 'zh-Hant') {
+    const zh = window.CONCEPT_NOTES_ZH_HANT || {};
+    return zh[term] || '';
+  }
+  const en = window.CONCEPT_NOTES_EN || {};
+  return en[term] || '';
+}
+
+function getConceptLearnMoreUrl(term) {
+  const suffix = state.lang === 'zh-Hant' ? '哲學' : 'philosophy';
+  const display = state.lang === 'zh-Hant' ? translateTerm(term) : term;
+  const q = encodeURIComponent(`${display} ${suffix}`);
+  return `https://www.google.com/search?q=${q}`;
+}
+
+function openConcept(term) {
+  const note = getConceptNote(term);
+  const overlay = document.getElementById('concept-overlay');
+  const title = document.getElementById('concept-title');
+  const noteEl = document.getElementById('concept-note');
+  const learnMore = document.getElementById('concept-learn-more');
+  if (!overlay || !title || !noteEl || !learnMore) return;
+
+  title.textContent = state.lang === 'zh-Hant' ? translateTerm(term) : term;
+  noteEl.textContent = note || (state.lang === 'zh-Hant' ? '暫時未有此概念簡介。' : 'No concept note yet.');
+  learnMore.href = getConceptLearnMoreUrl(term);
+  learnMore.textContent = state.lang === 'zh-Hant' ? '了解更多' : 'Learn More';
+  markConceptExplored(term);
+
+  // Concept bookmark button (left of Learn More)
+  try {
+    ensureBookmarksLoaded();
+    const ui = getUiText(state.lang);
+    const actions = learnMore.parentElement;
+    if (actions) {
+      actions.querySelector('.bm-btn--concept-modal')?.remove();
+      const itemType = 'concept';
+      const itemKey = `concept:${term}`;
+      const payload = { termKey: term, label: translateTerm(term), lang: state.lang };
+      const bm = makeBookmarkBtn({
+        itemType,
+        itemKey,
+        payload,
+        dilemmaId: getDilemma().id,
+        ariaLabel: ui.bookmarkAdd || 'Bookmark',
+        className: 'bm-btn--concept-modal',
+      });
+      setBookmarkBtnActive(bm, isBookmarked(itemType, itemKey));
+      actions.insertBefore(bm, learnMore);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+
+  overlay.hidden = false;
+  overlay.style.display = 'flex';
+}
+
+function closeConcept() {
+  const overlay = document.getElementById('concept-overlay');
+  if (!overlay) return;
+  overlay.hidden = true;
+  overlay.style.display = 'none';
+}
+
+document.getElementById('btn-close-concept')?.addEventListener('click', closeConcept);
+document.getElementById('concept-overlay')?.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('concept-overlay')) closeConcept();
+});
+
+/* =============================================
+   KNOWLEDGE MIND MAP
+   ============================================= */
+function getAllConceptKeys() {
+  const set = new Set();
+  GO_FURTHER.forEach((entry) => {
+    (entry.terms || []).forEach((t) => set.add(t));
+  });
+  return [...set].sort((a, b) => a.localeCompare(b));
+}
+
+function buildConceptLinks() {
+  const links = new Map();
+  const all = getAllConceptKeys();
+  all.forEach((t) => links.set(t, []));
+
+  GO_FURTHER.forEach((entry) => {
+    const terms = Array.isArray(entry.terms) ? entry.terms : [];
+    terms.forEach((a) => {
+      const arr = links.get(a) || [];
+      terms.forEach((b) => { if (a !== b) arr.push(b); });
+      links.set(a, [...new Set(arr)]);
+    });
+  });
+
+  return links;
+}
+
+function getExploredConcepts() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.exploredConcepts);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return new Set(Array.isArray(parsed) ? parsed.filter((x) => typeof x === 'string') : []);
+  } catch {
+    return new Set();
+  }
+}
+
+function saveExploredConcepts(set) {
+  try {
+    localStorage.setItem(STORAGE_KEYS.exploredConcepts, JSON.stringify([...set].sort()));
+  } catch {
+    // Ignore storage failures.
+  }
+}
+
+function markConceptExplored(term) {
+  if (!term) return;
+  const explored = getExploredConcepts();
+  if (explored.has(term)) return;
+  explored.add(term);
+  saveExploredConcepts(explored);
+  renderKnowledgeHud();
+  if (supabaseEnabled()) {
+    upsertLearnedConceptKeysToSupabase([term]).catch((err) => console.error(err));
+  }
+}
+
+/** Mark the four Go Further concept keys for this dilemma as explored (canonical English keys in GO_FURTHER). */
+function markConceptsLearnedForDilemmaAtIndex(index) {
+  if (!Number.isFinite(index) || index < 0) return;
+  const entry = GO_FURTHER[index];
+  const terms = entry && Array.isArray(entry.terms) ? entry.terms : [];
+  terms.forEach((term) => markConceptExplored(term));
+}
+
+/** Backfill explored concepts from all answered dilemmas in history (unique by dilemma id). */
+function syncExploredConceptsFromHistory() {
+  const dilemmas = getAllDilemmas();
+  const seenIds = new Set();
+  const explored = getExploredConcepts();
+  let changed = false;
+  const newTerms = [];
+  for (const row of state.history) {
+    if (!row || typeof row.id !== 'number') continue;
+    if (seenIds.has(row.id)) continue;
+    seenIds.add(row.id);
+    const idx = dilemmas.findIndex((x) => x.id === row.id);
+    if (idx < 0) continue;
+    const entry = GO_FURTHER[idx];
+    const terms = entry && Array.isArray(entry.terms) ? entry.terms : [];
+    for (const term of terms) {
+      if (term && !explored.has(term)) {
+        explored.add(term);
+        changed = true;
+        newTerms.push(term);
+      }
+    }
+  }
+  if (changed) {
+    saveExploredConcepts(explored);
+    renderKnowledgeHud();
+  }
+  if (newTerms.length && supabaseEnabled()) {
+    upsertLearnedConceptKeysToSupabase(newTerms).catch((err) => console.error(err));
+  }
+}
+
+function getProgressionStats() {
+  const explored = getExploredConcepts();
+  const answeredCount = Array.isArray(state.history) ? new Set(state.history.map((h) => h.id)).size : 0;
+  const currentWeek = Math.floor(state.todayIndex / 5) + 1;
+  const unlockedWeek = Math.min(10, Math.max(1, currentWeek));
+  const xp = answeredCount * 20 + explored.size * 5 + unlockedWeek * 15;
+  const level = Math.max(1, Math.floor(xp / 100) + 1);
+  const xpIntoLevel = xp % 100;
+  const rankTitles = ['Novice Cartographer', 'Ink Trail Seeker', 'Dilemma Ranger', 'Atlas Philosopher', 'Master Wayfinder'];
+  const rankTitle = rankTitles[Math.min(rankTitles.length - 1, Math.floor((level - 1) / 3))];
+  return { explored, answeredCount, currentWeek, unlockedWeek, xp, level, xpIntoLevel, rankTitle };
+}
+
+function renderKnowledgeHud() {
+  const stats = getProgressionStats();
+  const levelEl = document.getElementById('knowledge-level');
+  const rankEl = document.getElementById('knowledge-rank-title');
+  const xpText = document.getElementById('knowledge-xp-text');
+  const xpFill = document.getElementById('knowledge-xp-fill');
+  if (levelEl) levelEl.textContent = String(stats.level);
+  if (rankEl) rankEl.textContent = stats.rankTitle;
+  if (xpText) xpText.textContent = `${stats.xpIntoLevel} / 100 XP`;
+  if (xpFill) xpFill.style.width = `${stats.xpIntoLevel}%`;
+}
+
+function renderKnowledgeMap(seed = 1) {
+  const viewport = document.getElementById('knowledge-viewport');
+  if (!viewport) return;
+  viewport.replaceChildren();
+
+  const kmIsZh = state.lang === 'zh-Hant';
+
+  const all = getAllConceptKeys();
+  const links = buildConceptLinks();
+  // (Removed UI: knowledge-count)
+  const progress = getProgressionStats();
+  renderKnowledgeHud();
+
+  // Deterministic shuffle for layout variation.
+  let s = seed % 2147483647;
+  function rnd() { s = (s * 48271) % 2147483647; return s / 2147483647; }
+
+  // Virtual map size (bigger than the visible SVG viewBox).
+  // This makes the map feel like a world you can explore by panning.
+  const VW = 4200;
+  const VH = 2600;
+  const cx = VW / 2;
+  const cy = VH / 2;
+  const radius = 520;
+  /** Vertical offset so week chapter plaques sit above concept clusters (must match plaque draw + repel). */
+  const WEEK_PLAQUE_TOP_OFFSET = 448;
+  const WEEK_PLAQUE_W = 212;
+  const WEEK_PLAQUE_H = 42;
+
+  // Build node positions by question + week theme.
+  // - Each question: 4 concepts grouped together (circle around them)
+  // - Each week: 5 questions grouped (link question circles)
+  const pos = new Map(); // conceptKey -> {x,y}
+  const qCenters = [];   // [{qid, week, x, y, r, terms}]
+  const termWeek = new Map(); // concept -> week index
+  const weekCenters = []; // [{week, x, y}]
+
+  const themes = getThemes(); // length 50 (week theme for each question)
+  const weeks = 10;
+
+  // Week centers laid out in a 5x2 grid across the big map world.
+  const gridCols = 5;
+  const cellW = 760;
+  const cellH = 980;
+  const startX = 520;
+  const startY = 520;
+
+  for (let w = 1; w <= weeks; w++) {
+    const idx = w - 1;
+    const col = idx % gridCols;
+    const row = Math.floor(idx / gridCols);
+    const x = startX + col * cellW + (rnd() - 0.5) * 120;
+    const y = startY + row * cellH + (rnd() - 0.5) * 120;
+    weekCenters.push({ week: w, x, y });
+  }
+
+  // Place each question cluster around its week center.
+  for (let q = 1; q <= 50; q++) {
+    const week = Math.floor((q - 1) / 5) + 1;
+    const within = (q - 1) % 5; // 0..4
+    const wc = weekCenters[week - 1];
+    const angle = (within / 5) * Math.PI * 2 + rnd() * 0.25;
+    const ringR = 260 + rnd() * 60;
+    const qx = wc.x + Math.cos(angle) * ringR;
+    const qy = wc.y + Math.sin(angle) * ringR;
+    const entry = GO_FURTHER[q - 1];
+    const terms = (entry && Array.isArray(entry.terms)) ? entry.terms : [];
+    // Big enough so all 4 concept cards sit fully inside.
+    qCenters.push({ qid: q, week, x: qx, y: qy, r: 210, terms });
+
+    // Place the 4 concepts in a compact cluster inside the question circle.
+    const offsets = [
+      { dx: -92, dy: -52 },
+      { dx:  92, dy: -52 },
+      { dx: -92, dy:  58 },
+      { dx:  92, dy:  58 },
+    ];
+    terms.forEach((t, i) => {
+      const o = offsets[i] || { dx: (rnd() - 0.5) * 160, dy: (rnd() - 0.5) * 110 };
+      termWeek.set(t, week);
+      pos.set(t, { x: qx + o.dx + (rnd() - 0.5) * 10, y: qy + o.dy + (rnd() - 0.5) * 10 });
+    });
+  }
+
+  // Focus week = current dilemma week; focus neighbors are the 4 concepts in that question.
+  const focusQid = state.todayIndex + 1;
+  const focusQ = qCenters.find((qq) => qq.qid === focusQid) || qCenters[Math.floor(rnd() * qCenters.length)];
+  const focus = (focusQ && focusQ.terms && focusQ.terms[0]) ? focusQ.terms[0] : (all[0] || '');
+  const focusNeighbors = new Set((focusQ && focusQ.terms) ? focusQ.terms : []);
+  function dist2(a, b) {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return dx * dx + dy * dy;
+  }
+  function tryPlace(term, x, y, minD) {
+    const p = { x, y };
+    for (const v of pos.values()) {
+      if (dist2(p, v) < minD * minD) return false;
+    }
+    pos.set(term, p);
+    return true;
+  }
+  function placeCluster(list, centerX, centerY, minD, tries = 1200, spread = 320) {
+    list.forEach((term, i) => {
+      if (i === 0) {
+        pos.set(term, { x: centerX, y: centerY });
+        return;
+      }
+      for (let t = 0; t < tries; t++) {
+        const a = rnd() * Math.PI * 2;
+        const r = (0.35 + rnd()) * spread;
+        const x = centerX + Math.cos(a) * r;
+        const y = centerY + Math.sin(a) * r;
+        if (tryPlace(term, x, y, minD)) return;
+      }
+      // fallback
+      pos.set(term, { x: centerX + (rnd() - 0.5) * spread, y: centerY + (rnd() - 0.5) * spread });
+    });
+  }
+  function placeSpread(list, minD, tries = 4000) {
+    list.forEach((term) => {
+      for (let t = 0; t < tries; t++) {
+        const x = 220 + rnd() * (VW - 440);
+        const y = 220 + rnd() * (VH - 440);
+        if (tryPlace(term, x, y, minD)) return;
+      }
+      // fallback
+      pos.set(term, { x: 220 + rnd() * (VW - 440), y: 220 + rnd() * (VH - 440) });
+    });
+  }
+
+  const gLinks = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const gLinkAccents = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const gGroups = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  const gNodes = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  viewport.appendChild(gLinks);
+  viewport.appendChild(gLinkAccents);
+  viewport.appendChild(gGroups);
+  viewport.appendChild(gNodes);
+
+  // Helpers for a more "map-like" look
+  function rgba(r, g, b, a) { return `rgba(${r},${g},${b},${a})`; }
+  function hashStr(str) {
+    let h = 2166136261;
+    for (let i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = Math.imul(h, 16777619);
+    }
+    return (h >>> 0);
+  }
+  function iconTypeFor(termKey) {
+    const types = ['leaf', 'scale', 'book', 'eye', 'spark', 'compass', 'heart', 'shield', 'hammer', 'wave', 'flame', 'key'];
+    return types[hashStr(termKey) % types.length];
+  }
+  function iconPath(type, cx, cy) {
+    // Return an SVG path "d" for a small icon centered roughly at cx/cy.
+    switch (type) {
+      case 'scale': // justice
+        return `M ${cx} ${cy-7} V ${cy+7} M ${cx-10} ${cy-4} H ${cx+10} M ${cx-7} ${cy-4} L ${cx-12} ${cy+4} H ${cx-2} Z M ${cx+7} ${cy-4} L ${cx+2} ${cy+4} H ${cx+12} Z`;
+      case 'book':
+        return `M ${cx-9} ${cy-7} H ${cx+6} Q ${cx+9} ${cy-7} ${cx+9} ${cy-4} V ${cy+7} H ${cx-6} Q ${cx-9} ${cy+7} ${cx-9} ${cy+4} Z M ${cx-6} ${cy-5} H ${cx+6} M ${cx-6} ${cy-1} H ${cx+6} M ${cx-6} ${cy+3} H ${cx+6}`;
+      case 'eye':
+        return `M ${cx-12} ${cy} Q ${cx} ${cy-10} ${cx+12} ${cy} Q ${cx} ${cy+10} ${cx-12} ${cy} Z M ${cx} ${cy} m -3 0 a 3 3 0 1 0 6 0 a 3 3 0 1 0 -6 0`;
+      case 'spark':
+        return `M ${cx} ${cy-10} L ${cx+2} ${cy-2} L ${cx+10} ${cy} L ${cx+2} ${cy+2} L ${cx} ${cy+10} L ${cx-2} ${cy+2} L ${cx-10} ${cy} L ${cx-2} ${cy-2} Z`;
+      case 'compass':
+        return `M ${cx} ${cy-9} L ${cx+5} ${cy+7} L ${cx} ${cy+4} L ${cx-5} ${cy+7} Z M ${cx} ${cy-3} m -2 0 a 2 2 0 1 0 4 0 a 2 2 0 1 0 -4 0`;
+      case 'heart':
+        return `M ${cx} ${cy+7} C ${cx-10} ${cy-1} ${cx-6} ${cy-10} ${cx} ${cy-4} C ${cx+6} ${cy-10} ${cx+10} ${cy-1} ${cx} ${cy+7} Z`;
+      case 'shield':
+        return `M ${cx} ${cy-9} L ${cx+9} ${cy-5} V ${cy+2} Q ${cx+9} ${cy+8} ${cx} ${cy+10} Q ${cx-9} ${cy+8} ${cx-9} ${cy+2} V ${cy-5} Z`;
+      case 'hammer':
+        return `M ${cx-10} ${cy-6} H ${cx-2} V ${cy-2} H ${cx-6} L ${cx+8} ${cy+12} L ${cx+6} ${cy+14} L ${cx-8} ${cy} H ${cx-10} Z`;
+      case 'wave':
+        return `M ${cx-12} ${cy+2} C ${cx-8} ${cy-2} ${cx-4} ${cy+6} ${cx} ${cy+2} C ${cx+4} ${cy-2} ${cx+8} ${cy+6} ${cx+12} ${cy+2}`;
+      case 'flame':
+        return `M ${cx} ${cy-10} C ${cx+6} ${cy-4} ${cx+4} ${cy} ${cx+1} ${cy+4} C ${cx-1} ${cy+7} ${cx-6} ${cy+6} ${cx-6} ${cy} C ${cx-6} ${cy-6} ${cx-2} ${cy-6} ${cx} ${cy-10} Z`;
+      case 'key':
+        return `M ${cx-4} ${cy+1} a 5 5 0 1 1 4 4 h 8 v 3 h -3 v 3 h -3 v -3 h -2 a 5 5 0 0 1 -4 -4 z`;
+      case 'leaf':
+      default:
+        return `M ${cx-4} ${cy+3} C ${cx-1} ${cy-7}, ${cx+7} ${cy-7}, ${cx+4} ${cy+3} C ${cx+1} ${cy+6}, ${cx-1} ${cy+6}, ${cx-4} ${cy+3} Z`;
+    }
+  }
+  function mkPath(x1, y1, x2, y2, bend = 0.22) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const mx = (x1 + x2) / 2;
+    const my = (y1 + y2) / 2;
+    // Perpendicular control point for gentle curve
+    const nx = -dy;
+    const ny = dx;
+    const len = Math.hypot(nx, ny) || 1;
+    const ux = nx / len;
+    const uy = ny / len;
+    const cpx = mx + ux * Math.hypot(dx, dy) * bend;
+    const cpy = my + uy * Math.hypot(dx, dy) * bend;
+    return `M ${x1} ${y1} Q ${cpx} ${cpy} ${x2} ${y2}`;
+  }
+
+  // Draw question circles and week linking (circle-to-circle).
+  const themesByWeek = new Map();
+  for (let q = 1; q <= 50; q++) {
+    const w = Math.floor((q - 1) / 5) + 1;
+    themesByWeek.set(w, themes[q - 1]);
+  }
+
+  // (Circles removed per request.)
+
+  // Chapter plaques + fog-of-war banners for week progression.
+  weekCenters.forEach((wc) => {
+    const th = themesByWeek.get(wc.week);
+    if (wc.week <= progress.unlockedWeek) {
+      const plaque = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+      plaque.setAttribute('opacity', wc.week === progress.currentWeek ? '0.95' : '0.68');
+      const pr = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      pr.setAttribute('x', String(wc.x - WEEK_PLAQUE_W / 2));
+      pr.setAttribute('y', String(wc.y - WEEK_PLAQUE_TOP_OFFSET));
+      pr.setAttribute('width', String(WEEK_PLAQUE_W));
+      pr.setAttribute('height', String(WEEK_PLAQUE_H));
+      pr.setAttribute('rx', '16');
+      pr.setAttribute('fill', rgba(248, 241, 222, 0.72));
+      pr.setAttribute('stroke', th?.color || rgba(120, 100, 80, 0.24));
+      pr.setAttribute('stroke-width', wc.week === progress.currentWeek ? '2.2' : '1.4');
+      const pt = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+      pt.setAttribute('x', String(wc.x));
+      pt.setAttribute('y', String(wc.y - WEEK_PLAQUE_TOP_OFFSET + WEEK_PLAQUE_H / 2));
+      pt.setAttribute('text-anchor', 'middle');
+      pt.setAttribute('dominant-baseline', 'middle');
+      pt.setAttribute('font-family', 'DM Serif Display, Georgia, serif');
+      pt.setAttribute('font-size', '17');
+      pt.setAttribute('fill', rgba(40, 32, 24, 0.70));
+      const weekLabel = state.lang === 'zh-Hant' ? `第 ${wc.week} 週` : `Week ${wc.week}`;
+      pt.textContent = th?.name ? `${weekLabel} · ${th.name}` : weekLabel;
+      plaque.appendChild(pr);
+      plaque.appendChild(pt);
+      gGroups.appendChild(plaque);
+      return;
+    }
+    const banner = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    banner.setAttribute('opacity', '0.78');
+    const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    r.setAttribute('x', String(wc.x - 92));
+    r.setAttribute('y', String(wc.y - 28));
+    r.setAttribute('width', '184');
+    r.setAttribute('height', '56');
+    r.setAttribute('rx', '18');
+    r.setAttribute('fill', rgba(248, 241, 222, 0.78));
+    r.setAttribute('stroke', th?.color || rgba(120, 100, 80, 0.22));
+    r.setAttribute('stroke-width', '1.6');
+    r.setAttribute('stroke-dasharray', '3 6');
+    const lock = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    lock.setAttribute('d', `M ${wc.x - 58} ${wc.y - 2} h 18 v 15 h -18 Z M ${wc.x - 54} ${wc.y - 2} v -8 q 5 -8 10 0 v 8`);
+    lock.setAttribute('fill', 'none');
+    lock.setAttribute('stroke', rgba(120, 100, 80, 0.46));
+    lock.setAttribute('stroke-width', '1.8');
+    lock.setAttribute('stroke-linejoin', 'round');
+    lock.setAttribute('stroke-linecap', 'round');
+    const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    label.setAttribute('x', String(wc.x - 28));
+    label.setAttribute('y', String(wc.y + 2));
+    label.setAttribute('dominant-baseline', 'middle');
+    label.setAttribute('font-family', 'DM Serif Display, Georgia, serif');
+    label.setAttribute('font-size', '17');
+    label.setAttribute('fill', rgba(40, 32, 24, 0.62));
+    label.textContent = state.lang === 'zh-Hant' ? `第 ${wc.week} 週未解鎖` : `Week ${wc.week} Locked`;
+    banner.appendChild(r);
+    banner.appendChild(lock);
+    banner.appendChild(label);
+    gGroups.appendChild(banner);
+  });
+
+  // Link each question-circle to the other 4 in the same week (subtle dotted curves).
+  for (let w = 1; w <= 10; w++) {
+    const qs = qCenters.filter(q => q.week === w);
+    for (let i = 0; i < qs.length; i++) {
+      for (let j = i + 1; j < qs.length; j++) {
+        const a = qs[i], b = qs[j];
+        const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', mkPath(a.x, a.y, b.x, b.y, 0.08));
+        p.setAttribute('fill', 'none');
+        p.setAttribute('stroke', themesByWeek.get(w)?.color || rgba(120, 100, 80, 0.18));
+        p.setAttribute('stroke-width', '1.4');
+        p.setAttribute('stroke-linecap', 'round');
+        p.setAttribute('stroke-dasharray', '3 8');
+        gGroups.appendChild(p);
+      }
+    }
+  }
+
+  // Ensure no overlap: simple rectangle collision repel.
+  const repelW = kmIsZh ? 226 : 148;
+  const repelH = kmIsZh ? 86 : 56;
+  const repelPad = 10;
+  const keys = all.slice();
+  for (let iter = 0; iter < 90; iter++) {
+    let moved = 0;
+    for (let i = 0; i < keys.length; i++) {
+      const a = keys[i];
+      const pa = pos.get(a);
+      if (!pa) continue;
+      for (let j = i + 1; j < keys.length; j++) {
+        const b = keys[j];
+        const pb = pos.get(b);
+        if (!pb) continue;
+        const dx = pb.x - pa.x;
+        const dy = pb.y - pa.y;
+        const ox = (repelW + repelPad) - Math.abs(dx);
+        const oy = (repelH + repelPad) - Math.abs(dy);
+        if (ox > 0 && oy > 0) {
+          const sx = dx === 0 ? (rnd() - 0.5) : Math.sign(dx);
+          const sy = dy === 0 ? (rnd() - 0.5) : Math.sign(dy);
+          const pushX = (ox / 2) * 0.35 * sx;
+          const pushY = (oy / 2) * 0.35 * sy;
+          pa.x -= pushX; pb.x += pushX;
+          pa.y -= pushY; pb.y += pushY;
+          moved++;
+        }
+      }
+      // Keep concept cards out of week chapter plaque bands (labels sit above week hubs).
+      const halfCardW = repelW / 2;
+      const halfCardH = repelH / 2;
+      const plaquePad = 18;
+      for (const wch of weekCenters) {
+        if (wch.week > progress.unlockedWeek) continue;
+        const prc = {
+          left: wch.x - WEEK_PLAQUE_W / 2 - plaquePad,
+          top: wch.y - WEEK_PLAQUE_TOP_OFFSET - plaquePad,
+          right: wch.x + WEEK_PLAQUE_W / 2 + plaquePad,
+          bottom: wch.y - WEEK_PLAQUE_TOP_OFFSET + WEEK_PLAQUE_H + plaquePad,
+        };
+        const caLeft = pa.x - halfCardW;
+        const caTop = pa.y - halfCardH;
+        const caRight = pa.x + halfCardW;
+        const caBottom = pa.y + halfCardH;
+        if (caLeft < prc.right && caRight > prc.left && caTop < prc.bottom && caBottom > prc.top) {
+          const overlapX = Math.min(caRight, prc.right) - Math.max(caLeft, prc.left);
+          const overlapY = Math.min(caBottom, prc.bottom) - Math.max(caTop, prc.top);
+          if (overlapX > 0 && overlapY > 0) {
+            const pcx = (prc.left + prc.right) / 2;
+            if (overlapY <= overlapX + 4) {
+              pa.y = prc.bottom + halfCardH + 10;
+            } else {
+              pa.x += pa.x < pcx ? -(overlapX * 0.55 + 10) : (overlapX * 0.55 + 10);
+            }
+            moved++;
+          }
+        }
+      }
+      // Keep within frame (extra margin to avoid ornaments/frame).
+      pa.x = clamp(pa.x, 170, VW - 170);
+      pa.y = clamp(pa.y, 170, VH - 170);
+    }
+    if (moved === 0) break;
+  }
+
+  // Decorative placements must avoid concept cards and week chapter plaques (same layer family).
+  const DECO_PAD = 24;
+  const decoAvoidRects = (() => {
+    const rects = [];
+    for (const termKey of all) {
+      const p = pos.get(termKey);
+      if (!p) continue;
+      const isFocus = focusNeighbors.has(termKey);
+      const cw = (isFocus ? (kmIsZh ? 210 : 168) : (kmIsZh ? 198 : 156)) + DECO_PAD * 2;
+      const ch = (isFocus ? (kmIsZh ? 78 : 56) : (kmIsZh ? 74 : 52)) + DECO_PAD * 2;
+      rects.push({
+        left: p.x - cw / 2,
+        top: p.y - ch / 2,
+        right: p.x + cw / 2,
+        bottom: p.y + ch / 2,
+      });
+    }
+    const decoPlaquePad = 32;
+    weekCenters.forEach((wch) => {
+      if (wch.week <= progress.unlockedWeek) {
+        rects.push({
+          left: wch.x - WEEK_PLAQUE_W / 2 - decoPlaquePad,
+          top: wch.y - WEEK_PLAQUE_TOP_OFFSET - decoPlaquePad,
+          right: wch.x + WEEK_PLAQUE_W / 2 + decoPlaquePad,
+          bottom: wch.y - WEEK_PLAQUE_TOP_OFFSET + WEEK_PLAQUE_H + decoPlaquePad,
+        });
+      }
+    });
+    return rects;
+  })();
+
+  function rectHitsConcepts(left, top, right, bottom) {
+    for (const r of decoAvoidRects) {
+      if (left < r.right && right > r.left && top < r.bottom && bottom > r.top) return true;
+    }
+    return false;
+  }
+  function circleHitsConcepts(ccx, ccy, rad) {
+    for (const r of decoAvoidRects) {
+      const nx = Math.max(r.left, Math.min(ccx, r.right));
+      const ny = Math.max(r.top, Math.min(ccy, r.bottom));
+      const dx = ccx - nx;
+      const dy = ccy - ny;
+      if (dx * dx + dy * dy < rad * rad) return true;
+    }
+    return false;
+  }
+  function segmentHitsConcepts(x1, y1, x2, y2, inflate = 6) {
+    const steps = 6;
+    for (let i = 0; i <= steps; i++) {
+      const t = i / steps;
+      const px = x1 + (x2 - x1) * t;
+      const py = y1 + (y2 - y1) * t;
+      if (circleHitsConcepts(px, py, inflate)) return true;
+    }
+    return false;
+  }
+
+  // Concept ↔ concept links (after layout repel) + small accents offset beside each connector.
+  const seenConceptLinks = new Set();
+  function linkControlPoint(x1, y1, x2, y2, bend) {
+    const dx = x2 - x1;
+    const dy = y2 - y1;
+    const mx = (x1 + x2) / 2;
+    const my = (y1 + y2) / 2;
+    const nx = -dy;
+    const ny = dx;
+    const len = Math.hypot(nx, ny) || 1;
+    const ux = nx / len;
+    const uy = ny / len;
+    return {
+      cpx: mx + ux * Math.hypot(dx, dy) * bend,
+      cpy: my + uy * Math.hypot(dx, dy) * bend,
+    };
+  }
+  function quadBezierPt(x1, y1, cpx, cpy, x2, y2, t) {
+    const u = 1 - t;
+    return {
+      x: u * u * x1 + 2 * u * t * cpx + t * t * x2,
+      y: u * u * y1 + 2 * u * t * cpy + t * t * y2,
+    };
+  }
+  function quadPerp(x1, y1, cpx, cpy, x2, y2, t) {
+    const tx = 2 * (1 - t) * (cpx - x1) + 2 * t * (x2 - cpx);
+    const ty = 2 * (1 - t) * (cpy - y1) + 2 * t * (y2 - cpy);
+    const pl = Math.hypot(tx, ty) || 1;
+    return { px: -ty / pl, py: tx / pl };
+  }
+  gLinkAccents.setAttribute('aria-hidden', 'true');
+  all.forEach((a) => {
+    const aPos = pos.get(a);
+    if (!aPos) return;
+    (links.get(a) || []).forEach((b) => {
+      const key = a < b ? `${a}__${b}` : `${b}__${a}`;
+      if (seenConceptLinks.has(key)) return;
+      seenConceptLinks.add(key);
+      const bPos = pos.get(b);
+      if (!bPos) return;
+
+      const bend = focusNeighbors.has(a) && focusNeighbors.has(b) ? 0.12 : 0.22;
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      path.setAttribute('d', mkPath(aPos.x, aPos.y, bPos.x, bPos.y, bend));
+      path.setAttribute('fill', 'none');
+      const isStrong = focusNeighbors.has(a) && focusNeighbors.has(b);
+      const isLockedLink = (termWeek.get(a) || 1) > progress.unlockedWeek || (termWeek.get(b) || 1) > progress.unlockedWeek;
+      path.setAttribute('stroke', isLockedLink ? rgba(120, 100, 80, 0.10) : (isStrong ? rgba(197, 96, 58, 0.55) : rgba(120, 100, 80, 0.26)));
+      path.setAttribute('stroke-width', isLockedLink ? '1' : (isStrong ? '2.4' : '1.25'));
+      path.setAttribute('stroke-linecap', 'round');
+      path.setAttribute('stroke-dasharray', isLockedLink ? '1 10' : (isStrong ? '0' : '2.5 6'));
+      gLinks.appendChild(path);
+
+      const cp = linkControlPoint(aPos.x, aPos.y, bPos.x, bPos.y, bend);
+      const chord = Math.hypot(bPos.x - aPos.x, bPos.y - aPos.y);
+      const samples = chord > 260 ? [0.22, 0.42, 0.58, 0.78] : chord > 160 ? [0.32, 0.5, 0.68] : [0.5];
+      const side = (hashStr(key) % 2) ? 1 : -1;
+      const strokeRgb = isLockedLink ? [120, 100, 80] : (isStrong ? [197, 96, 58] : [120, 100, 80]);
+      const fillA = isLockedLink ? 0.12 : (isStrong ? 0.38 : 0.2);
+      samples.forEach((t, idx) => {
+        const p0 = quadBezierPt(aPos.x, aPos.y, cp.cpx, cp.cpy, bPos.x, bPos.y, t);
+        const pr = quadPerp(aPos.x, aPos.y, cp.cpx, cp.cpy, bPos.x, bPos.y, t);
+        const off = 9 + (idx % 3) * 2.2;
+        let ax = p0.x + pr.px * off * side;
+        let ay = p0.y + pr.py * off * side;
+        if (circleHitsConcepts(ax, ay, 7)) {
+          ax = p0.x - pr.px * off * side;
+          ay = p0.y - pr.py * off * side;
+        }
+        if (circleHitsConcepts(ax, ay, 7)) return;
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('cx', String(ax));
+        dot.setAttribute('cy', String(ay));
+        dot.setAttribute('r', String(isStrong ? 2.1 : 1.5));
+        dot.setAttribute('fill', rgba(strokeRgb[0], strokeRgb[1], strokeRgb[2], fillA));
+        gLinkAccents.appendChild(dot);
+        if (!isLockedLink && samples.length > 1 && idx === Math.floor(samples.length / 2)) {
+          const tick = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+          const tx = ax - pr.py * 5;
+          const ty = ay + pr.px * 5;
+          tick.setAttribute('d', `M ${tx} ${ty} l ${pr.px * 9} ${pr.py * 9}`);
+          tick.setAttribute('fill', 'none');
+          tick.setAttribute('stroke', rgba(strokeRgb[0], strokeRgb[1], strokeRgb[2], fillA * 0.95));
+          tick.setAttribute('stroke-width', '1.05');
+          tick.setAttribute('stroke-linecap', 'round');
+          gLinkAccents.appendChild(tick);
+        }
+      });
+    });
+  });
+
+  // Decorative compass + subtle grid dots (mocking the reference style)
+  const deco = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  function addCornerOrnament(cornerX, cornerY, sx, sy) {
+    const orn = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    orn.setAttribute('transform', `translate(${cornerX} ${cornerY}) scale(${sx} ${sy})`);
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute(
+      'd',
+      'M 0 42 C 10 18 26 10 42 0 M 0 22 C 7 13 13 7 22 0 M 18 42 C 22 32 32 22 42 18 M 10 30 L 16 24 M 24 16 L 30 10'
+    );
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', rgba(120, 100, 80, 0.24));
+    p.setAttribute('stroke-width', '1.5');
+    p.setAttribute('stroke-linecap', 'round');
+    p.setAttribute('stroke-linejoin', 'round');
+    orn.appendChild(p);
+    deco.appendChild(orn);
+  }
+  function addCornerOrnamentSafe(cornerX, cornerY, sx, sy) {
+    const ext = 46 * Math.max(Math.abs(sx), Math.abs(sy));
+    const left = sx >= 0 ? cornerX : cornerX - ext;
+    const top = sy >= 0 ? cornerY : cornerY - ext;
+    if (rectHitsConcepts(left, top, left + ext, top + ext)) return;
+    addCornerOrnament(cornerX, cornerY, sx, sy);
+  }
+  addCornerOrnamentSafe(34, 34, 1, 1);
+  addCornerOrnamentSafe(VW - 34, 34, -1, 1);
+  addCornerOrnamentSafe(34, VH - 34, 1, -1);
+  addCornerOrnamentSafe(VW - 34, VH - 34, -1, -1);
+
+  let dotsPlaced = 0;
+  for (let attempts = 0; attempts < 9000 && dotsPlaced < 620; attempts++) {
+    const x = 120 + rnd() * (VW - 240);
+    const y = 120 + rnd() * (VH - 240);
+    if (circleHitsConcepts(x, y, 4)) continue;
+    const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    dot.setAttribute('cx', String(x));
+    dot.setAttribute('cy', String(y));
+    dot.setAttribute('r', String(0.9 + rnd() * 0.6));
+    dot.setAttribute('fill', rgba(120, 100, 80, 0.09 + rnd() * 0.08));
+    deco.appendChild(dot);
+    dotsPlaced++;
+  }
+  let sketchPlaced = 0;
+  for (let attempts = 0; attempts < 14000 && sketchPlaced < 520; attempts++) {
+    const x1 = 100 + rnd() * (VW - 200);
+    const y1 = 100 + rnd() * (VH - 200);
+    const len = 28 + rnd() * 140;
+    const ang = rnd() * Math.PI * 2;
+    const x2 = x1 + Math.cos(ang) * len;
+    const y2 = y1 + Math.sin(ang) * len;
+    if (segmentHitsConcepts(x1, y1, x2, y2, 7)) continue;
+    const sk = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    sk.setAttribute('d', `M ${x1} ${y1} L ${x2} ${y2}`);
+    sk.setAttribute('fill', 'none');
+    sk.setAttribute('stroke', rgba(120, 100, 80, 0.11 + rnd() * 0.1));
+    sk.setAttribute('stroke-width', String(0.8 + rnd() * 0.6));
+    sk.setAttribute('stroke-linecap', 'round');
+    sk.setAttribute('stroke-dasharray', rnd() < 0.55 ? '2 7' : '1 8');
+    deco.appendChild(sk);
+    sketchPlaced++;
+  }
+  let tickPlaced = 0;
+  for (let attempts = 0; attempts < 7000 && tickPlaced < 240; attempts++) {
+    const tx = 110 + rnd() * (VW - 220);
+    const ty = 110 + rnd() * (VH - 220);
+    if (circleHitsConcepts(tx, ty, 14)) continue;
+    const tick = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    if (rnd() < 0.5) {
+      tick.setAttribute('d', `M ${tx - 5} ${ty} L ${tx + 5} ${ty} M ${tx} ${ty - 5} L ${tx} ${ty + 5}`);
+    } else {
+      tick.setAttribute('d', `M ${tx - 4} ${ty - 4} L ${tx + 4} ${ty + 4} M ${tx + 4} ${ty - 4} L ${tx - 4} ${ty + 4}`);
+    }
+    tick.setAttribute('fill', 'none');
+    tick.setAttribute('stroke', rgba(154, 117, 66, 0.14 + rnd() * 0.12));
+    tick.setAttribute('stroke-width', '1.1');
+    tick.setAttribute('stroke-linecap', 'round');
+    deco.appendChild(tick);
+    tickPlaced++;
+  }
+  // Faint route curves between week hubs for an explorer-map feel.
+  for (let i = 0; i < weekCenters.length - 1; i++) {
+    const a = weekCenters[i];
+    const b = weekCenters[i + 1];
+    const route = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    route.setAttribute('d', mkPath(a.x, a.y, b.x, b.y, 0.15));
+    route.setAttribute('fill', 'none');
+    route.setAttribute('stroke', rgba(154, 117, 66, 0.28));
+    route.setAttribute('stroke-width', '1.6');
+    route.setAttribute('stroke-dasharray', '2 9');
+    deco.appendChild(route);
+  }
+
+  function addCompass(compCx, compCy, size = 34) {
+    const compass = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const compOuter = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    compOuter.setAttribute('cx', String(compCx));
+    compOuter.setAttribute('cy', String(compCy));
+    compOuter.setAttribute('r', String(size));
+    compOuter.setAttribute('fill', rgba(255, 255, 255, 0.50));
+    compOuter.setAttribute('stroke', rgba(120, 100, 80, 0.25));
+    compOuter.setAttribute('stroke-width', '2');
+
+    const compNeedle = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    compNeedle.setAttribute('d', `M ${compCx} ${compCy-(size-12)} L ${compCx+7} ${compCy+8} L ${compCx} ${compCy+4} L ${compCx-7} ${compCy+8} Z`);
+    compNeedle.setAttribute('fill', rgba(197, 96, 58, 0.55));
+
+    const compNeedle2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    compNeedle2.setAttribute('d', `M ${compCx} ${compCy+(size-12)} L ${compCx+7} ${compCy-8} L ${compCx} ${compCy-4} L ${compCx-7} ${compCy-8} Z`);
+    compNeedle2.setAttribute('fill', rgba(74, 135, 168, 0.45));
+
+    compass.appendChild(compOuter);
+    compass.appendChild(compNeedle);
+    compass.appendChild(compNeedle2);
+    deco.appendChild(compass);
+  }
+
+  function addShip(shipX, shipY, scale = 1) {
+    const ship = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    ship.setAttribute('transform', `translate(${shipX} ${shipY}) scale(${scale}) translate(${-shipX} ${-shipY})`);
+    const hull = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    hull.setAttribute('d', `M ${shipX} ${shipY} h 70 l -10 22 h -50 Z`);
+    hull.setAttribute('fill', rgba(120, 100, 80, 0.16));
+    const mast = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    mast.setAttribute('d', `M ${shipX+35} ${shipY-38} v 38 M ${shipX+35} ${shipY-38} l 22 14 h -22 Z`);
+    mast.setAttribute('fill', rgba(120, 100, 80, 0.12));
+    mast.setAttribute('stroke', rgba(120, 100, 80, 0.12));
+    ship.appendChild(hull);
+    ship.appendChild(mast);
+    deco.appendChild(ship);
+
+    // A few wave strokes under the ship
+    for (let i = 0; i < 5; i++) {
+      const w = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const y = shipY + 40 + i * 10;
+      w.setAttribute('d', `M ${shipX-30} ${y} C ${shipX-10} ${y-6} ${shipX+10} ${y+6} ${shipX+30} ${y} C ${shipX+50} ${y-6} ${shipX+70} ${y+6} ${shipX+90} ${y}`);
+      w.setAttribute('fill', 'none');
+      w.setAttribute('stroke', rgba(74, 135, 168, 0.18));
+      w.setAttribute('stroke-width', '1.6');
+      w.setAttribute('stroke-linecap', 'round');
+      w.setAttribute('stroke-dasharray', '0');
+      deco.appendChild(w);
+    }
+  }
+
+  function addLandmark(lx, ly) {
+    const land = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    const base = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    base.setAttribute('d', `M ${lx-20} ${ly+12} H ${lx+20} M ${lx-12} ${ly+12} V ${ly-10} H ${lx+12} V ${ly+12} M ${lx-6} ${ly-10} V ${ly-18} H ${lx+6} V ${ly-10}`);
+    base.setAttribute('fill', 'none');
+    base.setAttribute('stroke', rgba(120, 100, 80, 0.20));
+    base.setAttribute('stroke-width', '1.4');
+    base.setAttribute('stroke-linecap', 'round');
+    base.setAttribute('stroke-linejoin', 'round');
+    land.appendChild(base);
+    deco.appendChild(land);
+  }
+
+  function addFunnyFish(fx, fy, s = 1) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${fx} ${fy}) scale(${s}) translate(${-fx} ${-fy})`);
+    const body = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    body.setAttribute('d', `M ${fx-18} ${fy} C ${fx-6} ${fy-10} ${fx+10} ${fy-10} ${fx+18} ${fy} C ${fx+10} ${fy+10} ${fx-6} ${fy+10} ${fx-18} ${fy} Z`);
+    body.setAttribute('fill', 'none');
+    body.setAttribute('stroke', rgba(120, 100, 80, 0.18));
+    body.setAttribute('stroke-width', '1.4');
+    body.setAttribute('stroke-linecap', 'round');
+    const tail = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    tail.setAttribute('d', `M ${fx-18} ${fy} L ${fx-28} ${fy-8} L ${fx-28} ${fy+8} Z`);
+    tail.setAttribute('fill', rgba(120, 100, 80, 0.10));
+    tail.setAttribute('stroke', rgba(120, 100, 80, 0.18));
+    tail.setAttribute('stroke-width', '1.2');
+    const eye = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    eye.setAttribute('cx', String(fx + 10));
+    eye.setAttribute('cy', String(fy - 2));
+    eye.setAttribute('r', '1.8');
+    eye.setAttribute('fill', rgba(120, 100, 80, 0.28));
+    g.appendChild(body);
+    g.appendChild(tail);
+    g.appendChild(eye);
+    deco.appendChild(g);
+  }
+
+  function addTreasureChest(cx, cy, s = 1) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${cx} ${cy}) scale(${s}) translate(${-cx} ${-cy})`);
+
+    const box = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    box.setAttribute('x', String(cx - 14));
+    box.setAttribute('y', String(cy - 8));
+    box.setAttribute('width', '28');
+    box.setAttribute('height', '18');
+    box.setAttribute('rx', '4');
+    box.setAttribute('fill', rgba(120, 100, 80, 0.07));
+    box.setAttribute('stroke', rgba(120, 100, 80, 0.20));
+    box.setAttribute('stroke-width', '1.2');
+
+    const lid = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    lid.setAttribute('d', `M ${cx-14} ${cy-8} Q ${cx} ${cy-16} ${cx+14} ${cy-8}`);
+    lid.setAttribute('fill', 'none');
+    lid.setAttribute('stroke', rgba(120, 100, 80, 0.20));
+    lid.setAttribute('stroke-width', '1.2');
+    lid.setAttribute('stroke-linecap', 'round');
+
+    const latch = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    latch.setAttribute('x', String(cx - 2.5));
+    latch.setAttribute('y', String(cy - 1));
+    latch.setAttribute('width', '5');
+    latch.setAttribute('height', '7');
+    latch.setAttribute('rx', '2');
+    latch.setAttribute('fill', rgba(197, 160, 90, 0.18));
+    latch.setAttribute('stroke', rgba(120, 100, 80, 0.18));
+    latch.setAttribute('stroke-width', '1');
+
+    g.appendChild(box);
+    g.appendChild(lid);
+    g.appendChild(latch);
+    deco.appendChild(g);
+  }
+
+  function addWaveBand(wx, wy, sc) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${wx} ${wy}) scale(${sc})`);
+    for (let k = -1; k <= 1; k++) {
+      const wv = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const oy = k * 6;
+      wv.setAttribute('d', `M -22 ${oy} Q 0 ${oy - 4} 22 ${oy}`);
+      wv.setAttribute('fill', 'none');
+      wv.setAttribute('stroke', rgba(74, 135, 168, 0.22));
+      wv.setAttribute('stroke-width', '1.35');
+      wv.setAttribute('stroke-linecap', 'round');
+      g.appendChild(wv);
+    }
+    deco.appendChild(g);
+  }
+  function addTreeGlyph(tx, ty, sc) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${tx} ${ty}) scale(${sc})`);
+    const crown = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    crown.setAttribute('d', 'M 0 -12 L 11 6 L -11 6 Z');
+    crown.setAttribute('fill', rgba(82, 118, 72, 0.20));
+    crown.setAttribute('stroke', rgba(120, 100, 80, 0.26));
+    crown.setAttribute('stroke-width', '1.2');
+    const trunk = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    trunk.setAttribute('d', 'M -2.5 6 L -2.5 13 L 2.5 13 L 2.5 6');
+    trunk.setAttribute('fill', rgba(120, 100, 80, 0.14));
+    trunk.setAttribute('stroke', rgba(120, 100, 80, 0.22));
+    trunk.setAttribute('stroke-width', '1');
+    g.appendChild(crown);
+    g.appendChild(trunk);
+    deco.appendChild(g);
+  }
+  function addAnchorGlyph(ax, ay, sc) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${ax} ${ay}) scale(${sc})`);
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', 'M 0 -10 v 16 M -8 2 Q 0 10 8 2 M -6 10 H 6');
+    p.setAttribute('fill', 'none');
+    p.setAttribute('stroke', rgba(120, 100, 80, 0.28));
+    p.setAttribute('stroke-width', '1.5');
+    p.setAttribute('stroke-linecap', 'round');
+    g.appendChild(p);
+    deco.appendChild(g);
+  }
+  function addShellGlyph(sx, sy, sc) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${sx} ${sy}) scale(${sc})`);
+    const sh = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    sh.setAttribute('d', 'M -10 4 Q 0 -10 10 4 Q 0 8 -10 4');
+    sh.setAttribute('fill', rgba(120, 100, 80, 0.08));
+    sh.setAttribute('stroke', rgba(120, 100, 80, 0.26));
+    sh.setAttribute('stroke-width', '1.2');
+    g.appendChild(sh);
+    deco.appendChild(g);
+  }
+  function addHillGlyph(hx, hy, sc) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${hx} ${hy}) scale(${sc})`);
+    const hill = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    hill.setAttribute('d', 'M -18 6 Q 0 -6 18 6');
+    hill.setAttribute('fill', 'none');
+    hill.setAttribute('stroke', rgba(120, 100, 80, 0.22));
+    hill.setAttribute('stroke-width', '1.4');
+    hill.setAttribute('stroke-linecap', 'round');
+    g.appendChild(hill);
+    deco.appendChild(g);
+  }
+  function addSparkGlyph(sx, sy, sc) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${sx} ${sy}) scale(${sc})`);
+    const sp = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    sp.setAttribute('d', 'M 0 -8 L 2 -2 L 8 0 L 2 2 L 0 8 L -2 2 L -8 0 L -2 -2 Z');
+    sp.setAttribute('fill', rgba(197, 96, 58, 0.15));
+    sp.setAttribute('stroke', rgba(120, 100, 80, 0.22));
+    sp.setAttribute('stroke-width', '1');
+    g.appendChild(sp);
+    deco.appendChild(g);
+  }
+
+  function addSparkleStamp(sx, sy, color = rgba(197, 96, 58, 0.55)) {
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('transform', `translate(${sx} ${sy})`);
+
+    const ring = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    ring.setAttribute('cx', '0');
+    ring.setAttribute('cy', '0');
+    ring.setAttribute('r', '18');
+    ring.setAttribute('fill', rgba(255, 255, 255, 0.0));
+    ring.setAttribute('stroke', color);
+    ring.setAttribute('stroke-width', '2');
+    ring.setAttribute('stroke-dasharray', '2 6');
+    ring.setAttribute('opacity', '0.65');
+
+    const star = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    star.setAttribute('d', 'M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z');
+    star.setAttribute('fill', rgba(255, 255, 255, 0.35));
+    star.setAttribute('stroke', color);
+    star.setAttribute('stroke-width', '1.6');
+    star.setAttribute('stroke-linejoin', 'round');
+
+    // Subtle pulse (no JS timers).
+    const a1 = document.createElementNS('http://www.w3.org/2000/svg', 'animateTransform');
+    a1.setAttribute('attributeName', 'transform');
+    a1.setAttribute('type', 'scale');
+    a1.setAttribute('values', '1;1.06;1');
+    a1.setAttribute('dur', '2.4s');
+    a1.setAttribute('repeatCount', 'indefinite');
+    const a2 = document.createElementNS('http://www.w3.org/2000/svg', 'animate');
+    a2.setAttribute('attributeName', 'opacity');
+    a2.setAttribute('values', '0.55;0.85;0.55');
+    a2.setAttribute('dur', '2.4s');
+    a2.setAttribute('repeatCount', 'indefinite');
+    g.appendChild(a1);
+    g.appendChild(a2);
+
+    g.appendChild(ring);
+    g.appendChild(star);
+    deco.appendChild(g);
+  }
+
+  function tryPlaceCompass(prefX, prefY, prefSize) {
+    for (let t = 0; t < 70; t++) {
+      const x = t === 0 ? prefX : (200 + rnd() * (VW - 400));
+      const y = t === 0 ? prefY : (200 + rnd() * (VH - 400));
+      const sz = t === 0 ? prefSize : (24 + rnd() * 14);
+      if (!circleHitsConcepts(x, y, sz + 12)) {
+        addCompass(x, y, sz);
+        return;
+      }
+    }
+  }
+  tryPlaceCompass(160, 150, 34);
+  for (let i = 0; i < 9; i++) {
+    tryPlaceCompass(240 + rnd() * (VW - 480), 220 + rnd() * (VH - 440), 26 + rnd() * 12);
+  }
+
+  function tryPlaceShip(prefX, prefY, prefSc) {
+    for (let t = 0; t < 55; t++) {
+      const x = t === 0 ? prefX : (520 + rnd() * (VW - 1040));
+      const y = t === 0 ? prefY : (280 + rnd() * (VH - 560));
+      const sc = t === 0 ? prefSc : (0.75 + rnd() * 0.35);
+      const bw = 100 * sc;
+      const bh = 95 * sc;
+      if (!rectHitsConcepts(x - bw, y - bh - 40 * sc, x + bw, y + bh)) {
+        addShip(x, y, sc);
+        return;
+      }
+    }
+  }
+  tryPlaceShip(3720, 190, 1);
+  for (let i = 0; i < 5; i++) {
+    tryPlaceShip(520 + rnd() * (VW - 1040), 280 + rnd() * (VH - 560), 0.75 + rnd() * 0.35);
+  }
+  for (let i = 0; i < 14; i++) {
+    const edge = rnd();
+    const prefX = edge < 0.5 ? (90 + rnd() * 260) : (VW - 350 + rnd() * 260);
+    const prefY = 120 + rnd() * (VH - 240);
+    for (let t = 0; t < 40; t++) {
+      const x = t === 0 ? prefX : (90 + rnd() * (VW - 180));
+      const y = t === 0 ? prefY : (120 + rnd() * (VH - 240));
+      if (!circleHitsConcepts(x, y, 28)) {
+        addLandmark(x, y);
+        break;
+      }
+    }
+  }
+  for (let i = 0; i < 14; i++) {
+    for (let t = 0; t < 45; t++) {
+      const x = 120 + rnd() * (VW - 240);
+      const y = rnd() < 0.5 ? (92 + rnd() * 220) : (VH - 312 + rnd() * 220);
+      const sc = 0.85 + rnd() * 0.35;
+      if (!circleHitsConcepts(x, y, 22 * sc)) {
+        addFunnyFish(x, y, sc);
+        break;
+      }
+    }
+  }
+  for (let i = 0; i < 16; i++) {
+    const edge = rnd();
+    const prefX = edge < 0.5 ? (92 + rnd() * 260) : (VW - 352 + rnd() * 260);
+    const prefY = 110 + rnd() * (VH - 220);
+    for (let t = 0; t < 45; t++) {
+      const x = t === 0 ? prefX : (92 + rnd() * (VW - 184));
+      const y = t === 0 ? prefY : (110 + rnd() * (VH - 220));
+      const sc = 0.9 + rnd() * 0.35;
+      if (!circleHitsConcepts(x, y, 20 * sc)) {
+        addTreasureChest(x, y, sc);
+        break;
+      }
+    }
+  }
+
+  // Extra small map motifs (fish, compass, ship, waves, trees, …) — 30 placements, collision-aware.
+  const miscGlyphKinds = ['fish', 'compass', 'ship', 'wave', 'tree', 'anchor', 'shell', 'hill', 'spark', 'land'];
+  for (let gi = 0; gi < 30; gi++) {
+    const kind = miscGlyphKinds[gi % miscGlyphKinds.length];
+    for (let t = 0; t < 55; t++) {
+      const x = 160 + rnd() * (VW - 320);
+      const y = 160 + rnd() * (VH - 320);
+      const sc = 0.55 + rnd() * 0.5;
+      let rad = 26 * sc;
+      if (kind === 'ship') rad = 58 * sc;
+      else if (kind === 'compass') rad = 18 + sc * 12;
+      if (circleHitsConcepts(x, y, rad)) continue;
+      if (kind === 'fish') addFunnyFish(x, y, sc);
+      else if (kind === 'compass') addCompass(x, y, 13 + rnd() * 11);
+      else if (kind === 'ship') addShip(x, y, sc * 0.52);
+      else if (kind === 'wave') addWaveBand(x, y, sc);
+      else if (kind === 'tree') addTreeGlyph(x, y, sc);
+      else if (kind === 'anchor') addAnchorGlyph(x, y, sc);
+      else if (kind === 'shell') addShellGlyph(x, y, sc);
+      else if (kind === 'hill') addHillGlyph(x, y, sc);
+      else if (kind === 'spark') addSparkGlyph(x, y, sc);
+      else addLandmark(x, y);
+      break;
+    }
+  }
+
+  // Sparkle/stamp near today's cluster (current week focus).
+  if (focusQ && Array.isArray(focusQ.terms) && focusQ.terms.length) {
+    const pts = focusQ.terms.map((t) => pos.get(t)).filter(Boolean);
+    if (pts.length) {
+      const mx = pts.reduce((sum, p) => sum + p.x, 0) / pts.length;
+      const my = pts.reduce((sum, p) => sum + p.y, 0) / pts.length;
+      const th = themesByWeek.get(Math.floor((focusQid - 1) / 5) + 1);
+      const col = th?.color ? th.color : rgba(197, 96, 58, 0.55);
+      const stampOffsets = [[110, -60], [130, -85], [-125, -72], [145, 72], [-105, 78], [0, -105], [-155, 40], [165, -35]];
+      let stamped = false;
+      for (let si = 0; si < stampOffsets.length && !stamped; si++) {
+        const sx = mx + stampOffsets[si][0];
+        const sy = my + stampOffsets[si][1];
+        if (!circleHitsConcepts(sx, sy, 32)) {
+          addSparkleStamp(sx, sy, col);
+          stamped = true;
+        }
+      }
+      if (!stamped) {
+        for (let t = 0; t < 80; t++) {
+          const sx = mx + (rnd() - 0.5) * 420;
+          const sy = my + (rnd() - 0.5) * 320;
+          if (!circleHitsConcepts(sx, sy, 32)) {
+            addSparkleStamp(sx, sy, col);
+            break;
+          }
+        }
+      }
+    }
+  }
+
+  deco.setAttribute('aria-hidden', 'true');
+  viewport.insertBefore(deco, gLinks);
+
+  // (Removed the old fixed center card so the map reads as week/question clusters.)
+
+  function wrappedLines(text, maxCharsPerLine, maxLines) {
+    const maxChars = Math.max(4, Math.floor(maxCharsPerLine));
+    function trimLine(line) {
+      const value = String(line || '');
+      if (value.length <= maxChars) return value;
+      return `${value.slice(0, Math.max(1, maxChars - 1)).replace(/\s+$/u, '')}…`;
+    }
+    const words = String(text || '').split(/\s+/).filter(Boolean);
+    if (!words.length) return [''];
+    const lines = [];
+    let current = '';
+    words.forEach((w) => {
+      const next = current ? `${current} ${w}` : w;
+      if (next.length <= maxChars) {
+        current = next;
+      } else {
+        if (current) lines.push(trimLine(current));
+        current = w.length > maxChars ? trimLine(w) : w;
+      }
+    });
+    if (current) lines.push(trimLine(current));
+    const shown = lines.slice(0, maxLines);
+    if (lines.length > maxLines) {
+      shown[maxLines - 1] = trimLine(`${shown[maxLines - 1].replace(/…$/u, '').replace(/\s+$/u, '')}…`);
+    }
+    return shown;
+  }
+
+  function isPrimarilyCjk(s) {
+    const t = String(s || '');
+    if (!t.length) return false;
+    const cjkCount = (t.match(/[\u3400-\u4DBF\u4E00-\u9FFF\uF900-\uFAFF]/g) || []).length;
+    return cjkCount / Array.from(t).length >= 0.35;
+  }
+
+  /** Character-based wrap for labels without spaces (Traditional Chinese, etc.). */
+  function wrappedLinesCjk(text, maxCharsPerLine, maxLines) {
+    const maxChars = Math.max(2, Math.floor(maxCharsPerLine));
+    const maxCells = Math.max(maxChars, maxChars * maxLines);
+    const chars = Array.from(String(text || ''));
+    if (!chars.length) return [''];
+    const truncated = chars.length > maxCells
+      ? [...chars.slice(0, maxCells - 1), '…']
+      : chars;
+    const lines = [];
+    for (let i = 0; i < truncated.length && lines.length < maxLines; i += maxChars) {
+      lines.push(truncated.slice(i, i + maxChars).join(''));
+    }
+    return lines.length ? lines : [''];
+  }
+
+  // Nodes as "cards" (like the reference)
+  all.forEach((termKey) => {
+    const p = pos.get(termKey);
+    if (!p) return;
+    const node = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    node.setAttribute('tabindex', '0');
+    node.setAttribute('role', 'button');
+    node.setAttribute('aria-label', `Open concept ${termKey}`);
+    const isFocus = focusNeighbors.has(termKey);
+    const isLocked = (termWeek.get(termKey) || 1) > progress.unlockedWeek;
+    const isExplored = progress.explored.has(termKey);
+    node.style.cursor = isLocked ? 'not-allowed' : 'pointer';
+    if (isLocked) node.setAttribute('aria-label', 'Locked concept');
+
+    const display = isLocked
+      ? (state.lang === 'zh-Hant' ? '未解鎖' : 'Locked')
+      : (state.lang === 'zh-Hant' ? translateTerm(termKey) : termKey);
+
+    const useCjkWrap = kmIsZh && isPrimarilyCjk(display);
+    const fontSizeNum = isFocus ? 14 : 13;
+    const iconSlot = 44;
+    const sealReserve = (isExplored && !isLocked) ? 34 : 22;
+    const lineH = useCjkWrap ? 17 : 16;
+    const maxConceptLines = useCjkWrap ? 3 : 2;
+    const cjkCharW = fontSizeNum * 0.92;
+    const latCharW = fontSizeNum * 0.5;
+
+    let cardW = isFocus ? (useCjkWrap ? 200 : 168) : (useCjkWrap ? 188 : 156);
+
+    function layoutFromCardW(w) {
+      const textInnerW = Math.max(48, w - iconSlot - sealReserve);
+      const mcp = Math.max(3, Math.floor(textInnerW / (useCjkWrap ? cjkCharW : latCharW)));
+      const ls = useCjkWrap
+        ? wrappedLinesCjk(display, mcp, maxConceptLines)
+        : wrappedLines(display, mcp, maxConceptLines);
+      let maxLinePx = 0;
+      ls.forEach((ln) => {
+        if (useCjkWrap) {
+          maxLinePx = Math.max(maxLinePx, Array.from(ln).length * cjkCharW);
+        } else {
+          maxLinePx = Math.max(maxLinePx, ln.length * latCharW * 0.85);
+        }
+      });
+      const neededW = Math.ceil(iconSlot + sealReserve + maxLinePx + 10);
+      return { lines: ls, neededW };
+    }
+
+    let { lines, neededW } = layoutFromCardW(cardW);
+    if (neededW > cardW) {
+      cardW = Math.min(292, neededW);
+      ({ lines } = layoutFromCardW(cardW));
+    }
+
+    const cardH = Math.max(isFocus ? 56 : 52, 11 + lines.length * lineH + 11);
+    const x = p.x - cardW / 2;
+    const y = p.y - cardH / 2;
+
+    // Parchment cards, now landscape-ish: icon left, text right.
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('x', String(x));
+    rect.setAttribute('y', String(y));
+    rect.setAttribute('width', String(cardW));
+    rect.setAttribute('height', String(cardH));
+    rect.setAttribute('rx', '18');
+    rect.setAttribute('fill', isLocked ? rgba(230, 224, 210, 0.68) : (isFocus ? rgba(252, 247, 230, 0.96) : rgba(248, 241, 222, 0.92)));
+    const tw = termWeek.get(termKey) || 1;
+    const border = themesByWeek.get(tw)?.color || '#8a6d4f';
+    rect.setAttribute('stroke', isLocked ? rgba(120, 100, 80, 0.34) : border);
+    rect.setAttribute('stroke-width', isFocus && !isLocked ? '2.8' : '2');
+    rect.setAttribute('stroke-dasharray', isLocked ? '4 6' : '0');
+    rect.setAttribute('filter', 'url(#km-shadow)');
+
+    const icon = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    icon.setAttribute('cx', String(x + 24));
+    icon.setAttribute('cy', String(y + cardH / 2));
+    icon.setAttribute('r', '12');
+    icon.setAttribute('fill', rgba(255, 255, 255, 0.66));
+    icon.setAttribute('stroke', rgba(120, 100, 80, 0.26));
+
+    const iconMark = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    const mx = x + 24, my = y + cardH / 2;
+    const it = iconTypeFor(termKey);
+    iconMark.setAttribute('d', iconPath(it, mx, my));
+    iconMark.setAttribute('fill', 'none');
+    iconMark.setAttribute('stroke', isLocked ? rgba(120, 100, 80, 0.40) : border);
+    iconMark.setAttribute('stroke-width', '1.8');
+    iconMark.setAttribute('stroke-linecap', 'round');
+    iconMark.setAttribute('stroke-linejoin', 'round');
+
+    const textX = x + iconSlot;
+    const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    title.setAttribute('x', String(textX));
+    title.setAttribute('text-anchor', 'start');
+    title.setAttribute(
+      'font-family',
+      useCjkWrap
+        ? "'PingFang TC','Microsoft JhengHei','Noto Serif CJK TC',serif"
+        : 'DM Serif Display, Georgia, serif'
+    );
+    title.setAttribute('font-size', String(fontSizeNum));
+    title.setAttribute('fill', isLocked ? rgba(40, 32, 24, 0.46) : rgba(40, 32, 24, 0.86));
+    title.setAttribute('dominant-baseline', useCjkWrap ? 'central' : 'middle');
+    const centerY = y + cardH / 2;
+    const startY = centerY - ((lines.length - 1) * lineH) / 2;
+    lines.forEach((line, idx) => {
+      const tsp = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+      tsp.setAttribute('x', String(textX));
+      tsp.setAttribute('y', String(startY + idx * lineH));
+      if (useCjkWrap) tsp.setAttribute('dominant-baseline', 'central');
+      tsp.textContent = line;
+      title.appendChild(tsp);
+    });
+
+    let seal = null;
+    if (isExplored && !isLocked) {
+      seal = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      seal.setAttribute('d', `M ${x + cardW - 20} ${y + 11} l 3 6 l 7 1 l -5 5 l 1 7 l -6 -3 l -6 3 l 1 -7 l -5 -5 l 7 -1 Z`);
+      seal.setAttribute('fill', rgba(197, 96, 58, 0.18));
+      seal.setAttribute('stroke', rgba(197, 96, 58, 0.46));
+      seal.setAttribute('stroke-width', '1.2');
+    }
+
+    function activate() {
+      if (isLocked) return;
+      openConcept(termKey);
+    }
+    node.addEventListener('click', activate);
+    node.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activate(); }
+    });
+
+    node.appendChild(rect);
+    node.appendChild(icon);
+    node.appendChild(iconMark);
+    node.appendChild(title);
+    if (seal) node.appendChild(seal);
+    gNodes.appendChild(node);
+  });
+
+  // (Removed UI: knowledge-insight)
+
+  // On first open, snap camera to the center cluster so only a subset is visible.
+  // Afterwards, preserve user pan/zoom.
+  if (!knowledgeView._hasInitialView) {
+    knowledgeView._hasInitialView = true;
+    knowledgeView.s = 1;
+    // Center virtual map on the visible area (SVG viewBox is 1200x720).
+    // Keep focus near the middle with slight upward bias like the reference.
+    const fx = (pos.get(focus) || { x: cx, y: cy }).x;
+    const fy = (pos.get(focus) || { x: cx, y: cy }).y;
+    knowledgeView.tx = 600 - fx;
+    knowledgeView.ty = 330 - fy;
+  }
+
+  applyKnowledgeTransform();
+}
+
+const knowledgeView = {
+  ready: false,
+  tx: 0,
+  ty: 0,
+  s: 1,
+  minS: 0.6,
+  maxS: 2.6,
+  pointers: new Map(), // pointerId -> {x,y}
+  lastPinchDist: null,
+  _hasInitialView: false,
+};
+
+function getKnowledgeSvg() {
+  return document.getElementById('knowledge-svg');
+}
+function getKnowledgeViewport() {
+  return document.getElementById('knowledge-viewport');
+}
+function applyKnowledgeTransform() {
+  const vp = getKnowledgeViewport();
+  if (!vp) return;
+  vp.setAttribute('transform', `translate(${knowledgeView.tx} ${knowledgeView.ty}) scale(${knowledgeView.s})`);
+}
+
+function clamp(n, min, max) {
+  return Math.max(min, Math.min(max, n));
+}
+
+function svgPointFromEvent(svg, clientX, clientY) {
+  const pt = svg.createSVGPoint();
+  pt.x = clientX;
+  pt.y = clientY;
+  const ctm = svg.getScreenCTM();
+  if (!ctm) return { x: 0, y: 0 };
+  const p = pt.matrixTransform(ctm.inverse());
+  return { x: p.x, y: p.y };
+}
+
+function zoomKnowledgeAt(svgX, svgY, nextScale) {
+  const oldS = knowledgeView.s;
+  const s = clamp(nextScale, knowledgeView.minS, knowledgeView.maxS);
+  if (s === oldS) return;
+
+  // Keep the point (svgX, svgY) stable during zoom.
+  knowledgeView.tx = svgX - (svgX - knowledgeView.tx) * (s / oldS);
+  knowledgeView.ty = svgY - (svgY - knowledgeView.ty) * (s / oldS);
+  knowledgeView.s = s;
+  applyKnowledgeTransform();
+}
+
+function setupKnowledgeInteractionsOnce() {
+  if (knowledgeView.ready) return;
+  const svg = getKnowledgeSvg();
+  const canvas = document.getElementById('knowledge-canvas');
+  if (!svg || !canvas) return;
+  knowledgeView.ready = true;
+
+  function setPanning(on) {
+    canvas.classList.toggle('is-panning', on);
+  }
+
+  svg.addEventListener('pointerdown', (e) => {
+    // Only pan when pointer targets the background SVG, not when clicking a node.
+    // Node clicks should open concept notes instead of dragging.
+    const isNode = e.target && (e.target.closest && e.target.closest('g[role="button"]'));
+    if (isNode) return;
+
+    svg.setPointerCapture(e.pointerId);
+    knowledgeView.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if (knowledgeView.pointers.size === 1) setPanning(true);
+    if (knowledgeView.pointers.size === 2) knowledgeView.lastPinchDist = null;
+  });
+
+  svg.addEventListener('pointermove', (e) => {
+    if (!knowledgeView.pointers.has(e.pointerId)) return;
+    const prev = knowledgeView.pointers.get(e.pointerId);
+    knowledgeView.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+
+    // Pinch zoom (2 pointers)
+    if (knowledgeView.pointers.size === 2) {
+      const pts = [...knowledgeView.pointers.values()];
+      const dx = pts[0].x - pts[1].x;
+      const dy = pts[0].y - pts[1].y;
+      const dist = Math.hypot(dx, dy);
+      const midX = (pts[0].x + pts[1].x) / 2;
+      const midY = (pts[0].y + pts[1].y) / 2;
+      const midSvg = svgPointFromEvent(svg, midX, midY);
+
+      if (knowledgeView.lastPinchDist != null) {
+        const ratio = dist / knowledgeView.lastPinchDist;
+        zoomKnowledgeAt(midSvg.x, midSvg.y, knowledgeView.s * ratio);
+      }
+      knowledgeView.lastPinchDist = dist;
+      return;
+    }
+
+    // Pan (1 pointer)
+    if (!prev) return;
+    const dx = e.clientX - prev.x;
+    const dy = e.clientY - prev.y;
+    knowledgeView.tx += dx;
+    knowledgeView.ty += dy;
+    applyKnowledgeTransform();
+  });
+
+  function endPointer(e) {
+    if (!knowledgeView.pointers.has(e.pointerId)) return;
+    knowledgeView.pointers.delete(e.pointerId);
+    knowledgeView.lastPinchDist = null;
+    if (knowledgeView.pointers.size === 0) setPanning(false);
+  }
+
+  svg.addEventListener('pointerup', endPointer);
+  svg.addEventListener('pointercancel', endPointer);
+  svg.addEventListener('pointerleave', endPointer);
+  svg.addEventListener('pointerout', endPointer);
+
+  // Wheel zoom (mouse / trackpad). Zoom around cursor.
+  svg.addEventListener('wheel', (e) => {
+    e.preventDefault();
+    const p = svgPointFromEvent(svg, e.clientX, e.clientY);
+    const delta = -e.deltaY;
+    // Smooth exponential zoom.
+    const zoomFactor = Math.exp(delta * 0.0012);
+    zoomKnowledgeAt(p.x, p.y, knowledgeView.s * zoomFactor);
+  }, { passive: false });
+}
+
+function activateKnowledgeTab() {
+  if (state.knowledgeMapSeed == null) {
+    state.knowledgeMapSeed = Math.floor(Date.now() / 1000) % 100000;
+  }
+  const seed = state.knowledgeMapSeed;
+  setupKnowledgeInteractionsOnce();
+  if (supabaseEnabled()) {
+    mergeLearnedConceptsFromSupabase()
+      .then(() => renderKnowledgeMap(seed))
+      .catch(() => renderKnowledgeMap(seed));
+  } else {
+    renderKnowledgeMap(seed);
+  }
+}
+
+document.getElementById('btn-profile-restart')?.addEventListener('click', startPhilosophyProfile);
+// (Removed UI buttons: reroll / continue)
 
 /* =============================================
    NEXT DILEMMA
@@ -3450,6 +6200,7 @@ document.getElementById('btn-next').addEventListener('click', () => {
   // Clear go-further body
   document.getElementById('go-further-body').replaceChildren();
   chosen.hidden = true; chosen.style.display = 'none';
+  chosen.querySelector('.bm-btn--chosen')?.remove();
   sn.hidden = true; sn.style.display = 'none';
   card.hidden = false; card.style.display = 'block';
 
@@ -3488,6 +6239,1014 @@ function showChallengeHint(msg) {
   const h = document.getElementById('ch-hint');
   h.textContent = msg;
   setTimeout(() => { h.textContent = ''; }, 3000);
+}
+
+/* =============================================
+   AI ASSISTANT (Edge Function)
+   ============================================= */
+const AI_CHAT_MAX_INPUT_CHARS = 600;
+const AI_MAX_VISIBLE_TURNS = 8;
+const AI_SUMMARIZE_EVERY_TURNS = 6;
+const AI_CHAT_FONT_STORAGE_KEY = 'dd_ai_chat_font';
+const AI_CHAT_FONT_ORDER = ['sm', 'md', 'lg'];
+let aiChatFontModeMem = 'md';
+
+const AI_PHILOSOPHER_ORDER = [
+  'aristotle',
+  'plato',
+  'socrates',
+  'confucius',
+  'kant',
+  'descartes',
+  'nietzsche',
+  'marx',
+];
+const AI_PHILOSOPHER_STORAGE_KEY = 'dd_ai_philosopher';
+/** Maps AI chip id to key in PHILOSOPHER_PORTRAITS (Wikimedia-sourced busts for the AI guides). */
+const AI_PHILOSOPHER_PORTRAIT_KEYS = {
+  aristotle: 'Aristotle',
+  plato: 'Plato',
+  socrates: 'Socrates',
+  confucius: 'Confucius',
+  kant: 'Immanuel Kant',
+  descartes: 'René Descartes',
+  nietzsche: 'Friedrich Nietzsche',
+  marx: 'Karl Marx',
+};
+
+function getAiPhilosopherPortraitSrc() {
+  const key = AI_PHILOSOPHER_PORTRAIT_KEYS[getSelectedPhilosopherId()];
+  return key && PHILOSOPHER_PORTRAITS[key] ? PHILOSOPHER_PORTRAITS[key] : null;
+}
+
+/** Descartes reference portrait is small in-frame; zoom slightly in circular crops. */
+function aiPortraitFaceZoomActive() {
+  return getSelectedPhilosopherId() === 'descartes';
+}
+
+function aiMsgAvatarClass() {
+  return aiPortraitFaceZoomActive() ? 'ai-msg-avatar ai-msg-avatar--face-zoom' : 'ai-msg-avatar';
+}
+
+function getAiThreadMessagesEl() {
+  return document.getElementById('ai-thread-messages');
+}
+
+function getAiThreadScrollEl() {
+  return document.getElementById('ai-thread-scroll');
+}
+
+function scrollAiThreadPaneToEnd() {
+  const el = getAiThreadScrollEl();
+  if (el) el.scrollTop = el.scrollHeight;
+}
+
+function getSelectedPhilosopherId() {
+  try {
+    const v = localStorage.getItem(AI_PHILOSOPHER_STORAGE_KEY);
+    if (v && AI_PHILOSOPHER_ORDER.includes(v)) return v;
+  } catch {}
+  return 'plato';
+}
+
+function setSelectedPhilosopherId(id) {
+  if (!AI_PHILOSOPHER_ORDER.includes(id)) return;
+  try {
+    localStorage.setItem(AI_PHILOSOPHER_STORAGE_KEY, id);
+  } catch {}
+}
+
+function getAiThinkingMessage(ui, philosopherId) {
+  const map = ui.aiThinking || {};
+  const id =
+    typeof philosopherId === 'string' && map[philosopherId] ? philosopherId : 'plato';
+  return map[id] || ui.aiPlatoThinking || 'Plato is thinking…';
+}
+
+function renderAiPhilosopherChips() {
+  const wrap = document.getElementById('ai-philosopher-chips');
+  const labelEl = document.getElementById('ai-philosopher-label');
+  if (!wrap) return;
+  const ui = getUiText(state.lang);
+  const names = ui.aiPhilosopherNames || {};
+  const current = getSelectedPhilosopherId();
+  wrap.replaceChildren();
+  AI_PHILOSOPHER_ORDER.forEach((id) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = `ai-philosopher-chip${id === current ? ' is-active' : ''}`;
+    b.dataset.philosopher = id;
+    b.setAttribute('role', 'radio');
+    b.setAttribute('aria-checked', id === current ? 'true' : 'false');
+    const labelText = names[id] || id;
+    const portraitKey = AI_PHILOSOPHER_PORTRAIT_KEYS[id];
+    const portraitSrc = portraitKey ? PHILOSOPHER_PORTRAITS[portraitKey] : null;
+    if (portraitSrc) {
+      const img = document.createElement('img');
+      img.className = 'ai-philosopher-chip-img';
+      img.alt = '';
+      img.decoding = 'async';
+      img.loading = 'lazy';
+      img.referrerPolicy = 'no-referrer';
+      img.src = portraitSrc;
+      if (id === 'descartes') {
+        const frame = document.createElement('span');
+        frame.className = 'ai-philosopher-chip-img-frame';
+        frame.appendChild(img);
+        b.appendChild(frame);
+      } else {
+        b.appendChild(img);
+      }
+    }
+    const span = document.createElement('span');
+    span.className = 'ai-philosopher-chip-label';
+    span.textContent = labelText;
+    b.appendChild(span);
+    b.addEventListener('click', () => selectAiPhilosopher(id));
+    wrap.appendChild(b);
+  });
+  wrap.setAttribute('aria-label', ui.aiPhilosopherGroupAria || ui.aiPhilosopherLabel || '');
+  if (labelEl) {
+    const lab = (ui.aiPhilosopherLabel || '').trim();
+    labelEl.textContent = lab;
+    labelEl.hidden = !lab;
+  }
+  const btnPlatoReader = document.getElementById('btn-plato-reader');
+  if (btnPlatoReader) btnPlatoReader.hidden = false;
+  applyPlatoReaderHeadTexts();
+}
+
+/** Which profile-scroll sections use dedicated JPGs under `images/philosopher-profile-sections/`. Others use the bust portrait beside text. */
+const PHILOSOPHER_PROFILE_SECTION_IMAGES = {
+  plato: ['intro', 'early', 'ideas'],
+  socrates: ['intro', 'early', 'ideas'],
+  aristotle: ['intro', 'early', 'ideas'],
+  confucius: ['intro', 'early', 'ideas'],
+  kant: ['intro', 'ideas'],
+  descartes: ['intro'],
+  nietzsche: ['intro'],
+  marx: ['intro'],
+};
+
+function escapeHtmlProfile(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function philosopherProfilePlainToHtml(text) {
+  if (!text || !String(text).trim()) return '';
+  return String(text)
+    .split(/\n\n+/)
+    .map((p) => p.trim())
+    .filter(Boolean)
+    .map((p) => `<p>${escapeHtmlProfile(p).replace(/\n/g, '<br />')}</p>`)
+    .join('');
+}
+
+function buildPhilosopherProfileConceptsHtml(concepts) {
+  if (!Array.isArray(concepts) || concepts.length === 0) return '';
+  const items = concepts
+    .map((c) => {
+      const term = escapeHtmlProfile(c.term || '');
+      const expl = escapeHtmlProfile(c.explanation || '');
+      return `<li><strong>${term}</strong> — ${expl}</li>`;
+    })
+    .join('');
+  return `<ul class="plato-reader-ul">${items}</ul>`;
+}
+
+function buildPhilosopherProfileBooksHtml(books) {
+  if (!Array.isArray(books) || books.length === 0) return '';
+  const items = books
+    .map((b) => {
+      const q = encodeURIComponent(`${b.title} ${b.author}`);
+      const href = `https://www.google.com/search?q=${q}`;
+      const title = escapeHtmlProfile(b.title || '');
+      const author = escapeHtmlProfile(b.author || '');
+      const note = b.note ? ` ${escapeHtmlProfile(b.note)}` : '';
+      return `<li><a href="${href}" target="_blank" rel="noopener noreferrer"><strong>${title}</strong></a> — ${author}.${note}</li>`;
+    })
+    .join('');
+  return `<ul class="plato-reader-ul">${items}</ul>`;
+}
+
+function buildPhilosopherProfileVideosHtml(videos) {
+  if (!Array.isArray(videos) || videos.length === 0) return '';
+  const items = videos
+    .map((v) => {
+      const lab = escapeHtmlProfile(v.label || '');
+      const hint = v.hint ? ` <span class="gf-meta">(${escapeHtmlProfile(v.hint)})</span>` : '';
+      return `<li>${lab}${hint}</li>`;
+    })
+    .join('');
+  return `<ul class="plato-reader-ul">${items}</ul>`;
+}
+
+function resolvePhilosopherProfileSectionPhotoSrc(philosopherId, sectionKey) {
+  const fileSuffix = { intro: 'brief-intro', early: 'early-life', ideas: 'main-ideas' };
+  const allowed = PHILOSOPHER_PROFILE_SECTION_IMAGES[philosopherId];
+  if (allowed && allowed.includes(sectionKey) && fileSuffix[sectionKey]) {
+    return `images/philosopher-profile-sections/${philosopherId}-${fileSuffix[sectionKey]}.jpg`;
+  }
+  const key = AI_PHILOSOPHER_PORTRAIT_KEYS[philosopherId];
+  return key && PHILOSOPHER_PORTRAITS[key] ? PHILOSOPHER_PORTRAITS[key] : '';
+}
+
+function getPhilosopherProfileScroll(philosopherId) {
+  const root = typeof window !== 'undefined' ? window : {};
+  if (state.lang === 'zh-Hant') {
+    const z = root.PHILOSOPHER_PROFILE_SCROLL_ZH_HANT;
+    return z && z[philosopherId] ? z[philosopherId] : null;
+  }
+  const e = root.PHILOSOPHER_PROFILE_SCROLL_EN;
+  return e && e[philosopherId] ? e[philosopherId] : null;
+}
+
+function getPhilosopherReaderSectionDefs(ui, philosopherId) {
+  const prof = getPhilosopherProfileScroll(philosopherId);
+  if (!prof) return [];
+
+  const plain = philosopherProfilePlainToHtml;
+  const introPhoto = resolvePhilosopherProfileSectionPhotoSrc(philosopherId, 'intro');
+  const earlyPhoto = resolvePhilosopherProfileSectionPhotoSrc(philosopherId, 'early');
+  const ideasPhoto = resolvePhilosopherProfileSectionPhotoSrc(philosopherId, 'ideas');
+
+  return [
+    {
+      id: 'profile-sec-intro',
+      iconKey: 'intro',
+      titleKey: 'platoReaderTitleIntro',
+      bodyHtml: plain(prof.briefIntroduction),
+      portraitSrc: introPhoto || null,
+    },
+    {
+      id: 'profile-sec-early',
+      iconKey: 'early',
+      titleKey: 'platoReaderTitleEarly',
+      bodyHtml: plain(prof.earlyLife),
+      portraitSrc: earlyPhoto || null,
+    },
+    {
+      id: 'profile-sec-achieve',
+      iconKey: 'achieve',
+      titleKey: 'platoReaderTitleAchieve',
+      bodyHtml: plain(prof.keyAchievements),
+      portraitSrc: null,
+    },
+    {
+      id: 'profile-sec-ideas',
+      iconKey: 'ideas',
+      titleKey: 'platoReaderTitleIdeas',
+      bodyHtml: plain(prof.mainIdeas),
+      portraitSrc: ideasPhoto || null,
+    },
+    {
+      id: 'profile-sec-concepts',
+      iconKey: 'concepts',
+      titleKey: 'platoReaderTitleConcepts',
+      bodyHtml: buildPhilosopherProfileConceptsHtml(prof.keyConcepts),
+      portraitSrc: null,
+    },
+    {
+      id: 'profile-sec-books',
+      iconKey: 'books',
+      titleKey: 'platoReaderTitleBooks',
+      bodyHtml: buildPhilosopherProfileBooksHtml(prof.suggestedBooks),
+      portraitSrc: null,
+    },
+    {
+      id: 'profile-sec-videos',
+      iconKey: 'videos',
+      titleKey: 'platoReaderTitleVideos',
+      bodyHtml: buildPhilosopherProfileVideosHtml(prof.suggestedVideos),
+      portraitSrc: null,
+    },
+  ];
+}
+
+const PLATO_READER_NAV_ICON_HTML = {
+  intro:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 7h8M8 11h6"/></svg>',
+  early:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>',
+  achieve:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M12 3v18"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 7h8M8 11h6M8 15h4"/></svg>',
+  ideas:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" d="M12 3v2M12 19v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M3 12h2M19 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/></svg>',
+  concepts:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path stroke="currentColor" stroke-width="2" d="M8 7h8"/></svg>',
+  books:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M2 3h6a4 4 0 0 1 4 4v14a2 2 0 0 0-2-2H2z"/><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M22 3h-6a4 4 0 0 0-4 4v14a2 2 0 0 1 2-2h8z"/></svg>',
+  videos:
+    '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M8 5v14l11-7-11-7z"/><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/></svg>',
+};
+
+function platoReaderSectionHeadingHtml(title, iconKey) {
+  const ic = PLATO_READER_NAV_ICON_HTML[iconKey] || '';
+  return `<div class="plato-reader-block-heading"><h3 class="plato-reader-block-title">${title}</h3><span class="plato-reader-block-title-icon" aria-hidden="true">${ic}</span></div>`;
+}
+
+function buildPlatoReaderScrollHtml(ui) {
+  const philosopherId = getSelectedPhilosopherId();
+  const defs = getPhilosopherReaderSectionDefs(ui, philosopherId);
+  return defs
+    .map((d) => {
+      const title = ui[d.titleKey] || '';
+      const body = d.bodyHtml || '';
+      const head = platoReaderSectionHeadingHtml(title, d.iconKey);
+      if (d.portraitSrc) {
+        return `<article id="${d.id}" class="plato-reader-block plato-reader-block--with-photo">${head}<div class="plato-reader-block-body"><div class="plato-reader-intro-columns"><div class="plato-reader-intro-copy">${body}</div><div class="plato-reader-intro-photo"><img src="${d.portraitSrc}" alt="" width="140" height="140" loading="lazy" decoding="async" /></div></div></div></article>`;
+      }
+      return `<article id="${d.id}" class="plato-reader-block">${head}<div class="plato-reader-block-body">${body}</div></article>`;
+    })
+    .join('');
+}
+
+function setActivePlatoReaderNav(sectionId) {
+  document.querySelectorAll('#plato-reader-nav .plato-reader-nav-btn').forEach((b) => {
+    b.classList.toggle('is-active', b.dataset.section === sectionId);
+  });
+}
+
+function scrollPlatoReaderTo(sectionId) {
+  const el = document.getElementById(sectionId);
+  if (!el) return;
+  el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  setActivePlatoReaderNav(sectionId);
+}
+
+function renderPlatoReaderNav() {
+  const nav = document.getElementById('plato-reader-nav');
+  if (!nav) return;
+  const ui = getUiText(state.lang);
+  nav.setAttribute('aria-label', ui.platoReaderNavAria || 'Profile sections');
+  const defs = getPhilosopherReaderSectionDefs(ui, getSelectedPhilosopherId());
+  nav.replaceChildren();
+  const row2 = document.createElement('div');
+  row2.className = 'plato-reader-nav-row2';
+  defs.forEach((d, i) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'plato-reader-nav-btn';
+    b.dataset.section = d.id;
+    const ic = document.createElement('span');
+    ic.className = 'plato-reader-nav-ic';
+    ic.innerHTML = PLATO_READER_NAV_ICON_HTML[d.iconKey] || '';
+    const lab = document.createElement('span');
+    lab.className = 'plato-reader-nav-label';
+    lab.textContent = ui[d.titleKey] || '';
+    b.appendChild(ic);
+    b.appendChild(lab);
+    b.addEventListener('click', () => scrollPlatoReaderTo(d.id));
+    if (i < 4) nav.appendChild(b);
+    else row2.appendChild(b);
+  });
+  nav.appendChild(row2);
+  setActivePlatoReaderNav(defs[0] ? defs[0].id : 'profile-sec-intro');
+}
+
+function renderPlatoReaderScroll() {
+  const scroll = document.getElementById('plato-reader-scroll');
+  if (!scroll) return;
+  const ui = getUiText(state.lang);
+  scroll.innerHTML = buildPlatoReaderScrollHtml(ui);
+}
+
+function applyPlatoReaderHeadTexts() {
+  const ui = getUiText(state.lang);
+  const pid = getSelectedPhilosopherId();
+  const prof = getPhilosopherProfileScroll(pid);
+  const names = ui.aiPhilosopherNames || {};
+  const displayName = prof && prof.name ? prof.name : names[pid] || pid;
+  const suffix = state.lang === 'zh-Hant' ? '側讀' : 'Profile';
+  const kicker = document.getElementById('plato-reader-kicker');
+  if (kicker) kicker.textContent = `${displayName} · ${suffix}`;
+  const labelBtn = document.getElementById('label-plato-reader-btn');
+  if (labelBtn) labelBtn.textContent = displayName;
+  const openBtn = document.getElementById('btn-plato-reader');
+  const ariaTpl = ui.philosopherReaderBtnAria || ui.platoReaderBtnAria || 'Open {{name}} profile reader';
+  const titleTpl = ui.philosopherReaderBtnTitle || ui.platoReaderBtnTitle || '{{name}} — profile';
+  if (openBtn) {
+    openBtn.setAttribute('aria-label', ariaTpl.replace(/\{\{name\}\}/g, displayName));
+    openBtn.setAttribute('title', titleTpl.replace(/\{\{name\}\}/g, displayName));
+  }
+  const closeBtn = document.getElementById('btn-close-plato-reader');
+  const closeLbl = ui.platoReaderCloseAria || ui.closeLabel || 'Close';
+  if (closeBtn) {
+    closeBtn.setAttribute('aria-label', closeLbl);
+    closeBtn.setAttribute('title', closeLbl);
+  }
+}
+
+function refreshPlatoReaderIfOpen() {
+  const overlay = document.getElementById('plato-reader-overlay');
+  if (!overlay || overlay.hidden) return;
+  renderPlatoReaderNav();
+  renderPlatoReaderScroll();
+  applyAiChatFontMode();
+}
+
+function isPlatoReaderOpen() {
+  const overlay = document.getElementById('plato-reader-overlay');
+  return !!(overlay && !overlay.hidden);
+}
+
+function openPlatoReader() {
+  const overlay = document.getElementById('plato-reader-overlay');
+  if (!overlay) return;
+  overlay.hidden = false;
+  overlay.style.display = 'flex';
+  applyPlatoReaderHeadTexts();
+  renderPlatoReaderNav();
+  renderPlatoReaderScroll();
+  applyAiChatFontMode();
+  const scrollEl = document.getElementById('plato-reader-scroll');
+  if (scrollEl) scrollEl.scrollTop = 0;
+  document.getElementById('btn-close-plato-reader')?.focus();
+}
+
+function closePlatoReader() {
+  const overlay = document.getElementById('plato-reader-overlay');
+  if (!overlay || overlay.hidden) return;
+  overlay.hidden = true;
+  overlay.style.display = 'none';
+}
+
+function selectAiPhilosopher(id) {
+  if (!AI_PHILOSOPHER_ORDER.includes(id)) return;
+  if (id === getSelectedPhilosopherId()) return;
+  const ui = getUiText(state.lang);
+  const names = ui.aiPhilosopherNames || {};
+  const displayName = names[id] || id;
+  const label = (s) => (typeof s === 'string' ? s.replace(/\{\{name\}\}/g, displayName) : s);
+  const step1 = confirm(
+    label(ui.aiSwitchGuideConfirm) || `Switch your guide to ${displayName}?`
+  );
+  if (!step1) {
+    renderAiPhilosopherChips();
+    return;
+  }
+  if (isPlatoReaderOpen()) closePlatoReader();
+  const startNew = confirm(
+    label(ui.aiStartNewWithGuideConfirm) ||
+      `Start a new conversation with ${displayName}? This clears only this guide’s messages for today’s dilemma. Your other guides’ chats stay saved.\n\nClick OK to start fresh, or Cancel to keep your saved chat with this guide.`
+  );
+  setSelectedPhilosopherId(id);
+  if (startNew) {
+    const d0 = getDilemma();
+    clearAiThreadForPhilosopher(d0.id, id);
+  }
+  renderAiPhilosopherChips();
+  const d = getDilemma();
+  aiRenderThread(d.id);
+}
+
+const AI_STARTER_POOL_EN = [
+  'Why might someone pick the other side?',
+  'What should I weigh most here?',
+  'Explain this dilemma in plain words.',
+  'What would strengthen each side?',
+  'What am I not seeing yet?',
+  'How would you frame the trade-off?',
+  'What feels hardest about choosing?',
+  'Say something encouraging about my choice.',
+  'What was your greatest contribution to philosophy?',
+  'Summarize your core ideas briefly.',
+  'Which of your ideas gets misunderstood most?',
+  'Name one argument you are famous for.',
+  'How does your view define the good life?',
+  'Connect your teaching to this dilemma.',
+  'What question should I ask myself first?',
+  'I argued with family today—any wisdom?',
+  'I am exhausted at work—how should I think?',
+  'A friend ghosted me—what would you say?',
+  'Feeling guilty about my choice—can you help?',
+  'My boss pressured me—was refusing wrong?',
+  'I am anxious—what habit of thought helps?',
+];
+
+const AI_STARTER_POOL_ZH = [
+  '為什麼有人會選另一邊？',
+  '我該把什麼放得最重？',
+  '用白話幫我整理這題。',
+  '兩邊各自可以加強什麼論點？',
+  '我還忽略了什麼？',
+  '你會怎麼形容這個取捨？',
+  '選擇時最難的是什麼？',
+  '跟我說一句鼓勵的話。',
+  '你對哲學最大的貢獻是什麼？',
+  '用幾句話總結你的核心思想。',
+  '哪個想法最常被人誤解？',
+  '提起你，大家會想到哪個論證？',
+  '你眼中的美好生活是什麼樣子？',
+  '把你的學說連到這題上。',
+  '我第一步該問自己什麼？',
+  '今天和家人吵架了，有什麼建議？',
+  '工作好累，我該怎麼想？',
+  '朋友突然不回訊息，你會怎麼說？',
+  '選完一直內疚，能幫我想想嗎？',
+  '老闆逼我，我拒絕錯了嗎？',
+  '我很焦慮，有什麼思考習慣有用？',
+];
+
+function getAiStarterPool() {
+  return state.lang === 'zh-Hant' ? AI_STARTER_POOL_ZH : AI_STARTER_POOL_EN;
+}
+
+function pickTwoRandomFromPool(pool) {
+  const list = (pool || []).filter(Boolean);
+  if (list.length === 0) return [];
+  const copy = list.slice();
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = copy[i];
+    copy[i] = copy[j];
+    copy[j] = t;
+  }
+  if (copy.length === 1) return [copy[0], copy[0]];
+  return copy.slice(0, 2);
+}
+
+function getAiChatFontMode() {
+  try {
+    const v = localStorage.getItem(AI_CHAT_FONT_STORAGE_KEY);
+    if (AI_CHAT_FONT_ORDER.includes(v)) return v;
+  } catch {}
+  return AI_CHAT_FONT_ORDER.includes(aiChatFontModeMem) ? aiChatFontModeMem : 'md';
+}
+
+function setAiChatFontMode(mode) {
+  if (!AI_CHAT_FONT_ORDER.includes(mode)) return;
+  aiChatFontModeMem = mode;
+  try {
+    localStorage.setItem(AI_CHAT_FONT_STORAGE_KEY, mode);
+  } catch {}
+  applyAiChatFontMode();
+}
+
+function cycleAiChatFontMode() {
+  const cur = getAiChatFontMode();
+  const i = AI_CHAT_FONT_ORDER.indexOf(cur);
+  const next = AI_CHAT_FONT_ORDER[(i + 1) % AI_CHAT_FONT_ORDER.length];
+  setAiChatFontMode(next);
+}
+
+function applyAiChatFontMode() {
+  const mode = getAiChatFontMode();
+  const modal = document.querySelector('.modal.ai-modal');
+  if (modal) modal.setAttribute('data-ai-font', mode);
+  const platoSheet = document.querySelector('.plato-reader-sheet');
+  if (platoSheet) platoSheet.setAttribute('data-ai-font', mode);
+  const ui = getUiText(state.lang);
+  const sizeLabel = mode === 'sm'
+    ? (ui.aiChatFontSmall || 'Small')
+    : mode === 'lg'
+      ? (ui.aiChatFontLarge || 'Large')
+      : (ui.aiChatFontMedium || 'Medium');
+  const aria = ui.aiChatFontAria || 'Text size';
+  const titleBase = ui.aiChatFontTitle || aria;
+  const btn = document.getElementById('btn-ai-chat-font');
+  if (btn) {
+    btn.setAttribute('aria-label', `${aria} (${sizeLabel})`);
+    btn.setAttribute('title', `${titleBase}: ${sizeLabel}`);
+  }
+  const btnPlatoFont = document.getElementById('btn-plato-reader-font');
+  if (btnPlatoFont) {
+    btnPlatoFont.setAttribute('aria-label', `${aria} (${sizeLabel})`);
+    btnPlatoFont.setAttribute('title', `${titleBase}: ${sizeLabel}`);
+  }
+}
+
+function getDeviceId() {
+  const KEY = 'dd_device_id';
+  try {
+    const existing = localStorage.getItem(KEY);
+    if (existing && existing.trim()) return existing.trim();
+  } catch {}
+  const id =
+    (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function')
+      ? crypto.randomUUID()
+      : `dd_${Math.random().toString(16).slice(2)}_${Date.now().toString(16)}`;
+  try {
+    localStorage.setItem(KEY, id);
+  } catch {}
+  return id;
+}
+
+function getAiFunctionUrl() {
+  if (!supabaseEnabled()) return '';
+  const m = SUPABASE.url.match(/^https:\/\/([^.]+)\.supabase\.co\/?$/);
+  if (!m) return '';
+  return `https://${m[1]}.functions.supabase.co/ai-chat`;
+}
+
+function getAiStorageKey(kind, dilemmaId, lang, philosopherId) {
+  const pid = philosopherId || getSelectedPhilosopherId();
+  const langTag = lang === 'zh-Hant' ? 'zh-Hant' : 'en';
+  return `dd_ai_${kind}_${String(dilemmaId)}_${langTag}_${pid}`;
+}
+
+function getAiLegacyStorageKey(kind, dilemmaId, lang) {
+  const langTag = lang === 'zh-Hant' ? 'zh-Hant' : 'en';
+  return `dd_ai_${kind}_${String(dilemmaId)}_${langTag}`;
+}
+
+function loadAiThread(dilemmaId) {
+  const pid = getSelectedPhilosopherId();
+  const summaryKey = getAiStorageKey('summary', dilemmaId, state.lang, pid);
+  const msgsKey = getAiStorageKey('msgs', dilemmaId, state.lang, pid);
+  let summary = '';
+  let messages = [];
+  try {
+    summary = localStorage.getItem(summaryKey) || '';
+  } catch {}
+  try {
+    const raw = localStorage.getItem(msgsKey) || '';
+    messages = raw ? JSON.parse(raw) : [];
+  } catch {
+    messages = [];
+  }
+  if (pid === 'plato') {
+    try {
+      if (!summary) summary = localStorage.getItem(getAiLegacyStorageKey('summary', dilemmaId, state.lang)) || '';
+    } catch {}
+    try {
+      if (!messages.length) {
+        const raw = localStorage.getItem(getAiLegacyStorageKey('msgs', dilemmaId, state.lang)) || '';
+        messages = raw ? JSON.parse(raw) : [];
+      }
+    } catch {
+      messages = [];
+    }
+  }
+  if (!Array.isArray(messages)) messages = [];
+  messages = messages
+    .filter(m => m && typeof m === 'object' && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string')
+    .slice(-50);
+  return { summary, messages };
+}
+
+function saveAiThread(dilemmaId, summary, messages) {
+  const summaryKey = getAiStorageKey('summary', dilemmaId, state.lang);
+  const msgsKey = getAiStorageKey('msgs', dilemmaId, state.lang);
+  try {
+    localStorage.setItem(summaryKey, summary || '');
+  } catch {}
+  try {
+    localStorage.setItem(msgsKey, JSON.stringify(messages || []));
+  } catch {}
+}
+
+function clearAiThread(dilemmaId) {
+  const summaryKey = getAiStorageKey('summary', dilemmaId, state.lang);
+  const msgsKey = getAiStorageKey('msgs', dilemmaId, state.lang);
+  try { localStorage.removeItem(summaryKey); } catch {}
+  try { localStorage.removeItem(msgsKey); } catch {}
+}
+
+function clearAiThreadForPhilosopher(dilemmaId, philosopherId) {
+  const summaryKey = getAiStorageKey('summary', dilemmaId, state.lang, philosopherId);
+  const msgsKey = getAiStorageKey('msgs', dilemmaId, state.lang, philosopherId);
+  try { localStorage.removeItem(summaryKey); } catch {}
+  try { localStorage.removeItem(msgsKey); } catch {}
+}
+
+function clearAllAiThreads() {
+  const keys = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      if (k.startsWith('dd_ai_summary_') || k.startsWith('dd_ai_msgs_')) keys.push(k);
+    }
+  } catch {
+    return;
+  }
+  keys.forEach(k => {
+    try { localStorage.removeItem(k); } catch {}
+  });
+}
+
+function aiClearChatRecords() {
+  const ui = getUiText(state.lang);
+  const ok = confirm(ui.aiClearChatConfirm || 'Clear all chat records?');
+  if (!ok) return;
+  clearAllAiThreads();
+  const d = getDilemma();
+  aiRenderThread(d.id);
+  aiSetHint(ui.aiClearedHint || 'Cleared.');
+}
+
+function aiSetHint(text) {
+  const h = document.getElementById('ai-hint');
+  if (!h) return;
+  h.textContent = text || '';
+}
+
+function aiSetThinking(active, message) {
+  const row = document.getElementById('ai-thinking-row');
+  const label = document.getElementById('ai-thinking-text');
+  const avatar = document.getElementById('ai-thinking-avatar');
+  if (!row) return;
+  if (active) {
+    row.hidden = false;
+    const ui = getUiText(state.lang);
+    const text = typeof message === 'string' && message.trim()
+      ? message.trim()
+      : getAiThinkingMessage(ui, getSelectedPhilosopherId());
+    if (label) label.textContent = text;
+    const src = getAiPhilosopherPortraitSrc();
+    if (avatar && src) {
+      avatar.src = src;
+      avatar.className = `ai-msg-avatar ai-thinking-avatar${aiPortraitFaceZoomActive() ? ' ai-msg-avatar--face-zoom' : ''}`;
+      avatar.hidden = false;
+    } else if (avatar) {
+      avatar.hidden = true;
+    }
+    scrollAiThreadPaneToEnd();
+  } else {
+    row.hidden = true;
+  }
+}
+
+/** Split assistant reply for typewriter effect: per-character (ZH) or word / whitespace chunks (EN). */
+function chunkTextForAiStream(text, lang) {
+  const s = typeof text === 'string' ? text : '';
+  if (!s) return [];
+  if (lang === 'zh-Hant') return Array.from(s);
+  return s.split(/(\s+)/).filter((part) => part.length > 0);
+}
+
+function delayMsForAiStreamChunk(lang) {
+  return lang === 'zh-Hant' ? 22 : 38;
+}
+
+function streamTextIntoElement(el, fullText, lang) {
+  const chunks = chunkTextForAiStream(fullText, lang);
+  const delay = delayMsForAiStreamChunk(lang);
+  el.textContent = '';
+  let i = 0;
+  return new Promise((resolve) => {
+    function tick() {
+      if (i >= chunks.length) {
+        resolve();
+        return;
+      }
+      el.textContent += chunks[i];
+      i += 1;
+      scrollAiThreadPaneToEnd();
+      setTimeout(tick, delay);
+    }
+    tick();
+  });
+}
+
+function refreshAiStarters(opts) {
+  const options = opts || {};
+  const wrap = document.getElementById('ai-starters');
+  if (!wrap) return;
+  const ui = getUiText(state.lang);
+  let qs;
+  if (options.random) {
+    qs = pickTwoRandomFromPool(getAiStarterPool());
+    if (qs.length < 2) {
+      qs = [ui.aiStarter1, ui.aiStarter2].filter(Boolean);
+    }
+  } else {
+    qs = [ui.aiStarter1, ui.aiStarter2].filter(Boolean);
+  }
+  wrap.replaceChildren();
+  qs.forEach(text => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'ai-starter-btn';
+    b.textContent = text;
+    b.addEventListener('click', () => {
+      const input = document.getElementById('ai-input');
+      if (input) {
+        input.value = text;
+        input.focus();
+      }
+    });
+    wrap.appendChild(b);
+  });
+  wrap.setAttribute('aria-label', ui.aiStartersLabel || 'Suggested questions');
+}
+
+function aiAppendMessage(role, content) {
+  const box = getAiThreadMessagesEl();
+  if (!box) return;
+  if (role === 'user') {
+    const msg = document.createElement('div');
+    msg.className = 'ai-msg ai-msg--user';
+    msg.textContent = content;
+    box.appendChild(msg);
+  } else {
+    const row = document.createElement('div');
+    row.className = 'ai-msg-row ai-msg-row--assistant';
+    const src = getAiPhilosopherPortraitSrc();
+    if (src) {
+      const img = document.createElement('img');
+      img.className = aiMsgAvatarClass();
+      img.src = src;
+      img.alt = '';
+      img.decoding = 'async';
+      img.referrerPolicy = 'no-referrer';
+      row.appendChild(img);
+    }
+    const msg = document.createElement('div');
+    msg.className = 'ai-msg ai-msg--assistant';
+    msg.textContent = content;
+    row.appendChild(msg);
+    box.appendChild(row);
+  }
+  scrollAiThreadPaneToEnd();
+}
+
+/** Append assistant bubble and reveal text gradually (current guide portrait, bottom-left). */
+function aiStreamAssistantMessage(fullText) {
+  const box = getAiThreadMessagesEl();
+  if (!box) return Promise.resolve();
+  const row = document.createElement('div');
+  row.className = 'ai-msg-row ai-msg-row--assistant';
+  const src = getAiPhilosopherPortraitSrc();
+  if (src) {
+    const img = document.createElement('img');
+    img.className = aiMsgAvatarClass();
+    img.src = src;
+    img.alt = '';
+    img.decoding = 'async';
+    img.referrerPolicy = 'no-referrer';
+    row.appendChild(img);
+  }
+  const msg = document.createElement('div');
+  msg.className = 'ai-msg ai-msg--assistant';
+  row.appendChild(msg);
+  box.appendChild(row);
+  return streamTextIntoElement(msg, fullText, state.lang).then(() => {
+    scrollAiThreadPaneToEnd();
+  });
+}
+
+function aiRenderThread(dilemmaId) {
+  const box = getAiThreadMessagesEl();
+  if (!box) return;
+  box.replaceChildren();
+  const { messages } = loadAiThread(dilemmaId);
+  messages.forEach(m => aiAppendMessage(m.role, m.content));
+}
+
+async function aiCall(payload) {
+  const url = getAiFunctionUrl();
+  if (!url) throw new Error('AI is not configured');
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: supabaseFunctionsHeaders({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ ...payload, deviceId: getDeviceId() }),
+  });
+  if (!res.ok) {
+    const txt = await res.text().catch(() => '');
+    let detail = txt && txt.trim() ? txt.trim() : `AI request failed: ${res.status}`;
+    try {
+      const j = JSON.parse(txt);
+      const code = j && typeof j.code === 'string' ? j.code : '';
+      const msg = j && typeof j.message === 'string' ? j.message : '';
+      if (
+        code === 'UNAUTHORIZED_INVALID_JWT_FORMAT' ||
+        msg.includes('JWT') ||
+        msg.includes('authorization')
+      ) {
+        detail =
+          'AI chat needs the JWT anon key from Supabase (Project Settings → API → anon public). Replace window.__DD_SUPABASE.anonKey in index.html — sb_publishable_* keys are not accepted by Edge Functions.';
+      }
+    } catch {}
+    throw new Error(detail);
+  }
+  return await res.json();
+}
+
+async function maybeSummarizeAiThread(dilemmaId) {
+  const { summary, messages } = loadAiThread(dilemmaId);
+  // Only summarize when the thread is getting long; keep cost predictable.
+  const turns = messages.length;
+  if (turns <= AI_MAX_VISIBLE_TURNS * 2) return { summary, messages };
+  if (turns % AI_SUMMARIZE_EVERY_TURNS !== 0) return { summary, messages };
+
+  aiSetThinking(true);
+  aiSetHint('');
+  try {
+    const resp = await aiCall({
+      mode: 'summarize',
+      lang: state.lang,
+      summary,
+      messages: messages.slice(-30),
+      philosopherId: getSelectedPhilosopherId(),
+    });
+    const newSummary = typeof resp.summary === 'string' ? resp.summary : summary;
+    // Keep only the most recent few turns after summarizing.
+    const trimmed = messages.slice(-AI_MAX_VISIBLE_TURNS * 2);
+    saveAiThread(dilemmaId, newSummary, trimmed);
+    return { summary: newSummary, messages: trimmed };
+  } finally {
+    aiSetThinking(false);
+  }
+}
+
+async function aiSendCurrentMessage() {
+  const input = document.getElementById('ai-input');
+  const btn = document.getElementById('btn-ai-send');
+  if (!input || !btn || !getAiThreadMessagesEl()) return;
+
+  const ui = getUiText(state.lang);
+  if (!supabaseEnabled()) {
+    aiSetHint(ui.aiUnavailable || 'AI chat is not available.');
+    return;
+  }
+
+  const d = getDilemma();
+  const dilemmaId = d.id;
+  const text = String(input.value || '').trim().slice(0, AI_CHAT_MAX_INPUT_CHARS);
+  if (!text) {
+    input.focus();
+    return;
+  }
+
+  input.value = '';
+  aiSetHint('');
+  aiSetThinking(false);
+  btn.disabled = true;
+  input.disabled = true;
+
+  try {
+    const pre = loadAiThread(dilemmaId);
+    pre.messages.push({ role: 'user', content: text });
+    saveAiThread(dilemmaId, pre.summary, pre.messages);
+    aiAppendMessage('user', text);
+
+    const { summary, messages } = await maybeSummarizeAiThread(dilemmaId);
+    const contextMessages = messages.slice(-AI_MAX_VISIBLE_TURNS * 2);
+
+    aiSetThinking(true);
+    aiSetHint('');
+    const resp = await aiCall({
+      mode: 'chat',
+      lang: state.lang,
+      summary,
+      messages: contextMessages,
+      dilemma: { id: d.id, text: d.text, optA: d.optA, optB: d.optB },
+      userChoice: state.choice || '',
+      philosopherId: getSelectedPhilosopherId(),
+    });
+
+    const reply = typeof resp.reply === 'string' ? resp.reply.trim() : '';
+    const safeReply = reply || (state.lang === 'zh-Hant' ? '（暫時未能回覆，請再試一次。）' : '(No reply—please try again.)');
+
+    const post = loadAiThread(dilemmaId);
+    post.messages.push({ role: 'assistant', content: safeReply });
+    const updatedSummary = typeof resp.summary === 'string' ? resp.summary : post.summary;
+    saveAiThread(dilemmaId, updatedSummary, post.messages);
+    aiSetThinking(false);
+    aiSetHint('');
+    await aiStreamAssistantMessage(safeReply);
+  } catch (err) {
+    console.error(err);
+    const msg = ui.aiSendFailed || 'Could not send message.';
+    let detail = err && typeof err.message === 'string' ? err.message : '';
+    const isNetwork =
+      err?.name === 'TypeError' ||
+      /NetworkError|Failed to fetch|Load failed|fetch/i.test(String(detail));
+    if (isNetwork) {
+      const fileHint =
+        typeof window !== 'undefined' && window.location?.protocol === 'file:'
+          ? ' Open the app over http://localhost (Live Server), not file://.'
+          : '';
+      const deployHint =
+        !fileHint && typeof window !== 'undefined' && /^https?:/i.test(window.location?.protocol || '')
+          ? ' Redeploy ai-chat: `npx supabase functions deploy ai-chat` (Edge Function may be crashing).'
+          : '';
+      detail = [detail, fileHint || deployHint].filter(Boolean).join('');
+    }
+    aiSetHint(detail ? `${msg} ${detail}` : msg);
+  } finally {
+    aiSetThinking(false);
+    btn.disabled = false;
+    input.disabled = false;
+    input.focus();
+  }
+}
+
+function openAiAssistant() {
+  setMainTab('chat');
+}
+
+function closeAiAssistant() {
+  if (isPlatoReaderOpen()) closePlatoReader();
+  aiSetHint('');
+  aiSetThinking(false);
+  setMainTab('dilemma');
 }
 
 function buildChallengeText() {
@@ -3624,6 +7383,45 @@ function applyUIText() {
   syncOverflowSubpanels();
   const userFeedbackActionEl = document.getElementById('label-user-feedback-action');
   if (userFeedbackActionEl) userFeedbackActionEl.textContent = ui.userFeedbackAction || 'User feedback';
+  const tabBar = document.getElementById('app-tab-bar');
+  if (tabBar) tabBar.setAttribute('aria-label', ui.mainTabBarAria || 'Main sections');
+  const tabDilemmaLabel = document.getElementById('label-tab-dilemma');
+  if (tabDilemmaLabel) tabDilemmaLabel.textContent = ui.mainTabDilemma || 'Daily Dilemma';
+  const tabChatLabel = document.getElementById('label-tab-chat');
+  if (tabChatLabel) tabChatLabel.textContent = ui.mainTabChat || ui.aiAssistantAction || 'Chat with Philosopher';
+  const tabProfileLabel = document.getElementById('label-tab-profile');
+  if (tabProfileLabel) tabProfileLabel.textContent = ui.mainTabProfile || ui.philosophyProfileAction || 'My Philosophy Profile';
+  const kmTabLabel = ui.mainTabKnowledge || ui.knowledgeMapAction || 'Knowledge Map';
+  const tabKnowledgeLabel = document.getElementById('label-tab-knowledge');
+  if (tabKnowledgeLabel) tabKnowledgeLabel.textContent = kmTabLabel;
+  const tabKnowledgeBtn = document.getElementById('tab-btn-knowledge');
+  if (tabKnowledgeBtn) {
+    tabKnowledgeBtn.setAttribute('aria-label', kmTabLabel);
+    tabKnowledgeBtn.setAttribute('title', kmTabLabel);
+  }
+  const closeAiBtn = document.getElementById('btn-close-ai');
+  if (closeAiBtn) {
+    closeAiBtn.setAttribute('aria-label', ui.aiCloseToDilemmaAria || 'Back to Daily Dilemma');
+    closeAiBtn.setAttribute('title', ui.aiCloseToDilemmaTitle || '');
+  }
+  const aiTitleEl = document.getElementById('ai-title');
+  if (aiTitleEl) aiTitleEl.textContent = ui.aiTitle || 'Chat with Philosopher';
+  const aiSubtitleEl = document.getElementById('ai-subtitle');
+  if (aiSubtitleEl) aiSubtitleEl.textContent = ui.aiSubtitle || '';
+  const aiInputEl = document.getElementById('ai-input');
+  if (aiInputEl) aiInputEl.setAttribute('placeholder', ui.aiPlaceholder || '');
+  refreshAiStarters();
+  applyAiChatFontMode();
+  const aiNewStartersBtn = document.getElementById('btn-ai-new-starters');
+  if (aiNewStartersBtn) {
+    aiNewStartersBtn.setAttribute('aria-label', ui.aiNewStartersAria || 'New suggested questions');
+    aiNewStartersBtn.setAttribute('title', ui.aiNewStartersTitle || '');
+  }
+  const aiClearBtn = document.getElementById('btn-ai-clear-chat');
+  if (aiClearBtn) {
+    aiClearBtn.setAttribute('aria-label', ui.aiClearChatAria || 'Clear chat');
+    aiClearBtn.setAttribute('title', ui.aiClearChatTitle || '');
+  }
   const feedbackBtn = document.getElementById('btn-user-feedback');
   if (feedbackBtn) {
     const fbLabel = ui.userFeedbackAction || 'User feedback';
@@ -3631,29 +7429,6 @@ function applyUIText() {
     feedbackBtn.setAttribute('title', fbLabel);
     feedbackBtn.classList.toggle('is-active', !!state.feedbackPanelOpen);
   }
-  const topicSuggestActionEl = document.getElementById('label-topic-suggest-action');
-  if (topicSuggestActionEl) topicSuggestActionEl.textContent = ui.topicSuggestAction || 'Suggest a topic';
-  const topicSuggestBtn = document.getElementById('btn-topic-suggest');
-  if (topicSuggestBtn) {
-    const tsLabel = ui.topicSuggestAction || 'Suggest a topic';
-    topicSuggestBtn.setAttribute('aria-label', tsLabel);
-    topicSuggestBtn.setAttribute('title', tsLabel);
-    topicSuggestBtn.classList.toggle('is-active', !!state.topicSuggestPanelOpen);
-  }
-  const topicSuggestModalTitle = document.getElementById('topic-suggest-modal-title');
-  if (topicSuggestModalTitle) topicSuggestModalTitle.textContent = ui.topicSuggestModalTitle || 'Vote for tomorrow’s dilemma';
-  const topicSuggestInput = document.getElementById('topic-suggest-input');
-  if (topicSuggestInput) topicSuggestInput.setAttribute('placeholder', ui.topicSuggestPlaceholder || '');
-  const topicSuggestFindSpan = document.getElementById('label-topic-suggest-find');
-  if (topicSuggestFindSpan) topicSuggestFindSpan.textContent = ui.topicSuggestFind || 'Find themes';
-  const suggestSticky = document.getElementById('label-suggest-tomorrow-sticky');
-  if (suggestSticky) suggestSticky.textContent = ui.suggestTomorrowSticky || 'Suggest tomorrow';
-  const closeTopicBtn = document.getElementById('btn-close-topic-suggest-modal');
-  if (closeTopicBtn) closeTopicBtn.setAttribute('aria-label', ui.closeTopicModal || 'Close');
-  const labelBack = document.getElementById('label-topic-suggest-back');
-  if (labelBack) labelBack.textContent = ui.topicSuggestBack || 'Back';
-  const labelSubmit = document.getElementById('label-topic-suggest-submit-vote');
-  if (labelSubmit) labelSubmit.textContent = ui.topicSuggestSubmitVote || 'Submit vote for tomorrow';
   const feedbackPromptEl = document.getElementById('label-feedback-prompt');
   if (feedbackPromptEl) feedbackPromptEl.textContent = ui.feedbackPrompt || 'Your message';
   const feedbackTa = document.getElementById('feedback-text');
@@ -3664,8 +7439,18 @@ function applyUIText() {
   if (feedbackFlashOk) feedbackFlashOk.textContent = ui.feedbackDismiss || 'Got it';
   const historyAction = document.getElementById('label-history-action');
   if (historyAction) historyAction.textContent = ui.historyAction || ui.historyTitle;
-  const historyTitle = document.querySelector('.history-title');
+  const bookmarksAction = document.getElementById('label-bookmarks-action');
+  if (bookmarksAction) bookmarksAction.textContent = ui.bookmarksAction || ui.bookmarksTitle || 'Bookmarks';
+  const historyTitle = document.querySelector('#history-panel .history-title');
   if (historyTitle) historyTitle.textContent = ui.historyTitle;
+  const historyEmpty = document.querySelector('#history-panel .history-empty');
+  if (historyEmpty) historyEmpty.textContent = ui.historyEmpty || '';
+  const bookmarksTitle = document.getElementById('bookmarks-title');
+  if (bookmarksTitle) bookmarksTitle.textContent = ui.bookmarksTitle || 'Bookmarks';
+  const bookmarksEmpty = document.getElementById('bookmarks-empty');
+  if (bookmarksEmpty) bookmarksEmpty.textContent = ui.bookmarksEmpty || 'No bookmarks yet.';
+  applyPlatoReaderHeadTexts();
+  refreshPlatoReaderIfOpen();
 }
 
 function setLanguage(lang) {
@@ -3675,6 +7460,13 @@ function setLanguage(lang) {
   applyUIText();
   renderDate();
   renderDilemma();
+  if (state.profileActive) {
+    if (state.profileAnswers.length >= PHILOSOPHY_PROFILE_QUESTIONS.length) renderProfileResult();
+    else renderProfileQuestion();
+  }
+  if (state.mainTab === 'knowledge' && state.knowledgeMapSeed != null) {
+    renderKnowledgeMap(state.knowledgeMapSeed);
+  }
   if (state.answered) {
     // Keep current choice view coherent after language switch.
     state.answered = false;
@@ -3695,47 +7487,10 @@ document.getElementById('btn-lang-toggle').addEventListener('click', () => {
 document.getElementById('btn-user-feedback').addEventListener('click', () => {
   toggleUserFeedbackPanel();
 });
-const btnTopicSuggest = document.getElementById('btn-topic-suggest');
-if (btnTopicSuggest) {
-  btnTopicSuggest.addEventListener('click', () => {
-    toggleTopicSuggestPanel();
-  });
-}
-const btnTopicSuggestFind = document.getElementById('btn-topic-suggest-find');
-if (btnTopicSuggestFind) {
-  btnTopicSuggestFind.addEventListener('click', () => runTopicSuggestLookup());
-}
-const topicSuggestInputEl = document.getElementById('topic-suggest-input');
-if (topicSuggestInputEl) {
-  topicSuggestInputEl.addEventListener('keydown', e => {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-      runTopicSuggestLookup();
-    }
-  });
-}
-const btnSuggestTomorrowSticky = document.getElementById('btn-suggest-tomorrow-sticky');
-if (btnSuggestTomorrowSticky) {
-  btnSuggestTomorrowSticky.addEventListener('click', () => {
-    openTopicSuggestModal({ showQuickThemes: true });
-  });
-}
-const btnCloseTopicModal = document.getElementById('btn-close-topic-suggest-modal');
-if (btnCloseTopicModal) {
-  btnCloseTopicModal.addEventListener('click', () => closeTopicSuggestModal());
-}
-const topicSuggestModalOverlay = document.getElementById('topic-suggest-modal');
-if (topicSuggestModalOverlay) {
-  topicSuggestModalOverlay.addEventListener('click', e => {
-    if (e.target === topicSuggestModalOverlay) closeTopicSuggestModal();
-  });
-}
-document.getElementById('btn-topic-suggest-back')?.addEventListener('click', () => {
-  hideTopicSuggestDetailModal(true);
-});
-document.getElementById('btn-topic-suggest-submit-vote')?.addEventListener('click', () => {
-  submitTopicSuggestVoteFromDetail();
-});
+document.getElementById('tab-btn-dilemma')?.addEventListener('click', () => setMainTab('dilemma'));
+document.getElementById('tab-btn-chat')?.addEventListener('click', () => setMainTab('chat'));
+document.getElementById('tab-btn-profile')?.addEventListener('click', () => openProfileTab());
+document.getElementById('tab-btn-knowledge')?.addEventListener('click', () => openKnowledgeTab());
 document.getElementById('btn-send-feedback').addEventListener('click', () => {
   sendUserFeedback().catch(() => {});
 });
@@ -3770,17 +7525,34 @@ document.getElementById('feedback-flash-overlay').addEventListener('click', e =>
 });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    const detail = document.getElementById('topic-suggest-detail-modal');
-    if (detail && !detail.hidden) {
-      hideTopicSuggestDetailModal(true);
-      e.preventDefault();
-      return;
-    }
-    closeTopicSuggestModal();
     closeFeedbackFlash();
     closeOverflowMenu();
     closeLegal();
+    if (isPlatoReaderOpen()) {
+      closePlatoReader();
+      return;
+    }
+    if (state.mainTab === 'chat') closeAiAssistant();
+    else if (state.mainTab === 'knowledge') setMainTab('dilemma');
   }
+});
+
+document.getElementById('btn-close-ai')?.addEventListener('click', closeAiAssistant);
+document.getElementById('btn-plato-reader')?.addEventListener('click', () => openPlatoReader());
+document.getElementById('btn-close-plato-reader')?.addEventListener('click', () => closePlatoReader());
+document.getElementById('btn-plato-reader-font')?.addEventListener('click', () => cycleAiChatFontMode());
+document.getElementById('plato-reader-overlay')?.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('plato-reader-overlay')) closePlatoReader();
+});
+const btnAiChatFontRoot = document.getElementById('btn-ai-chat-font');
+if (btnAiChatFontRoot) btnAiChatFontRoot.addEventListener('click', () => cycleAiChatFontMode());
+const btnAiClearRoot = document.getElementById('btn-ai-clear-chat');
+if (btnAiClearRoot) btnAiClearRoot.addEventListener('click', () => aiClearChatRecords());
+const btnAiNewStartersRoot = document.getElementById('btn-ai-new-starters');
+if (btnAiNewStartersRoot) btnAiNewStartersRoot.addEventListener('click', () => refreshAiStarters({ random: true }));
+document.getElementById('ai-compose')?.addEventListener('submit', e => {
+  e.preventDefault();
+  aiSendCurrentMessage().catch(() => {});
 });
 
 /* =============================================
@@ -3814,6 +7586,15 @@ function hideLoadingScreen() {
   }, remaining);
 }
 
+function armStartScreenDismiss() {
+  const screen = document.getElementById('loading-screen');
+  if (!screen) return;
+
+  // Auto-enter after 4 seconds (no manual "Enter" interaction).
+  const AUTO_DISMISS_MS = 2000;
+  setTimeout(() => hideLoadingScreen(), AUTO_DISMISS_MS);
+}
+
 
 
 /* =============================================
@@ -3826,6 +7607,8 @@ function init() {
   applyOverflowFooterLinks();
   state.lang = loadLanguage();
   state.history = loadHistory();
+  syncExploredConceptsFromHistory();
+  mergeLearnedConceptsFromSupabase().catch(() => {});
   state.reminderEnabled = loadReminderEnabled();
   state.reminderTime = loadReminderTime();
   applyUIText();
@@ -3847,10 +7630,39 @@ function init() {
     state.todayIndex = computeEffectiveTodayIndex(state.todayKey);
     renderDilemma();
     syncAnsweredUiFromHistoryIfNeeded();
+    setMainTab('dilemma');
   }
   fetchScheduledDilemmaForToday()
     .then(() => refreshTodayAfterScheduleFetch())
     .catch(() => refreshTodayAfterScheduleFetch());
-  hideLoadingScreen();
+  armStartScreenDismiss();
+  setMainTab('dilemma');
 }
-init();
+
+function bootstrap() {
+  const failOpen = err => {
+    try {
+      console.error('Daily Dilemma failed to start:', err);
+    } catch {}
+    try {
+      const screen = document.getElementById('loading-screen');
+      if (screen) {
+        screen.classList.add('loading-screen--ready');
+      }
+    } catch {}
+    try {
+      armStartScreenDismiss();
+    } catch {}
+  };
+
+  window.addEventListener('error', e => failOpen(e?.error || e?.message || e));
+  window.addEventListener('unhandledrejection', e => failOpen(e?.reason || e));
+
+  try {
+    init();
+  } catch (err) {
+    failOpen(err);
+  }
+}
+
+bootstrap();

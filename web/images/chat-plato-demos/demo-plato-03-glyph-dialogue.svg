@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" fill="none" aria-hidden="true">
+  <!-- Style 3: icon glyph, bust plus scroll (dialogues) -->
+  <rect width="256" height="256" rx="28" fill="#f4f6f8"/>
+  <path fill="#2f3d4c" d="M118 54c-26 0-48 20-48 46 0 14 6 26 16 34-18 10-30 28-30 48v28h124v-28c0-20-12-38-30-48 10-8 16-20 16-34 0-26-22-46-48-46z"/>
+  <path d="M94 96c0 9 8 16 18 16s18-7 18-16" stroke="#d8e0e8" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M106 124c8 7 20 7 28 0" stroke="#d8e0e8" stroke-width="3" stroke-linecap="round"/>
+  <path d="M152 154h52c6 0 10 4 10 10v58c0 6-4 10-10 10h-52V154z" fill="#e8ecf1" stroke="#5a6b7d" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M168 154v78M184 166h28M184 186h24M184 206h20" stroke="#5a6b7d" stroke-width="2" stroke-linecap="round"/>
+  <path d="M68 166c8-16 30-26 50-26" stroke="#5a6b7d" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+</svg>
