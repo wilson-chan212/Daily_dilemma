@@ -342,14 +342,6 @@
           </details>
 
         </div>
-        <!-- Ask A Friend -->
-        <div class="challenge-row">
-          <button class="btn-challenge-trigger" id="btn-challenge-trigger">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <span id="label-ask-friend">Ask A Friend</span>
-          </button>
-        </div>
-
         <!-- spacer so sticky button + tab bar don't overlap content -->
         <div class="chosen-state-tab-spacer" aria-hidden="true"></div>
       </div>
@@ -358,6 +350,7 @@
       <div class="sticky-next" id="sticky-next" hidden style="display:none">
         <div class="sticky-next-row">
           <button type="button" class="btn-next btn-next--secondary" id="btn-chat-after-answer"><span id="label-chat-after-answer">Dialogue</span><span class="btn-next__icon" id="icon-chat-after-answer" aria-hidden="true"></span></button>
+          <button type="button" class="btn-next btn-next--secondary" id="btn-share-after-answer" aria-label="Share"><span id="label-share-after-answer">Share</span><span class="btn-next__icon" id="icon-share-after-answer" aria-hidden="true"></span></button>
           <button type="button" class="btn-next" id="btn-next"><span id="label-next-dilemma">Next &#8594;</span></button>
         </div>
         <p class="sticky-next-hint" id="daily-limit-hint" hidden></p>
@@ -434,6 +427,9 @@
 
     <!-- Philosophy Profile -->
     <section class="profile-view" id="profile-view" aria-live="polite">
+      <div class="profile-intro" id="profile-intro" hidden>
+        <div class="profile-intro-messages" id="profile-intro-messages" role="list"></div>
+      </div>
       <div class="profile-test-card" id="profile-test-card">
         <div class="profile-test-image-wrap">
           <img class="profile-test-image" id="profile-question-image" src="" alt="" loading="eager" />
@@ -508,15 +504,15 @@
       <span class="app-tab-icon" id="icon-tab-forum" aria-hidden="true"></span>
       <span class="app-tab-label" id="label-tab-forum">Forum</span>
     </button>
+    <button type="button" class="app-tab" role="tab" id="tab-btn-chat" aria-controls="tab-panel-chat" aria-selected="false" tabindex="-1">
+      <span class="app-tab-icon" id="icon-tab-chat" aria-hidden="true"></span>
+      <span class="app-tab-label" id="label-tab-chat">Dialogue</span>
+    </button>
     <button type="button" class="app-tab is-active" role="tab" id="tab-btn-dilemma" aria-controls="tab-panel-dilemma" aria-selected="true">
       <span class="app-tab-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.25"/><path d="M12 8.5v3.5l2.75 2.75"/></svg>
       </span>
       <span class="app-tab-label" id="label-tab-dilemma">Dilemma Today</span>
-    </button>
-    <button type="button" class="app-tab" role="tab" id="tab-btn-chat" aria-controls="tab-panel-chat" aria-selected="false" tabindex="-1">
-      <span class="app-tab-icon" id="icon-tab-chat" aria-hidden="true"></span>
-      <span class="app-tab-label" id="label-tab-chat">Dialogue</span>
     </button>
     <button type="button" class="app-tab" role="tab" id="tab-btn-profile" aria-controls="tab-panel-profile" aria-selected="false" tabindex="-1">
       <span class="app-tab-icon" aria-hidden="true">
@@ -790,6 +786,25 @@
         </button>
       </div>
       <form id="forum-compose-form" class="forum-compose-form" novalidate>
+        <section class="forum-compose-guidelines" id="forum-compose-guidelines" aria-labelledby="forum-compose-guidelines-title">
+          <h3 class="forum-compose-guidelines-title" id="forum-compose-guidelines-title">Community guidelines</h3>
+          <p class="forum-compose-guidelines-intro" id="forum-compose-guidelines-intro"></p>
+          <ul class="forum-compose-guidelines-list" id="forum-compose-guidelines-list"></ul>
+          <label class="forum-compose-guidelines-check">
+            <input type="checkbox" id="forum-compose-guidelines-accept" />
+            <span id="forum-compose-guidelines-accept-label"></span>
+          </label>
+          <p class="forum-compose-error" id="forum-compose-guidelines-error" hidden role="alert"></p>
+        </section>
+        <div class="forum-compose-safety" id="forum-compose-safety" hidden role="alert" aria-live="polite">
+          <p class="forum-compose-safety-title" id="forum-compose-safety-title"></p>
+          <ul class="forum-compose-safety-flags" id="forum-compose-safety-flags"></ul>
+          <p class="forum-compose-safety-message" id="forum-compose-safety-message"></p>
+          <label class="forum-compose-safety-ack" id="forum-compose-safety-ack-wrap" hidden>
+            <input type="checkbox" id="forum-compose-safety-ack" />
+            <span id="forum-compose-safety-ack-label"></span>
+          </label>
+        </div>
         <div class="forum-compose-field">
           <label class="forum-compose-label" for="forum-compose-topic" id="forum-compose-topic-label">Topic</label>
           <input type="text" id="forum-compose-topic" class="forum-compose-input" autocomplete="off" />
@@ -824,6 +839,63 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Forum: report content -->
+  <div class="modal-overlay" id="forum-report-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="forum-report-title">
+    <div class="modal forum-report-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="forum-report-title">Report content</h2>
+        <button class="btn-close" id="btn-close-forum-report" type="button" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="forum-report-reasons" id="forum-report-reasons" role="radiogroup" aria-labelledby="forum-report-title"></div>
+      <div class="forum-report-actions">
+        <button type="button" class="share-btn share-btn-secondary" id="btn-forum-report-cancel">Cancel</button>
+        <button type="button" class="share-btn share-btn-primary" id="btn-forum-report-submit">Submit report</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forum: confirm hide -->
+  <div class="modal-overlay" id="forum-hide-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="forum-hide-title">
+    <div class="modal forum-hide-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="forum-hide-title">Hide this content?</h2>
+        <button class="btn-close" id="btn-close-forum-hide" type="button" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <p class="forum-hide-message" id="forum-hide-message"></p>
+      <div class="forum-hide-actions">
+        <button type="button" class="share-btn share-btn-secondary" id="btn-forum-hide-cancel">Cancel</button>
+        <button type="button" class="share-btn share-btn-primary forum-hide-confirm-btn" id="btn-forum-hide-confirm">Hide</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forum: confirm delete (owner only) -->
+  <div class="modal-overlay" id="forum-delete-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="forum-delete-title">
+    <div class="modal forum-delete-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="forum-delete-title">Delete this content?</h2>
+        <button class="btn-close" id="btn-close-forum-delete" type="button" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <p class="forum-delete-message" id="forum-delete-message"></p>
+      <div class="forum-delete-actions">
+        <button type="button" class="share-btn share-btn-secondary" id="btn-forum-delete-cancel">Cancel</button>
+        <button type="button" class="share-btn share-btn-primary forum-delete-confirm-btn" id="btn-forum-delete-confirm">Delete</button>
+      </div>
     </div>
   </div>
 
@@ -953,6 +1025,7 @@
   <script src="data/forum-sample-posts.js"></script>
   <script src="data/forum-avatar-catalog.js"></script>
   <script src="data/ui-icons.js"></script>
+  <script src="data/forum-moderation.js"></script>
   <script src="forum-panel.js"></script>
   <script src="app.js"></script>
 </body>

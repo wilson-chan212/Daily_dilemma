@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forum card demos — Daily Dilemma UI tokens</title>
+  <link rel="stylesheet" href="../../fonts/fonts.css" />
+  <style>
+    /* Mirrors [style.css](style.css) light tokens for screenshot fidelity */
+    :root {
+      --color-bg: #f5f4f0;
+      --color-surface: #faf9f7;
+      --color-surface-2: #ffffff;
+      --color-border: #dbd9d4;
+      --color-text: #1e1c18;
+      --color-text-muted: #7a7874;
+      --color-primary: #6b5b4f;
+      --color-primary-highlight: #e8e0d8;
+      --color-accent-a: #c5603a;
+      --color-accent-b: #4a87a8;
+      --radius-lg: 1rem;
+      --radius-md: 0.625rem;
+      --radius-full: 9999px;
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'DM Sans', 'Helvetica Neue', sans-serif;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-5: 1.25rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.55;
+      padding: var(--space-5);
+      max-width: 440px;
+      margin: 0 auto;
+    }
+
+    .demo-page-title {
+      font-family: var(--font-display);
+      font-weight: 400;
+      font-size: 1.35rem;
+      margin-bottom: var(--space-4);
+      color: var(--color-text);
+    }
+
+    .demo-hint {
+      font-size: 0.8125rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-5);
+    }
+
+    .forum-demo-feed {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    /* Proposed list-row layout (tokens align with .forum-topic-row) */
+    .forum-demo-card {
+      width: 100%;
+      text-align: left;
+      padding: var(--space-4) var(--space-5);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      background: var(--color-surface);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .forum-demo-card__top {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-3);
+    }
+
+    .forum-demo-avatar {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      margin-top: 0.1rem;
+      border-radius: var(--radius-full);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .forum-demo-avatar--seed-a {
+      background: #f7ebe0;
+      color: #8b5a38;
+    }
+
+    .forum-demo-avatar--seed-b {
+      background: #e8eef5;
+      color: #4a6580;
+    }
+
+    .forum-demo-avatar--seed-c {
+      background: #efe8f4;
+      color: #6b5080;
+    }
+
+    .forum-demo-card__main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .forum-demo-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      font-weight: 400;
+      line-height: 1.3;
+      color: var(--color-text);
+    }
+
+    .forum-demo-preview {
+      margin-top: var(--space-2);
+      font-size: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      line-height: 1.55;
+      color: var(--color-text-muted);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .forum-demo-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-3);
+    }
+
+    .forum-demo-pill {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.55rem;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--color-border);
+      background: var(--color-surface-2);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--color-text);
+    }
+
+    .forum-demo-pill__letter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      font-size: 0.72rem;
+      font-weight: 900;
+      flex-shrink: 0;
+    }
+
+    .forum-demo-pill--a .forum-demo-pill__letter {
+      background: color-mix(in srgb, var(--color-accent-a) 18%, var(--color-surface));
+      color: var(--color-accent-a);
+    }
+
+    .forum-demo-pill--b .forum-demo-pill__letter {
+      background: color-mix(in srgb, var(--color-accent-b) 18%, var(--color-surface));
+      color: var(--color-accent-b);
+    }
+
+    .forum-demo-pill--a {
+      border-color: color-mix(in srgb, var(--color-accent-a) 35%, var(--color-border));
+    }
+
+    .forum-demo-pill--b {
+      border-color: color-mix(in srgb, var(--color-accent-b) 35%, var(--color-border));
+    }
+
+    .forum-demo-pill__label {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .forum-demo-stats {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.65rem;
+      margin-top: var(--space-3);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--color-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .forum-demo-stat {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.28rem;
+      white-space: nowrap;
+    }
+
+    .forum-demo-stat svg {
+      flex-shrink: 0;
+      opacity: 0.92;
+    }
+
+    .forum-demo-stat--votes {
+      color: var(--color-primary);
+    }
+
+    .forum-demo-stat--split strong {
+      color: var(--color-accent-a);
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="demo-page-title">Forum card concepts</h1>
+  <p class="demo-hint">
+    Uses the same palette and fonts as the app (<code>style.css</code> light tokens). Open this file in a browser and screenshot cards for demo assets.
+  </p>
+
+  <div class="forum-demo-feed" role="list">
+    <article class="forum-demo-card" role="listitem">
+      <div class="forum-demo-card__top">
+        <div class="forum-demo-avatar forum-demo-avatar--seed-a" aria-hidden="true">MJ</div>
+        <div class="forum-demo-card__main">
+          <h2 class="forum-demo-title">Should you tell a friend an uncomfortable truth?</h2>
+          <p class="forum-demo-preview">
+            They asked for honesty, but the answer might wound the friendship. Where does kindness end and candour begin?
+          </p>
+        </div>
+      </div>
+      <div class="forum-demo-pills" aria-hidden="true">
+        <div class="forum-demo-pill forum-demo-pill--a">
+          <span class="forum-demo-pill__letter">A</span>
+          <span class="forum-demo-pill__label">Speak honestly</span>
+        </div>
+        <div class="forum-demo-pill forum-demo-pill--b">
+          <span class="forum-demo-pill__letter">B</span>
+          <span class="forum-demo-pill__label">Protect their peace</span>
+        </div>
+      </div>
+      <div class="forum-demo-stats">
+        <span class="forum-demo-stat forum-demo-stat--votes">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h4" />
+          </svg>
+          184 votes
+        </span>
+        <span class="forum-demo-stat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+          </svg>
+          23 comments
+        </span>
+        <span class="forum-demo-stat forum-demo-stat--split">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          Split <strong>52–48</strong>
+        </span>
+      </div>
+    </article>
+
+    <article class="forum-demo-card" role="listitem">
+      <div class="forum-demo-card__top">
+        <div class="forum-demo-avatar forum-demo-avatar--seed-b" aria-hidden="true">RK</div>
+        <div class="forum-demo-card__main">
+          <h2 class="forum-demo-title">Is it fair to automate away a coworker’s tedious tasks without asking?</h2>
+          <p class="forum-demo-preview">
+            You built a script that saves hours each week. Sharing it might reshape roles—or embarrass someone who wasn’t consulted.
+          </p>
+        </div>
+      </div>
+      <div class="forum-demo-pills" aria-hidden="true">
+        <div class="forum-demo-pill forum-demo-pill--a">
+          <span class="forum-demo-pill__letter">A</span>
+          <span class="forum-demo-pill__label">Deploy quietly</span>
+        </div>
+        <div class="forum-demo-pill forum-demo-pill--b">
+          <span class="forum-demo-pill__letter">B</span>
+          <span class="forum-demo-pill__label">Ask first</span>
+        </div>
+      </div>
+      <div class="forum-demo-stats">
+        <span class="forum-demo-stat forum-demo-stat--votes">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h4" />
+          </svg>
+          412 votes
+        </span>
+        <span class="forum-demo-stat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+          </svg>
+          57 comments
+        </span>
+        <span class="forum-demo-stat forum-demo-stat--split">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          Split <strong>61–39</strong>
+        </span>
+      </div>
+    </article>
+
+    <article class="forum-demo-card" role="listitem">
+      <div class="forum-demo-card__top">
+        <div class="forum-demo-avatar forum-demo-avatar--seed-c" aria-hidden="true">LN</div>
+        <div class="forum-demo-card__main">
+          <h2 class="forum-demo-title">Do you owe strangers politeness when you’re running late?</h2>
+          <p class="forum-demo-preview">
+            You squeezed past someone on the train and didn’t apologize. Was that harmless urgency—or small cruelty?
+          </p>
+        </div>
+      </div>
+      <div class="forum-demo-pills" aria-hidden="true">
+        <div class="forum-demo-pill forum-demo-pill--a">
+          <span class="forum-demo-pill__letter">A</span>
+          <span class="forum-demo-pill__label">Always acknowledge</span>
+        </div>
+        <div class="forum-demo-pill forum-demo-pill--b">
+          <span class="forum-demo-pill__letter">B</span>
+          <span class="forum-demo-pill__label">Sometimes skip it</span>
+        </div>
+      </div>
+      <div class="forum-demo-stats">
+        <span class="forum-demo-stat forum-demo-stat--votes">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M9 9h6M9 13h6M9 17h4" />
+          </svg>
+          96 votes
+        </span>
+        <span class="forum-demo-stat">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4z" />
+          </svg>
+          14 comments
+        </span>
+        <span class="forum-demo-stat forum-demo-stat--split">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="18" y1="20" x2="18" y2="10" />
+            <line x1="12" y1="20" x2="12" y2="4" />
+            <line x1="6" y1="20" x2="6" y2="14" />
+          </svg>
+          Split <strong>49–51</strong>
+        </span>
+      </div>
+    </article>
+  </div>
+</body>
+</html>

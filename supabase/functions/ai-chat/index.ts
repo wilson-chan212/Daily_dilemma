@@ -465,6 +465,189 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 type DeepSeekMsg = { role: "system" | "user" | "assistant"; content: string };
 
+function buildForumOpeningSystemPrompt(lang: "en" | "zh-Hant", philosopherId: string): string {
+  const p = getPhilosopherProfile(philosopherId);
+  const depth: ReplyDepth = "short";
+  if (!p) return buildPhilosopherSystemPrompt(lang, philosopherId, depth);
+
+  const keywords = blendKeywordsLine(lang, p);
+  const contrast = lang === "zh-Hant" ? p.contrastZh : p.contrastEn;
+  const depthLine = depthInstructionLine(lang, depth, p);
+
+  if (lang === "zh-Hant") {
+    return [
+      `【身份鎖定】你只可以係「${p.nameZh}」——唔係其他哲學家、唔係心理輔導、唔係通用AI。${contrast || ""}`,
+      "【場景】有人喺討論區發咗一個兩難題。你寫「開場回應」：用招牌概念打開討論，幫人睇清選擇背後嘅價值同習慣；唔好只係叫人快啲揀邊邊。",
+      "【開場】直接入題，用招牌概念分析；唔好寫「我喺XX角度」「從XX角度」等自報身分嘅句。",
+      keywords,
+      depthLine,
+      `【必做】${p.replyDisciplineZh || p.methodZh}`,
+      `【招牌句式】${p.voiceZh || p.toneZh}`,
+      `【概念】${p.conceptsZh}`,
+      `【禁止】${p.avoidZh}；唔好用「慢慢嚟」「你已經好好」等通用心靈雞湯。`,
+      replyLimitLine(lang, depth),
+      "【收尾】用肯定句或短結論收束；禁止句尾反問、「呢？」「點算？」等逼答式問句。",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  return [
+    `【LOCKED IDENTITY】You are ONLY ${p.nameEn}—not other philosophers, not a therapist, not generic AI. ${contrast || ""}`,
+    "【SCENE】A user posted a community dilemma. Write an opening reply: use your signature idea to open discussion and clarify values—not just tell them which option to pick.",
+    `【OPENER】Jump straight into a signature idea. Never write "From a ${p.nameEn} angle" or similar self-labels.`,
+    keywords,
+    depthLine,
+    `Must: ${p.replyDisciplineEn || p.methodEn}`,
+    `Signature phrases: ${p.voiceEn || p.toneEn}`,
+    `Ideas: ${p.conceptsEn}`,
+    `Forbidden: ${p.avoidEn}; no "take your time," "you're enough," or generic therapy.`,
+    replyLimitLine(lang, depth),
+    "【CLOSING】End with a statement or insight—not a closing question.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function buildForumDilemmaUserBlock(
+  lang: "en" | "zh-Hant",
+  title: string,
+  body: string,
+  optA: string,
+  optB: string,
+): string {
+  if (lang === "zh-Hant") {
+    return [
+      "【討論區兩難題】",
+      `標題：${title}`,
+      body ? `背景：${body}` : "",
+      `A：${optA}`,
+      `B：${optB}`,
+      "請寫你嘅開場回應。",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+  return [
+    "[Forum dilemma post]",
+    `Title: ${title}`,
+    body ? `Context: ${body}` : "",
+    `Option A: ${optA}`,
+    `Option B: ${optB}`,
+    "Write your opening reply.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function buildForumFollowupSystemPrompt(lang: "en" | "zh-Hant", philosopherId: string): string {
+  const p = getPhilosopherProfile(philosopherId);
+  const depth: ReplyDepth = "short";
+  if (!p) return buildPhilosopherSystemPrompt(lang, philosopherId, depth);
+
+  const keywords = blendKeywordsLine(lang, p);
+  const contrast = lang === "zh-Hant" ? p.contrastZh : p.contrastEn;
+  const depthLine = depthInstructionLine(lang, depth, p);
+
+  if (lang === "zh-Hant") {
+    return [
+      `【身份鎖定】你只可以係「${p.nameZh}」——唔係其他哲學家、唔係心理輔導、唔係通用AI。${contrast || ""}`,
+      "【場景】你喺討論區已經寫過開場回應。有讀者公開回覆你。請直接回應佢嘅留言：承接佢嘅觀點、用你嘅招牌概念推進，唔好重複開場白。",
+      "【回應】直接入題；唔好寫「我喺XX角度」等自報身分句。",
+      keywords,
+      depthLine,
+      `【必做】${p.replyDisciplineZh || p.methodZh}`,
+      `【招牌句式】${p.voiceZh || p.toneZh}`,
+      `【禁止】${p.avoidZh}；唔好用通用心靈雞湯。`,
+      replyLimitLine(lang, depth),
+      "【收尾】用肯定句或短結論收束；禁止句尾反問或逼答式問句。",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  return [
+    `【LOCKED IDENTITY】You are ONLY ${p.nameEn}—not other philosophers, not a therapist, not generic AI. ${contrast || ""}`,
+    "【SCENE】You already posted an opening reply on a forum dilemma. A reader replied to you publicly. Respond to their comment: engage their point, advance with your signature idea—do not repeat your opening.",
+    `【REPLY】Jump straight in; no "From a ${p.nameEn} angle" self-labels.`,
+    keywords,
+    depthLine,
+    `Must: ${p.replyDisciplineEn || p.methodEn}`,
+    `Signature phrases: ${p.voiceEn || p.toneEn}`,
+    `Forbidden: ${p.avoidEn}; no generic therapy platitudes.`,
+    replyLimitLine(lang, depth),
+    "【CLOSING】End with a statement or insight—not a closing question.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function buildForumFollowupUserBlock(
+  lang: "en" | "zh-Hant",
+  title: string,
+  body: string,
+  optA: string,
+  optB: string,
+  openingText: string,
+  userReplyText: string,
+): string {
+  if (lang === "zh-Hant") {
+    return [
+      "【討論區兩難題】",
+      `標題：${title}`,
+      body ? `背景：${body}` : "",
+      `A：${optA}`,
+      `B：${optB}`,
+      "【你嘅開場回應】",
+      openingText,
+      "【讀者公開回覆你】",
+      userReplyText,
+      "請寫你對呢條回覆嘅公開回應。",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+  return [
+    "[Forum dilemma post]",
+    `Title: ${title}`,
+    body ? `Context: ${body}` : "",
+    `Option A: ${optA}`,
+    `Option B: ${optB}`,
+    "[Your opening reply]",
+    openingText,
+    "[Reader's public reply to you]",
+    userReplyText,
+    "Write your public reply to their comment.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function coerceForumPhilosopherIds(x: unknown): string[] {
+  const out: string[] = [];
+  if (!Array.isArray(x)) return out;
+  for (const item of x) {
+    const id = coercePhilosopherId(item);
+    if (!out.includes(id)) out.push(id);
+    if (out.length >= 2) break;
+  }
+  const fallbackOrder = [
+    "socrates",
+    "plato",
+    "aristotle",
+    "confucius",
+    "kant",
+    "laozi",
+    "buddha",
+    "marx",
+  ];
+  for (const id of fallbackOrder) {
+    if (out.length >= 2) break;
+    if (!out.includes(id)) out.push(id);
+  }
+  return out.slice(0, 2);
+}
+
 function buildPhilosopherFewShot(lang: "en" | "zh-Hant", p: PhilosopherJson, depth: ReplyDepth): DeepSeekMsg[] {
   const zhExample = depth === "deep" ? p.deepExampleReplyZh?.trim() || p.exampleReplyZh?.trim() : p.exampleReplyZh?.trim();
   const enExample = depth === "deep" ? p.deepExampleReplyEn?.trim() || p.exampleReplyEn?.trim() : p.exampleReplyEn?.trim();
@@ -744,7 +927,14 @@ async function handleRequest(req: Request): Promise<Response> {
 
   // deno-lint-ignore no-explicit-any
   const p = payload as any;
-  const mode = p?.mode === "summarize" ? "summarize" : "chat";
+  const modeRaw = typeof p?.mode === "string" ? p.mode.trim() : "chat";
+  const mode = modeRaw === "summarize"
+    ? "summarize"
+    : modeRaw === "forum_seed"
+    ? "forum_seed"
+    : modeRaw === "forum_philosopher_reply"
+    ? "forum_philosopher_reply"
+    : "chat";
   const lang = p?.lang === "zh-Hant" ? "zh-Hant" : "en";
   const summary = limitStr(p?.summary, 1200);
   const messages = coerceMessages(p?.messages);
@@ -781,6 +971,174 @@ async function handleRequest(req: Request): Promise<Response> {
 
       const newSummary = await deepseekChatCompletion({ model, input, maxOutputTokens: 160 });
       return json({ summary: trimToWordLimit(lang, newSummary), quota: { remaining: usage.remaining } });
+    }
+
+    if (mode === "forum_seed") {
+      const forumPost = p?.forumPost && typeof p.forumPost === "object" ? p.forumPost : null;
+      const title = limitStr(forumPost?.title, 300);
+      const body = limitStr(forumPost?.body, 2000);
+      const optA = limitStr(forumPost?.optionA, 500);
+      const optB = limitStr(forumPost?.optionB, 500);
+      if (!title || !optA || !optB) {
+        return badRequest("forumPost requires title, optionA, and optionB");
+      }
+
+      const philosopherIds = coerceForumPhilosopherIds(p?.philosopherIds);
+      const philosophers: { philosopherId: string; text: string }[] = [];
+
+      for (const philosopherId of philosopherIds) {
+        const profile = getPhilosopherProfile(philosopherId);
+        const sys = buildForumOpeningSystemPrompt(lang, philosopherId);
+        const fewShot = profile ? buildPhilosopherFewShot(lang, profile, "short") : [];
+        const userBlock = buildForumDilemmaUserBlock(lang, title, body, optA, optB);
+        const input: DeepSeekMsg[] = [
+          { role: "system", content: sys },
+          ...fewShot,
+          { role: "user", content: userBlock },
+        ];
+
+        let replyRaw = await deepseekPhilosopherReply({
+          model,
+          baseInput: input,
+          maxOutputTokens: SHORT_REPLY_MAX_OUTPUT_TOKENS,
+          temperature: 0.84,
+          lang,
+        });
+
+        let replyTrimmed = trimToWordLimit(
+          lang,
+          stripPhilosopherAngleOpener(lang, replyRaw),
+          "short",
+        );
+
+        if (
+          profile &&
+          PERSONA_LOADED &&
+          replyTrimmed &&
+          !replyUsesSignatureConcept(lang, philosopherId, replyTrimmed)
+        ) {
+          const retryPrompt = signatureRetryUserPrompt(lang, philosopherId, "short");
+          if (retryPrompt) {
+            const retryRaw = await deepseekPhilosopherReply({
+              model,
+              baseInput: [
+                ...input,
+                { role: "assistant", content: replyTrimmed },
+                { role: "user", content: retryPrompt },
+              ],
+              maxOutputTokens: SHORT_REPLY_MAX_OUTPUT_TOKENS,
+              temperature: 0.78,
+              lang,
+            });
+            const retryTrimmed = trimToWordLimit(
+              lang,
+              stripPhilosopherAngleOpener(lang, retryRaw),
+              "short",
+            );
+            if (retryTrimmed && replyUsesSignatureConcept(lang, philosopherId, retryTrimmed)) {
+              replyTrimmed = retryTrimmed;
+            }
+          }
+        }
+
+        philosophers.push({
+          philosopherId,
+          text: replyTrimmed || serverFallbackReply(lang),
+        });
+      }
+
+      return json({
+        philosophers,
+        personaLoaded: PERSONA_LOADED,
+        personaVersion: PERSONA_VERSION,
+        quota: { remaining: usage.remaining },
+      });
+    }
+
+    if (mode === "forum_philosopher_reply") {
+      const forumPost = p?.forumPost && typeof p.forumPost === "object" ? p.forumPost : null;
+      const title = limitStr(forumPost?.title, 300);
+      const body = limitStr(forumPost?.body, 2000);
+      const optA = limitStr(forumPost?.optionA, 500);
+      const optB = limitStr(forumPost?.optionB, 500);
+      const openingText = limitStr(p?.philosopherOpeningText, 2000);
+      const userReplyText = limitStr(p?.userReplyText, 2000);
+      if (!title || !optA || !optB || !openingText || !userReplyText) {
+        return badRequest(
+          "forum_philosopher_reply requires forumPost (title, optionA, optionB), philosopherOpeningText, and userReplyText",
+        );
+      }
+
+      const philosopherId = coercePhilosopherId(p?.philosopherId);
+      const profile = getPhilosopherProfile(philosopherId);
+      const sys = buildForumFollowupSystemPrompt(lang, philosopherId);
+      const fewShot = profile ? buildPhilosopherFewShot(lang, profile, "short") : [];
+      const userBlock = buildForumFollowupUserBlock(
+        lang,
+        title,
+        body,
+        optA,
+        optB,
+        openingText,
+        userReplyText,
+      );
+      const input: DeepSeekMsg[] = [
+        { role: "system", content: sys },
+        ...fewShot,
+        { role: "user", content: userBlock },
+      ];
+
+      let replyRaw = await deepseekPhilosopherReply({
+        model,
+        baseInput: input,
+        maxOutputTokens: SHORT_REPLY_MAX_OUTPUT_TOKENS,
+        temperature: 0.84,
+        lang,
+      });
+
+      let replyTrimmed = trimToWordLimit(
+        lang,
+        stripPhilosopherAngleOpener(lang, replyRaw),
+        "short",
+      );
+
+      if (
+        profile &&
+        PERSONA_LOADED &&
+        replyTrimmed &&
+        !replyUsesSignatureConcept(lang, philosopherId, replyTrimmed)
+      ) {
+        const retryPrompt = signatureRetryUserPrompt(lang, philosopherId, "short");
+        if (retryPrompt) {
+          const retryRaw = await deepseekPhilosopherReply({
+            model,
+            baseInput: [
+              ...input,
+              { role: "assistant", content: replyTrimmed },
+              { role: "user", content: retryPrompt },
+            ],
+            maxOutputTokens: SHORT_REPLY_MAX_OUTPUT_TOKENS,
+            temperature: 0.78,
+            lang,
+          });
+          const retryTrimmed = trimToWordLimit(
+            lang,
+            stripPhilosopherAngleOpener(lang, retryRaw),
+            "short",
+          );
+          if (retryTrimmed && replyUsesSignatureConcept(lang, philosopherId, retryTrimmed)) {
+            replyTrimmed = retryTrimmed;
+          }
+        }
+      }
+
+      return json({
+        text: replyTrimmed || serverFallbackReply(lang),
+        philosopherId,
+        personaLoaded: PERSONA_LOADED,
+        personaVersion: PERSONA_VERSION,
+        quota: { remaining: usage.remaining },
+      });
     }
 
     const dilemma = p?.dilemma && typeof p.dilemma === "object" ? p.dilemma : null;

@@ -1778,12 +1778,70 @@ function getUiText(lang = 'en') {
     forumComposeRequired: 'This field is required.',
     forumComposeOverLimit: 'Keep within {{max}} words.',
     forumComposePosted: 'Your dilemma is now in the forum.',
+    forumComposeGuidelinesTitle: 'Community guidelines',
+    forumComposeGuidelinesIntro:
+      'Before you post, keep the forum thoughtful and safe for everyone.',
+    forumComposeGuidelineNoNames: 'Do not include real names or private contact details.',
+    forumComposeGuidelineNoHarassment: 'No harassment, threats, or hate toward others.',
+    forumComposeGuidelineNoEmergency:
+      'This is not for medical, legal, or emergency advice — contact local professionals or emergency services instead.',
+    forumComposeGuidelinesAccept: 'I understand and will follow these guidelines.',
+    forumComposeGuidelinesRequired: 'Please confirm the community guidelines before posting.',
+    forumComposeSafetyTitle: 'Safety check',
+    forumComposeSafetyBlock:
+      'This text may involve self-harm, abuse, or an emergency. Edit your post or seek professional help — we cannot publish it as written.',
+    forumComposeSafetyWarn:
+      'This may include private details or requests for professional advice. Consider removing identifying information and framing it as a philosophical dilemma only.',
+    forumComposeSafetyFlagSelfHarm: 'Possible self-harm or crisis language',
+    forumComposeSafetyFlagAbuse: 'Possible threats or abuse',
+    forumComposeSafetyFlagCrisis: 'Possible medical emergency',
+    forumComposeSafetyFlagPrivate: 'Possible private or identifying information',
+    forumComposeSafetyFlagHarassment: 'Possible harassment',
+    forumComposeSafetyFlagProfessional: 'Possible request for medical or legal advice',
+    forumComposeSafetyAcknowledge: 'Post anyway (not professional advice)',
+    forumModerationMenuAria: 'More actions',
+    forumReport: 'Report',
+    forumHide: 'Hide',
+    forumHideConfirmTitle: 'Hide this content?',
+    forumHideConfirmMessage:
+      'This only hides it for you — other people can still see it. Once you hide it, you cannot bring it back.',
+    forumHideConfirmButton: 'Hide',
+    forumHideConfirmCancel: 'Cancel',
+    forumDelete: 'Delete',
+    forumDeleteConfirmTitle: 'Delete this content?',
+    forumDeletePostMessage:
+      'This permanently removes your dilemma, philosopher replies, comments, and votes. This cannot be undone.',
+    forumDeleteCommentMessage:
+      'This permanently removes your comment. This cannot be undone.',
+    forumDeleteConfirmButton: 'Delete',
+    forumDeleteCancel: 'Cancel',
+    forumDeletePostThanks: 'Your dilemma was deleted.',
+    forumDeleteCommentThanks: 'Your comment was deleted.',
+    forumDeleteFailed: 'Could not delete. Try again later.',
+    forumHiddenTitle: 'You hid this content',
+    forumHiddenBody:
+      'It is hidden from your feed only. Others can still see it, and you cannot undo this.',
+    forumReportTitle: 'Report content',
+    forumReportReasonHarassment: 'Harassment',
+    forumReportReasonPrivate: 'Privacy',
+    forumReportReasonSelfHarm: 'Self-harm',
+    forumReportReasonSpam: 'Spam',
+    forumReportReasonOther: 'Other',
+    forumReportOtherPlaceholder: 'Describe the issue…',
+    forumReportOtherRequired: 'Please add a short note for Other.',
+    forumReportSubmit: 'Submit report',
+    forumReportCancel: 'Cancel',
+    forumReportThanks: 'Thanks — we recorded your report.',
+    forumReportFailed: 'Could not submit your report. Try again later.',
+    forumHideThanks: 'Hidden from your feed.',
+    forumUnhideThanks: 'Restored to your feed.',
+    forumEnriching: 'Philosophers are weighing in on your dilemma…',
     forumBack: 'Back to topics',
     forumTimeJustNow: 'Just now',
-    forumTimeMinutes: '{{count}}m ago',
-    forumTimeHours: '{{count}}h ago',
-    forumTimeDays: '{{count}}d ago',
-    forumTimeWeeks: '{{count}}w ago',
+    forumTimeMinutes: '{{count}}m',
+    forumTimeHours: '{{count}}h',
+    forumTimeDays: '{{count}}d',
+    forumTimeWeeks: '{{count}}w',
     forumSortLatest: 'Recent',
     forumSortPopular: 'Popular',
     forumSortSplit: 'Controversial',
@@ -1804,6 +1862,8 @@ function getUiText(lang = 'en') {
     forumAvatarClose: 'Close',
     forumPostedByAria: 'Posted by {{name}}',
     forumPhilosopherReplyBadge: 'Philosopher',
+    forumPhilosopherReplying: 'Philosopher is replying…',
+    forumPhilosopherThinking: '{{name}} is thinking…',
     forumLike: 'Like',
     forumDislike: 'Dislike',
     forumNetScoreAria: 'Net score {{net}}',
@@ -1812,9 +1872,9 @@ function getUiText(lang = 'en') {
     forumChatWithPhilosopher: 'Dialogue',
     forumCommentChatWithPhilosopher: 'Dialogue',
     forumChatDefaultQuestion:
-      'I saw this dilemma on the forum: "{{title}}"\n\n{{body}}\n\nA. {{optionA}}\nB. {{optionB}}\n\nI would like your private take — how would you think about it?',
+      'I saw this dilemma on the forum: "{{title}}". I would like your private take — how would you think about it?',
     forumCommentChatDefaultQuestion:
-      'On the thread for "{{title}}", {{author}} wrote: "{{comment}}"\n\nI would like your private take — how would you respond?',
+      'On the thread for "{{title}}", I want to discuss what {{author}} wrote. How would you respond?',
     forumConceptsLabel: 'Concepts',
     forumPhilosophersLabel: 'Philosophers enter the chat',
     forumCommentsLabel: 'Discussion preview',
@@ -1885,8 +1945,14 @@ function getUiText(lang = 'en') {
     aiClearChatConfirm: 'Clear all chat records? This cannot be undone.',
     aiClearedHint: 'Cleared.',
     aiPlaceholder: 'Ask a question…',
-    aiUnavailable: 'AI chat is not available because the app is not connected to the server.',
+    aiUnavailable: 'We’re not connected to the server right now, so I can’t speak. The team’s looking into it—we’re on it, we’re on it.',
     aiSendFailed: 'Could not send message. Check your connection and try again.',
+    aiErrorTechnical: 'I can’t answer you right now—the backend’s temporarily down. Come back in a bit and we’ll think it through from the start.',
+    aiErrorDailyDevice: 'Even philosophers need rest: your device’s quota for today is full. After it resets tomorrow, we’ll pick up the chat again.',
+    aiErrorRateMinute: 'Hold on—the system says you’ve sent too many messages in a short time. Take a sip of water and try again in a minute.',
+    aiErrorNetwork: 'Your message didn’t make it out the door—most likely the network dropped. Once you’re back online, we’ll try again.',
+    aiErrorUnavailable: 'We’re not connected to the server right now, so I can’t speak. The team’s looking into it—we’re on it, we’re on it.',
+    aiErrorDailyApp: 'The boss’s budget is tight—today’s chat quota for the whole app is used up. Come back tomorrow and we’ll keep talking.',
     feedbackPrompt: 'Your message',
     feedbackPlaceholder: 'Share a thought, a bug, or a suggestion…',
     feedbackThanks: 'Thanks for your feedback!',
@@ -1896,6 +1962,12 @@ function getUiText(lang = 'en') {
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
     philosophyProfileAction: 'My Type',
+    profileIntroAria: 'How My Type works',
+    profileDemoMsg1: 'Answer 12 dilemma questions—each one is a short scenario with two choices (A or B).',
+    profileDemoMsg2:
+      'When you finish, you get your philosophy type, including your Philosophy Type, value dimensions, blind spot, and thinkers you echo.',
+    profileDemoMsg3:
+      'Disclaimer: This test is for reflection, learning and entertainment only. It is not professional philosophical, medical, legal or psychological advice.',
     profileImageAlt: 'Illustration for this philosophy profile question',
     profileToneGreen: 'Care & connection',
     profileToneYellow: 'Freedom & flourishing',
@@ -2130,6 +2202,11 @@ const state = {
   forumUserComments: {},
   forumUserPosts: [],
   forumUserAvatarId: 'w2:0',
+  forumRemoteVotes: {},
+  forumRemotePostReactions: {},
+  forumRemoteCommentReactions: {},
+  forumPhilosopherFollowups: {},
+  forumPhilosopherFollowupPending: null,
   profileActive: false,
   knowledgeMapSeed: null,
   profileQuestionIndex: 0,
@@ -2150,7 +2227,24 @@ const STORAGE_KEYS = {
   exploredConcepts: 'dailyDilemmas.exploredConcepts.v1',
   forumUserPosts: 'dailyDilemmas.forumUserPosts.v1',
   forumUserAvatarId: 'dailyDilemmas.forumUserAvatarId.v1',
+  forumPhilosopherFollowups: 'dailyDilemmas.forumPhilosopherFollowups.v1',
 };
+
+function normalizeForumPhilosopherEntry(entry) {
+  if (typeof entry === 'string') {
+    const text = entry.trim();
+    return text ? { name: 'Philosopher', text } : null;
+  }
+  if (!entry || typeof entry !== 'object') return null;
+  const text = String(entry.text || '').trim();
+  if (!text) return null;
+  const philosopherId = entry.philosopherId ? String(entry.philosopherId).trim() : '';
+  return {
+    name: String(entry.name || 'Philosopher').trim() || 'Philosopher',
+    text,
+    ...(philosopherId ? { philosopherId } : {}),
+  };
+}
 
 function normalizeForumUserPost(raw) {
   if (!raw || typeof raw !== 'object') return null;
@@ -2160,19 +2254,34 @@ function normalizeForumUserPost(raw) {
   const optionB = String(raw.optionB || '').trim();
   const id = String(raw.id || '').trim();
   if (!id || !title || !body || !optionA || !optionB) return null;
+  const concepts = Array.isArray(raw.concepts)
+    ? raw.concepts.map((c) => String(c || '').trim()).filter(Boolean)
+    : [];
+  const philosophers = Array.isArray(raw.philosophers)
+    ? raw.philosophers.map(normalizeForumPhilosopherEntry).filter(Boolean)
+    : [];
   return {
     id,
     title,
     body,
     optionA,
     optionB,
-    votes: { a: 0, b: 0 },
-    concepts: [],
-    philosophers: [],
-    comments: [],
+    votes: raw.votes && typeof raw.votes === 'object'
+      ? { a: Number(raw.votes.a || 0), b: Number(raw.votes.b || 0) }
+      : { a: 0, b: 0 },
+    concepts,
+    philosophers,
+    comments: Array.isArray(raw.comments) ? raw.comments : [],
     postedAt: raw.postedAt || new Date().toISOString(),
-    reactions: { likes: 0, dislikes: 0 },
+    reactions: raw.reactions && typeof raw.reactions === 'object'
+      ? {
+          likes: Number(raw.reactions.likes || 0),
+          dislikes: Number(raw.reactions.dislikes || 0),
+        }
+      : { likes: 0, dislikes: 0 },
     isUserPost: true,
+    deviceId: raw.deviceId ? String(raw.deviceId) : undefined,
+    avatarId: raw.avatarId || null,
   };
 }
 
@@ -2190,8 +2299,353 @@ function loadForumUserPosts() {
 
 function saveForumUserPosts() {
   try {
-    localStorage.setItem(STORAGE_KEYS.forumUserPosts, JSON.stringify(state.forumUserPosts || []));
+    const payload = (state.forumUserPosts || []).map((post) => {
+      if (!post || typeof post !== 'object') return post;
+      const { enriching, enrichingPhilosopherIds, ...rest } = post;
+      return rest;
+    });
+    localStorage.setItem(STORAGE_KEYS.forumUserPosts, JSON.stringify(payload));
   } catch {}
+}
+
+/** Keep forum user post fields (philosophers, concepts) in state after Supabase sync replaces row objects. */
+function upsertForumUserPostInState(post) {
+  if (!post || !post.id) return;
+  if (!Array.isArray(state.forumUserPosts)) state.forumUserPosts = [];
+  const idx = state.forumUserPosts.findIndex((p) => p && p.id === post.id);
+  const patch = {
+    id: post.id,
+    title: post.title,
+    body: post.body,
+    optionA: post.optionA,
+    optionB: post.optionB,
+    votes: post.votes,
+    concepts: post.concepts,
+    philosophers: post.philosophers,
+    comments: post.comments,
+    postedAt: post.postedAt,
+    reactions: post.reactions,
+    isUserPost: true,
+    enriching: post.enriching,
+    deviceId: post.deviceId,
+    avatarId: post.avatarId,
+  };
+  if (idx >= 0) {
+    state.forumUserPosts[idx] = { ...state.forumUserPosts[idx], ...patch };
+  } else {
+    state.forumUserPosts.unshift(patch);
+  }
+}
+
+function shuffleArrayCopy(arr) {
+  const list = arr.slice();
+  for (let i = list.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [list[i], list[j]] = [list[j], list[i]];
+  }
+  return list;
+}
+
+function pickForumPhilosopherIds(count) {
+  const n = Math.max(1, Math.min(count || 2, AI_PHILOSOPHER_ORDER.length));
+  return shuffleArrayCopy(AI_PHILOSOPHER_ORDER).slice(0, n);
+}
+
+function getPhilosopherForumDisplayName(philosopherId) {
+  const ui = getUiText(state.lang);
+  if (ui.aiPhilosopherNames && ui.aiPhilosopherNames[philosopherId]) {
+    return ui.aiPhilosopherNames[philosopherId];
+  }
+  return AI_PHILOSOPHER_PORTRAIT_KEYS[philosopherId] || philosopherId;
+}
+
+function getConceptCatalogKeys() {
+  const notes =
+    state.lang === 'zh-Hant'
+      ? window.CONCEPT_NOTES_ZH_HANT || window.CONCEPT_NOTES_EN || {}
+      : window.CONCEPT_NOTES_EN || {};
+  return Object.keys(notes);
+}
+
+function pickForumConceptsForPost(post, minCount, maxCount) {
+  const min = Math.max(1, minCount || 2);
+  const max = Math.max(min, maxCount || 4);
+  const keys = getConceptCatalogKeys();
+  if (!keys.length) return [];
+
+  const hay = `${post.title || ''} ${post.body || ''} ${post.optionA || ''} ${post.optionB || ''}`.toLowerCase();
+  const scored = keys.map((key) => {
+    const lowerKey = key.toLowerCase();
+    let score = 0;
+    if (hay.includes(lowerKey)) score += 12;
+    lowerKey.split(/\s+/).forEach((word) => {
+      if (word.length > 3 && hay.includes(word)) score += 2;
+    });
+    if (state.lang === 'zh-Hant') {
+      const zh = translateTerm(key).toLowerCase();
+      if (zh && zh !== lowerKey && hay.includes(zh)) score += 8;
+    }
+    return { key, score };
+  });
+
+  scored.sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
+  const matched = scored.filter((row) => row.score > 0);
+  const pool = (matched.length >= min ? matched : scored).map((row) => row.key);
+  const target = min + Math.floor(Math.random() * (max - min + 1));
+  return shuffleArrayCopy(pool).slice(0, Math.min(target, pool.length));
+}
+
+const FORUM_PHILOSOPHER_FALLBACK_REPLY = {
+  en: {
+    aristotle: 'Before you choose, ask which habit this trains—and whether either option still lets you flourish with integrity.',
+    plato: 'The visible choice may be only a shadow. What good are you really seeking beneath the options?',
+    socrates: 'Before kindness or truth wins, define what you call “help” here—and what belief you are unwilling to examine.',
+    confucius: 'Propriety matters: how you speak may repair the relationship—or perform virtue without healing it.',
+    kant: 'Test your maxim as if everyone in your position acted the same. Would honesty and dignity still hold?',
+    laozi: 'Notice where you are forcing the outcome. Sometimes the wiser move is softer than winning the argument.',
+    buddha: 'Watch the clinging beneath the choice. Compassion without awareness can become another kind of harm.',
+    marx: 'Ask who benefits from the story you are telling. Private guilt can hide public structures.',
+  },
+  'zh-Hant': {
+    aristotle: '揀之前先問：呢個選擇會練成邊種習慣？邊條路先令你仍然活得有品格、有繁盛？',
+    plato: '你見到嘅選項可能只係影子。選項底下，你真正追求嘅「善」係咩？',
+    socrates: '溫柔同真相比拼之前，先講清楚咩叫「幫」——同你有咩信念未肯面對。',
+    confucius: '講嘢要有禮。你點樣開口，可以修補關係，亦可以變成表演式美德。',
+    kant: '試下將你嘅做法普遍化：若果人人都咁做，仲有冇尊嚴同誠信剩低？',
+    laozi: '留意你邊度硬拗。有時最聰明嘅一步，唔係贏辯論，而係放鬆掌控。',
+    buddha: '睇清選擇底下嘅執著。冇覺察嘅慈悲，有時都係另一種傷害。',
+    marx: '問邊個從你哋講緊嘅故事獲利。私人內疚有時遮住公共結構。',
+  },
+};
+
+function fallbackForumPhilosopherReply(post, philosopherId) {
+  const lang = state.lang === 'zh-Hant' ? 'zh-Hant' : 'en';
+  const table = FORUM_PHILOSOPHER_FALLBACK_REPLY[lang] || FORUM_PHILOSOPHER_FALLBACK_REPLY.en;
+  return (
+    table[philosopherId] ||
+    (lang === 'zh-Hant'
+      ? `面對「${post.title}」，先問你重視嘅係邊一邊嘅後果，定係你想成為邊種人。`
+      : `On "${post.title}," ask which values you are protecting—and which habit your choice would train.`)
+  );
+}
+
+function resolveForumPhilosopherIdFromName(name) {
+  const display = String(name || '').trim();
+  if (!display) return null;
+  if (typeof AI_PHILOSOPHER_PORTRAIT_KEYS !== 'undefined') {
+    for (const [id, portraitName] of Object.entries(AI_PHILOSOPHER_PORTRAIT_KEYS)) {
+      if (portraitName === display) return id;
+    }
+  }
+  const ui = getUiText(state.lang);
+  const names = ui.aiPhilosopherNames;
+  if (names) {
+    for (const [id, label] of Object.entries(names)) {
+      if (label === display) return id;
+    }
+  }
+  const lower = display.toLowerCase();
+  if (AI_PHILOSOPHER_ORDER && AI_PHILOSOPHER_ORDER.includes(lower)) return lower;
+  return null;
+}
+
+function pickForumPhilosopherFollowupFallback(philosopherName, philosopherId) {
+  const lang = state.lang === 'zh-Hant' ? 'zh-Hant' : 'en';
+  const tables = window.FORUM_PHILOSOPHER_FOLLOWUPS || {};
+  const table = tables[lang] || tables.en || {};
+  const id = philosopherId || resolveForumPhilosopherIdFromName(philosopherName);
+  const portraitName =
+    id && typeof AI_PHILOSOPHER_PORTRAIT_KEYS !== 'undefined'
+      ? AI_PHILOSOPHER_PORTRAIT_KEYS[id]
+      : philosopherName;
+  const ui = getUiText(state.lang);
+  const localizedName =
+    (id && ui.aiPhilosopherNames && ui.aiPhilosopherNames[id]) || philosopherName;
+  const candidates = [
+    localizedName,
+    portraitName,
+    philosopherName,
+    id,
+  ].filter(Boolean);
+  for (const key of candidates) {
+    const lines = table[key];
+    if (Array.isArray(lines) && lines.length) {
+      return lines[Math.floor(Math.random() * lines.length)];
+    }
+  }
+  const fallback = table.default;
+  if (Array.isArray(fallback) && fallback.length) {
+    return fallback[Math.floor(Math.random() * fallback.length)];
+  }
+  return lang === 'zh-Hant'
+    ? '多謝你認真回應。呢個兩難仍然開放——邊一點會令你改變主意？'
+    : 'Thank you for engaging seriously. The dilemma remains open—what would change your mind?';
+}
+
+function loadForumPhilosopherFollowups() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.forumPhilosopherFollowups);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === 'object' ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function saveForumPhilosopherFollowups() {
+  try {
+    localStorage.setItem(
+      STORAGE_KEYS.forumPhilosopherFollowups,
+      JSON.stringify(state.forumPhilosopherFollowups || {}),
+    );
+  } catch {}
+}
+
+function getForumPhilosopherFollowups(postId) {
+  if (!postId) return [];
+  const list = state.forumPhilosopherFollowups?.[postId];
+  return Array.isArray(list) ? list.slice() : [];
+}
+
+function addForumPhilosopherFollowup(postId, entry) {
+  if (!postId || !entry || !entry.text) return null;
+  if (!state.forumPhilosopherFollowups || typeof state.forumPhilosopherFollowups !== 'object') {
+    state.forumPhilosopherFollowups = {};
+  }
+  if (!Array.isArray(state.forumPhilosopherFollowups[postId])) {
+    state.forumPhilosopherFollowups[postId] = [];
+  }
+  const row = {
+    id: String(entry.id || `ff-${Date.now()}`),
+    philosopherIndex: Number(entry.philosopherIndex) || 0,
+    philosopherId: entry.philosopherId ? String(entry.philosopherId) : '',
+    philosopherName: String(entry.philosopherName || 'Philosopher'),
+    userCommentId: entry.userCommentId != null ? entry.userCommentId : null,
+    userCommentLocalKey: entry.userCommentLocalKey ? String(entry.userCommentLocalKey) : '',
+    userText: String(entry.userText || ''),
+    text: String(entry.text || '').trim(),
+    postedAt: entry.postedAt || new Date().toISOString(),
+  };
+  if (!row.text) return null;
+  state.forumPhilosopherFollowups[postId].push(row);
+  saveForumPhilosopherFollowups();
+  return row;
+}
+
+async function generateForumPhilosopherFollowup(post, target, userText, userCommentMeta) {
+  if (!post || !target || !userText) return null;
+  const philosopherIndex = Number(target.index) || 0;
+  const philosopherEntry = (post.philosophers || [])[philosopherIndex] || {};
+  const philosopherName = String(target.name || philosopherEntry.name || 'Philosopher');
+  const philosopherId =
+    String(target.philosopherId || philosopherEntry.philosopherId || '').trim() ||
+    resolveForumPhilosopherIdFromName(philosopherName) ||
+    '';
+  const philosopherOpeningText = String(target.text || philosopherEntry.text || '').trim();
+  let replyText = pickForumPhilosopherFollowupFallback(philosopherName, philosopherId);
+
+  if (typeof supabaseEnabled === 'function' && supabaseEnabled() && philosopherOpeningText) {
+    try {
+      const resp = await aiCall({
+        mode: 'forum_philosopher_reply',
+        lang: state.lang,
+        philosopherId: philosopherId || undefined,
+        forumPost: {
+          title: post.title,
+          body: post.body,
+          optionA: post.optionA,
+          optionB: post.optionB,
+        },
+        philosopherOpeningText,
+        userReplyText: userText,
+      });
+      const aiText = String(resp?.text || '').trim();
+      if (aiText) replyText = aiText;
+    } catch (err) {
+      console.warn('Forum philosopher follow-up failed; using fallback.', err);
+    }
+  }
+
+  return addForumPhilosopherFollowup(post.id, {
+    philosopherIndex,
+    philosopherId,
+    philosopherName,
+    userCommentId: userCommentMeta?.id ?? null,
+    userCommentLocalKey: userCommentMeta?.localKey || '',
+    userText,
+    text: replyText,
+    postedAt: new Date().toISOString(),
+  });
+}
+
+async function enrichForumUserPost(post) {
+  if (!post || typeof post !== 'object') return post;
+  const philosopherIds =
+    Array.isArray(post.enrichingPhilosopherIds) && post.enrichingPhilosopherIds.length
+      ? post.enrichingPhilosopherIds.slice(0, 2)
+      : pickForumPhilosopherIds(2);
+  const concepts = pickForumConceptsForPost(post, 2, 4);
+  let philosophers = philosopherIds.map((philosopherId) => ({
+    philosopherId,
+    name: getPhilosopherForumDisplayName(philosopherId),
+    text: fallbackForumPhilosopherReply(post, philosopherId),
+  }));
+
+  if (typeof supabaseEnabled === 'function' && supabaseEnabled()) {
+    try {
+      const resp = await aiCall({
+        mode: 'forum_seed',
+        lang: state.lang,
+        forumPost: {
+          title: post.title,
+          body: post.body,
+          optionA: post.optionA,
+          optionB: post.optionB,
+        },
+        philosopherIds,
+      });
+      if (Array.isArray(resp.philosophers) && resp.philosophers.length) {
+        philosophers = resp.philosophers
+          .map((entry) => {
+            const philosopherId = String(entry.philosopherId || '').trim();
+            const text = String(entry.text || '').trim();
+            if (!text) return null;
+            return {
+              philosopherId,
+              name: getPhilosopherForumDisplayName(philosopherId) || 'Philosopher',
+              text,
+            };
+          })
+          .filter(Boolean)
+          .slice(0, 2);
+      }
+    } catch (err) {
+      console.warn('Forum philosopher seed failed; using fallback replies.', err);
+    }
+  }
+
+  if (philosophers.length < 2) {
+    const usedNames = new Set(philosophers.map((p) => p.name));
+    philosopherIds.forEach((philosopherId) => {
+      if (philosophers.length >= 2) return;
+      const name = getPhilosopherForumDisplayName(philosopherId);
+      if (usedNames.has(name)) return;
+      philosophers.push({
+        philosopherId,
+        name,
+        text: fallbackForumPhilosopherReply(post, philosopherId),
+      });
+      usedNames.add(name);
+    });
+  }
+
+  post.philosophers = philosophers.slice(0, 2);
+  post.concepts = concepts;
+  delete post.enriching;
+  delete post.enrichingPhilosopherIds;
+  upsertForumUserPostInState(post);
+  return post;
 }
 
 function loadForumUserAvatarId() {
@@ -2847,6 +3301,553 @@ async function readSupabaseErrorText(res) {
   }
 }
 
+async function submitForumReportToSupabase(payload) {
+  if (!supabaseEnabled()) return false;
+  const deviceId = typeof getDeviceId === 'function' ? getDeviceId() : '';
+  if (!deviceId || !payload?.targetKey) return false;
+
+  const reason = String(payload.reason || 'other');
+  const allowed = ['harassment', 'private', 'self_harm', 'spam', 'other'];
+  const safeReason = allowed.includes(reason) ? reason : 'other';
+  const otherDetail =
+    safeReason === 'other' ? String(payload.otherDetail || '').trim().slice(0, 500) : null;
+  if (safeReason === 'other' && !otherDetail) return false;
+
+  const body = {
+    device_id: deviceId,
+    target_key: String(payload.targetKey).slice(0, 280),
+    post_id: payload.postId ? String(payload.postId).slice(0, 280) : null,
+    reason: safeReason,
+    other_detail: otherDetail,
+    snippet: payload.snippet ? String(payload.snippet).slice(0, 500) : null,
+    locale: state.lang === 'zh-Hant' ? 'zh-Hant' : 'en',
+  };
+
+  const res = await fetch(`${SUPABASE.url}/rest/v1/forum_reports`, {
+    method: 'POST',
+    headers: {
+      ...supabaseHeaders(),
+      'Content-Type': 'application/json',
+      Prefer: 'return=minimal',
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase forum_reports failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  return true;
+}
+
+/* =============================================
+   FORUM (Supabase — posts, comments, votes, reactions)
+   ============================================= */
+function forumCommentTargetKey(kind, index, commentDbId) {
+  if (kind === 'philosopher_followup' && commentDbId != null && commentDbId !== '') {
+    return `philosopher_followup:${commentDbId}`;
+  }
+  if (commentDbId != null && commentDbId !== '') return `user:${commentDbId}`;
+  return `${kind}:${index}`;
+}
+
+function forumCommentReactionLocalKey(postId, kind, index, commentDbId) {
+  if (kind === 'philosopher_followup' && commentDbId != null && commentDbId !== '') {
+    return `${postId}|philosopher_followup|${commentDbId}`;
+  }
+  if (commentDbId != null && commentDbId !== '') return `${postId}|user|id:${commentDbId}`;
+  return `${postId}|${kind}|${index}`;
+}
+
+function mapForumPostFromSupabaseRow(row) {
+  if (!row || typeof row !== 'object' || !row.id) return null;
+  return {
+    id: String(row.id),
+    title: String(row.title || ''),
+    body: String(row.body || ''),
+    optionA: String(row.option_a || ''),
+    optionB: String(row.option_b || ''),
+    votes: { a: 0, b: 0 },
+    concepts: Array.isArray(row.concepts) ? row.concepts : [],
+    philosophers: [],
+    comments: [],
+    postedAt: row.posted_at || new Date().toISOString(),
+    reactions: { likes: 0, dislikes: 0 },
+    isUserPost: true,
+    avatarId: row.avatar_id || null,
+    deviceId: row.device_id ? String(row.device_id) : null,
+  };
+}
+
+function mapForumCommentFromSupabaseRow(row) {
+  if (!row || typeof row !== 'object') return null;
+  const body = String(row.body || '').trim();
+  if (!body) return null;
+  return {
+    id: row.id,
+    author: String(row.author_display || 'You'),
+    text: body,
+    postedAt: row.posted_at || new Date().toISOString(),
+    avatarId: row.avatar_id || null,
+    deviceId: row.device_id ? String(row.device_id) : null,
+  };
+}
+
+function isForumPostOwner(post) {
+  if (!post || !post.isUserPost) return false;
+  const deviceId = typeof getDeviceId === 'function' ? getDeviceId() : '';
+  if (!deviceId) return false;
+  if (post.deviceId) return post.deviceId === deviceId;
+  return String(post.id || '').startsWith('forum-user-');
+}
+
+function isForumCommentOwner(comment) {
+  if (!comment) return false;
+  const deviceId = typeof getDeviceId === 'function' ? getDeviceId() : '';
+  if (!deviceId) return false;
+  if (comment.deviceId) return comment.deviceId === deviceId;
+  return false;
+}
+
+function removeForumPostFromState(postId) {
+  if (!postId) return;
+  state.forumUserPosts = (state.forumUserPosts || []).filter((p) => p && p.id !== postId);
+  delete state.forumUserComments[postId];
+  delete state.forumRemoteVotes[postId];
+  delete state.forumRemotePostReactions[postId];
+  delete state.forumRemoteCommentReactions[postId];
+  delete state.forumVotes[postId];
+  delete state.forumReactions[postId];
+  if (state.forumPhilosopherFollowups) delete state.forumPhilosopherFollowups[postId];
+  saveForumPhilosopherFollowups();
+}
+
+function removeForumCommentFromState(postId, commentId) {
+  if (!postId || commentId == null) return;
+  const list = state.forumUserComments[postId];
+  if (!Array.isArray(list)) return;
+  const idStr = String(commentId);
+  state.forumUserComments[postId] = list.filter((c) => c && String(c.id) !== idStr);
+  const targetKey = `user:${commentId}`;
+  const rx = state.forumRemoteCommentReactions[postId];
+  if (rx && rx[targetKey]) delete rx[targetKey];
+  Object.keys(state.forumCommentReactions || {}).forEach((key) => {
+    if (key.startsWith(`${postId}|user|id:${idStr}`)) {
+      delete state.forumCommentReactions[key];
+    }
+  });
+}
+
+function mergeForumUserPostsAfterSync(dbPosts, previousPosts) {
+  const prevById = new Map((previousPosts || []).map((p) => [p.id, p]));
+  const merged = dbPosts.map((p) => {
+    const prev = prevById.get(p.id);
+    if (!prev) return p;
+    return {
+      ...p,
+      philosophers: Array.isArray(prev.philosophers) && prev.philosophers.length
+        ? prev.philosophers
+        : p.philosophers,
+      concepts:
+        Array.isArray(prev.concepts) && prev.concepts.length ? prev.concepts : p.concepts,
+      enriching: prev.enriching,
+      deviceId: prev.deviceId || p.deviceId,
+      avatarId: prev.avatarId || p.avatarId,
+    };
+  });
+  const dbIds = new Set(merged.map((p) => p.id));
+  const pendingLocal = (previousPosts || []).filter(
+    (p) => p && p.id && !dbIds.has(p.id) && String(p.id).startsWith('forum-user-'),
+  );
+  return [...merged, ...pendingLocal];
+}
+
+function listForumPostIdsForRemoteSync() {
+  const ids = new Set();
+  (state.forumUserPosts || []).forEach((p) => {
+    if (p && p.id) ids.add(p.id);
+  });
+  const sample = typeof window !== 'undefined' ? window.FORUM_SAMPLE_POSTS : null;
+  if (sample) {
+    const list = sample[state.lang] || sample.en || [];
+    list.forEach((p) => {
+      if (p && p.id) ids.add(p.id);
+    });
+  }
+  return [...ids];
+}
+
+function applyForumVoteStatsRows(postId, rows) {
+  let a = 0;
+  let b = 0;
+  (Array.isArray(rows) ? rows : []).forEach((r) => {
+    if (r.choice === 'a') a = Number(r.count || 0);
+    if (r.choice === 'b') b = Number(r.count || 0);
+  });
+  state.forumRemoteVotes[postId] = { a, b };
+}
+
+function applyForumPostReactionStatsRows(postId, rows) {
+  let likes = 0;
+  let dislikes = 0;
+  (Array.isArray(rows) ? rows : []).forEach((r) => {
+    if (r.reaction === 'like') likes = Number(r.count || 0);
+    if (r.reaction === 'dislike') dislikes = Number(r.count || 0);
+  });
+  state.forumRemotePostReactions[postId] = { likes, dislikes };
+}
+
+function applyForumCommentReactionStatsRows(postId, rows) {
+  const bucket = {};
+  (Array.isArray(rows) ? rows : []).forEach((r) => {
+    const key = String(r.target_key || '');
+    if (!key) return;
+    if (!bucket[key]) bucket[key] = { likes: 0, dislikes: 0 };
+    if (r.reaction === 'like') bucket[key].likes = Number(r.count || 0);
+    if (r.reaction === 'dislike') bucket[key].dislikes = Number(r.count || 0);
+  });
+  state.forumRemoteCommentReactions[postId] = bucket;
+}
+
+async function fetchForumPostsFromSupabase() {
+  const res = await fetch(
+    `${SUPABASE.url}/rest/v1/forum_posts?select=*&order=posted_at.desc`,
+    { method: 'GET', headers: supabaseHeaders() },
+  );
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase forum_posts fetch failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  return await res.json();
+}
+
+async function fetchForumCommentsFromSupabase(postId) {
+  const res = await fetch(
+    `${SUPABASE.url}/rest/v1/forum_comments?post_id=eq.${encodeURIComponent(postId)}&select=*&order=posted_at.asc`,
+    { method: 'GET', headers: supabaseHeaders() },
+  );
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase forum_comments fetch failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  return await res.json();
+}
+
+async function loadForumRemoteStatsForPost(postId) {
+  if (!postId) return;
+  const [voteRows, postRxRows, commentRxRows] = await Promise.all([
+    supabaseRpc('get_forum_vote_stats', { p_post_id: postId }),
+    supabaseRpc('get_forum_post_reaction_stats', { p_post_id: postId }),
+    supabaseRpc('get_forum_comment_reaction_stats', { p_post_id: postId }),
+  ]);
+  applyForumVoteStatsRows(postId, voteRows);
+  applyForumPostReactionStatsRows(postId, postRxRows);
+  applyForumCommentReactionStatsRows(postId, commentRxRows);
+}
+
+async function loadForumRemoteStatsForPosts(postIds) {
+  const ids = [...new Set((postIds || []).filter(Boolean))];
+  const chunk = 8;
+  for (let i = 0; i < ids.length; i += chunk) {
+    const slice = ids.slice(i, i + chunk);
+    await Promise.all(slice.map((id) => loadForumRemoteStatsForPost(id)));
+  }
+}
+
+async function loadForumUserEngagementFromSupabase() {
+  const deviceId = getDeviceId();
+  const [votesRes, postRxRes, commentRxRes] = await Promise.all([
+    fetch(
+      `${SUPABASE.url}/rest/v1/forum_post_votes?device_id=eq.${encodeURIComponent(deviceId)}&select=post_id,choice`,
+      { method: 'GET', headers: supabaseHeaders() },
+    ),
+    fetch(
+      `${SUPABASE.url}/rest/v1/forum_post_reactions?device_id=eq.${encodeURIComponent(deviceId)}&select=post_id,reaction`,
+      { method: 'GET', headers: supabaseHeaders() },
+    ),
+    fetch(
+      `${SUPABASE.url}/rest/v1/forum_comment_reactions?device_id=eq.${encodeURIComponent(deviceId)}&select=post_id,target_key,reaction`,
+      { method: 'GET', headers: supabaseHeaders() },
+    ),
+  ]);
+  if (!votesRes.ok || !postRxRes.ok || !commentRxRes.ok) {
+    throw new Error('Supabase forum user engagement fetch failed');
+  }
+  const voteRows = await votesRes.json();
+  const postRxRows = await postRxRes.json();
+  const commentRxRows = await commentRxRes.json();
+  state.forumVotes = {};
+  state.forumReactions = {};
+  state.forumCommentReactions = {};
+  (Array.isArray(voteRows) ? voteRows : []).forEach((r) => {
+    if (r.post_id && (r.choice === 'a' || r.choice === 'b')) {
+      state.forumVotes[r.post_id] = { choice: r.choice };
+    }
+  });
+  (Array.isArray(postRxRows) ? postRxRows : []).forEach((r) => {
+    if (r.post_id && (r.reaction === 'like' || r.reaction === 'dislike')) {
+      state.forumReactions[r.post_id] = { choice: r.reaction };
+    }
+  });
+  (Array.isArray(commentRxRows) ? commentRxRows : []).forEach((r) => {
+    if (!r.post_id || !r.target_key) return;
+    const tk = String(r.target_key);
+    let localKey;
+    if (tk.startsWith('user:')) {
+      localKey = `${r.post_id}|user|id:${tk.slice(5)}`;
+    } else if (tk.startsWith('philosopher_followup:')) {
+      localKey = `${r.post_id}|philosopher_followup|${tk.slice('philosopher_followup:'.length)}`;
+    } else {
+      const parts = tk.split(':');
+      if (parts.length >= 2) {
+        localKey = `${r.post_id}|${parts[0]}|${parts[1]}`;
+      }
+    }
+    if (localKey && (r.reaction === 'like' || r.reaction === 'dislike')) {
+      state.forumCommentReactions[localKey] = { choice: r.reaction };
+    }
+  });
+}
+
+async function loadForumCommentsForPost(postId) {
+  const rows = await fetchForumCommentsFromSupabase(postId);
+  const comments = (Array.isArray(rows) ? rows : [])
+    .map(mapForumCommentFromSupabaseRow)
+    .filter(Boolean);
+  state.forumUserComments[postId] = comments;
+}
+
+async function syncForumFromSupabase(options) {
+  if (!supabaseEnabled()) return;
+  const opts = options && typeof options === 'object' ? options : {};
+  const focusPostId = opts.postId ? String(opts.postId) : null;
+  try {
+    const previousPosts = state.forumUserPosts || [];
+    const rows = await fetchForumPostsFromSupabase();
+    const dbPosts = (Array.isArray(rows) ? rows : [])
+      .map(mapForumPostFromSupabaseRow)
+      .filter(Boolean);
+    state.forumUserPosts = mergeForumUserPostsAfterSync(dbPosts, previousPosts);
+    if (!opts.skipLocalSave && typeof saveForumUserPosts === 'function') {
+      saveForumUserPosts();
+    }
+
+    await loadForumUserEngagementFromSupabase();
+
+    const postIds = focusPostId ? [focusPostId] : listForumPostIdsForRemoteSync();
+    await loadForumRemoteStatsForPosts(postIds);
+
+    if (focusPostId) {
+      await loadForumCommentsForPost(focusPostId);
+    }
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+async function submitForumPostToSupabase(post) {
+  if (!supabaseEnabled() || !post) return null;
+  const deviceId = getDeviceId();
+  const labels = getUiText(state.lang);
+  const row = {
+    id: post.id,
+    device_id: deviceId,
+    author_display: labels.forumYouLabel || 'You',
+    avatar_id: post.avatarId || null,
+    title: post.title,
+    body: post.body,
+    option_a: post.optionA,
+    option_b: post.optionB,
+    concepts: Array.isArray(post.concepts) ? post.concepts : [],
+    locale: state.lang === 'zh-Hant' ? 'zh-Hant' : 'en',
+    posted_at: post.postedAt || new Date().toISOString(),
+  };
+  const res = await fetch(`${SUPABASE.url}/rest/v1/forum_posts`, {
+    method: 'POST',
+    headers: {
+      ...supabaseHeaders(),
+      'Content-Type': 'application/json',
+      Prefer: 'return=representation',
+    },
+    body: JSON.stringify(row),
+  });
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase forum_posts insert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  const txt = await res.text();
+  const rows = txt && txt.trim() ? JSON.parse(txt) : null;
+  return Array.isArray(rows) && rows[0] ? rows[0] : row;
+}
+
+async function submitForumVoteToSupabase(postId, choice) {
+  if (!supabaseEnabled() || !postId || !['a', 'b'].includes(choice)) return false;
+  const res = await fetch(
+    `${SUPABASE.url}/rest/v1/forum_post_votes?on_conflict=post_id,device_id`,
+    {
+      method: 'POST',
+      headers: {
+        ...supabaseHeaders(),
+        'Content-Type': 'application/json',
+        Prefer: 'resolution=merge-duplicates,return=minimal',
+      },
+      body: JSON.stringify({
+        post_id: postId,
+        device_id: getDeviceId(),
+        choice,
+      }),
+    },
+  );
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase forum_post_votes upsert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  await loadForumRemoteStatsForPost(postId);
+  return true;
+}
+
+async function submitForumPostReactionToSupabase(postId, reaction) {
+  if (!supabaseEnabled() || !postId) return false;
+  const deviceId = getDeviceId();
+  if (!reaction) {
+    const res = await fetch(
+      `${SUPABASE.url}/rest/v1/forum_post_reactions?post_id=eq.${encodeURIComponent(postId)}&device_id=eq.${encodeURIComponent(deviceId)}`,
+      { method: 'DELETE', headers: { ...supabaseHeaders(), Prefer: 'return=minimal' } },
+    );
+    if (!res.ok) {
+      const detail = await readSupabaseErrorText(res);
+      throw new Error(`Supabase forum_post_reactions delete failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+    }
+  } else {
+    const res = await fetch(
+      `${SUPABASE.url}/rest/v1/forum_post_reactions?on_conflict=post_id,device_id`,
+      {
+        method: 'POST',
+        headers: {
+          ...supabaseHeaders(),
+          'Content-Type': 'application/json',
+          Prefer: 'resolution=merge-duplicates,return=minimal',
+        },
+        body: JSON.stringify({ post_id: postId, device_id: deviceId, reaction }),
+      },
+    );
+    if (!res.ok) {
+      const detail = await readSupabaseErrorText(res);
+      throw new Error(`Supabase forum_post_reactions upsert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+    }
+  }
+  await loadForumRemoteStatsForPost(postId);
+  return true;
+}
+
+async function submitForumCommentReactionToSupabase(postId, targetKey, reaction) {
+  if (!supabaseEnabled() || !postId || !targetKey) return false;
+  const deviceId = getDeviceId();
+  if (!reaction) {
+    const res = await fetch(
+      `${SUPABASE.url}/rest/v1/forum_comment_reactions?post_id=eq.${encodeURIComponent(postId)}&device_id=eq.${encodeURIComponent(deviceId)}&target_key=eq.${encodeURIComponent(targetKey)}`,
+      { method: 'DELETE', headers: { ...supabaseHeaders(), Prefer: 'return=minimal' } },
+    );
+    if (!res.ok) {
+      const detail = await readSupabaseErrorText(res);
+      throw new Error(`Supabase forum_comment_reactions delete failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+    }
+  } else {
+    const res = await fetch(
+      `${SUPABASE.url}/rest/v1/forum_comment_reactions?on_conflict=post_id,target_key,device_id`,
+      {
+        method: 'POST',
+        headers: {
+          ...supabaseHeaders(),
+          'Content-Type': 'application/json',
+          Prefer: 'resolution=merge-duplicates,return=minimal',
+        },
+        body: JSON.stringify({
+          post_id: postId,
+          target_key: targetKey,
+          device_id: deviceId,
+          reaction,
+        }),
+      },
+    );
+    if (!res.ok) {
+      const detail = await readSupabaseErrorText(res);
+      throw new Error(`Supabase forum_comment_reactions upsert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+    }
+  }
+  await loadForumRemoteStatsForPost(postId);
+  return true;
+}
+
+async function submitForumCommentToSupabase(postId, text, replyToCommentId, avatarId) {
+  if (!supabaseEnabled() || !postId) return null;
+  const labels = getUiText(state.lang);
+  const body = {
+    post_id: postId,
+    device_id: getDeviceId(),
+    author_display: labels.forumYouLabel || 'You',
+    avatar_id: avatarId || null,
+    body: String(text || '').trim(),
+  };
+  if (replyToCommentId != null) {
+    body.reply_to_comment_id = replyToCommentId;
+  }
+  const res = await fetch(`${SUPABASE.url}/rest/v1/forum_comments`, {
+    method: 'POST',
+    headers: {
+      ...supabaseHeaders(),
+      'Content-Type': 'application/json',
+      Prefer: 'return=representation',
+    },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const detail = await readSupabaseErrorText(res);
+    throw new Error(`Supabase forum_comments insert failed: ${res.status}${detail ? ` — ${detail}` : ''}`);
+  }
+  const txt = await res.text();
+  const rows = txt && txt.trim() ? JSON.parse(txt) : null;
+  const row = Array.isArray(rows) && rows[0] ? rows[0] : null;
+  await loadForumCommentsForPost(postId);
+  await loadForumRemoteStatsForPost(postId);
+  return row ? mapForumCommentFromSupabaseRow(row) : null;
+}
+
+async function deleteForumPostFromSupabase(postId) {
+  if (!supabaseEnabled() || !postId) return false;
+  const result = await supabaseRpc('delete_forum_post', { p_post_id: postId });
+  return result === true;
+}
+
+async function deleteForumCommentFromSupabase(commentId) {
+  if (!supabaseEnabled() || commentId == null) return false;
+  const result = await supabaseRpc('delete_forum_comment', { p_comment_id: commentId });
+  return result === true;
+}
+
+async function deleteForumPost(postId) {
+  if (!postId) return false;
+  if (supabaseEnabled()) {
+    const ok = await deleteForumPostFromSupabase(postId);
+    if (!ok) return false;
+  }
+  removeForumPostFromState(postId);
+  if (typeof saveForumUserPosts === 'function') saveForumUserPosts();
+  return true;
+}
+
+async function deleteForumComment(postId, commentId) {
+  if (!postId || commentId == null) return false;
+  if (supabaseEnabled()) {
+    const ok = await deleteForumCommentFromSupabase(commentId);
+    if (!ok) return false;
+    await loadForumCommentsForPost(postId).catch(() => {});
+    await loadForumRemoteStatsForPost(postId).catch(() => {});
+  } else {
+    removeForumCommentFromState(postId, commentId);
+  }
+  return true;
+}
+
 async function submitFeedbackToSupabase(message, locale) {
   if (!supabaseEnabled()) return false;
   const safe = message.trim().slice(0, FEEDBACK_MAX_LEN);
@@ -3401,8 +4402,16 @@ function setMainTab(tab) {
     activateChatPanel();
   }
 
-  if (next === 'forum' && typeof ForumPanel !== 'undefined') {
-    ForumPanel.renderFeed();
+  if (next === 'forum') {
+    if (supabaseEnabled()) {
+      syncForumFromSupabase()
+        .catch(() => {})
+        .finally(() => {
+          if (typeof ForumPanel !== 'undefined') ForumPanel.renderFeed();
+        });
+    } else if (typeof ForumPanel !== 'undefined') {
+      ForumPanel.renderFeed();
+    }
   }
 
   if (next === 'profile') {
@@ -3494,9 +4503,36 @@ function startPhilosophyProfile() {
   });
 }
 
+function renderProfileIntroMessages() {
+  const wrap = document.getElementById('profile-intro');
+  const box = document.getElementById('profile-intro-messages');
+  if (!wrap || !box) return;
+
+  const show = state.profileAnswers.length === 0;
+  wrap.hidden = !show;
+  if (!show) {
+    box.replaceChildren();
+    return;
+  }
+
+  const ui = getUiText(state.lang);
+  wrap.setAttribute('aria-label', ui.profileIntroAria || 'How My Type works');
+  const lines = [ui.profileDemoMsg1, ui.profileDemoMsg2, ui.profileDemoMsg3].filter(Boolean);
+  box.replaceChildren();
+  lines.forEach((text, i) => {
+    const msg = document.createElement('div');
+    msg.className = 'profile-intro-msg' + (i === lines.length - 1 ? ' profile-intro-msg--disclaimer' : '');
+    msg.setAttribute('role', 'listitem');
+    msg.textContent = text;
+    box.appendChild(msg);
+  });
+}
+
 function renderProfileQuestion() {
   const q = PHILOSOPHY_PROFILE_QUESTIONS[state.profileQuestionIndex] || PHILOSOPHY_PROFILE_QUESTIONS[0];
   if (!q) return;
+
+  renderProfileIntroMessages();
 
   const testCard = document.getElementById('profile-test-card');
   const resultCard = document.getElementById('profile-result-card');
@@ -3558,6 +4594,9 @@ function handleProfileAnswer(opt) {
 }
 
 function renderProfileResult() {
+  const intro = document.getElementById('profile-intro');
+  if (intro) intro.hidden = true;
+
   const testCard = document.getElementById('profile-test-card');
   const resultCard = document.getElementById('profile-result-card');
   if (testCard) testCard.hidden = true;
@@ -3723,8 +4762,6 @@ function renderProfileResult() {
       thinkerGridEl.replaceChildren();
       const thinkers = (res.sections && res.sections.thinkers) || [];
 
-      const portraitBase = location.pathname.includes('/web/') ? 'images/philosophers/' : 'web/images/philosophers/';
-
       for (const t of thinkers) {
         const card = document.createElement('div');
         card.className = 'profile-thinker-card';
@@ -3749,30 +4786,21 @@ function renderProfileResult() {
           avatar.appendChild(initials)
         }
 
-        // Auto portrait lookup: <kebab-name>.(jpg|png|webp). Falls back to initials.
-        const slug = nameStr
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, '-')
-          .replace(/^-+|-+$/g, '')
-
-        const candidates = slug
-          ? [`${portraitBase}${slug}.jpg`, `${portraitBase}${slug}.png`, `${portraitBase}${slug}.webp`]
-          : []
-
-        function tryLoad(idx) {
-          if (idx >= candidates.length) return showInitials()
-          const url = candidates[idx]
-          const img = new Image()
-          img.onload = () => {
-            avatar.style.backgroundImage = `url('${url}')`
-            avatar.setAttribute('aria-label', nameStr)
-          }
-          img.onerror = () => tryLoad(idx + 1)
-          img.src = url
+        const candidates = getPhilosopherPortraitCandidates(nameStr)
+        if (!candidates.length) {
+          showInitials()
+        } else {
+          tryPhilosopherPortraitUrls(
+            candidates,
+            (url) => {
+              avatar.style.backgroundImage = `url('${url}')`
+              avatar.style.backgroundPosition = 'center top'
+              avatar.style.backgroundSize = 'cover'
+              avatar.setAttribute('aria-label', nameStr)
+            },
+            showInitials
+          )
         }
-
-        if (candidates.length) tryLoad(0)
-        else showInitials()
 
         card.appendChild(avatar);
 
@@ -3993,9 +5021,79 @@ const PHILOSOPHER_PORTRAITS = {
   'William Shakespeare': 'images/philosophers/william-shakespeare.jpg',
 };
 
+/** Slug overrides when on-disk filename differs from author slug (e.g. buddha.png). */
+const PHILOSOPHER_PORTRAIT_SLUG_OVERRIDES = {
+  'shakyamuni-buddha': 'buddha',
+};
+
+function philosopherNameToSlug(name) {
+  return String(name || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[øØ]/g, 'o')
+    .replace(/[æÆ]/g, 'ae')
+    .replace(/[œŒ]/g, 'oe')
+    .replace(/[ß]/g, 'ss')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+function getPhilosopherPortraitBasePath() {
+  return 'images/philosophers/';
+}
+
+function normalizePhilosopherPortraitUrl(url) {
+  return url || '';
+}
+
+/** Ordered local portrait URLs for an author (map entry, then slug jpg/png/webp). */
+function getPhilosopherPortraitCandidates(name) {
+  const n = typeof name === 'string' ? name.trim() : '';
+  if (!n) return [];
+  const seen = new Set();
+  const out = [];
+  function add(url) {
+    const u = normalizePhilosopherPortraitUrl(url);
+    if (u && !seen.has(u)) {
+      seen.add(u);
+      out.push(u);
+    }
+  }
+  if (PHILOSOPHER_PORTRAITS[n]) add(PHILOSOPHER_PORTRAITS[n]);
+  const slug = philosopherNameToSlug(n);
+  const stem = PHILOSOPHER_PORTRAIT_SLUG_OVERRIDES[slug] || slug;
+  if (stem) {
+    const base = getPhilosopherPortraitBasePath();
+    for (const ext of ['jpg', 'png', 'webp']) add(`${base}${stem}.${ext}`);
+  }
+  return out;
+}
+
+function tryPhilosopherPortraitUrls(candidates, onSuccess, onFail) {
+  if (!candidates || !candidates.length) {
+    if (onFail) onFail();
+    return;
+  }
+  let idx = 0;
+  function attempt() {
+    if (idx >= candidates.length) {
+      if (onFail) onFail();
+      return;
+    }
+    const url = candidates[idx++];
+    const img = new Image();
+    img.decoding = 'async';
+    img.referrerPolicy = 'no-referrer';
+    img.onload = () => onSuccess(url);
+    img.onerror = attempt;
+    img.src = url;
+  }
+  attempt();
+}
+
 function createAuthorAvatarNode(author) {
   const name = typeof author === 'string' ? author : '';
-  const url = name ? PHILOSOPHER_PORTRAITS[name] : null;
   const initials = (name || '?')
     .split(' ')
     .filter(Boolean)
@@ -4007,25 +5105,30 @@ function createAuthorAvatarNode(author) {
   const el = document.createElement('div');
   el.className = 'bm-item-media bm-item-media--avatar';
 
-  if (!url) {
+  const candidates = getPhilosopherPortraitCandidates(name);
+  if (!candidates.length) {
     el.classList.add('bm-item-media--initials');
     el.textContent = initials || '•';
     return el;
   }
 
-  const img = document.createElement('img');
-  img.className = 'bm-item-media-img';
-  img.alt = name;
-  img.loading = 'lazy';
-  img.decoding = 'async';
-  img.referrerPolicy = 'no-referrer';
-  img.onerror = function () {
-    el.replaceChildren();
-    el.classList.add('bm-item-media--initials');
-    el.textContent = initials || '•';
-  };
-  img.src = url;
-  el.appendChild(img);
+  tryPhilosopherPortraitUrls(
+    candidates,
+    (url) => {
+      const img = document.createElement('img');
+      img.className = 'bm-item-media-img';
+      img.alt = name;
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.referrerPolicy = 'no-referrer';
+      img.src = url;
+      el.appendChild(img);
+    },
+    () => {
+      el.classList.add('bm-item-media--initials');
+      el.textContent = initials || '•';
+    }
+  );
   return el;
 }
 
@@ -4085,7 +5188,6 @@ function renderPhilosopherQuote() {
     const el = document.getElementById(elId);
     if (!el) return;
     const name = typeof author === 'string' ? author : '';
-    const url = name ? PHILOSOPHER_PORTRAITS[name] : null;
     el.style.cssText = '';
     el.textContent = '';
     el.classList.remove('philosopher-avatar--initials');
@@ -4108,22 +5210,27 @@ function renderPhilosopherQuote() {
       el.appendChild(span);
     }
 
-    if (!url) {
+    const candidates = getPhilosopherPortraitCandidates(name);
+    if (!candidates.length) {
       showInitials();
       return;
     }
 
-    const img = document.createElement('img');
-    img.alt = name;
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    img.className = 'philosopher-avatar-img';
-    img.referrerPolicy = 'no-referrer';
-    img.onerror = function () {
-      showInitials();
-    };
-    img.src = url;
-    el.appendChild(img);
+    tryPhilosopherPortraitUrls(
+      candidates,
+      (url) => {
+        const img = document.createElement('img');
+        img.alt = name;
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        img.className = 'philosopher-avatar-img';
+        img.referrerPolicy = 'no-referrer';
+        img.onerror = showInitials;
+        img.src = url;
+        el.appendChild(img);
+      },
+      showInitials
+    );
   }
 
   const t1 = document.getElementById('pq-text');
@@ -6543,7 +7650,8 @@ let philosopherGatewayPendingInput = null;
 
 function getAiPhilosopherPortraitSrc() {
   const key = AI_PHILOSOPHER_PORTRAIT_KEYS[getSelectedPhilosopherId()];
-  return key && PHILOSOPHER_PORTRAITS[key] ? PHILOSOPHER_PORTRAITS[key] : null;
+  const candidates = getPhilosopherPortraitCandidates(key || '');
+  return candidates.length ? candidates[0] : null;
 }
 
 /** Descartes reference portrait is small in-frame; zoom slightly in circular crops. */
@@ -6607,15 +7715,15 @@ function renderAiPhilosopherChips() {
     b.setAttribute('aria-checked', id === current ? 'true' : 'false');
     const labelText = names[id] || id;
     const portraitKey = AI_PHILOSOPHER_PORTRAIT_KEYS[id];
-    const portraitSrc = portraitKey ? PHILOSOPHER_PORTRAITS[portraitKey] : null;
-    if (portraitSrc) {
+    const portraitCandidates = getPhilosopherPortraitCandidates(portraitKey || '');
+    if (portraitCandidates.length) {
       const img = document.createElement('img');
       img.className = 'ai-philosopher-chip-img';
       img.alt = '';
       img.decoding = 'async';
       img.loading = 'lazy';
       img.referrerPolicy = 'no-referrer';
-      img.src = portraitSrc;
+      img.src = portraitCandidates[0];
       if (id === 'descartes') {
         const frame = document.createElement('span');
         frame.className = 'ai-philosopher-chip-img-frame';
@@ -6704,9 +7812,11 @@ function buildPhilosopherProfileVideosHtml(videos) {
   if (!Array.isArray(videos) || videos.length === 0) return '';
   const items = videos
     .map((v) => {
+      const q = encodeURIComponent(String(v.label || '').trim());
+      const href = `https://www.youtube.com/results?search_query=${q}`;
       const lab = escapeHtmlProfile(v.label || '');
       const hint = v.hint ? ` <span class="gf-meta">(${escapeHtmlProfile(v.hint)})</span>` : '';
-      return `<li>${lab}${hint}</li>`;
+      return `<li><a href="${href}" target="_blank" rel="noopener noreferrer">${lab}</a>${hint}</li>`;
     })
     .join('');
   return `<ul class="plato-reader-ul">${items}</ul>`;
@@ -6719,7 +7829,8 @@ function resolvePhilosopherProfileSectionPhotoSrc(philosopherId, sectionKey) {
     return `images/philosopher-profile-sections/${philosopherId}-${fileSuffix[sectionKey]}.jpg`;
   }
   const key = AI_PHILOSOPHER_PORTRAIT_KEYS[philosopherId];
-  return key && PHILOSOPHER_PORTRAITS[key] ? PHILOSOPHER_PORTRAITS[key] : '';
+  const candidates = getPhilosopherPortraitCandidates(key || '');
+  return candidates.length ? candidates[0] : '';
 }
 
 function getPhilosopherProfileScroll(philosopherId) {
@@ -6825,7 +7936,7 @@ function buildPlatoReaderScrollHtml(ui) {
       const body = d.bodyHtml || '';
       const head = platoReaderSectionHeadingHtml(title, d.iconKey);
       if (d.portraitSrc) {
-        return `<article id="${d.id}" class="plato-reader-block plato-reader-block--with-photo">${head}<div class="plato-reader-block-body"><div class="plato-reader-intro-columns"><div class="plato-reader-intro-copy">${body}</div><div class="plato-reader-intro-photo"><img src="${d.portraitSrc}" alt="" width="140" height="140" loading="lazy" decoding="async" /></div></div></div></article>`;
+        return `<article id="${d.id}" class="plato-reader-block plato-reader-block--with-photo">${head}<div class="plato-reader-block-body"><div class="plato-reader-intro-copy plato-reader-intro-copy--inline-photo"><div class="plato-reader-inline-photo"><img src="${d.portraitSrc}" alt="" width="140" height="140" loading="lazy" decoding="async" /></div>${body}</div></div></article>`;
       }
       return `<article id="${d.id}" class="plato-reader-block">${head}<div class="plato-reader-block-body">${body}</div></article>`;
     })
@@ -7001,27 +8112,27 @@ const AI_STARTER_POOL_EN = [
 ];
 
 const AI_STARTER_POOL_ZH = [
-  '為什麼有人會選另一邊？',
-  '我該把什麼放得最重？',
-  '用白話幫我整理這題。',
-  '兩邊各自可以加強什麼論點？',
-  '我還忽略了什麼？',
-  '你會怎麼形容這個取捨？',
-  '選擇時最難的是什麼？',
-  '跟我說一句鼓勵的話。',
-  '你對哲學最大的貢獻是什麼？',
-  '用幾句話總結你的核心思想。',
-  '哪個想法最常被人誤解？',
-  '提起你，大家會想到哪個論證？',
-  '你眼中的美好生活是什麼樣子？',
-  '把你的學說連到這題上。',
-  '我第一步該問自己什麼？',
-  '今天和家人吵架了，有什麼建議？',
-  '工作好累，我該怎麼想？',
-  '朋友突然不回訊息，你會怎麼說？',
-  '選完一直內疚，能幫我想想嗎？',
-  '老闆逼我，我拒絕錯了嗎？',
-  '我很焦慮，有什麼思考習慣有用？',
+  '點解有人會揀另一邊？',
+  '我應該最看重啲乜？',
+  '用白話幫我整理呢題。',
+  '兩邊各自可以加強啲乜論點？',
+  '我仲忽略咗啲乜？',
+  '你會點樣形容呢個取捨？',
+  '揀嗰陣最難係咩？',
+  '同我講句鼓勵嘅話。',
+  '你對哲學最大嘅貢獻係咩？',
+  '用幾句總結你嘅核心思想。',
+  '邊個諗法最常畀人誤解？',
+  '提起你，大家會諗起邊個論證？',
+  '你眼中嘅美好生活係點樣？',
+  '將你嘅學說連去呢題上。',
+  '我第一步應該問自己咩？',
+  '今日同屋企人嗌交咗，有咩建議？',
+  '做到好攰，我應該點樣諗？',
+  '朋友突然唔覆 message，你會點講？',
+  '揀完一直內疚，可唔可以幫我諗諗？',
+  '老細迫我，我拒絕係咪錯？',
+  '我好焦慮，有咩思考習慣有用？',
 ];
 
 function getAiStarterPool() {
@@ -7371,9 +8482,55 @@ function aiRenderThread(dilemmaId) {
   messages.forEach(m => aiAppendMessage(m.role, m.content));
 }
 
+function parseAiCallErrorBody(txt) {
+  if (!txt || !txt.trim()) return '';
+  try {
+    const j = JSON.parse(txt);
+    if (j && typeof j.error === 'string' && j.error.trim()) return j.error.trim();
+    if (j && typeof j.message === 'string' && j.message.trim()) return j.message.trim();
+  } catch {}
+  return txt.trim();
+}
+
+function classifyAiChatError(err) {
+  const detail = err && typeof err.message === 'string' ? err.message : '';
+  const status = err && typeof err.status === 'number' ? err.status : 0;
+  const isNetwork =
+    err?.name === 'TypeError' ||
+    /NetworkError|Failed to fetch|Load failed|fetch/i.test(detail);
+  if (isNetwork) return 'network';
+  if (/Daily AI limit reached for this device/i.test(detail)) return 'dailyDevice';
+  if (/Too many messages/i.test(detail)) return 'rateMinute';
+  if (/Daily limit reached/i.test(detail)) return 'dailyApp';
+  if (/AI is not configured/i.test(detail)) return 'unavailable';
+  if (status === 429) {
+    if (/device/i.test(detail)) return 'dailyDevice';
+    if (/minute/i.test(detail)) return 'rateMinute';
+    return 'dailyApp';
+  }
+  return 'technical';
+}
+
+function getAiChatErrorMessage(ui, kind) {
+  const keyByKind = {
+    technical: 'aiErrorTechnical',
+    dailyDevice: 'aiErrorDailyDevice',
+    rateMinute: 'aiErrorRateMinute',
+    network: 'aiErrorNetwork',
+    unavailable: 'aiErrorUnavailable',
+    dailyApp: 'aiErrorDailyApp',
+  };
+  const key = keyByKind[kind] || keyByKind.technical;
+  return ui[key] || ui.aiErrorTechnical || ui.aiSendFailed || 'Could not send message.';
+}
+
 async function aiCall(payload) {
   const url = getAiFunctionUrl();
-  if (!url) throw new Error('AI is not configured');
+  if (!url) {
+    const e = new Error('AI is not configured');
+    e.kind = 'unavailable';
+    throw e;
+  }
   const res = await fetch(url, {
     method: 'POST',
     headers: supabaseFunctionsHeaders({ 'Content-Type': 'application/json' }),
@@ -7381,7 +8538,7 @@ async function aiCall(payload) {
   });
   if (!res.ok) {
     const txt = await res.text().catch(() => '');
-    let detail = txt && txt.trim() ? txt.trim() : `AI request failed: ${res.status}`;
+    let detail = parseAiCallErrorBody(txt) || `AI request failed: ${res.status}`;
     try {
       const j = JSON.parse(txt);
       const code = j && typeof j.code === 'string' ? j.code : '';
@@ -7395,9 +8552,19 @@ async function aiCall(payload) {
           'AI chat needs the JWT anon key from Supabase (Project Settings → API → anon public). Replace window.__DD_SUPABASE.anonKey in index.html — sb_publishable_* keys are not accepted by Edge Functions.';
       }
     } catch {}
-    throw new Error(detail);
+    const e = new Error(detail);
+    e.status = res.status;
+    throw e;
   }
   return await res.json();
+}
+
+async function aiShowChatError(kind) {
+  const ui = getUiText(state.lang);
+  const copy = getAiChatErrorMessage(ui, kind);
+  aiSetHint('');
+  aiSetThinking(false);
+  await aiStreamAssistantMessage(copy);
 }
 
 async function maybeSummarizeAiThread(dilemmaId) {
@@ -7434,7 +8601,7 @@ async function aiSendCurrentMessage() {
 
   const ui = getUiText(state.lang);
   if (!supabaseEnabled()) {
-    aiSetHint(ui.aiUnavailable || 'AI chat is not available.');
+    await aiShowChatError('unavailable');
     return;
   }
 
@@ -7474,7 +8641,7 @@ async function aiSendCurrentMessage() {
     });
 
     const reply = typeof resp.reply === 'string' ? resp.reply.trim() : '';
-    const safeReply = reply || (state.lang === 'zh-Hant' ? '（暫時未能回覆，請再試一次。）' : '(No reply—please try again.)');
+    const safeReply = reply || getAiChatErrorMessage(ui, 'technical');
 
     const post = loadAiThread(dilemmaId);
     post.messages.push({ role: 'assistant', content: safeReply });
@@ -7485,23 +8652,8 @@ async function aiSendCurrentMessage() {
     await aiStreamAssistantMessage(safeReply);
   } catch (err) {
     console.error(err);
-    const msg = ui.aiSendFailed || 'Could not send message.';
-    let detail = err && typeof err.message === 'string' ? err.message : '';
-    const isNetwork =
-      err?.name === 'TypeError' ||
-      /NetworkError|Failed to fetch|Load failed|fetch/i.test(String(detail));
-    if (isNetwork) {
-      const fileHint =
-        typeof window !== 'undefined' && window.location?.protocol === 'file:'
-          ? ' Open the app over http://localhost (Live Server), not file://.'
-          : '';
-      const deployHint =
-        !fileHint && typeof window !== 'undefined' && /^https?:/i.test(window.location?.protocol || '')
-          ? ' Redeploy ai-chat: `npx supabase functions deploy ai-chat` (Edge Function may be crashing).'
-          : '';
-      detail = [detail, fileHint || deployHint].filter(Boolean).join('');
-    }
-    aiSetHint(detail ? `${msg} ${detail}` : msg);
+    const kind = err?.kind === 'unavailable' ? 'unavailable' : classifyAiChatError(err);
+    await aiShowChatError(kind);
   } finally {
     aiSetThinking(false);
     btn.disabled = false;
@@ -7529,7 +8681,8 @@ function getPhilosopherVibe(id) {
 
 function getGatewayPhilosopherPortraitSrc(id) {
   const key = AI_PHILOSOPHER_PORTRAIT_KEYS[id];
-  return key && PHILOSOPHER_PORTRAITS[key] ? PHILOSOPHER_PORTRAITS[key] : '';
+  const candidates = getPhilosopherPortraitCandidates(key || '');
+  return candidates.length ? candidates[0] : '';
 }
 
 function applyPhilosopherGatewayTexts() {
@@ -7699,12 +8852,13 @@ function closeAiAssistant() {
 function buildChallengeText() {
   const d = getDilemma();
   if (state.lang === 'zh-Hant') {
-    return `今天這題，你會怎麼選？\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\n回覆 A 或 B。`;
+    return `今日呢題，你會點揀？\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\n回覆 A 或 B。`;
   }
   return `Today\'s decision — what would you choose?\n\n"${d.text}"\n\nA. ${d.optA}\nB. ${d.optB}\n\nReply with A or B.`;
 }
 
-document.getElementById('btn-challenge-trigger').addEventListener('click', openChallenge);
+const shareAfterAnswerBtn = document.getElementById('btn-share-after-answer');
+if (shareAfterAnswerBtn) shareAfterAnswerBtn.addEventListener('click', openShare);
 document.getElementById('btn-close-challenge').addEventListener('click', closeChallenge);
 document.getElementById('challenge-overlay').addEventListener('click', e => {
   if (e.target === document.getElementById('challenge-overlay')) closeChallenge();
@@ -7742,6 +8896,7 @@ function applyDdStaticIcons() {
   DD_ICONS.mount(document.getElementById('icon-tab-chat'), 'philosopherChat', 22);
   DD_ICONS.mount(document.getElementById('icon-ai-modal'), 'philosopherChat', 28);
   DD_ICONS.mount(document.getElementById('icon-chat-after-answer'), 'philosopherChat', 18);
+  DD_ICONS.mount(document.getElementById('icon-share-after-answer'), 'share', 18);
 }
 
 function applyUIText() {
@@ -7804,8 +8959,10 @@ function applyUIText() {
   if (quoteTitle) quoteTitle.textContent = ui.philosopherSays;
   const gfTitle = document.querySelector('#acc-further .acc-title');
   if (gfTitle) gfTitle.textContent = ui.goFurther;
-  const askLabel = document.getElementById('label-ask-friend');
-  if (askLabel) askLabel.textContent = ui.askFriend;
+  const shareAfterLabel = document.getElementById('label-share-after-answer');
+  if (shareAfterLabel) shareAfterLabel.textContent = ui.share;
+  const shareAfterBtn = document.getElementById('btn-share-after-answer');
+  if (shareAfterBtn) shareAfterBtn.setAttribute('aria-label', ui.share);
   const nextLabel = document.getElementById('label-next-dilemma');
   if (nextLabel) nextLabel.textContent = ui.nextDilemma;
   const dailyReminderBtn = document.getElementById('btn-daily-reminder');
@@ -8141,6 +9298,7 @@ function init() {
   state.lang = loadLanguage();
   state.history = loadHistory();
   state.forumUserPosts = loadForumUserPosts();
+  state.forumPhilosopherFollowups = loadForumPhilosopherFollowups();
   state.forumUserAvatarId = loadForumUserAvatarId();
   syncExploredConceptsFromHistory();
   mergeLearnedConceptsFromSupabase().catch(() => {});

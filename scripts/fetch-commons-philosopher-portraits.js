@@ -155,7 +155,7 @@ const targets = [
   { thinker: 'Oliver Wendell Holmes Jr.', slug: 'oliver-wendell-holmes-jr', commons: 'Oliver Wendell Holmes Jr circa 1930.jpg' },
   { thinker: 'Paul Farmer', slug: 'paul-farmer', commons: 'Paul Farmer.jpg' },
   { thinker: 'Rachel Carson', slug: 'rachel-carson', commons: 'Rachel Carson (1963).jpg' },
-  { thinker: 'Rumi', slug: 'rumi', commons: 'Mevlana monument (Turkey).jpg' },
+  { thinker: 'Rumi', slug: 'rumi', commons: 'مولانا اثر حسین بهزاد (cropped).jpg' },
   { thinker: 'Søren Kierkegaard', slug: 'soren-kierkegaard', commons: 'Søren Kierkegaard (1813-1855).jpg' },
   { thinker: 'Voltaire', slug: 'voltaire', commons: 'Voltaire.jpg' },
   { thinker: 'Walter Benjamin', slug: 'walter-benjamin', commons: 'Walter Benjamin.jpg' },

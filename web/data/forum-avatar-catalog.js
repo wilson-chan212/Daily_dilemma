@@ -173,6 +173,11 @@
     return lang === 'zh-Hant' ? tab.labelZh : tab.labelEn;
   }
 
+  function pickRandomId() {
+    if (!ENTRIES.length) return DEFAULT_AVATAR_ID;
+    return ENTRIES[Math.floor(Math.random() * ENTRIES.length)].id;
+  }
+
   global.FORUM_AVATAR_CATALOG = {
     PALETTES,
     TABS,
@@ -187,6 +192,7 @@
     getSampleId,
     getAriaLabel,
     getTabLabel,
+    pickRandomId,
     hash,
   };
 })(typeof window !== 'undefined' ? window : globalThis);

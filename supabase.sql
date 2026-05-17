@@ -221,3 +221,83 @@ using (device_id = public.request_device_id());
 
 revoke all on table public.bookmarks from anon;
 grant select, insert, update, delete on table public.bookmarks to anon;
+
+-- 8) Forum (posts, comments, A/B votes, reactions)
+-- Full migration: supabase/migrations/20260517120000_forum.sql
+-- Sample dilemmas stay in FORUM_SAMPLE_POSTS (JS); user posts persist in forum_posts.
+-- Client sends X-Device-Id (same as bookmarks) for writes.
+
+create table if not exists public.forum_posts (
+  id text primary key,
+  device_id text not null,
+  author_display text not null default 'You',
+  avatar_id text,
+  title text not null check (char_length(trim(title)) > 0 and char_length(title) <= 200),
+  body text not null check (char_length(trim(body)) > 0 and char_length(body) <= 2000),
+  option_a text not null check (char_length(trim(option_a)) > 0 and char_length(option_a) <= 200),
+  option_b text not null check (char_length(trim(option_b)) > 0 and char_length(option_b) <= 200),
+  concepts text[] not null default '{}'::text[],
+  locale text,
+  posted_at timestamptz not null default now(),
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.forum_post_votes (
+  id bigint generated always as identity primary key,
+  post_id text not null,
+  device_id text not null,
+  choice text not null check (choice in ('a', 'b')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (post_id, device_id)
+);
+
+create table if not exists public.forum_comments (
+  id bigint generated always as identity primary key,
+  post_id text not null,
+  device_id text not null,
+  author_display text not null default 'You',
+  avatar_id text,
+  body text not null check (char_length(trim(body)) > 0 and char_length(body) <= 2000),
+  reply_to_comment_id bigint references public.forum_comments (id) on delete set null,
+  posted_at timestamptz not null default now(),
+  created_at timestamptz not null default now()
+);
+
+create table if not exists public.forum_post_reactions (
+  id bigint generated always as identity primary key,
+  post_id text not null,
+  device_id text not null,
+  reaction text not null check (reaction in ('like', 'dislike')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (post_id, device_id)
+);
+
+create table if not exists public.forum_comment_reactions (
+  id bigint generated always as identity primary key,
+  post_id text not null,
+  target_key text not null,
+  device_id text not null,
+  reaction text not null check (reaction in ('like', 'dislike')),
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (post_id, target_key, device_id)
+);
+
+-- RPCs: get_forum_vote_stats(post_id), get_forum_post_reaction_stats(post_id),
+--       get_forum_comment_reaction_stats(post_id)
+-- See migration file for RLS policies, indexes, and grants.
+
+create table if not exists public.forum_reports (
+  id bigint generated always as identity primary key,
+  device_id text not null,
+  target_key text not null,
+  post_id text,
+  reason text not null check (reason in ('harassment', 'private', 'self_harm', 'spam', 'other')),
+  other_detail text,
+  snippet text,
+  locale text,
+  created_at timestamptz not null default now()
+);
+-- Full schema + RLS: supabase/migrations/20260517140000_forum_reports.sql

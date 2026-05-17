@@ -6,6 +6,7 @@
 
   const STROKE = 1.75;
   const THINKER_ICON_SRC = 'images/chat-philosopher-icons/thinker-reference.png';
+  const PHILOSOPHER_ROLE_ICON_SRC = 'images/chat-philosopher-icons/philosopher-role.png';
 
   function svg(size, viewBox, inner, className) {
     const cls = className ? `dd-icon ${className}` : 'dd-icon';
@@ -45,6 +46,8 @@
       ),
     /** Dialogue — attached Thinker artwork (PNG). */
     philosopherChat: (s, cls) => rasterIcon(s, THINKER_ICON_SRC, cls),
+    /** Forum comment role mark — Thinker symbol beside philosopher name. */
+    philosopherRole: (s, cls) => rasterIcon(s, PHILOSOPHER_ROLE_ICON_SRC, cls || 'dd-icon--philosopher-role'),
     /** Roman temple — Dilemma Forum tab & header (images/forum-icons/forum-temple.svg) */
     people: (s, cls) =>
       svg(
@@ -118,9 +121,10 @@
       svg(
         s,
         '0 0 24 24',
-        `<path d="M12 5v10" stroke="currentColor" stroke-width="${STROKE}" stroke-linecap="round"/>` +
-          `<path d="M8.5 8.5L12 5l3.5 3.5" stroke="currentColor" stroke-width="${STROKE}" stroke-linecap="round" stroke-linejoin="round"/>` +
-          `<path d="M6 14.5h12a2 2 0 0 1 2 2V19H4v-2.5a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="${STROKE}" stroke-linejoin="round"/>`,
+        `<circle cx="18" cy="5" r="3" stroke="currentColor" stroke-width="${STROKE}"/>` +
+          `<circle cx="6" cy="12" r="3" stroke="currentColor" stroke-width="${STROKE}"/>` +
+          `<circle cx="18" cy="19" r="3" stroke="currentColor" stroke-width="${STROKE}"/>` +
+          `<path d="M8.59 13.51L15.42 17.49M15.41 6.51L8.59 10.49" stroke="currentColor" stroke-width="${STROKE}" stroke-linecap="round"/>`,
         cls
       ),
     reply: (s, cls) =>

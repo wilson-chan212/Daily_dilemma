@@ -31,6 +31,7 @@ const targets = [
   { slug: 'paul-farmer', title: 'Paul Farmer' },
   { slug: 'rachel-carson', title: 'Rachel Carson' },
   { slug: 'rumi', title: 'Rumi' },
+  { slug: 'simone-de-beauvoir', title: 'Simone de Beauvoir' },
   { slug: 'voltaire', title: 'Voltaire' },
   { slug: 'walter-benjamin', title: 'Walter Benjamin' },
 ]
