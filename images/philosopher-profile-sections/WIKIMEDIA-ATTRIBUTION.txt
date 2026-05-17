@@ -1,0 +1,42 @@
+Profile reader section images (brief-intro, early-life, main-ideas).
+Three distinct images per philosopher; sourced from Wikimedia Commons (PD / PD-Art).
+
+  plato:
+    plato-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Plato-raphael.jpg
+    plato-early-life.jpg: https://commons.wikimedia.org/wiki/File:MANNapoli_124545_plato's_academy_mosaic_(cropped).jpg
+    plato-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Plato_Silanion_Musei_Capitolini_MC1377.jpg
+
+  socrates:
+    socrates-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Socrates_Louvre.jpg
+    socrates-early-life.jpg: https://commons.wikimedia.org/wiki/File:David_-_The_Death_of_Socrates.jpg
+    socrates-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Statue_of_Socrates_in_front_of_the_National_Academy_of_Athens.jpg
+
+  aristotle:
+    aristotle-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Aristotle_Altemps_Inv8575.jpg
+    aristotle-early-life.jpg: https://commons.wikimedia.org/wiki/File:Aristotle_and_Plato_in_Raphael's_School_of_Athens.jpg
+    aristotle-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Francesco_Hayez_Aristotle.jpg
+
+  confucius:
+    confucius-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Half_Portraits_of_the_Great_Sage_and_Virtuous_Men_of_Old_-_Confucius.jpg
+    confucius-early-life.jpg: https://commons.wikimedia.org/wiki/File:Kongzi_(Confucius)_Temple,_Qufu_(13035569695).jpg
+    confucius-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Rongo_Analects_02.jpg
+
+  kant:
+    kant-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Immanuel_Kant_(painted_portrait).jpg
+    kant-early-life.jpg: https://commons.wikimedia.org/wiki/File:Kant_wohnhaus_2.jpg
+    kant-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Kant_Critique_of_pure_reason_1781.jpg
+
+  laozi:
+    laozi-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Laozi.jpg
+    laozi-early-life.jpg: https://commons.wikimedia.org/wiki/File:Lao-Tzu_on_his_buffalo,_followed_by_a_disciple.jpg
+    laozi-main-ideas.png: https://commons.wikimedia.org/wiki/File:Representation_of_Laozi.PNG
+
+  buddha:
+    buddha-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Fasting_Buddha_(22388752086).jpg
+    buddha-early-life.jpg: https://commons.wikimedia.org/wiki/File:Lumbini1.jpg
+    buddha-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Sarnath_capital.jpg
+
+  marx:
+    marx-brief-intro.jpg: https://commons.wikimedia.org/wiki/File:Karl_Marx_001.jpg
+    marx-early-life.jpg: https://commons.wikimedia.org/wiki/File:Karl-Marx-Haus_Trier_2009.jpg
+    marx-main-ideas.jpg: https://commons.wikimedia.org/wiki/File:Manifestet1848.jpg

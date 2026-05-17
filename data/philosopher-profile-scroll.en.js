@@ -89,10 +89,10 @@
       ],
 
       suggestedVideos: [
-        { label: 'Open Yale / Stanford-style lecture courses on Plato’s Republic', hint: 'Search “Plato Republic lecture full course”.' },
-        { label: 'Crash Course Philosophy – Plato & Aristotle block', hint: 'Good orientation; pair with primary text.' },
-        { label: 'Gregory Vlastos / Julia Annas discussions (interviews & lectures)', hint: 'Search scholar name + “Plato justice”.' },
-        { label: 'BBC In Our Time – Plato’s Republic (radio)', hint: 'Archive episode for narrative overview.' },
+        { label: 'Open Yale / Stanford-style lecture courses on Plato’s Republic', hint: 'Good orientation; pair with primary text.', url: 'https://www.youtube.com/playlist?list=PL868E87E8CF959153' },
+        { label: 'Crash Course Philosophy – Plato & Aristotle block', hint: 'Short intro before the Republic.', url: 'https://www.youtube.com/watch?v=Ra7VQGVwh5E' },
+        { label: 'Gregory Vlastos / Julia Annas discussions (interviews & lectures)', hint: 'Scholar talks on Plato and justice.', url: 'https://www.youtube.com/results?search_query=Gregory+Vlastos+Julia+Annas+Plato+justice+lecture' },
+        { label: 'BBC In Our Time – Plato’s Republic (radio)', hint: 'Narrative overview episode.', url: 'https://www.youtube.com/results?search_query=BBC+In+Our+Time+Plato+Republic' },
       ],
     },
 
@@ -161,9 +161,9 @@
       ],
 
       suggestedVideos: [
-        { label: 'Michael Sugrue-style lectures on Apology / Socrates', hint: 'YouTube search “Apology Plato lecture”.' },
-        { label: 'Yale Introduction to Political Philosophy – Socrates segments', hint: 'Course playlists often front-load classical Athens.' },
-        { label: 'Crash Course – Socrates', hint: 'Short orientation before primary texts.' },
+        { label: 'Michael Sugrue-style lectures on Apology / Socrates', hint: 'Trial and examined life.', url: 'https://www.youtube.com/results?search_query=Michael+Sugrue+Plato+Apology+Socrates+lecture' },
+        { label: 'Yale Introduction to Political Philosophy – Socrates segments', hint: 'Classical Athens in the opening lectures.', url: 'https://www.youtube.com/playlist?list=PL868E87E8CF959153' },
+        { label: 'Crash Course – Socrates', hint: 'Short orientation before primary texts.', url: 'https://www.youtube.com/watch?v=GvHDBqTBBDQ' },
       ],
     },
 
@@ -232,9 +232,9 @@
       ],
 
       suggestedVideos: [
-        { label: 'Wi-Phi / Wireless Philosophy – Aristotle ethics', hint: 'Short animated primers.' },
-        { label: 'Harvard / Duke lecture recordings on Nicomachean Ethics', hint: 'Search course title + ethics.' },
-        { label: 'History of Philosophy Without Any Gaps – Aristotle arc', hint: 'Podcast narrative continuity.' },
+        { label: 'Wi-Phi / Wireless Philosophy – Aristotle ethics', hint: 'Short animated primers.', url: 'https://www.youtube.com/watch?v=PrvtOWEXDIQ' },
+        { label: 'Harvard / Duke lecture recordings on Nicomachean Ethics', hint: 'Virtue and the good life.', url: 'https://www.youtube.com/watch?v=MoCuVa7zU-I' },
+        { label: 'History of Philosophy Without Any Gaps – Aristotle arc', hint: 'Podcast narrative continuity.', url: 'https://www.youtube.com/results?search_query=History+of+Philosophy+Without+Any+Gaps+Aristotle' },
       ],
     },
 
@@ -302,9 +302,9 @@
       ],
 
       suggestedVideos: [
-        { label: 'Harvard / Berkeley Chinese philosophy lecture series', hint: 'Search “Confucius Analects lecture”.' },
-        { label: 'TED-Ed / shorts on Confucius', hint: 'Verify nuance in comments—pair with translation.' },
-        { label: 'Philosophize This! – Eastern philosophy episodes', hint: 'Podcast narrative overview.' },
+        { label: 'Harvard / Berkeley Chinese philosophy lecture series', hint: 'Analects in university context.', url: 'https://www.youtube.com/results?search_query=Confucius+Analects+lecture+Harvard+Berkeley' },
+        { label: 'TED-Ed / shorts on Confucius', hint: 'Verify nuance in comments—pair with translation.', url: 'https://www.youtube.com/watch?v=tuhGrGias3o' },
+        { label: 'Philosophize This! – Eastern philosophy episodes', hint: 'Podcast narrative overview.', url: 'https://www.youtube.com/results?search_query=Philosophize+This+Eastern+philosophy+Confucius' },
       ],
     },
 
@@ -374,159 +374,93 @@
       ],
 
       suggestedVideos: [
-        { label: 'Michael Sandel Justice – Kant chapters', hint: 'Harvard lectures widely mirrored online.' },
-        { label: 'Wireless Philosophy – Kant / categorical imperative', hint: 'Short animated intros.' },
-        { label: 'Yale political philosophy – Kant modules', hint: 'Search course title + Kant PDF syllabus.' },
+        { label: 'Michael Sandel Justice – Kant chapters', hint: 'Harvard lectures widely mirrored online.', url: 'https://www.youtube.com/watch?v=kBdfcR-8hEY' },
+        { label: 'Wireless Philosophy – Kant / categorical imperative', hint: 'Short animated intros.', url: 'https://www.youtube.com/watch?v=8bIys6TJDEg' },
+        { label: 'Yale political philosophy – Kant modules', hint: 'Duty, freedom, and the good will.', url: 'https://www.youtube.com/watch?v=x2n1JxKU0Tg' },
       ],
     },
 
-    descartes: {
-      name: 'René Descartes',
+    laozi: {
+      name: 'Laozi',
       briefIntroduction:
-        'René Descartes (1596–1650) sought foundations for science and metaphysics after scholastic turbulence. Methodical doubt clears away dubitable beliefs until indubitable starting points remain—famously the cogito (“I think, therefore I am”). From there he argues for God’s existence and the reliability of clear and distinct perceptions under divine non-deceptiveness guarantee.\n\n' +
-        'He advances mechanistic physics for extended substance while treating mind as thinking substance—generating mind–body interaction puzzles Princess Elisabeth famously pressed. Mathematics gains analytic geometry bridges.\n\n' +
-        'Scholarship debates Cartesian circle, status of animals, and dualism alternatives—introductions balance textual steps with problem-centered teaching.',
+        'Laozi (traditionally 6th century BCE) is the named figure behind the Daodejing—a sparse, paradoxical guide to living with less forcing. Dao is not a thing to own but the way things arise and return; wu-wei is skilled non-coercion, like water finding low places without a battle plan.\n\n' +
+        'Readings vary (legend vs history); for daily life the text works as psychology of grasping: when striving tightens knots, softness and simplicity may untie them.\n\n' +
+        'Modern use: stress, control, comparison—ask what you are pushing that the situation does not need.',
 
       earlyLife:
-        'Born La Haye (now Descartes), France; educated Jesuit La Flèche—humanities and mathematics. Law degree Poitiers; soldiering phase includes Bohemia winter dreams legend influencing life plans.\n\n' +
-        'Settled Netherlands for intellectual liberty; prolific correspondence networks. Tutored Queen Christina in Stockholm; died 1650 from illness (pneumonia tradition).',
+        'Legends place Laozi as an archivist in Zhou courts, then departing west—guarded by Yin Xi who asked for teachings. Historical Laozi is debated; the text likely grew over centuries.\n\n' +
+        'Cultural role: counter-voice to rigid ritualism—not anti-ethics, but suspicious of performative striving.',
 
       keyAchievements:
-        'Discourse on Method + Meditations crystallize early modern epistemological anxiety and foundationalism.\n\n' +
-        'Coordinate geometry unifies algebra and spatial reasoning.\n\n' +
-        'Mind–body distinction shapes centuries of philosophy of mind—even chiefly as foil.\n\n' +
-        'Scientific mechanistic cosmology vetted metaphysically—natural philosophy paired with theology cautiously.',
+        'Daodejing shapes East Asian thought, religion, and art—Daoism as philosophy and practice.\n\n' +
+        'Influences governance ideals (rule lightly), ecology metaphors (naturalness), and martial arts ideas of yielding.\n\n' +
+        'Pairs often with Confucius in contrast: social forms vs spontaneous order.',
 
       mainIdeas:
-        'Systematic doubt as hygiene—not endpoint skepticism but purification.\n\n' +
-        'Cogito secures indubitable subjective existence of thinking.\n\n' +
-        'God proofs intended to secure truth criteria bridging finite minds and external world.\n\n' +
-        'Extended substance explained geometrically; thinking substance known introspectively.\n\n' +
-        'Passions treated quasi-mechanically yet ethically (Passions of the Soul).',
+        'Dao: unnamed process—naming already narrows it.\n\n' +
+        'Wu-wei: act without domineering force—still act when care is needed.\n\n' +
+        'Softness over hardness; return and reversal; simplicity and few desires.\n\n' +
+        'Critique of competitive display—"the sage is not competitive."',
 
       keyConcepts: [
-        {
-          term: 'Methodical doubt',
-          explanation:
-            'Hypothesize deceiving demon / dream scenarios to withhold assent until foundations firm—filters unreliable senses and latent prejudices.',
-        },
-        {
-          term: 'Cogito ergo sum',
-          explanation:
-            'Even if all else doubtful, doubting is thinking—therefore thinker exists while thinking occurs. Starting point for rebuilding knowledge.',
-        },
-        {
-          term: 'Clear and distinct perceptions',
-          explanation:
-            'Epistemic criterion after proofs secure God’s veracity—yet notorious Cartesian circle debate asks whether God proofs already assume clarity standard.',
-        },
-        {
-          term: 'Res cogitans / res extensa',
-          explanation:
-            'Thinking substance vs extended substance—defines dual-aspect ontology generating interaction problem: how can immaterial mind move body?',
-        },
-        {
-          term: 'Wax argument (Meditation II)',
-          explanation:
-            'Sensible qualities change while piece remains wax—shows imagination limited; intellect grasps flexible extended thing—supports rationalism about essence.',
-        },
-        {
-          term: 'Cartesian circle (student topic)',
-          explanation:
-            'Suspected circularity: using clear and distinct rule while proving God who validates clarity—literature proposes rescuing strategies or softer readings.',
-        },
+        { term: 'Dao (Way)', explanation: 'The flowing order of things—guide by aligning, not conquering every moment.' },
+        { term: 'Wu-wei', explanation: 'Non-forcing efficacy—stop harmful overcontrol; respond cleanly.' },
+        { term: 'Softness (water)', explanation: 'Water wears stone by yielding—strength without brittle pride.' },
+        { term: 'Simplicity', explanation: 'Fewer wants, less comparison—room to see clearly.' },
+        { term: 'Reversal', explanation: 'Extremes turn—hubris bends; exhaustion signals misalignment.' },
       ],
 
       suggestedBooks: [
-        { title: 'Discourse on Method', author: 'Descartes', note: 'Easier entry—geometry autobiography sections famous.' },
-        { title: 'Meditations on First Philosophy', author: 'Descartes', note: 'Core texts with objections/replies volume helpful.' },
-        { title: 'Principles of Philosophy', author: 'Descartes', note: 'Systematic metaphysics & physics outline.' },
-        { title: 'Descartes', author: 'Margaret Dauler Wilson', note: 'Classic scholarly commentary style.' },
+        { title: 'Daodejing (Tao Te Ching)', author: 'Laozi (attrib.)', note: 'Many translations—compare Red Pine, Lau, or Addiss & Lombardo.' },
+        { title: 'Zhuangzi (selections)', author: 'Zhuangzi', note: 'Playful companion—stories loosen rigid mind.' },
+        { title: 'Tao: The Watercourse Way', author: 'Alan Watts', note: 'Modern bridge—read critically alongside primary text.' },
       ],
 
       suggestedVideos: [
-        { label: 'Early modern philosophy OCW lectures – Descartes Meditations', hint: 'Search university + Meditations.' },
-        { label: 'Crash Course – Descartes', hint: 'Quick orientation.' },
-        { label: 'Wi-Phi – skepticism & cogito', hint: 'Pairs with primary reading.' },
+        { label: 'Daoism / Laozi introduction (university lecture)', hint: 'Overview of Daoist thought.', url: 'https://www.youtube.com/results?search_query=Daoism+Laozi+introduction+university+lecture' },
+        { label: 'Dao De Jing explained (lecture series)', hint: 'Chapter-by-chapter guides.', url: 'https://www.youtube.com/results?search_query=Dao+De+Jing+Tao+Te+Ching+explained+lecture' },
       ],
     },
 
-    nietzsche: {
-      name: 'Friedrich Nietzsche',
+    buddha: {
+      name: 'Shakyamuni Buddha',
       briefIntroduction:
-        'Friedrich Nietzsche (1844–1900) punctures complacent morality with genealogical suspicion, psychological diagnosis, and literary experimentation. He interrogates Christian–Platonic valuations, herd conformity, and resentment-driven ideals—while celebrating affirmation, creativity of values, and aesthetic existential stakes.\n\n' +
-        'Interpretations divide sharply; responsible reading avoids Nazi-era distortions (Elisabeth Förster-Nietzsche editorial meddling). Terms like “will to power” and Übermisch require textual nuance—popular brutality myths mislead.\n\n' +
-        'Style matters: aphorisms, poetry, masks—philosophy as provocation and diagnosis, not solely argument-tree.',
+        'Shakyamuni Buddha (Siddhartha Gautama, c. 5th–4th century BCE India) taught a practical path out of suffering—not by denying pain, but by seeing how craving and clinging amplify it. The Four Noble Truths diagnose; the Eightfold Path trains ethics, mind, and wisdom.\n\n' +
+        'The Middle Way avoids both indulgence and harsh asceticism. Compassion (metta) and mindfulness are trainable—not mystical escapes from responsibility.\n\n' +
+        'Modern reading: anxiety, burnout, regret—ask what habit of mind is being fed.',
 
       earlyLife:
-        'Born Röcken, Prussia; Lutheran pastor father died young. Brilliant classical philologist appointed Basel professor improbably young (1869). Chronic illness worsened—left professorship 1879.\n\n' +
-        'Itinerant life Swiss/Italian resorts produced major works. Collapse in Turin 1889; institutional care until death 1900. Intellectual legacy exploded posthumously—sometimes problematically.',
+        'Born a prince in Shakya clan; early life sheltered. Encounters with sickness, aging, death, and a renunciant prompted the spiritual search.\n\n' +
+        'Years of asceticism, then breakthrough meditation under the Bodhi tree—awakening to dependent arising and a shareable path.',
 
       keyAchievements:
-        'Genealogy as method influencing Foucault and critical theory tracks moral concepts to interests/psychology.\n\n' +
-        'Birth of Tragedy reframes Greek culture via Apollonian/Dionysian tension.\n\n' +
-        'Thus Spoke Zarathustra enters cultural lexicon—Übermensch, eternal recurrence as existential tests.\n\n' +
-        'Beyond Good and Evil / Twilight of Idols sharpen critique of metaphysical comforts.',
+        'Founded the Sangha—monastic and lay communities practicing together.\n\n' +
+        'Taught for decades across castes and genders (context-limited yet radical for era).\n\n' +
+        'Legacy spans Theravada, Mahayana, Vajrayana—diverse philosophies united by dukkha and practice.',
 
       mainIdeas:
-        'Slave morality thesis: moral ideals sometimes stem from ressentiment—interpretive not merely historical claim.\n\n' +
-        'Perspectivism: knowledge arises from situated angles—contrasts naive absolutism without collapsing into trivial relativism in careful readings.\n\n' +
-        'Death of God: cultural diagnosis of vacuum after metaphysical foundations erode—opens question of value creation.\n\n' +
-        'Will to power: contested umbrella for drives toward expansion/overcoming—NOT simple fascist domination in scholarly caution.\n\n' +
-        'Eternal recurrence / amor fati: existential litmus tests—could you affirm your life repeating?',
+        'Dukkha: unsatisfactoriness in conditioned life—not only pain.\n\n' +
+        'Impermanence: clinging to what changes breeds suffering.\n\n' +
+        'Non-self (anatta): loosen fixed ego stories—without nihilism.\n\n' +
+        'Ethical action, concentration, and insight interdepend.',
 
       keyConcepts: [
-        {
-          term: 'Genealogy',
-          explanation:
-            'Historical-psychological tracing of moral concepts to contingent struggles—not timeless Platonic discovery moral facts.',
-        },
-        {
-          term: 'Perspectivism',
-          explanation:
-            'Truth emerges through interplay of perspectives—still demands rigor; not endorsement of lazy “anything goes.”',
-        },
-        {
-          term: 'Ressentiment',
-          explanation:
-            'Reactive poisoning of evaluation—resentful inversion values disguised as saintly when rooted in impotent hatred (polemical sketch).',
-        },
-        {
-          term: 'Will to power',
-          explanation:
-            'Interpretive lens for drives striving expression/overcoming—debates whether metaphysical doctrine or heuristic; beware pop dominance readings.',
-        },
-        {
-          term: 'Übermensch (Overhuman)',
-          explanation:
-            'Symbolic aspirational figure transcending last-man comfort—not racist ubermensch pop meme; tied to self-overcoming narrative.',
-        },
-        {
-          term: 'Eternal recurrence',
-          explanation:
-            'Thought experiment: if your life repeated eternally unchanged—ultimate affirmation test—psychological not cosmological certainty for most interpreters.',
-        },
-        {
-          term: 'Apollonian / Dionysian',
-          explanation:
-            'Birth of Tragedy couples sober individuating form (Apollo) with ecstatic dissolution boundaries (Dionysus)—art metaphysics predecessor.',
-        },
+        { term: 'Four Noble Truths', explanation: 'Suffering, its origin (craving/clinging), cessation, the path—clinical and hopeful.' },
+        { term: 'Middle Way', explanation: 'Between hedonism and self-torture—sustainable discipline.' },
+        { term: 'Mindfulness', explanation: 'Know body, feeling, mind, phenomena—before reactive stories run.' },
+        { term: 'Compassion', explanation: 'Extend care outward—start with honest kindness to yourself.' },
+        { term: 'Letting go', explanation: 'Release the grip, not necessarily the effort that matters.' },
       ],
 
       suggestedBooks: [
-        { title: 'On the Genealogy of Morals', author: 'Nietzsche', note: 'Essays on ascetic ideals, guilt, bad conscience.' },
-        { title: 'Beyond Good and Evil', author: 'Nietzsche', note: 'Prelude philosophy of future—aphoristic density.' },
-        { title: 'Thus Spoke Zarathustra', author: 'Nietzsche', note: 'Literary; selective reading advised first pass.' },
-        { title: 'Twilight of the Idols', author: 'Nietzsche', note: 'Late hammer blows—readable polemic.' },
-        { title: 'Nietzsche on Morality', author: 'Brian Leiter', note: 'Analytic introduction—arguments clarified.',
-        },
+        { title: 'What the Buddha Taught', author: 'Walpola Rahula', note: 'Clear Theravada introduction.' },
+        { title: "In the Buddha's Words", author: 'Bhikkhu Bodhi', note: 'Anthology of suttas.' },
+        { title: "The Heart of the Buddha's Teaching", author: 'Thich Nhat Hanh', note: 'Gentle Mahayana-leaning primer.' },
       ],
 
       suggestedVideos: [
-        { label: 'Sadler’s Nietzsche lectures (YouTube)', hint: 'Book-by-book commentary depth.' },
-        { label: 'Philosophize This! – Nietzsche sequence', hint: 'Podcast pacing friendly.' },
-        { label: 'Partially Examined Life – Genealogy episodes', hint: 'Discussion format caveats noted.',
-        },
+        { label: 'Berkeley / Stanford Buddhism intro lectures', hint: 'Four Noble Truths and the path.', url: 'https://www.youtube.com/results?search_query=Buddhism+101+university+lecture+Berkeley' },
+        { label: 'The Buddha (PBS documentary)', hint: 'Historical overview—pair with primary texts.', url: 'https://www.youtube.com/results?search_query=PBS+The+Buddha+documentary' },
       ],
     },
 
@@ -601,9 +535,9 @@
       ],
 
       suggestedVideos: [
-        { label: 'David Harvey – Reading Marx’s Capital (online course)', hint: 'Free lecture playlist canonical.' },
-        { label: 'Yale political philosophy – Marx modules', hint: 'Survey texts paired.' },
-        { label: 'BBC In Our Time – Marx / Capital episodes', hint: 'Radio archive accessibility.' },
+        { label: 'David Harvey – Reading Marx’s Capital (online course)', hint: 'Free lecture playlist canonical.', url: 'https://www.youtube.com/playlist?list=PL5044C0878AED6804' },
+        { label: 'Yale political philosophy – Marx modules', hint: 'Survey texts paired.', url: 'https://www.youtube.com/results?search_query=Yale+Introduction+to+Political+Philosophy+Marx' },
+        { label: 'BBC In Our Time – Marx / Capital episodes', hint: 'Radio archive accessibility.', url: 'https://www.youtube.com/results?search_query=BBC+In+Our+Time+Marx+Capital' },
       ],
     },
   };

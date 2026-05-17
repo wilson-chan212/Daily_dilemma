@@ -300,7 +300,8 @@
       ],
       thinkers: [
         { name: 'Viktor Frankl', note: 'On meaning as a core human need.' },
-        { name: 'Friedrich Nietzsche', note: 'On self-overcoming and values creation.' },
+        { name: 'Laozi', note: 'On wu-wei, naturalness, and letting go of forcing.' },
+        { name: 'Shakyamuni Buddha', note: 'On suffering, clinging, and the middle way.' },
         { name: 'Aristotle', note: 'On flourishing as living excellently, not merely feeling good.' },
       ],
     },

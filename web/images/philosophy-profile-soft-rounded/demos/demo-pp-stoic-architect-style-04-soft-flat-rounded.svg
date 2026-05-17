@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" aria-hidden="true">
+  <!-- Style 4: soft flat rounded  2D take on current clay style; tone-blue profile palette -->
+  <rect width="512" height="512" rx="40" fill="#eff6ff"/>
+  <ellipse cx="256" cy="432" rx="168" ry="28" fill="#dbeafe"/>
+  <circle cx="88" cy="96" r="24" fill="#bfdbfe" opacity=".55"/>
+  <circle cx="424" cy="128" r="18" fill="#bfdbfe" opacity=".45"/>
+  <path d="M120 88c0-20 16-36 36-36s36 16 36 36v8c-12-8-24-12-36-12s-24 4-36 12v-8z" fill="#93c5fd"/>
+  <ellipse cx="208" cy="248" rx="56" ry="60" fill="#fde8d8"/>
+  <circle cx="192" cy="244" r="6" fill="#1e3a5f"/>
+  <circle cx="224" cy="244" r="6" fill="#1e3a5f"/>
+  <path d="M196 268c8 6 20 6 28 0" stroke="#64748b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M176 360c0-56 24-96 56-96h16c32 0 56 40 56 96v72H176V360z" fill="#7dd3fc"/>
+  <path d="M192 348c0-40 16-64 40-64s40 24 40 64" fill="#60a5fa"/>
+  <rect x="280" y="308" width="80" height="80" rx="22" fill="#60a5fa"/>
+  <rect x="264" y="228" width="80" height="80" rx="22" fill="#3b82f6"/>
+  <rect x="248" y="148" width="80" height="80" rx="22" fill="#2563eb"/>
+  <path d="M256 148h64l32-44H224l32 44z" fill="#1e3a5f"/>
+  <path d="M276 168h8v12h-8zM300 168h8v12h-8zM324 168h6v10h-6z" fill="#93c5fd" opacity=".8"/>
+  <circle cx="400" cy="368" r="12" fill="#bfdbfe"/>
+  <circle cx="112" cy="320" r="10" fill="#bfdbfe"/>
+</svg>

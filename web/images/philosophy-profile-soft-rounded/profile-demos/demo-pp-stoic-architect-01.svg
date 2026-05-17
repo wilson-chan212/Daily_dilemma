@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none" role="img" aria-label="Stoic Architect Table Study">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#b7a48c" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="38" fill="#f6efe2"/>
+  <path d="M88 151c142-58 272-71 414-38 136 31 252 10 429-34" stroke="#eadfca" stroke-width="36" stroke-linecap="round" opacity=".34"/>
+  <path d="M82 851c162 35 298 29 428-15 149-51 268-37 423 20" stroke="#c9d9e4" stroke-width="42" stroke-linecap="round" opacity=".26"/>
+  <circle cx="72" cy="64" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="209" cy="155" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="346" cy="246" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="483" cy="337" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="620" cy="428" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="757" cy="519" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="894" cy="610" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="151" cy="701" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="288" cy="792" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="425" cy="883" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="562" cy="134" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="699" cy="225" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="836" cy="316" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="93" cy="407" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="230" cy="498" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="367" cy="589" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="504" cy="680" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="641" cy="771" r="1.95" fill="#d4c5aa" opacity=".22"/>
+  <g filter="url(#softShadow)">
+    <ellipse cx="513" cy="857" rx="294" ry="42" fill="#d8c7aa" opacity=".38"/>
+    <rect x="244" y="646" width="536" height="48" rx="24" fill="#d1ad82" stroke="#56483d" stroke-width="7"/>
+    <path d="M394 694v122M634 694v122" stroke="#56483d" stroke-width="8" stroke-linecap="round"/>
+    <g transform="translate(421 370) scale(1.32)">
+    <path d="M-55-76c35-42 113-24 123 32 11 59-35 109-91 98-52-10-67-79-32-130z" fill="#eed4bd" stroke="#56483d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M-58-66c11-49 84-74 126-25 22 25 22 56 12 79-21-34-68-34-104-24-11 3-26-8-34-30z" fill="#8c7660" stroke="#56483d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M-20-74c-11 23-29 33-50 35" stroke="#56483d" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <path d="M8-73c-10 20-26 30-47 34" stroke="#56483d" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <circle cx="14" cy="-18" r="5.5" fill="#56483d"/>
+    <path d="M31 1c8 9 18 12 30 9" stroke="#56483d" stroke-width="4" stroke-linecap="round"/>
+    <path d="M8 25c19 12 39 10 55-4" stroke="#56483d" stroke-width="4" stroke-linecap="round" opacity=".72"/>
+  </g>
+    <path d="M340 535c31-77 126-107 194-49 44 38 59 99 52 181H303c-8-53 4-98 37-132z" fill="#c9d9e4" stroke="#56483d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M485 520c36 25 58 60 71 105" stroke="#56483d" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+    <path d="M337 612c-49 6-78 18-101 45" stroke="#56483d" stroke-width="10" stroke-linecap="round"/>
+    <path d="M582 606c49 14 86 28 121 48" stroke="#56483d" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="246" cy="656" r="17" fill="#eed4bd" stroke="#56483d" stroke-width="6"/>
+    <circle cx="704" cy="655" r="17" fill="#eed4bd" stroke="#56483d" stroke-width="6"/>
+    <g transform="translate(614 570) scale(1.1)"><g><rect x="-68" y="40" width="92" height="62" rx="14" fill="#c9d9e4" stroke="#56483d" stroke-width="6" stroke-linejoin="round"/><rect x="-21" y="-27" width="92" height="62" rx="14" fill="#8aa5b9" stroke="#56483d" stroke-width="6" stroke-linejoin="round"/><rect x="27" y="-94" width="92" height="62" rx="14" fill="#c9d9e4" stroke="#56483d" stroke-width="6" stroke-linejoin="round"/><path d="M-44 73h34M4 6h34M52-61h34" stroke="#56483d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g></g>
+  </g>
+</svg>

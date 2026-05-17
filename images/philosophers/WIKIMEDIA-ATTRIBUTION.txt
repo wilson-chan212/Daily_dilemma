@@ -23,4 +23,11 @@ Portraits for the five AI chat guides are copies of files from Wikimedia Commons
     https://commons.wikimedia.org/wiki/File:Immanuel_Kant_(painted_portrait).jpg
     (circa 1790; PD-Art)
 
+  laozi.jpg
+    https://commons.wikimedia.org/wiki/File:Laozi.jpg
+    (400×575; public domain on Commons)
+
+  buddha.png (AI chat guide — replace with PD portrait when a better asset is added)
+    Temporary placeholder in repo.
+
 See each Commons file page for full author, date, and license details.

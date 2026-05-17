@@ -1,4 +1,4 @@
-const APP_LOAD_STARTED_AT =
+﻿const APP_LOAD_STARTED_AT =
   typeof window !== 'undefined' && typeof window.__ddLoadT0 === 'number' ? window.__ddLoadT0 : Date.now();
 
 /* =============================================
@@ -6,65 +6,65 @@ const APP_LOAD_STARTED_AT =
    ============================================= */
 const WEEKLY_THEMES = [
   // Week 1 — dilemmas 1–5
-  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '✨' },
-  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '✨' },
-  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '✨' },
-  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '✨' },
-  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '✨' },
+  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '\u2728' },
+  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '\u2728' },
+  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '\u2728' },
+  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '\u2728' },
+  { week: 1, name: 'Self & Happiness', color: '#c5603a', emoji: '\u2728' },
   // Week 2 — dilemmas 6–10
-  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '🌀' },
-  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '🌀' },
-  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '🌀' },
-  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '🌀' },
-  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '🌀' },
+  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '\u{1F300}' },
+  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '\u{1F300}' },
+  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '\u{1F300}' },
+  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '\u{1F300}' },
+  { week: 2, name: 'Freedom & Mind', color: '#4a87a8', emoji: '\u{1F300}' },
   // Week 3 — dilemmas 11–15
-  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '⚖️' },
-  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '⚖️' },
-  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '⚖️' },
-  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '⚖️' },
-  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '⚖️' },
+  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '\u2696\uFE0F' },
+  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '\u2696\uFE0F' },
+  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '\u2696\uFE0F' },
+  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '\u2696\uFE0F' },
+  { week: 3, name: 'Justice & Reality', color: '#7a6e5f', emoji: '\u2696\uFE0F' },
   // Week 4 — dilemmas 16–20 — Honesty & Character
-  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '🪶' },
-  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '🪶' },
-  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '🪶' },
-  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '🪶' },
-  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '🪶' },
+  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '\u{1FAA6}' },
+  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '\u{1FAA6}' },
+  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '\u{1FAA6}' },
+  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '\u{1FAA6}' },
+  { week: 4, name: 'Honesty & Character', color: '#8a6d4f', emoji: '\u{1FAA6}' },
   // Week 5 — dilemmas 21–25 — Self-Mastery & Virtue
-  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '🌿' },
-  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '🌿' },
-  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '🌿' },
-  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '🌿' },
-  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '🌿' },
+  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '\u{1F33F}' },
+  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '\u{1F33F}' },
+  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '\u{1F33F}' },
+  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '\u{1F33F}' },
+  { week: 5, name: 'Self-Mastery & Virtue', color: '#5a7a6a', emoji: '\u{1F33F}' },
   // Week 6 — dilemmas 26–30 — Wisdom & Courage
-  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
-  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
-  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
-  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
-  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '🕯️' },
+  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '\u{1F56F}\uFE0F' },
+  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '\u{1F56F}\uFE0F' },
+  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '\u{1F56F}\uFE0F' },
+  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '\u{1F56F}\uFE0F' },
+  { week: 6, name: 'Wisdom & Courage', color: '#6a5a8a', emoji: '\u{1F56F}\uFE0F' },
   // Week 7 — dilemmas 31–33 — Future Ethics
-  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
-  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
-  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
-  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
-  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '🧬' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '\u{1F9EC}' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '\u{1F9EC}' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '\u{1F9EC}' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '\u{1F9EC}' },
+  { week: 7, name: 'Future Ethics', color: '#3f6b6a', emoji: '\u{1F9EC}' },
   // Week 8 — dilemmas 36–40 — Liberty & Public Life
-  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
-  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
-  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
-  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
-  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '🏛️' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '\u{1F3DB}\uFE0F' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '\u{1F3DB}\uFE0F' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '\u{1F3DB}\uFE0F' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '\u{1F3DB}\uFE0F' },
+  { week: 8, name: 'Liberty & Public Life', color: '#7b6753', emoji: '\u{1F3DB}\uFE0F' },
   // Week 9 — dilemmas 41–45 — Justice & Care
-  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
-  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
-  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
-  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
-  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '🤲' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '\u{1F932}' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '\u{1F932}' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '\u{1F932}' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '\u{1F932}' },
+  { week: 9, name: 'Justice & Care', color: '#6f7d5a', emoji: '\u{1F932}' },
   // Week 10 — dilemmas 46–50 — Technology & Meaning
-  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
-  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
-  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
-  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
-  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '🔭' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '\u{1F52D}' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '\u{1F52D}' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '\u{1F52D}' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '\u{1F52D}' },
+  { week: 10, name: 'Technology & Meaning', color: '#5f6d8a', emoji: '\u{1F52D}' },
 ];
 
 /* =============================================
@@ -1682,7 +1682,7 @@ function getUiText(lang = 'en') {
     philosopherSays: 'Philosopher Says',
     goFurther: 'Go Further',
     askFriend: 'Ask A Friend',
-    nextDilemma: 'Next Dilemma →',
+    nextDilemma: 'Next \u2192',
     historyTitle: 'History',
     historyEmpty: 'No Answered Dilemmas Yet.\nChoose a side to see it here.',
     clearHistoryConfirm: 'Clear your history on this device? This cannot be undone.',
@@ -1737,6 +1737,8 @@ function getUiText(lang = 'en') {
     bookmarkAdd: 'Bookmark',
     bookmarkRemove: 'Remove',
     bookmarkOpenConceptAria: 'Open concept notes',
+    bookmarksForumSource: 'Forum',
+    bookmarkOpenForumAria: 'Open forum dilemma',
     dailyReminderAction: 'Daily Reminder',
     removeDailyReminder: 'Remove Daily Reminder',
     addReminder: 'Add',
@@ -1747,16 +1749,85 @@ function getUiText(lang = 'en') {
     ariaAppStore: 'App Store',
     ariaPlayStore: 'Google Play',
     languageAction: 'Language',
-    userFeedbackAction: 'User feedback',
-    aiAssistantAction: 'Chat with Philosopher',
+    userFeedbackAction: 'User Feedback',
+    aiAssistantAction: 'Dialogue',
     mainTabBarAria: 'Main sections',
-    mainTabDilemma: 'Daily Dilemma',
-    mainTabChat: 'Chat with Philosopher',
-    mainTabProfile: 'My Philosophy Profile',
+    mainTabForum: 'Forum',
+    mainTabDilemma: 'Dilemma Today',
+    mainTabChat: 'Dialogue',
+    mainTabProfile: 'My Type',
     mainTabKnowledge: 'Knowledge Map',
-    aiCloseToDilemmaAria: 'Back to Daily Dilemma',
+    forumTitle: 'Forum',
+    forumIntro: 'Vote on questions from the community, then see how philosophers would open the discussion.',
+    forumSearch: 'Search',
+    forumCompose: 'Post',
+    forumRefreshAria: 'Refresh dilemmas',
+    forumDetailRefreshAria: 'Refresh this dilemma',
+    forumDetailToolbarAria: 'Dilemma actions',
+    forumActionsAria: 'Forum actions',
+    forumComposeSoon: 'Posting is coming soon. This prototype uses sample community dilemmas first.',
+    forumComposeTitle: 'Post a dilemma',
+    forumComposeTopicLabel: 'Topic',
+    forumComposeDescriptionLabel: 'Description',
+    forumComposeOptionALabel: 'Vote A',
+    forumComposeOptionBLabel: 'Vote B',
+    forumComposeSubmit: 'Post',
+    forumComposeCancel: 'Cancel',
+    forumComposeCloseAria: 'Close',
+    forumComposeWordCount: '{{current}} / {{max}} words',
+    forumComposeRequired: 'This field is required.',
+    forumComposeOverLimit: 'Keep within {{max}} words.',
+    forumComposePosted: 'Your dilemma is now in the forum.',
+    forumBack: 'Back to topics',
+    forumTimeJustNow: 'Just now',
+    forumTimeMinutes: '{{count}}m ago',
+    forumTimeHours: '{{count}}h ago',
+    forumTimeDays: '{{count}}d ago',
+    forumTimeWeeks: '{{count}}w ago',
+    forumSortLatest: 'Recent',
+    forumSortPopular: 'Popular',
+    forumSortSplit: 'Controversial',
+    forumSortAria: 'Sort dilemmas',
+    forumSearchPlaceholder: 'Search dilemmas…',
+    forumSearchAria: 'Search dilemmas',
+    forumListEmpty: 'No dilemmas match your search.',
+    forumCommentLike: 'Like',
+    forumCommentDislike: 'Dislike',
+    forumCommentReply: 'Reply',
+    forumPostComment: 'Post comment',
+    forumPostCommentPlaceholder: 'Share your thoughts on this dilemma…',
+    forumCommentPostReply: 'Post reply',
+    forumCommentReplyPlaceholder: 'Write a public reply…',
+    forumYouLabel: 'You',
+    forumAvatarTitle: 'Choose your avatar',
+    forumAvatarChoose: 'Choose avatar',
+    forumAvatarClose: 'Close',
+    forumPostedByAria: 'Posted by {{name}}',
+    forumPhilosopherReplyBadge: 'Philosopher',
+    forumLike: 'Like',
+    forumDislike: 'Dislike',
+    forumNetScoreAria: 'Net score {{net}}',
+    forumTotalVotes: '{{count}} votes',
+    forumDiscussionLabel: 'Discussion',
+    forumChatWithPhilosopher: 'Dialogue',
+    forumCommentChatWithPhilosopher: 'Dialogue',
+    forumChatDefaultQuestion:
+      'I saw this dilemma on the forum: "{{title}}"\n\n{{body}}\n\nA. {{optionA}}\nB. {{optionB}}\n\nI would like your private take — how would you think about it?',
+    forumCommentChatDefaultQuestion:
+      'On the thread for "{{title}}", {{author}} wrote: "{{comment}}"\n\nI would like your private take — how would you respond?',
+    forumConceptsLabel: 'Concepts',
+    forumPhilosophersLabel: 'Philosophers enter the chat',
+    forumCommentsLabel: 'Discussion preview',
+    forumVoteCount: '{{count}} votes',
+    forumVotePrompt: 'Which side are you on?',
+    forumVoteCta: 'Vote',
+    forumVotePct: '{{pct}}%',
+    forumVoteGroupAria: 'Vote on this dilemma',
+    forumVotedLabel: 'Your vote',
+    forumShareTitle: 'Share forum dilemma',
+    aiCloseToDilemmaAria: 'Back to Dilemma Today',
     aiCloseToDilemmaTitle: '',
-    aiTitle: 'Chat with Philosopher',
+    aiTitle: 'Dialogue',
     aiSubtitle: 'Ask about today dilemma, your own questions or anything!',
     aiSwitchGuideConfirm: 'Switch your guide to {{name}}?',
     aiStartNewWithGuideConfirm: 'Start a new conversation with {{name}}? This clears only this guide’s messages for today’s dilemma. Your other guides’ chats stay saved.\n\nClick OK to start fresh, or Cancel to keep your saved chat with this guide.',
@@ -1768,9 +1839,19 @@ function getUiText(lang = 'en') {
       socrates: 'Socrates',
       confucius: 'Confucius',
       kant: 'Kant',
-      descartes: 'Descartes',
-      nietzsche: 'Nietzsche',
+      laozi: 'Laozi',
+      buddha: 'Buddha',
       marx: 'Marx',
+    },
+    aiPhilosopherVibes: {
+      aristotle: 'Practical categorizer',
+      plato: 'Ideal seeker',
+      socrates: 'Questioning spirit',
+      confucius: 'Ritual guide',
+      kant: 'Iron rule keeper',
+      laozi: 'Wu-wei sage',
+      buddha: 'Compassionate mind',
+      marx: 'System dismantler',
     },
     aiThinking: {
       aristotle: 'Aristotle is thinking…',
@@ -1778,11 +1859,16 @@ function getUiText(lang = 'en') {
       socrates: 'Socrates is thinking…',
       confucius: 'Confucius is thinking…',
       kant: 'Kant is thinking…',
-      descartes: 'Descartes is thinking…',
-      nietzsche: 'Nietzsche is thinking…',
+      laozi: 'Laozi is thinking…',
+      buddha: 'Buddha is thinking…',
       marx: 'Marx is thinking…',
     },
     aiPlatoThinking: 'Plato is thinking…',
+    afterAnswerChatDefaultQuestion: 'What do you think about this dilemma?',
+    chatPickTitle: 'Choose a philosopher',
+    chatPickBack: 'Back',
+    philosopherGatewayStartChat: 'Start conversation',
+    philosopherGatewayProfile: 'Learn more',
     aiStarter1: 'Why might someone pick the other side?',
     aiStarter2: 'What should I weigh most here?',
     aiStarter3: 'Explain this dilemma in plain words.',
@@ -1809,7 +1895,7 @@ function getUiText(lang = 'en') {
     feedbackDismiss: 'Got it',
     privacyPolicy: 'Privacy Policy',
     termsOfUse: 'Terms of Use',
-    philosophyProfileAction: 'My Philosophy Profile',
+    philosophyProfileAction: 'My Type',
     profileImageAlt: 'Illustration for this philosophy profile question',
     profileToneGreen: 'Care & connection',
     profileToneYellow: 'Freedom & flourishing',
@@ -2032,6 +2118,18 @@ const state = {
   isNative: false,
   pendingTimeout: null,
   mainTab: 'dilemma',
+  forumVotes: {},
+  forumReactions: {},
+  forumCommentReactions: {},
+  forumView: 'list',
+  forumPostId: null,
+  forumSearchOpen: false,
+  forumSort: 'latest',
+  forumSearchQuery: '',
+  forumReplyOpen: null,
+  forumUserComments: {},
+  forumUserPosts: [],
+  forumUserAvatarId: 'w2:0',
   profileActive: false,
   knowledgeMapSeed: null,
   profileQuestionIndex: 0,
@@ -2050,7 +2148,79 @@ const STORAGE_KEYS = {
   reminderEnabled: 'dailyDilemmas.reminderEnabled.v1',
   reminderTime: 'dailyDilemmas.reminderTime.v1',
   exploredConcepts: 'dailyDilemmas.exploredConcepts.v1',
+  forumUserPosts: 'dailyDilemmas.forumUserPosts.v1',
+  forumUserAvatarId: 'dailyDilemmas.forumUserAvatarId.v1',
 };
+
+function normalizeForumUserPost(raw) {
+  if (!raw || typeof raw !== 'object') return null;
+  const title = String(raw.title || '').trim();
+  const body = String(raw.body || '').trim();
+  const optionA = String(raw.optionA || '').trim();
+  const optionB = String(raw.optionB || '').trim();
+  const id = String(raw.id || '').trim();
+  if (!id || !title || !body || !optionA || !optionB) return null;
+  return {
+    id,
+    title,
+    body,
+    optionA,
+    optionB,
+    votes: { a: 0, b: 0 },
+    concepts: [],
+    philosophers: [],
+    comments: [],
+    postedAt: raw.postedAt || new Date().toISOString(),
+    reactions: { likes: 0, dislikes: 0 },
+    isUserPost: true,
+  };
+}
+
+function loadForumUserPosts() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.forumUserPosts);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw);
+    if (!Array.isArray(parsed)) return [];
+    return parsed.map(normalizeForumUserPost).filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function saveForumUserPosts() {
+  try {
+    localStorage.setItem(STORAGE_KEYS.forumUserPosts, JSON.stringify(state.forumUserPosts || []));
+  } catch {}
+}
+
+function loadForumUserAvatarId() {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEYS.forumUserAvatarId);
+    if (raw && typeof FORUM_AVATAR_CATALOG !== 'undefined') {
+      return FORUM_AVATAR_CATALOG.normalizeId(raw);
+    }
+    if (raw) return raw;
+  } catch {
+    // ignore
+  }
+  return typeof FORUM_AVATAR_CATALOG !== 'undefined'
+    ? FORUM_AVATAR_CATALOG.DEFAULT_AVATAR_ID
+    : 'w2:0';
+}
+
+function saveForumUserAvatarId(id) {
+  try {
+    const next =
+      typeof FORUM_AVATAR_CATALOG !== 'undefined'
+        ? FORUM_AVATAR_CATALOG.normalizeId(id)
+        : id;
+    localStorage.setItem(STORAGE_KEYS.forumUserAvatarId, next);
+    state.forumUserAvatarId = next;
+  } catch {
+    // ignore
+  }
+}
 
 function loadLanguage() {
   try {
@@ -2163,6 +2333,15 @@ function clearHistory() {
 
 function getTodayIndexFromKey(dateKey = state.todayKey) {
   return parseInt(String(dateKey).replace(/-/g, ''), 10) % getAllDilemmas().length;
+}
+
+function computeEffectiveTodayIndex(dateKey = state.todayKey) {
+  return getTodayIndexFromKey(dateKey);
+}
+
+/** Reserved for Supabase schedule; currently uses local date hash only. */
+async function fetchScheduledDilemmaForToday() {
+  return null;
 }
 
 function findTodayAnswerEntry() {
@@ -3011,8 +3190,17 @@ function makeBookmarkBtn({ itemType, itemKey, payload, ariaLabel, dilemmaId, cla
     btn.disabled = true;
     try {
       const active = await toggleBookmark(itemType, itemKey, payload, { dilemmaId });
-      if (itemType === 'dilemma') {
+      if (itemType === 'dilemma' && !String(itemKey).startsWith('forum:')) {
         refreshDilemmaBookmarkButtons();
+      } else if (String(itemKey).startsWith('forum:')) {
+        setBookmarkBtnActive(btn, active);
+        if (
+          state.mainTab === 'forum' &&
+          typeof ForumPanel !== 'undefined' &&
+          typeof ForumPanel.renderFeed === 'function'
+        ) {
+          ForumPanel.renderFeed();
+        }
       } else {
         setBookmarkBtnActive(btn, active);
       }
@@ -3070,7 +3258,7 @@ function renderThemeAndTags(badgeId, tagsId) {
     const emojiEl = badge.querySelector('.theme-emoji');
     const nameEl = badge.querySelector('.theme-name');
     if (emojiEl) emojiEl.textContent = theme.emoji;
-    if (nameEl) nameEl.textContent = `${ui.weekPrefix}${theme.week}${ui.weekSuffix} · ${theme.name}`;
+    if (nameEl) nameEl.textContent = `${ui.weekPrefix}${theme.week}${ui.weekSuffix} \u00b7 ${theme.name}`;
     badge.style.setProperty('--theme-color', theme.color);
   }
   const tagsEl = document.getElementById(tagsId);
@@ -3095,11 +3283,12 @@ function renderDilemma() {
   // Theme badge + tags in greeting (top-right)
   renderThemeAndTags('theme-badge-greeting', 'greeting-tags');
 
-  // Bookmark (top-right corner)
+  // Bookmark (top-right toolbar, left of share)
   try {
-    const card = document.getElementById('dilemma-card');
-    if (card) {
-      card.querySelector('.bm-btn--dilemma')?.remove();
+    const toolbar = document.getElementById('dilemma-card-toolbar');
+    const shareBtn = document.getElementById('btn-share-trigger');
+    if (toolbar) {
+      toolbar.querySelector('.bm-btn--dilemma')?.remove();
       ensureBookmarksLoaded();
       const itemType = 'dilemma';
       const itemKey = `dilemma:${d.id}`;
@@ -3113,7 +3302,7 @@ function renderDilemma() {
         className: 'bm-btn--corner bm-btn--dilemma',
       });
       setBookmarkBtnActive(btn, isBookmarked(itemType, itemKey));
-      card.appendChild(btn);
+      toolbar.insertBefore(btn, shareBtn || null);
     }
   } catch (err) {
     console.error(err);
@@ -3161,15 +3350,17 @@ function activateChatPanel() {
 }
 
 function setMainTab(tab) {
-  const allowed = ['dilemma', 'chat', 'profile', 'knowledge'];
+  const allowed = ['forum', 'dilemma', 'chat', 'profile', 'knowledge'];
   const next = allowed.includes(tab) ? tab : 'dilemma';
   state.mainTab = next;
   state.profileActive = next === 'profile';
 
+  const panelForum = document.getElementById('tab-panel-forum');
   const panelDilemma = document.getElementById('tab-panel-dilemma');
   const panelChat = document.getElementById('tab-panel-chat');
   const panelProfile = document.getElementById('tab-panel-profile');
   const panelKnowledge = document.getElementById('tab-panel-knowledge');
+  const btnForum = document.getElementById('tab-btn-forum');
   const btnDilemma = document.getElementById('tab-btn-dilemma');
   const btnChat = document.getElementById('tab-btn-chat');
   const btnProfile = document.getElementById('tab-btn-profile');
@@ -3177,6 +3368,7 @@ function setMainTab(tab) {
   const stickyNext = document.getElementById('sticky-next');
 
   const map = [
+    ['forum', btnForum, panelForum],
     ['dilemma', btnDilemma, panelDilemma],
     ['chat', btnChat, panelChat],
     ['profile', btnProfile, panelProfile],
@@ -3207,6 +3399,10 @@ function setMainTab(tab) {
 
   if (next === 'chat') {
     activateChatPanel();
+  }
+
+  if (next === 'forum' && typeof ForumPanel !== 'undefined') {
+    ForumPanel.renderFeed();
   }
 
   if (next === 'profile') {
@@ -3610,9 +3806,9 @@ function renderProfileResult() {
 
           const overlay = document.getElementById('share-overlay');
           const title = document.querySelector('#share-modal .modal-title');
-          if (title) title.textContent = 'Share your Philosophy Profile';
+          if (title) title.textContent = 'Share My Type';
 
-          const line1 = fresh.typeCode ? `My Philosophy Profile: ${fresh.typeCode}` : 'My Philosophy Profile';
+          const line1 = fresh.typeCode ? `My Type: ${fresh.typeCode}` : 'My Type';
           const line2 = fresh.archetype && fresh.archetype.title ? fresh.archetype.title : '';
           const shareText = `${line1}\n${line2}`.trim();
 
@@ -3776,6 +3972,11 @@ const PHILOSOPHER_PORTRAITS = {
   'Henry David Thoreau': 'images/philosophers/henry-david-thoreau.jpg',
   'Heraclitus': 'images/philosophers/heraclitus.jpg',
   'Immanuel Kant': 'images/philosophers/immanuel-kant.jpg',
+  Kant: 'images/philosophers/immanuel-kant.jpg',
+  Buddha: 'images/philosophers/buddha.png',
+  'Shakyamuni Buddha': 'images/philosophers/buddha.png',
+  Laozi: 'images/philosophers/laozi.jpg',
+  'Lao Tzu': 'images/philosophers/laozi.jpg',
   'Jean-Paul Sartre': 'images/philosophers/jean-paul-sartre.jpg',
   'Jim Morrison': 'images/philosophers/jim-morrison.jpg',
   'John Steinbeck': 'images/philosophers/john-steinbeck.jpg',
@@ -3858,9 +4059,22 @@ function createSymbolSvg(kind) {
 
 function bookmarkSubtitle(row) {
   const p = row && typeof row.payload === 'object' ? row.payload : {};
+  if (isForumBookmarkRow(row)) {
+    return getUiText(state.lang).bookmarksForumSource || 'Forum';
+  }
   if (row.item_type === 'book') return p.author || '';
   if (row.item_type === 'quote') return p.author ? `— ${getDisplayAuthorName(p.author)}` : '';
   return '';
+}
+
+function openForumBookmarkFromList(row) {
+  const postId = forumBookmarkPostId(row);
+  if (!postId) return;
+  closeBookmarks();
+  setMainTab('forum');
+  if (typeof ForumPanel !== 'undefined' && typeof ForumPanel.openPost === 'function') {
+    ForumPanel.openPost(postId);
+  }
 }
 
 function renderPhilosopherQuote() {
@@ -4127,9 +4341,28 @@ function closeBookmarks() {
   overlay.style.display = 'none';
 }
 
+function isForumBookmarkRow(row) {
+  if (!row || row.item_type !== 'dilemma') return false;
+  const p = row.payload && typeof row.payload === 'object' ? row.payload : {};
+  if (p.source === 'forum') return true;
+  return typeof row.item_key === 'string' && row.item_key.startsWith('forum:');
+}
+
+function forumBookmarkPostId(row) {
+  const p = row && typeof row.payload === 'object' ? row.payload : {};
+  if (typeof p.forumPostId === 'string' && p.forumPostId.trim()) return p.forumPostId.trim();
+  if (typeof row.item_key === 'string' && row.item_key.startsWith('forum:')) {
+    return row.item_key.slice('forum:'.length);
+  }
+  return '';
+}
+
 function bookmarkDisplayTitle(row) {
   const p = row && typeof row.payload === 'object' ? row.payload : {};
-  if (row.item_type === 'dilemma') return p.text || '';
+  if (row.item_type === 'dilemma') {
+    if (isForumBookmarkRow(row)) return p.title || p.text || '';
+    return p.text || '';
+  }
   if (row.item_type === 'quote') return (p.text ? `“${p.text}”` : '');
   if (row.item_type === 'concept') return p.label || p.termKey || '';
   if (row.item_type === 'book') return p.title ? `${p.title}${p.author ? ` — ${p.author}` : ''}` : '';
@@ -4242,6 +4475,11 @@ async function renderBookmarksList() {
         img.src = payload.image;
         wrap.appendChild(img);
         media = wrap;
+      } else if (isForumBookmarkRow(row)) {
+        const wrap = document.createElement('div');
+        wrap.className = 'bm-item-media bm-item-media--symbol';
+        wrap.appendChild(createSymbolSvg('bookmark'));
+        media = wrap;
       } else if (row.item_type === 'quote') {
         media = createAuthorAvatarNode(payload.author);
       } else if (row.item_type === 'concept') {
@@ -4295,6 +4533,30 @@ async function renderBookmarksList() {
           remove.disabled = false;
         }
       });
+
+      if (isForumBookmarkRow(row)) {
+        const postId = forumBookmarkPostId(row);
+        if (postId) {
+          item.classList.add('bm-item--clickable');
+          item.setAttribute('role', 'button');
+          item.setAttribute('tabindex', '0');
+          const ariaOpen = ui.bookmarkOpenForumAria || 'Open forum dilemma';
+          const titleText = bookmarkDisplayTitle(row) || postId;
+          item.setAttribute('aria-label', `${ariaOpen}: ${titleText}`);
+          const openFromBookmark = () => openForumBookmarkFromList(row);
+          item.addEventListener('click', (e) => {
+            if (e.target.closest('.bm-item-remove')) return;
+            openFromBookmark();
+          });
+          item.addEventListener('keydown', (e) => {
+            if (e.target !== item) return;
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              openFromBookmark();
+            }
+          });
+        }
+      }
 
       if (row.item_type === 'concept') {
         const term =
@@ -6257,8 +6519,8 @@ const AI_PHILOSOPHER_ORDER = [
   'socrates',
   'confucius',
   'kant',
-  'descartes',
-  'nietzsche',
+  'laozi',
+  'buddha',
   'marx',
 ];
 const AI_PHILOSOPHER_STORAGE_KEY = 'dd_ai_philosopher';
@@ -6269,10 +6531,15 @@ const AI_PHILOSOPHER_PORTRAIT_KEYS = {
   socrates: 'Socrates',
   confucius: 'Confucius',
   kant: 'Immanuel Kant',
-  descartes: 'René Descartes',
-  nietzsche: 'Friedrich Nietzsche',
+  laozi: 'Laozi',
+  buddha: 'Buddha',
   marx: 'Karl Marx',
 };
+
+/** Philosopher gateway overlay: entry source and pending chat seed. */
+let philosopherGatewaySource = null;
+let philosopherGatewaySelectedId = null;
+let philosopherGatewayPendingInput = null;
 
 function getAiPhilosopherPortraitSrc() {
   const key = AI_PHILOSOPHER_PORTRAIT_KEYS[getSelectedPhilosopherId()];
@@ -6383,8 +6650,8 @@ const PHILOSOPHER_PROFILE_SECTION_IMAGES = {
   aristotle: ['intro', 'early', 'ideas'],
   confucius: ['intro', 'early', 'ideas'],
   kant: ['intro', 'ideas'],
-  descartes: ['intro'],
-  nietzsche: ['intro'],
+  laozi: ['intro', 'early', 'ideas'],
+  buddha: ['intro', 'early', 'ideas'],
   marx: ['intro'],
 };
 
@@ -6673,6 +6940,11 @@ function closePlatoReader() {
   if (!overlay || overlay.hidden) return;
   overlay.hidden = true;
   overlay.style.display = 'none';
+  if (isChatPickOverlayOpen() && philosopherGatewaySelectedId) {
+    requestAnimationFrame(() => {
+      showPhilosopherGatewayActions(philosopherGatewaySelectedId);
+    });
+  }
 }
 
 function selectAiPhilosopher(id) {
@@ -7238,6 +7510,181 @@ async function aiSendCurrentMessage() {
   }
 }
 
+function isChatPickOverlayOpen() {
+  const overlay = document.getElementById('chat-pick-overlay');
+  return !!(overlay && !overlay.hidden);
+}
+
+function getPhilosopherDisplayName(id) {
+  const ui = getUiText(state.lang);
+  const names = ui.aiPhilosopherNames || {};
+  return names[id] || id;
+}
+
+function getPhilosopherVibe(id) {
+  const ui = getUiText(state.lang);
+  const vibes = ui.aiPhilosopherVibes || {};
+  return vibes[id] || '';
+}
+
+function getGatewayPhilosopherPortraitSrc(id) {
+  const key = AI_PHILOSOPHER_PORTRAIT_KEYS[id];
+  return key && PHILOSOPHER_PORTRAITS[key] ? PHILOSOPHER_PORTRAITS[key] : '';
+}
+
+function applyPhilosopherGatewayTexts() {
+  const ui = getUiText(state.lang);
+  const title = document.getElementById('chat-pick-title');
+  if (title) title.textContent = ui.chatPickTitle || 'Choose a philosopher';
+  const backBtn = document.getElementById('btn-gateway-back');
+  if (backBtn) backBtn.setAttribute('aria-label', ui.chatPickBack || 'Back');
+  const closeBtn = document.getElementById('btn-close-chat-pick');
+  if (closeBtn) closeBtn.setAttribute('aria-label', ui.closeLabel || 'Close');
+  const profileBtn = document.getElementById('label-gateway-profile');
+  if (profileBtn) profileBtn.textContent = ui.philosopherGatewayProfile || 'Learn more';
+  const startBtn = document.getElementById('label-gateway-start-chat');
+  if (startBtn) startBtn.textContent = ui.philosopherGatewayStartChat || 'Start conversation';
+  if (philosopherGatewaySelectedId) {
+    const nameEl = document.getElementById('gateway-selected-name');
+    const vibeEl = document.getElementById('gateway-selected-vibe');
+    if (nameEl) nameEl.textContent = getPhilosopherDisplayName(philosopherGatewaySelectedId);
+    if (vibeEl) vibeEl.textContent = getPhilosopherVibe(philosopherGatewaySelectedId);
+  }
+}
+
+function renderPhilosopherGatewayGrid() {
+  const grid = document.getElementById('philosopher-gateway-grid');
+  if (!grid) return;
+  grid.replaceChildren();
+  AI_PHILOSOPHER_ORDER.forEach((id) => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'philosopher-gateway-card';
+    btn.dataset.philosopher = id;
+    btn.setAttribute('role', 'option');
+    btn.setAttribute('aria-label', `${getPhilosopherDisplayName(id)} — ${getPhilosopherVibe(id)}`);
+    const src = getGatewayPhilosopherPortraitSrc(id);
+    if (src) {
+      const img = document.createElement('img');
+      img.className = 'philosopher-gateway-avatar';
+      img.src = src;
+      img.alt = '';
+      img.width = 68;
+      img.height = 68;
+      img.decoding = 'async';
+      img.loading = 'lazy';
+      img.referrerPolicy = 'no-referrer';
+      btn.appendChild(img);
+    }
+    const name = document.createElement('span');
+    name.className = 'philosopher-gateway-name';
+    name.textContent = getPhilosopherDisplayName(id);
+    btn.appendChild(name);
+    const vibe = document.createElement('span');
+    vibe.className = 'philosopher-gateway-vibe';
+    vibe.textContent = getPhilosopherVibe(id);
+    btn.appendChild(vibe);
+    btn.addEventListener('click', () => showPhilosopherGatewayActions(id));
+    grid.appendChild(btn);
+  });
+}
+
+function showPhilosopherGatewayGrid() {
+  philosopherGatewaySelectedId = null;
+  const gridWrap = document.getElementById('philosopher-gateway-grid-wrap');
+  const actions = document.getElementById('philosopher-gateway-actions');
+  const backBtn = document.getElementById('btn-gateway-back');
+  if (gridWrap) gridWrap.hidden = false;
+  if (actions) actions.hidden = true;
+  if (backBtn) backBtn.hidden = true;
+  renderPhilosopherGatewayGrid();
+}
+
+function showPhilosopherGatewayActions(id) {
+  if (!AI_PHILOSOPHER_ORDER.includes(id)) return;
+  philosopherGatewaySelectedId = id;
+  const gridWrap = document.getElementById('philosopher-gateway-grid-wrap');
+  const actions = document.getElementById('philosopher-gateway-actions');
+  const backBtn = document.getElementById('btn-gateway-back');
+  if (gridWrap) gridWrap.hidden = true;
+  if (actions) actions.hidden = false;
+  if (backBtn) backBtn.hidden = false;
+  const portrait = document.getElementById('gateway-selected-portrait');
+  const src = getGatewayPhilosopherPortraitSrc(id);
+  if (portrait) {
+    if (src) {
+      portrait.src = src;
+      portrait.hidden = false;
+    } else {
+      portrait.removeAttribute('src');
+      portrait.hidden = true;
+    }
+    portrait.alt = getPhilosopherDisplayName(id);
+  }
+  const nameEl = document.getElementById('gateway-selected-name');
+  const vibeEl = document.getElementById('gateway-selected-vibe');
+  if (nameEl) nameEl.textContent = getPhilosopherDisplayName(id);
+  if (vibeEl) vibeEl.textContent = getPhilosopherVibe(id);
+  document.getElementById('btn-gateway-start-chat')?.focus();
+}
+
+function openPhilosopherGateway(source, options = {}) {
+  philosopherGatewaySource = source;
+  philosopherGatewayPendingInput =
+    typeof options.defaultInput === 'string' ? options.defaultInput : null;
+  const preselect =
+    typeof options.philosopherId === 'string' &&
+    AI_PHILOSOPHER_ORDER.includes(options.philosopherId)
+      ? options.philosopherId
+      : null;
+  if (preselect) showPhilosopherGatewayActions(preselect);
+  else showPhilosopherGatewayGrid();
+  applyPhilosopherGatewayTexts();
+  const overlay = document.getElementById('chat-pick-overlay');
+  if (!overlay) return;
+  overlay.hidden = false;
+  overlay.style.display = 'flex';
+  document.getElementById('btn-close-chat-pick')?.focus();
+}
+
+function closePhilosopherGateway() {
+  const overlay = document.getElementById('chat-pick-overlay');
+  if (!overlay || overlay.hidden) return;
+  overlay.hidden = true;
+  overlay.style.display = 'none';
+  philosopherGatewaySource = null;
+  philosopherGatewaySelectedId = null;
+  philosopherGatewayPendingInput = null;
+  showPhilosopherGatewayGrid();
+}
+
+function philosopherGatewayStartChat() {
+  const id = philosopherGatewaySelectedId || getSelectedPhilosopherId();
+  if (id && AI_PHILOSOPHER_ORDER.includes(id)) setSelectedPhilosopherId(id);
+  const pending = philosopherGatewayPendingInput;
+  closePhilosopherGateway();
+  setMainTab('chat');
+  if (pending) {
+    const input = document.getElementById('ai-input');
+    if (input) {
+      input.value = pending;
+      requestAnimationFrame(() => input.focus());
+    }
+  }
+}
+
+function philosopherGatewayOpenProfile() {
+  const id = philosopherGatewaySelectedId;
+  if (!id || !AI_PHILOSOPHER_ORDER.includes(id)) return;
+  setSelectedPhilosopherId(id);
+  openPlatoReader();
+}
+
+if (typeof window !== 'undefined') {
+  window.openPhilosopherGateway = openPhilosopherGateway;
+  window.closePhilosopherGateway = closePhilosopherGateway;
+}
+
 function openAiAssistant() {
   setMainTab('chat');
 }
@@ -7287,14 +7734,24 @@ document.getElementById('btn-ch-share').addEventListener('click', () => {
 /* =============================================
    LANGUAGE
    ============================================= */
+function applyDdStaticIcons() {
+  if (typeof DD_ICONS === 'undefined' || !DD_ICONS.mount) return;
+  DD_ICONS.mount(document.getElementById('icon-user-feedback'), 'smile', 16);
+  DD_ICONS.mount(document.getElementById('icon-tab-forum'), 'forum', 22);
+  DD_ICONS.mount(document.getElementById('forum-title-icon'), 'forum', 24);
+  DD_ICONS.mount(document.getElementById('icon-tab-chat'), 'philosopherChat', 22);
+  DD_ICONS.mount(document.getElementById('icon-ai-modal'), 'philosopherChat', 28);
+  DD_ICONS.mount(document.getElementById('icon-chat-after-answer'), 'philosopherChat', 18);
+}
+
 function applyUIText() {
   const ui = getUiText(state.lang);
   document.documentElement.lang = ui.htmlLang || (state.lang === 'zh-Hant' ? 'zh-Hant' : 'en');
   document.title = ui.appTitle;
   const logoText = document.querySelector('.logo-text');
   if (logoText) logoText.textContent = ui.logoText;
-  const shareTrigger = document.getElementById('label-share-trigger');
-  if (shareTrigger) shareTrigger.textContent = ui.share;
+  const shareBtn = document.getElementById('btn-share-trigger');
+  if (shareBtn) shareBtn.setAttribute('aria-label', ui.share);
   const youChose = document.getElementById('label-you-chose');
   if (youChose) youChose.textContent = ui.youChose;
   const shareCardBrand = document.getElementById('label-share-card-brand');
@@ -7382,15 +7839,19 @@ function applyUIText() {
   refreshReminderWheel();
   syncOverflowSubpanels();
   const userFeedbackActionEl = document.getElementById('label-user-feedback-action');
-  if (userFeedbackActionEl) userFeedbackActionEl.textContent = ui.userFeedbackAction || 'User feedback';
+  if (userFeedbackActionEl) userFeedbackActionEl.textContent = ui.userFeedbackAction || 'User Feedback';
   const tabBar = document.getElementById('app-tab-bar');
   if (tabBar) tabBar.setAttribute('aria-label', ui.mainTabBarAria || 'Main sections');
+  const tabForumLabel = document.getElementById('label-tab-forum');
+  if (tabForumLabel) tabForumLabel.textContent = ui.mainTabForum || 'Forum';
   const tabDilemmaLabel = document.getElementById('label-tab-dilemma');
-  if (tabDilemmaLabel) tabDilemmaLabel.textContent = ui.mainTabDilemma || 'Daily Dilemma';
+  if (tabDilemmaLabel) tabDilemmaLabel.textContent = ui.mainTabDilemma || 'Dilemma Today';
   const tabChatLabel = document.getElementById('label-tab-chat');
-  if (tabChatLabel) tabChatLabel.textContent = ui.mainTabChat || ui.aiAssistantAction || 'Chat with Philosopher';
+  if (tabChatLabel) tabChatLabel.textContent = ui.mainTabChat || ui.aiAssistantAction || 'Dialogue';
+  const chatAfterLabel = document.getElementById('label-chat-after-answer');
+  if (chatAfterLabel) chatAfterLabel.textContent = ui.aiAssistantAction || ui.mainTabChat || 'Dialogue';
   const tabProfileLabel = document.getElementById('label-tab-profile');
-  if (tabProfileLabel) tabProfileLabel.textContent = ui.mainTabProfile || ui.philosophyProfileAction || 'My Philosophy Profile';
+  if (tabProfileLabel) tabProfileLabel.textContent = ui.mainTabProfile || ui.philosophyProfileAction || 'My Type';
   const kmTabLabel = ui.mainTabKnowledge || ui.knowledgeMapAction || 'Knowledge Map';
   const tabKnowledgeLabel = document.getElementById('label-tab-knowledge');
   if (tabKnowledgeLabel) tabKnowledgeLabel.textContent = kmTabLabel;
@@ -7399,13 +7860,15 @@ function applyUIText() {
     tabKnowledgeBtn.setAttribute('aria-label', kmTabLabel);
     tabKnowledgeBtn.setAttribute('title', kmTabLabel);
   }
+  if (typeof ForumPanel !== 'undefined') ForumPanel.onLanguageChange();
+  applyDdStaticIcons();
   const closeAiBtn = document.getElementById('btn-close-ai');
   if (closeAiBtn) {
-    closeAiBtn.setAttribute('aria-label', ui.aiCloseToDilemmaAria || 'Back to Daily Dilemma');
+    closeAiBtn.setAttribute('aria-label', ui.aiCloseToDilemmaAria || 'Back to Dilemma Today');
     closeAiBtn.setAttribute('title', ui.aiCloseToDilemmaTitle || '');
   }
   const aiTitleEl = document.getElementById('ai-title');
-  if (aiTitleEl) aiTitleEl.textContent = ui.aiTitle || 'Chat with Philosopher';
+  if (aiTitleEl) aiTitleEl.textContent = ui.aiTitle || 'Dialogue';
   const aiSubtitleEl = document.getElementById('ai-subtitle');
   if (aiSubtitleEl) aiSubtitleEl.textContent = ui.aiSubtitle || '';
   const aiInputEl = document.getElementById('ai-input');
@@ -7424,7 +7887,7 @@ function applyUIText() {
   }
   const feedbackBtn = document.getElementById('btn-user-feedback');
   if (feedbackBtn) {
-    const fbLabel = ui.userFeedbackAction || 'User feedback';
+    const fbLabel = ui.userFeedbackAction || 'User Feedback';
     feedbackBtn.setAttribute('aria-label', fbLabel);
     feedbackBtn.setAttribute('title', fbLabel);
     feedbackBtn.classList.toggle('is-active', !!state.feedbackPanelOpen);
@@ -7451,6 +7914,11 @@ function applyUIText() {
   if (bookmarksEmpty) bookmarksEmpty.textContent = ui.bookmarksEmpty || 'No bookmarks yet.';
   applyPlatoReaderHeadTexts();
   refreshPlatoReaderIfOpen();
+  if (isChatPickOverlayOpen()) {
+    applyPhilosopherGatewayTexts();
+    if (!philosopherGatewaySelectedId) renderPhilosopherGatewayGrid();
+    else showPhilosopherGatewayActions(philosopherGatewaySelectedId);
+  }
 }
 
 function setLanguage(lang) {
@@ -7487,8 +7955,32 @@ document.getElementById('btn-lang-toggle').addEventListener('click', () => {
 document.getElementById('btn-user-feedback').addEventListener('click', () => {
   toggleUserFeedbackPanel();
 });
+document.getElementById('tab-btn-forum')?.addEventListener('click', () => setMainTab('forum'));
 document.getElementById('tab-btn-dilemma')?.addEventListener('click', () => setMainTab('dilemma'));
-document.getElementById('tab-btn-chat')?.addEventListener('click', () => setMainTab('chat'));
+document.getElementById('tab-btn-chat')?.addEventListener('click', () => openPhilosopherGateway('tab'));
+document.getElementById('btn-chat-after-answer')?.addEventListener('click', () => {
+  const ui = getUiText(state.lang);
+  openPhilosopherGateway('post-answer', {
+    defaultInput: ui.afterAnswerChatDefaultQuestion || 'What do you think about this dilemma?',
+  });
+});
+document.getElementById('btn-close-chat-pick')?.addEventListener('click', closePhilosopherGateway);
+document.getElementById('btn-gateway-back')?.addEventListener('click', showPhilosopherGatewayGrid);
+document.getElementById('btn-gateway-start-chat')?.addEventListener('click', () => {
+  philosopherGatewayStartChat();
+});
+document.getElementById('btn-gateway-profile')?.addEventListener('click', philosopherGatewayOpenProfile);
+document.getElementById('chat-pick-overlay')?.addEventListener('click', (e) => {
+  if (e.target === document.getElementById('chat-pick-overlay')) closePhilosopherGateway();
+});
+document.getElementById('btn-forum-compose')?.addEventListener('click', () => {
+  if (typeof ForumPanel !== 'undefined' && typeof ForumPanel.openCompose === 'function') {
+    ForumPanel.openCompose();
+    return;
+  }
+  const ui = getUiText(state.lang);
+  openFeedbackFlash(ui.forumComposeSoon || 'Posting is coming soon.');
+});
 document.getElementById('tab-btn-profile')?.addEventListener('click', () => openProfileTab());
 document.getElementById('tab-btn-knowledge')?.addEventListener('click', () => openKnowledgeTab());
 document.getElementById('btn-send-feedback').addEventListener('click', () => {
@@ -7528,6 +8020,19 @@ document.addEventListener('keydown', e => {
     closeFeedbackFlash();
     closeOverflowMenu();
     closeLegal();
+    if (isChatPickOverlayOpen()) {
+      if (isPlatoReaderOpen()) {
+        closePlatoReader();
+        return;
+      }
+      const actions = document.getElementById('philosopher-gateway-actions');
+      if (philosopherGatewaySelectedId && actions && !actions.hidden) {
+        showPhilosopherGatewayGrid();
+        return;
+      }
+      closePhilosopherGateway();
+      return;
+    }
     if (isPlatoReaderOpen()) {
       closePlatoReader();
       return;
@@ -7597,6 +8102,34 @@ function armStartScreenDismiss() {
 
 
 
+function closeForumTopicDetail() {
+  if (typeof ForumPanel !== 'undefined' && typeof ForumPanel.closeDetail === 'function') {
+    ForumPanel.closeDetail();
+    return;
+  }
+  state.forumView = 'list';
+  state.forumPostId = null;
+  state.forumReplyOpen = null;
+  const listView = document.getElementById('forum-list-view');
+  const detailView = document.getElementById('forum-detail-view');
+  const hero = document.querySelector('.forum-hero');
+  const shell = document.querySelector('.forum-shell');
+  if (listView) listView.hidden = false;
+  if (detailView) detailView.hidden = true;
+  if (hero) hero.hidden = false;
+  if (shell) shell.classList.remove('forum-shell--detail');
+  if (typeof ForumPanel !== 'undefined' && typeof ForumPanel.renderFeed === 'function') {
+    ForumPanel.renderFeed();
+  }
+}
+
+function bindForumBackNavigation() {
+  document.getElementById('btn-forum-back')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeForumTopicDetail();
+  });
+}
+
 /* =============================================
    INIT
    ============================================= */
@@ -7607,6 +8140,8 @@ function init() {
   applyOverflowFooterLinks();
   state.lang = loadLanguage();
   state.history = loadHistory();
+  state.forumUserPosts = loadForumUserPosts();
+  state.forumUserAvatarId = loadForumUserAvatarId();
   syncExploredConceptsFromHistory();
   mergeLearnedConceptsFromSupabase().catch(() => {});
   state.reminderEnabled = loadReminderEnabled();
@@ -7636,6 +8171,8 @@ function init() {
     .then(() => refreshTodayAfterScheduleFetch())
     .catch(() => refreshTodayAfterScheduleFetch());
   armStartScreenDismiss();
+  bindForumBackNavigation();
+  if (typeof ForumPanel !== 'undefined') ForumPanel.init();
   setMainTab('dilemma');
 }
 

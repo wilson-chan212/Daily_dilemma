@@ -1,9 +1,16 @@
 // Supabase Edge Function: ai-chat
 // Secrets: DEEPSEEK_API_KEY; optional SUPABASE_SERVICE_ROLE_KEY + DB RPC for quota.
+// Launch: set secret AI_DEVICE_DAILY_LIMIT_ENABLED=true to enforce per-device daily AI quota.
+
+import PHILOSOPHER_PROFILES_IMPORTED from "./philosopher-profiles.json" with { type: "json" };
 
 const DEEPSEEK_API_KEY = Deno.env.get("DEEPSEEK_API_KEY") ?? "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+
+/** Off during development; enable at launch via Supabase secret (see file header). */
+const AI_DEVICE_DAILY_LIMIT_ENABLED =
+  (Deno.env.get("AI_DEVICE_DAILY_LIMIT_ENABLED") ?? "").toLowerCase() === "true";
 
 type PhilosopherJson = {
   nameEn: string;
@@ -18,22 +25,42 @@ type PhilosopherJson = {
   avoidZh: string;
   anchorsEn: string;
   anchorsZh: string;
+  coreIdeasEn?: string;
+  coreIdeasZh?: string;
+  conceptMovesEn?: string;
+  conceptMovesZh?: string;
+  signatureMisreadingsEn?: string;
+  signatureMisreadingsZh?: string;
+  voiceEn?: string;
+  voiceZh?: string;
+  replyDisciplineEn?: string;
+  replyDisciplineZh?: string;
+  blendMustUseZh?: string[];
+  blendMustUseEn?: string[];
+  contrastZh?: string;
+  contrastEn?: string;
+  exampleReplyZh?: string;
+  exampleReplyEn?: string;
+  deepExampleReplyZh?: string;
+  deepExampleReplyEn?: string;
 };
 
-function loadPhilosopherProfiles(): Record<string, PhilosopherJson> {
-  try {
-    const raw = Deno.readTextFileSync(new URL("./philosopher-profiles.json", import.meta.url));
-    const parsed = JSON.parse(raw) as unknown;
-    return typeof parsed === "object" && parsed !== null && !Array.isArray(parsed)
-      ? (parsed as Record<string, PhilosopherJson>)
-      : {};
-  } catch (e) {
-    console.error("ai-chat: failed to load philosopher-profiles.json", e);
-    return {};
-  }
-}
+type ReplyDepth = "short" | "deep";
 
-const PHILOSOPHER_PROFILES: Record<string, PhilosopherJson> = loadPhilosopherProfiles();
+const SHORT_REPLY_MAX_CHARS_ZH = 150;
+const SHORT_REPLY_MAX_WORDS_EN = 64;
+const DEEP_REPLY_MAX_CHARS_ZH = 380;
+const DEEP_REPLY_MAX_WORDS_EN = 180;
+const SHORT_REPLY_MAX_OUTPUT_TOKENS = 360;
+const DEEP_REPLY_MAX_OUTPUT_TOKENS = 760;
+const PERSONA_VERSION = 9;
+
+const PHILOSOPHER_PROFILES: Record<string, PhilosopherJson> =
+  typeof PHILOSOPHER_PROFILES_IMPORTED === "object" &&
+    PHILOSOPHER_PROFILES_IMPORTED !== null &&
+    !Array.isArray(PHILOSOPHER_PROFILES_IMPORTED)
+    ? (PHILOSOPHER_PROFILES_IMPORTED as Record<string, PhilosopherJson>)
+    : {};
 
 const DEFAULT_PHILOSOPHER_ID = "plato";
 const ALLOWED_PHILOSOPHER_IDS = new Set([
@@ -42,10 +69,17 @@ const ALLOWED_PHILOSOPHER_IDS = new Set([
   "socrates",
   "confucius",
   "kant",
-  "descartes",
-  "nietzsche",
+  "laozi",
+  "buddha",
   "marx",
 ]);
+
+const PERSONA_LOADED = Object.keys(PHILOSOPHER_PROFILES).length >= ALLOWED_PHILOSOPHER_IDS.size;
+if (!PERSONA_LOADED) {
+  console.error(
+    `ai-chat: philosopher profiles not bundled (got ${Object.keys(PHILOSOPHER_PROFILES).length}, need ${ALLOWED_PHILOSOPHER_IDS.size})`,
+  );
+}
 
 function coercePhilosopherId(x: unknown): string {
   const s = typeof x === "string" ? x.trim().toLowerCase() : "";
@@ -53,36 +87,287 @@ function coercePhilosopherId(x: unknown): string {
   return DEFAULT_PHILOSOPHER_ID;
 }
 
-function buildPhilosopherSystemPrompt(lang: "en" | "zh-Hant", philosopherId: string): string {
+function getPhilosopherProfile(philosopherId: string): PhilosopherJson | null {
   const id = ALLOWED_PHILOSOPHER_IDS.has(philosopherId) ? philosopherId : DEFAULT_PHILOSOPHER_ID;
-  const p = PHILOSOPHER_PROFILES[id];
-  if (!p) {
+  return PHILOSOPHER_PROFILES[id] ?? null;
+}
+
+function blendKeywordsLine(lang: "en" | "zh-Hant", p: PhilosopherJson): string {
+  const list = lang === "zh-Hant" ? p.blendMustUseZh : p.blendMustUseEn;
+  if (!list?.length) return "";
+  const joined = list.map((w) => `「${w}」`).join("、");
+  return lang === "zh-Hant"
+    ? `回覆一定要自然用到以下其中至少一個概念詞：${joined}（要解釋點樣套用，唔好硬塞）。`
+    : `Naturally use at least one of: ${list.join(", ")}—show how it applies.`;
+}
+
+function replyLimitLine(lang: "en" | "zh-Hant", depth: ReplyDepth): string {
+  if (lang === "zh-Hant") {
+    const maxChars = depth === "deep" ? DEEP_REPLY_MAX_CHARS_ZH : SHORT_REPLY_MAX_CHARS_ZH;
+    return depth === "deep"
+      ? `【字數】約 ${maxChars} 字內；可以分 2–3 句或短段，短但有教學感；港式口語；唔假引文。`
+      : `【字數】嚴格約 ${maxChars} 字內（短但有料）；港式口語；唔假引文。`;
+  }
+
+  const maxWords = depth === "deep" ? DEEP_REPLY_MAX_WORDS_EN : SHORT_REPLY_MAX_WORDS_EN;
+  return depth === "deep"
+    ? `【LENGTH】Max ~${maxWords} words. Use enough room to teach one concept, but keep it app-chat friendly. No fake quotes.`
+    : `【LENGTH】Strictly max ${maxWords} words (dense and brief). No fake quotes.`;
+}
+
+function depthInstructionLine(lang: "en" | "zh-Hant", depth: ReplyDepth, p: PhilosopherJson): string {
+  if (depth !== "deep") {
     return lang === "zh-Hant"
-      ? "你是「每日抉擇」的助理，協助使用者反思兩難題。回覆精簡，繁體中文約 140 字內。不要捏造引文。不要要求敏感個資。"
-      : "You help users reflect on dilemmas. Keep replies concise (max ~60 words). Do not fabricate quotes. Do not ask for sensitive personal data.";
+      ? "【深度】用一個招牌概念點醒就夠，唔好變長文。"
+      : "【DEPTH】Use one signature concept sharply; do not turn it into an essay.";
   }
 
   if (lang === "zh-Hant") {
     return [
-      `你是「每日抉擇」的對話助理，以${p.nameZh}的思想與方法為主軸（現代詮釋，非角色扮演歷史人物）。`,
-      `核心概念：${p.conceptsZh}`,
-      `推理方式：${p.methodZh}`,
-      `語氣：${p.toneZh}`,
-      `避免：${p.avoidZh}`,
-      `思想背景（用於貼近其著作主題，勿逐字假引）：${p.anchorsZh}`,
-      "規則：優先用此傳統的論證方式回應；若與其他學派衝突，仍以此傳統為準。不要捏造書名、章節或逐字引文。若不確定，明說這是依該傳統的詮釋。回覆精簡：繁體中文約 140 字以內。結尾提出一個反思性問題。不要要求使用者提供敏感個資。",
-    ].join("\n");
+      "【深度】用「有趣 hook → 點名一個哲學概念 → 用人話解釋 → 套返用戶處境 → 短結論」嘅節奏。",
+      p.coreIdeasZh ? `【可教概念】${p.coreIdeasZh}` : "",
+      p.conceptMovesZh ? `【概念點用】${p.conceptMovesZh}` : "",
+      p.signatureMisreadingsZh ? `【避免誤讀】${p.signatureMisreadingsZh}` : "",
+    ]
+      .filter(Boolean)
+      .join("\n");
   }
 
   return [
-    `You are the Daily Dilemma assistant. Answer in the spirit of ${p.nameEn}'s philosophy (modern interpretation; not role-playing the historical person).`,
-    `Core ideas to prioritize: ${p.conceptsEn}`,
-    `How to reason: ${p.methodEn}`,
-    `Tone: ${p.toneEn}`,
-    `Avoid: ${p.avoidEn}`,
-    `Thematic anchors (ground reasoning; do not invent verbatim quotes): ${p.anchorsEn}`,
-    "Rules: Prefer this philosopher's approach even if other schools disagree. Do not fabricate book titles, page numbers, or exact quotations. If unsure, say it is an interpretation. Keep replies concise: at most 60 words. End with one reflective question. Do not ask for sensitive personal data.",
-  ].join("\n");
+    "【DEPTH】Use this rhythm: memorable hook → name one philosophical concept → explain it plainly → apply it to the user's situation → short closing insight.",
+    p.coreIdeasEn ? `Teachable ideas: ${p.coreIdeasEn}` : "",
+    p.conceptMovesEn ? `How to apply them: ${p.conceptMovesEn}` : "",
+    p.signatureMisreadingsEn ? `Avoid this simplification: ${p.signatureMisreadingsEn}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function buildPhilosopherSystemPrompt(lang: "en" | "zh-Hant", philosopherId: string, depth: ReplyDepth): string {
+  const p = getPhilosopherProfile(philosopherId);
+  if (!p) {
+    return lang === "zh-Hant"
+      ? `你係「每日兩難」嘅助理。香港口語粵語，${replyLimitLine(lang, depth)}`
+      : `You help users reflect on dilemmas. ${replyLimitLine(lang, depth)}`;
+  }
+
+  const keywords = blendKeywordsLine(lang, p);
+  const contrast = lang === "zh-Hant" ? p.contrastZh : p.contrastEn;
+  const depthLine = depthInstructionLine(lang, depth, p);
+
+  if (lang === "zh-Hant") {
+    return [
+      `【身份鎖定】你只可以係「${p.nameZh}」——唔係其他哲學家、唔係心理輔導、唔係通用AI。${contrast || ""}`,
+      "【開場】直接入題，用招牌概念分析；唔好寫「我喺XX角度」「從XX角度」等自報身分嘅句。",
+      keywords,
+      depthLine,
+      `【必做】${p.replyDisciplineZh || p.methodZh}`,
+      `【招牌句式】${p.voiceZh || p.toneZh}`,
+      `【概念】${p.conceptsZh}`,
+      `【禁止】${p.avoidZh}；唔好用「慢慢嚟」「你已經好好」等通用心靈雞湯。`,
+      "【焦點】跟住用戶最後一則訊息。如果佢講私人煩惱、生活、關係、情緒，就直接回覆；除非佢明確問今日兩難題、選項或自己嘅揀擇，否則唔好扯返今日題目、A/B。",
+      replyLimitLine(lang, depth),
+      "【收尾】用肯定句或短結論收束；禁止句尾反問、「呢？」「點算？」等逼答式問句（除非用戶本身係問你）。",
+    ]
+      .filter(Boolean)
+      .join("\n");
+  }
+
+  return [
+    `【LOCKED IDENTITY】You are ONLY ${p.nameEn}—not other philosophers, not a therapist, not generic AI. ${contrast || ""}`,
+    `【OPENER】Jump straight into a signature idea. Never write "From a ${p.nameEn} angle" or similar self-labels.`,
+    keywords,
+    depthLine,
+    `Must: ${p.replyDisciplineEn || p.methodEn}`,
+    `Signature phrases: ${p.voiceEn || p.toneEn}`,
+    `Ideas: ${p.conceptsEn}`,
+    `Forbidden: ${p.avoidEn}; no "take your time," "you're enough," or generic therapy.`,
+    "【FOCUS】Follow the user's latest message. If they share personal life, feelings, or relationships, answer that—do not drag in today's dilemma or A/B options unless they clearly ask about them.",
+    replyLimitLine(lang, depth),
+    "【CLOSING】End with a statement or insight—not a closing question unless the user asked you one.",
+  ]
+    .filter(Boolean)
+    .join("\n");
+}
+
+function replyUsesSignatureConcept(lang: "en" | "zh-Hant", philosopherId: string, text: string): boolean {
+  const p = getPhilosopherProfile(philosopherId);
+  if (!p) return false;
+  const list = lang === "zh-Hant" ? p.blendMustUseZh : p.blendMustUseEn;
+  if (!list?.length) return true;
+  return list.some((kw) => text.includes(kw));
+}
+
+/** Strip self-label openers if the model still writes them. */
+function stripPhilosopherAngleOpener(lang: "en" | "zh-Hant", raw: string): string {
+  let text = raw.trim();
+  if (!text) return text;
+  if (lang === "zh-Hant") {
+    text = text.replace(/^我喺[^。！？\n]{0,28}角度[——\-：:\s]*/u, "").trimStart();
+    text = text.replace(/^從[^。！？\n]{0,24}角度[——\-：:\s]*/u, "").trimStart();
+  } else {
+    text = text.replace(/^From an? [^\n.]{0,50} angle[:\s—-]*/i, "").trimStart();
+  }
+  return text;
+}
+
+function signatureRetryUserPrompt(lang: "en" | "zh-Hant", philosopherId: string, depth: ReplyDepth): string {
+  const p = getPhilosopherProfile(philosopherId);
+  if (!p) return "";
+  const list = lang === "zh-Hant" ? p.blendMustUseZh : p.blendMustUseEn;
+  if (!list?.length) return "";
+  const joined = lang === "zh-Hant" ? list.map((w) => `「${w}」`).join("、") : list.join(", ");
+  const zhLimit = depth === "deep" ? DEEP_REPLY_MAX_CHARS_ZH : SHORT_REPLY_MAX_CHARS_ZH;
+  const enLimit = depth === "deep" ? DEEP_REPLY_MAX_WORDS_EN : SHORT_REPLY_MAX_WORDS_EN;
+  const deepNudge = depth === "deep"
+    ? lang === "zh-Hant"
+      ? "；要用一個哲學概念教識用戶點睇件事"
+      : "; teach one philosophical concept through the user's situation"
+    : "";
+  return lang === "zh-Hant"
+    ? `重寫：一定要自然用到${joined}其中一個，保持${p.nameZh}口吻${deepNudge}；唔寫「我喺XX角度」；約${zhLimit}字內；句尾唔好反問。`
+    : `Rewrite: use one of ${joined}. Stay as ${p.nameEn}${deepNudge}; no "From a … angle"; max ${enLimit} words; no closing question.`;
+}
+
+function latestUserText(messages: Msg[]): string {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    if (messages[i].role === "user") return messages[i].content.trim();
+  }
+  return "";
+}
+
+/** True when the user's latest message is clearly about today's dilemma / their pick. */
+function userWantsDilemmaContext(
+  lang: "en" | "zh-Hant",
+  latestUser: string,
+  bits: { dilemmaText: string; optA: string; optB: string; userChoice: string },
+): boolean {
+  const t = latestUser.trim();
+  if (!t) return false;
+
+  if (lang === "zh-Hant") {
+    const patterns = [
+      /今日.{0,8}(題|兩難|抉擇)/,
+      /呢題|這題|兩難題/,
+      /點解有人.{0,6}揀/,
+      /另一(邊|面|個選)/,
+      /應該.{0,6}(揀|選)/,
+      /揀.{0,3}[ABabＡＢ]/,
+      /選.{0,3}[ABabＡＢ]/,
+      /選項|答案[ABabＡＢ]/,
+      /講清楚.{0,6}題/,
+      /我(揀|選)(咗|了)/,
+      /揀完|選完/,
+      /後悔.{0,8}揀/,
+      /用口語.{0,6}題/,
+    ];
+    if (patterns.some((re) => re.test(t))) return true;
+  } else {
+    const patterns = [
+      /\btoday'?s dilemma\b/i,
+      /\bthis dilemma\b/i,
+      /\bthe dilemma\b/i,
+      /\boption\s*[ab]\b/i,
+      /\bpick\s*(option\s*)?[ab]\b/i,
+      /\bother side\b/i,
+      /\bwhy (would|might) someone\b/i,
+      /\bwhat should i weigh\b/i,
+      /\bi chose\b/i,
+      /\bafter (my|the) choice\b/i,
+      /\bexplain.{0,12}dilemma\b/i,
+    ];
+    if (patterns.some((re) => re.test(t))) return true;
+  }
+
+  if (bits.userChoice && /[ABabＡＢ]/.test(bits.userChoice)) {
+    if (/內疚|後悔|選|揀|choice|chose|picked|regret|guilty/i.test(t)) return true;
+  }
+
+  const share = (hay: string, needle: string, minLen: number) => {
+    const n = needle.trim();
+    if (n.length < minLen) return false;
+    for (let i = 0; i <= n.length - minLen; i++) {
+      if (hay.includes(n.slice(i, i + minLen))) return true;
+    }
+    return false;
+  };
+
+  if (bits.optA && share(t, bits.optA, 8)) return true;
+  if (bits.optB && share(t, bits.optB, 8)) return true;
+  if (bits.dilemmaText && share(t, bits.dilemmaText, 12)) return true;
+
+  return false;
+}
+
+function chooseReplyDepth(
+  lang: "en" | "zh-Hant",
+  latestUser: string,
+  bits: { attachDilemma: boolean },
+): ReplyDepth {
+  const t = latestUser.trim();
+  if (!t) return "short";
+
+  if (bits.attachDilemma) return "deep";
+
+  if (lang === "zh-Hant") {
+    const deepPatterns = [
+      /點解|為何|原因|解釋|講多啲|深入|詳細|概念|哲學|思想|主張|理論/,
+      /應該|道德|倫理|正義|自由|責任|義務|意義|真理|現實|身份|自我|欲望/,
+      /內疚|後悔|矛盾|掙扎|痛苦|執著|焦慮|關係|公平|剝削|制度|階級/,
+      /如果係.+會點|會點睇|點睇|點樣睇|教我|學到啲咩/,
+      /兩難|抉擇|選項|揀邊|點揀/,
+    ];
+    if (deepPatterns.some((re) => re.test(t))) return "deep";
+    return t.length >= 70 ? "deep" : "short";
+  }
+
+  const deepPatterns = [
+    /\b(why|explain|deeper|detail|concept|philosophy|philosophical|theory|idea|teach)\b/i,
+    /\b(should|moral|ethical|justice|freedom|responsibility|duty|meaning|truth|reality|identity|self|desire)\b/i,
+    /\b(guilt|regret|conflict|struggle|suffering|attachment|anxiety|relationship|fairness|exploitation|system|class)\b/i,
+    /\bwhat would .+ (say|think|do)\b/i,
+    /\b(dilemma|choice|option|choose|decide)\b/i,
+  ];
+  if (deepPatterns.some((re) => re.test(t))) return "deep";
+  return t.split(/\s+/).filter(Boolean).length >= 18 ? "deep" : "short";
+}
+
+function buildSessionContext(
+  lang: "en" | "zh-Hant",
+  bits: {
+    dilemmaText: string;
+    optA: string;
+    optB: string;
+    userChoice: string;
+    summary: string;
+    attachDilemma: boolean;
+  },
+): string {
+  const lines: string[] = [];
+
+  if (bits.attachDilemma && bits.dilemmaText) {
+    lines.push(
+      lang === "zh-Hant"
+        ? "【今日兩難題—用戶正問緊呢題，可以引用】"
+        : "[Today's dilemma—the user is asking about this; you may reference it]",
+    );
+    lines.push(lang === "zh-Hant" ? bits.dilemmaText : bits.dilemmaText);
+    if (bits.optA) lines.push(lang === "zh-Hant" ? `A：${bits.optA}` : `Option A: ${bits.optA}`);
+    if (bits.optB) lines.push(lang === "zh-Hant" ? `B：${bits.optB}` : `Option B: ${bits.optB}`);
+    if (bits.userChoice) {
+      lines.push(lang === "zh-Hant" ? `【用戶已選】${bits.userChoice}` : `User choice: ${bits.userChoice}`);
+    }
+  }
+
+  if (bits.summary) {
+    lines.push(
+      lang === "zh-Hant"
+        ? `【對話摘要—只喺同用戶最新問題有關嗰陣先參考】${bits.summary}`
+        : `[Conversation summary—use only if relevant to the latest question] ${bits.summary}`,
+    );
+  }
+
+  return lines.join("\n");
 }
 
 function corsHeaders(): Headers {
@@ -158,29 +443,65 @@ function checkRateLimit(key: string) {
   return { ok: true };
 }
 
-function trimToWordLimit(lang: "en" | "zh-Hant", text: string) {
+function trimToWordLimit(lang: "en" | "zh-Hant", text: string, depth: ReplyDepth = "short") {
   const s = text.trim();
   if (!s) return s;
   if (lang === "zh-Hant") {
-    // "Words" aren't well-defined for CJK; enforce a tight character cap (~30% below prior 200).
-    const maxChars = 140;
-    return s.length > maxChars ? s.slice(0, maxChars).trim() : s;
+    const maxChars = depth === "deep" ? DEEP_REPLY_MAX_CHARS_ZH : SHORT_REPLY_MAX_CHARS_ZH;
+    if (s.length <= maxChars) return s;
+    // Prefer cutting at sentence end so blended ideas are not amputated mid-thought.
+    const slice = s.slice(0, maxChars);
+    const lastStop = Math.max(slice.lastIndexOf("。"), slice.lastIndexOf("？"), slice.lastIndexOf("！"));
+    if (lastStop > Math.floor(maxChars * 0.55)) return slice.slice(0, lastStop + 1).trim();
+    return slice.trim();
   }
   const words = s.split(/\s+/).filter(Boolean);
-  if (words.length <= 60) return s;
-  return words.slice(0, 60).join(" ").trim();
+  const maxWords = depth === "deep" ? DEEP_REPLY_MAX_WORDS_EN : SHORT_REPLY_MAX_WORDS_EN;
+  if (words.length <= maxWords) return s;
+  return words.slice(0, maxWords).join(" ").trim();
 }
 
 type Msg = { role: "user" | "assistant"; content: string };
 
 type DeepSeekMsg = { role: "system" | "user" | "assistant"; content: string };
 
+function buildPhilosopherFewShot(lang: "en" | "zh-Hant", p: PhilosopherJson, depth: ReplyDepth): DeepSeekMsg[] {
+  const zhExample = depth === "deep" ? p.deepExampleReplyZh?.trim() || p.exampleReplyZh?.trim() : p.exampleReplyZh?.trim();
+  const enExample = depth === "deep" ? p.deepExampleReplyEn?.trim() || p.exampleReplyEn?.trim() : p.exampleReplyEn?.trim();
+
+  if (lang === "zh-Hant" && zhExample) {
+    return [
+      {
+        role: "user",
+        content:
+          depth === "deep"
+            ? "【深度風格示範—學結構同口吻，唔好抄內容；唔使提揀擇題】用戶：最近壓力好大，覺得自己唔夠好。請用你嘅哲學角度回覆，順便教我一個概念。"
+            : "【風格示範—學口吻，唔好抄內容；唔使提揀擇題】用戶：最近壓力好大，覺得自己唔夠好。請用你嘅哲學角度回覆。",
+      },
+      { role: "assistant", content: zhExample },
+    ];
+  }
+  if (lang !== "zh-Hant" && enExample) {
+    return [
+      {
+        role: "user",
+        content:
+          depth === "deep"
+            ? "[Deep style demo—match structure and voice, do not copy; no dilemma] User: I've been stressed and feel I'm not good enough. Use your philosophical voice and teach me one concept."
+            : "[Style demo—match voice, do not copy; no dilemma] User: I've been stressed and feel I'm not good enough. Use your philosophical voice.",
+      },
+      { role: "assistant", content: enExample },
+    ];
+  }
+  return [];
+}
+
 const PHILOSOPHER_REPLY_MAX_CONTINUATION_ROUNDS = 3;
 
 function continuationUserPrompt(lang: "en" | "zh-Hant"): string {
   return lang === "zh-Hant"
-    ? "請從上一則助理回覆停下的地方直接接續（不要重複已出現的句子），簡短補完。"
-    : "Continue exactly where your previous reply stopped. Do not repeat sentences already given. Finish briefly.";
+    ? "請從上一則回覆停低嘅地方直接接落去（唔好重複已有句子）。保持同一哲學角度同概念詞，用香港口語補完；句尾唔好反問。"
+    : "Continue where you stopped. Do not repeat. Keep the same philosopher's ideas and voice; no closing question.";
 }
 
 async function callDeepSeekRaw(opts: {
@@ -346,7 +667,7 @@ async function deepseekChatCompletion(opts: {
 
 function serverFallbackReply(lang: "en" | "zh-Hant") {
   return lang === "zh-Hant"
-    ? "我暫時未能回覆。可否再試一次，或換個問法？"
+    ? "我暫時答唔到。再試一次，或者換個問法都得。"
     : "I couldn’t generate a reply just now. Please try again or rephrase.";
 }
 
@@ -438,15 +759,18 @@ async function handleRequest(req: Request): Promise<Response> {
     }
     // Device quota (daily). Keep generous to avoid hurting UX.
     const DEVICE_DAILY_LIMIT = 50;
-    const usage = await incrementDailyUsage(deviceId, DEVICE_DAILY_LIMIT);
-    if (!usage.ok) {
-      return tooManyRequests("Daily AI limit reached for this device. Try again tomorrow.");
+    let usage = { ok: true as const, remaining: 999, current: 0 };
+    if (AI_DEVICE_DAILY_LIMIT_ENABLED) {
+      usage = await incrementDailyUsage(deviceId, DEVICE_DAILY_LIMIT);
+      if (!usage.ok) {
+        return tooManyRequests("Daily AI limit reached for this device. Try again tomorrow.");
+      }
     }
 
     if (mode === "summarize") {
       const sys =
         lang === "zh-Hant"
-          ? "你是對話摘要器。請用繁體中文把使用者與助理的對話濃縮成一段「可重用的短記憶」，保留偏好、結論與尚未解決的問題。避免逐句重述。最多 80 tokens。"
+          ? "你是對話摘要器。請用香港口語粵語（繁體字）將用戶同助理嘅對話濃縮成一段「之後用得返嘅短記憶」，保留偏好、結論同未解決嘅問題。唔好逐句重述。最多 80 tokens。"
           : "You are a conversation summarizer. Produce a short reusable memory of the conversation: preferences, conclusions, and open questions. Do not restate line by line. Max ~80 tokens.";
 
       const input = [
@@ -465,37 +789,84 @@ async function handleRequest(req: Request): Promise<Response> {
     const optB = limitStr(dilemma?.optB, 500);
     const userChoice = limitStr(p?.userChoice, 20);
     const philosopherId = coercePhilosopherId(p?.philosopherId);
+    const profile = getPhilosopherProfile(philosopherId);
 
-    const sys = buildPhilosopherSystemPrompt(lang, philosopherId);
+    const latestUser = latestUserText(messages);
+    const attachDilemma = userWantsDilemmaContext(lang, latestUser, {
+      dilemmaText,
+      optA,
+      optB,
+      userChoice,
+    });
+    const replyDepth = chooseReplyDepth(lang, latestUser, { attachDilemma });
+    const sys = buildPhilosopherSystemPrompt(lang, philosopherId, replyDepth);
+    const fewShot = profile ? buildPhilosopherFewShot(lang, profile, replyDepth) : [];
+    const sessionBlock = buildSessionContext(lang, {
+      dilemmaText,
+      optA,
+      optB,
+      userChoice,
+      summary,
+      attachDilemma,
+    });
 
-    const contextBits: string[] = [];
-    if (dilemmaText) {
-      contextBits.push(`Dilemma: ${dilemmaText}`);
-      if (optA) contextBits.push(`Option A: ${optA}`);
-      if (optB) contextBits.push(`Option B: ${optB}`);
-    }
-    if (userChoice) contextBits.push(`User choice (if any): ${userChoice}`);
-    if (summary) contextBits.push(`Conversation summary: ${summary}`);
-
-    const input = [
-      { role: "system" as const, content: sys },
-      ...(contextBits.length ? [{ role: "user" as const, content: contextBits.join("\n") }] : []),
+    const input: DeepSeekMsg[] = [
+      { role: "system", content: sys },
+      ...fewShot,
+      ...(sessionBlock ? [{ role: "user", content: sessionBlock }] : []),
       ...messages.map((m) => ({
         role: m.role as "user" | "assistant",
         content: limitStr(m.content, 2000),
       })),
     ];
 
-    const replyRaw = await deepseekPhilosopherReply({
+    let replyRaw = await deepseekPhilosopherReply({
       model,
       baseInput: input,
-      maxOutputTokens: 500,
-      temperature: 0.55,
+      maxOutputTokens: replyDepth === "deep" ? DEEP_REPLY_MAX_OUTPUT_TOKENS : SHORT_REPLY_MAX_OUTPUT_TOKENS,
+      temperature: 0.84,
       lang,
     });
-    const replyTrimmed = trimToWordLimit(lang, replyRaw);
+
+    let replyTrimmed = trimToWordLimit(lang, stripPhilosopherAngleOpener(lang, replyRaw), replyDepth);
+
+    if (
+      profile &&
+      PERSONA_LOADED &&
+      replyTrimmed &&
+      !replyUsesSignatureConcept(lang, philosopherId, replyTrimmed)
+    ) {
+      const retryPrompt = signatureRetryUserPrompt(lang, philosopherId, replyDepth);
+      if (retryPrompt) {
+        const retryRaw = await deepseekPhilosopherReply({
+          model,
+          baseInput: [
+            ...input,
+            { role: "assistant", content: replyTrimmed },
+            { role: "user", content: retryPrompt },
+          ],
+          maxOutputTokens: replyDepth === "deep" ? DEEP_REPLY_MAX_OUTPUT_TOKENS : SHORT_REPLY_MAX_OUTPUT_TOKENS,
+          temperature: 0.78,
+          lang,
+        });
+        const retryTrimmed = trimToWordLimit(lang, stripPhilosopherAngleOpener(lang, retryRaw), replyDepth);
+        if (retryTrimmed && replyUsesSignatureConcept(lang, philosopherId, retryTrimmed)) {
+          replyTrimmed = retryTrimmed;
+        }
+      }
+    }
+
     const reply = replyTrimmed || serverFallbackReply(lang);
-    return json({ reply, summary, philosopherId, quota: { remaining: usage.remaining } });
+    return json({
+      reply,
+      summary,
+      philosopherId,
+      personaLoaded: PERSONA_LOADED,
+      personaVersion: PERSONA_VERSION,
+      replyDepth,
+      dilemmaContextUsed: attachDilemma,
+      quota: { remaining: usage.remaining },
+    });
   } catch (err) {
     const message = err && typeof err.message === "string" ? err.message : "Unknown error";
     return json({ error: message }, { status: 500 });

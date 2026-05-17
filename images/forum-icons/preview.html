@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Forum — icon concepts</title>
+  <style>
+    :root {
+      --bg: #f5f4f0;
+      --text: #1e1c18;
+      --muted: #7a7874;
+      --card: #fff;
+      --border: #dbd9d4;
+      --pale: #e6eef7;
+      --ink: #141310;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding: 2rem 1.5rem 3rem;
+    }
+    h1 { font-size: 1.5rem; font-weight: 600; margin: 0 0 0.35rem; }
+    h2 { font-size: 1.05rem; margin: 2rem 0 0.75rem; }
+    .lead { color: var(--muted); max-width: 44rem; margin: 0 0 1.5rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.25rem;
+      max-width: 900px;
+    }
+    figure {
+      margin: 0;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .thumb {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      background: var(--pale);
+    }
+    .thumb--dark { background: var(--ink); filter: invert(1); }
+    .thumb img { width: 72%; height: auto; }
+    figcaption { padding: 0.85rem 1rem 1rem; font-size: 0.875rem; }
+    figcaption strong { display: block; margin-bottom: 0.25rem; }
+    figcaption span { color: var(--muted); font-size: 0.8rem; }
+    .size-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 1.5rem 2rem;
+      padding: 1.25rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      max-width: 900px;
+    }
+    .size-row label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+    code { font-size: 0.85em; }
+  </style>
+</head>
+<body>
+  <h1>Forum — ancient Rome symbols</h1>
+  <p class="lead">
+    Three minimal line icons for <strong>討論區</strong> / Roman public forum.
+    SVGs use <code>currentColor</code> — suitable for tab nav at 16–24px.
+  </p>
+
+  <h2>Concepts</h2>
+  <div class="grid">
+    <figure>
+      <div class="thumb"><img src="forum-01-ruined-temple.svg" alt="" width="160" height="160"/></div>
+      <figcaption><strong>01 — Ruined temple</strong><span>Columns, stylobate, broken pediment — closest to your reference.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="thumb thumb--dark"><img src="forum-02-colonnade-arches.svg" alt="" width="160" height="160"/></div>
+      <figcaption><strong>02 — Colonnade arches</strong><span>Forum portico — public space under twin arches.</span></figcaption>
+    </figure>
+    <figure>
+      <div class="thumb"><img src="forum-03-rostrum-steps.svg" alt="" width="160" height="160"/></div>
+      <figcaption><strong>03 — Rostrum steps</strong><span>Semicircular seating + speaker’s podium — debate in the forum.</span></figcaption>
+    </figure>
+  </div>
+
+  <h2>Tab size check (01)</h2>
+  <div class="size-row">
+    <label><img src="forum-01-ruined-temple.svg" width="16" height="16" alt=""/>16px</label>
+    <label><img src="forum-01-ruined-temple.svg" width="22" height="22" alt=""/>22px</label>
+    <label><img src="forum-01-ruined-temple.svg" width="32" height="32" alt=""/>32px</label>
+    <label><img src="forum-01-ruined-temple.svg" width="48" height="48" alt=""/>48px</label>
+  </div>
+</body>
+</html>

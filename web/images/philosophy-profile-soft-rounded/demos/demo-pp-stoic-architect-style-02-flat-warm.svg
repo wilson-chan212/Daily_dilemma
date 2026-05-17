@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" aria-hidden="true">
+  <!-- Style 2: soft flat warm shapes  philosopher profile scroll palette -->
+  <rect width="512" height="512" rx="32" fill="#f3ebe3"/>
+  <ellipse cx="256" cy="420" rx="200" ry="36" fill="#e0d0bc"/>
+  <path d="M168 360c0-80 40-140 88-140s88 60 88 140v52H168V360z" fill="#dcc5a8" stroke="#a08062" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="220" cy="248" r="52" fill="#e8d4bc" stroke="#a08062" stroke-width="3"/>
+  <ellipse cx="204" cy="242" rx="6" ry="7" fill="#5c4a3a"/>
+  <ellipse cx="236" cy="242" rx="6" ry="7" fill="#5c4a3a"/>
+  <path d="M208 268c10 10 24 10 34 0" stroke="#8b735f" stroke-width="3" stroke-linecap="round"/>
+  <rect x="288" y="300" width="72" height="72" rx="14" fill="#c9b896" stroke="#a08062" stroke-width="2.5"/>
+  <rect x="272" y="228" width="72" height="72" rx="14" fill="#d4c4a4" stroke="#a08062" stroke-width="2.5"/>
+  <rect x="256" y="156" width="72" height="72" rx="14" fill="#e0d4b8" stroke="#a08062" stroke-width="2.5"/>
+  <path d="M264 156h64l28-40H236l28 40z" fill="#8b9eb8" stroke="#6a7d94" stroke-width="2.5" stroke-linejoin="round"/>
+  <circle cx="120" cy="120" r="20" fill="#e8d4bc" opacity=".7"/>
+  <circle cx="392" cy="96" r="14" fill="#e8d4bc" opacity=".6"/>
+  <path d="M88 176c20-8 40-12 64-12" stroke="#c49a6c" stroke-width="3" stroke-linecap="round" opacity=".5"/>
+</svg>

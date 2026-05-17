@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" fill="none" role="img" aria-label="Disciplined Builder Table Study">
+  <defs>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#b7a48c" flood-opacity=".18"/>
+    </filter>
+  </defs>
+  <rect width="1024" height="1024" rx="38" fill="#f6efe2"/>
+  <path d="M88 151c142-58 272-71 414-38 136 31 252 10 429-34" stroke="#eadfca" stroke-width="36" stroke-linecap="round" opacity=".34"/>
+  <path d="M82 851c162 35 298 29 428-15 149-51 268-37 423 20" stroke="#c4d7e0" stroke-width="42" stroke-linecap="round" opacity=".26"/>
+  <circle cx="146" cy="730" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="283" cy="821" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="420" cy="72" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="557" cy="163" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="694" cy="254" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="831" cy="345" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="88" cy="436" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="225" cy="527" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="362" cy="618" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="499" cy="709" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="636" cy="800" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="773" cy="891" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="910" cy="142" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="167" cy="233" r="3.05" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="304" cy="324" r="1.4" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="441" cy="415" r="1.95" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="578" cy="506" r="2.5" fill="#d4c5aa" opacity=".22"/>
+    <circle cx="715" cy="597" r="3.05" fill="#d4c5aa" opacity=".22"/>
+  <g filter="url(#softShadow)">
+    <ellipse cx="513" cy="857" rx="294" ry="42" fill="#d8c7aa" opacity=".38"/>
+    <rect x="244" y="646" width="536" height="48" rx="24" fill="#d1ad82" stroke="#56483d" stroke-width="7"/>
+    <path d="M394 694v122M634 694v122" stroke="#56483d" stroke-width="8" stroke-linecap="round"/>
+    <g transform="translate(421 370) scale(1.32)">
+    <path d="M-55-76c35-42 113-24 123 32 11 59-35 109-91 98-52-10-67-79-32-130z" fill="#eed4bd" stroke="#56483d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M-58-66c11-49 84-74 126-25 22 25 22 56 12 79-21-34-68-34-104-24-11 3-26-8-34-30z" fill="#6f604f" stroke="#56483d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M-20-74c-11 23-29 33-50 35" stroke="#56483d" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <path d="M8-73c-10 20-26 30-47 34" stroke="#56483d" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <circle cx="14" cy="-18" r="5.5" fill="#56483d"/>
+    <path d="M31 1c8 9 18 12 30 9" stroke="#56483d" stroke-width="4" stroke-linecap="round"/>
+    <path d="M8 25c19 12 39 10 55-4" stroke="#56483d" stroke-width="4" stroke-linecap="round" opacity=".72"/>
+  </g>
+    <path d="M340 535c31-77 126-107 194-49 44 38 59 99 52 181H303c-8-53 4-98 37-132z" fill="#c4d7e0" stroke="#56483d" stroke-width="7" stroke-linejoin="round"/>
+    <path d="M485 520c36 25 58 60 71 105" stroke="#56483d" stroke-width="6" stroke-linecap="round" opacity=".55"/>
+    <path d="M337 612c-49 6-78 18-101 45" stroke="#56483d" stroke-width="10" stroke-linecap="round"/>
+    <path d="M582 606c49 14 86 28 121 48" stroke="#56483d" stroke-width="10" stroke-linecap="round"/>
+    <circle cx="246" cy="656" r="17" fill="#eed4bd" stroke="#56483d" stroke-width="6"/>
+    <circle cx="704" cy="655" r="17" fill="#eed4bd" stroke="#56483d" stroke-width="6"/>
+    <g transform="translate(614 570) scale(1.1)"><g><rect x="-96" y="-90" width="192" height="178" rx="18" fill="#fff8ea" stroke="#56483d" stroke-width="6" stroke-linejoin="round"/><path d="M-96-38H96M-45-114v45M45-114v45" stroke="#56483d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-50 10h32M16 10h32M-50 52h32M16 52h32" stroke="#56483d" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><path d="M-101 128L104-77" stroke="#7395ad" stroke-width="13" stroke-linecap="round"/></g></g>
+  </g>
+</svg>

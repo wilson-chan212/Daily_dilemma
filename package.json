@@ -4,8 +4,10 @@
   "version": "1.0.0",
   "description": "Daily Dilemma (Capacitor wrapper)",
   "scripts": {
-    "serve": "npx http-server . -p 5173 -c-1",
-    "cap:prep": "powershell -NoProfile -Command \"if (!(Test-Path web)) { mkdir web | Out-Null } ; Copy-Item -Force index.html,app.js,style.css,i18n.zh-hant.js -Destination web ; Copy-Item -Recurse -Force images,fonts,vendor,Legal,data -Destination web\"",
+    "serve": "node scripts/serve-pick-port.mjs",
+    "serve:5173": "npx http-server . -p 5173 -c-1",
+    "serve:5174": "npx http-server . -p 5174 -c-1",
+    "cap:prep": "powershell -NoProfile -Command \"if (!(Test-Path web)) { mkdir web | Out-Null } ; Copy-Item -Force index.html,app.js,style.css,i18n.zh-hant.js,forum-panel.js -Destination web ; Copy-Item -Recurse -Force images,fonts,vendor,Legal,data -Destination web\"",
     "cap:sync": "npm run cap:prep && npx cap sync",
     "cap:android": "npx cap open android",
     "cap:ios": "npx cap open ios",

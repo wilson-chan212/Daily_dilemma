@@ -99,10 +99,8 @@
             <span class="overflow-action-chip" id="lang-toggle-label">中文</span>
           </button>
           <button class="overflow-action" id="btn-user-feedback" type="button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-            </svg>
-            <span id="label-user-feedback-action">User feedback</span>
+            <span class="overflow-action-icon" id="icon-user-feedback" aria-hidden="true"></span>
+            <span id="label-user-feedback-action">User Feedback</span>
           </button>
           <div class="overflow-feedback-row" id="overflow-feedback-controls" hidden>
             <label id="label-feedback-prompt" for="feedback-text">Your message</label>
@@ -150,6 +148,55 @@
 
   <main class="main app-main--tabs" id="main-view">
 
+    <section id="tab-panel-forum" class="app-tab-panel app-tab-panel--forum" role="tabpanel" aria-labelledby="tab-btn-forum" hidden>
+      <section class="forum-shell" aria-labelledby="forum-title">
+        <div class="forum-hero">
+          <div class="forum-hero-head">
+            <div class="forum-hero-copy">
+              <div class="forum-title-row">
+                <span class="forum-title-icon" id="forum-title-icon" aria-hidden="true"></span>
+                <h1 class="forum-title" id="forum-title">Forum</h1>
+              </div>
+            </div>
+            <div class="forum-hero-actions" role="group" aria-label="Forum actions">
+              <button type="button" class="forum-action-btn forum-action-btn--secondary forum-hero-icon-btn" id="btn-forum-search" aria-expanded="false" aria-controls="forum-search-panel" aria-label="Search">
+                <span id="label-forum-search" class="forum-hero-icon-slot" aria-hidden="true"></span>
+              </button>
+              <button class="forum-compose-btn forum-hero-icon-btn" id="btn-forum-compose" type="button" aria-label="Post">
+                <span id="label-forum-compose" class="forum-hero-icon-slot" aria-hidden="true"></span>
+              </button>
+              <button type="button" class="forum-refresh-btn forum-hero-icon-btn" id="btn-forum-refresh" aria-label="Refresh">
+                <span id="label-forum-refresh" aria-hidden="true"><img class="forum-refresh-icon" src="images/forum-refresh-icon.png" alt="" width="18" height="18" decoding="async"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="forum-list-view" id="forum-list-view">
+          <div class="forum-list-tools">
+            <div class="forum-search-panel" id="forum-search-panel" hidden>
+              <label class="forum-search" for="forum-search-input">
+                <span class="visually-hidden" id="forum-search-label">Search dilemmas</span>
+                <input type="search" id="forum-search-input" class="forum-search-input" placeholder="Search dilemmas…" autocomplete="off" />
+              </label>
+            </div>
+            <div class="forum-list-toolbar" id="forum-list-toolbar" role="group" aria-label="Sort dilemmas">
+            <button type="button" class="forum-sort-btn is-active" data-forum-sort="latest" id="forum-sort-latest">Recent</button>
+            <button type="button" class="forum-sort-btn" data-forum-sort="popular" id="forum-sort-popular">Popular</button>
+              <button type="button" class="forum-sort-btn" data-forum-sort="split" id="forum-sort-split">Controversial</button>
+            </div>
+          </div>
+          <p class="forum-list-empty" id="forum-list-empty" hidden></p>
+          <div class="forum-feed forum-feed--list" id="forum-feed-list" aria-live="polite"></div>
+        </div>
+        <div class="forum-detail-view" id="forum-detail-view" hidden>
+          <button type="button" class="forum-back-btn" id="btn-forum-back" aria-label="Back to topics" title="Back to topics">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <article class="forum-detail" id="forum-detail" aria-live="polite"></article>
+        </div>
+      </section>
+    </section>
+
     <section id="tab-panel-dilemma" class="app-tab-panel app-tab-panel--dilemma" role="tabpanel" aria-labelledby="tab-btn-dilemma">
 
     <section class="greeting">
@@ -168,19 +215,18 @@
       <article class="dilemma-card" id="dilemma-card">
         <div class="dilemma-image-wrap">
           <img class="dilemma-image" id="dilemma-image" src="" alt="" loading="eager" />
+          <div class="dilemma-card-toolbar" id="dilemma-card-toolbar">
+            <button type="button" class="btn-icon btn-share-trigger" id="btn-share-trigger" aria-label="Share this dilemma">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="dilemma-body">
           <p class="dilemma-text" id="dilemma-text"></p>
           <div class="dilemma-options" id="dilemma-options"></div>
-          <div class="dilemma-actions">
-            <button class="btn-share-trigger" id="btn-share-trigger" aria-label="Share this dilemma">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-              </svg>
-              <span id="label-share-trigger">Share</span>
-            </button>
-          </div>
         </div>
       </article>
 
@@ -311,8 +357,10 @@
       <!-- Sticky next + suggest (shown when chosen state active) -->
       <div class="sticky-next" id="sticky-next" hidden style="display:none">
         <div class="sticky-next-row">
-          <button type="button" class="btn-next" id="btn-next"><span id="label-next-dilemma">Next Dilemma →</span></button>
+          <button type="button" class="btn-next btn-next--secondary" id="btn-chat-after-answer"><span id="label-chat-after-answer">Dialogue</span><span class="btn-next__icon" id="icon-chat-after-answer" aria-hidden="true"></span></button>
+          <button type="button" class="btn-next" id="btn-next"><span id="label-next-dilemma">Next &#8594;</span></button>
         </div>
+        <p class="sticky-next-hint" id="daily-limit-hint" hidden></p>
       </div>
     </div>
 
@@ -321,14 +369,13 @@
     <section id="tab-panel-chat" class="app-tab-panel app-tab-panel--chat" role="tabpanel" aria-labelledby="tab-btn-chat" hidden>
       <div class="modal ai-modal ai-chat-shell">
       <div class="modal-header ai-modal-header">
-        <svg class="ai-modal-chat-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 5.25h12a1.5 1.5 0 011.5 1.5V11.25a1.5 1.5 0 01-1.5 1.5H11.5L3.75 18.25l2.75-5.5H6A1.5 1.5 0 0 0 4.5 11.25V6.75A1.5 1.5 0 0 1 6 5.25z" />
-          <circle cx="9" cy="9.35" r="1.05" fill="currentColor" />
-          <circle cx="12" cy="9.35" r="1.05" fill="currentColor" />
-          <circle cx="15" cy="9.35" r="1.05" fill="currentColor" />
-        </svg>
-        <h2 class="modal-title ai-modal-title" id="ai-title">Chat with Philosopher</h2>
+        <span class="ai-modal-chat-icon" id="icon-ai-modal" aria-hidden="true"></span>
+        <h2 class="modal-title ai-modal-title" id="ai-title">Dialogue</h2>
         <div class="ai-modal-header-actions">
+          <button type="button" class="btn-plato-reader" id="btn-plato-reader" aria-label="Plato profile reader" title="Plato profile">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
+            <span id="label-plato-reader-btn">Plato</span>
+          </button>
           <button type="button" class="btn-ai-chat-font" id="btn-ai-chat-font" aria-label="Text size" title="Text size">
             <span class="btn-ai-chat-font-lg" aria-hidden="true">A</span><span class="btn-ai-chat-font-sm" aria-hidden="true">a</span>
           </button>
@@ -337,19 +384,12 @@
               <path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 16h10l1-16"/><path d="M10 11v6"/><path d="M14 11v6"/>
             </svg>
           </button>
-          <button class="btn-close" id="btn-close-ai" type="button" aria-label="Back to Daily Dilemma">
+          <button class="btn-close" id="btn-close-ai" type="button" aria-label="Back to Dilemma Today">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
           </button>
         </div>
-      </div>
-      <div class="ai-subtitle-row">
-        <p class="ai-subtitle" id="ai-subtitle">Ask about today dilemma, your own questions or anything!</p>
-        <button type="button" class="btn-plato-reader" id="btn-plato-reader" aria-label="Plato profile reader" title="Plato profile">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8M8 11h6"/></svg>
-          <span id="label-plato-reader-btn">Plato</span>
-        </button>
       </div>
       <div class="ai-philosopher-picker">
         <span class="ai-philosopher-label" id="ai-philosopher-label"></span>
@@ -400,7 +440,7 @@
         </div>
         <div class="profile-test-body">
           <div class="profile-test-top">
-            <p class="profile-kicker" id="profile-question-kicker">My Philosophy Profile</p>
+            <p class="profile-kicker" id="profile-question-kicker">My Type</p>
             <p class="profile-progress" id="profile-question-progress">1 / 12</p>
           </div>
           <h2 class="profile-question" id="profile-question-text"></h2>
@@ -461,89 +501,30 @@
     </section>
 
     </section>
-
-    <section id="tab-panel-knowledge" class="app-tab-panel app-tab-panel--knowledge" role="tabpanel" aria-labelledby="tab-btn-knowledge" hidden>
-      <div class="knowledge-modal knowledge-modal--tab" id="knowledge-modal">
-        <div class="knowledge-header">
-          <div class="knowledge-title-wrap">
-            <h2 class="knowledge-title" id="knowledge-title">Knowledge Mind Map</h2>
-            <p class="knowledge-sub" id="knowledge-sub">Trace the shape of your thinking.</p>
-          </div>
-          <div class="knowledge-hud" id="knowledge-hud" aria-label="Explorer progress">
-            <div class="knowledge-level-badge">
-              <span class="knowledge-level-label">Lv.</span>
-              <strong id="knowledge-level">1</strong>
-            </div>
-            <div class="knowledge-xp-wrap">
-              <div class="knowledge-xp-top">
-                <span id="knowledge-rank-title">Novice Cartographer</span>
-                <span id="knowledge-xp-text">0 / 100 XP</span>
-              </div>
-              <div class="knowledge-xp-bar" aria-hidden="true"><span id="knowledge-xp-fill"></span></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="knowledge-grid">
-          <div class="knowledge-canvas" id="knowledge-canvas" aria-label="Mind map canvas">
-            <svg id="knowledge-svg" viewBox="0 0 1200 720" role="img" aria-label="Knowledge mind map">
-              <defs>
-                <filter id="km-shadow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,.18)"/>
-                </filter>
-              </defs>
-              <g id="knowledge-viewport"></g>
-            </svg>
-            <div class="knowledge-legend" aria-hidden="true">
-              <div class="knowledge-legend-row"><span class="kl-dot kl-dot-node"></span><span>Concept</span></div>
-              <div class="knowledge-legend-row"><span class="kl-dot kl-dot-link"></span><span>Link</span></div>
-              <div class="knowledge-legend-row"><span class="kl-dot kl-dot-locked"></span><span>Locked</span></div>
-            </div>
-          </div>
-
-          <!-- (Removed: map insight / counts / shuffle controls) -->
-        </div>
-      </div>
-    </section>
-
-  </main>
+</main>
 
   <nav class="app-tab-bar" id="app-tab-bar" role="tablist" aria-label="Main sections">
+    <button type="button" class="app-tab" role="tab" id="tab-btn-forum" aria-controls="tab-panel-forum" aria-selected="false" tabindex="-1">
+      <span class="app-tab-icon" id="icon-tab-forum" aria-hidden="true"></span>
+      <span class="app-tab-label" id="label-tab-forum">Forum</span>
+    </button>
     <button type="button" class="app-tab is-active" role="tab" id="tab-btn-dilemma" aria-controls="tab-panel-dilemma" aria-selected="true">
       <span class="app-tab-icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="7.25"/><path d="M12 8.5v3.5l2.75 2.75"/></svg>
       </span>
-      <span class="app-tab-label" id="label-tab-dilemma">Daily Dilemma</span>
+      <span class="app-tab-label" id="label-tab-dilemma">Dilemma Today</span>
     </button>
     <button type="button" class="app-tab" role="tab" id="tab-btn-chat" aria-controls="tab-panel-chat" aria-selected="false" tabindex="-1">
-      <span class="app-tab-icon" aria-hidden="true">
-        <svg class="app-tab-chat-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" d="M6 5.25h12a1.5 1.5 0 011.5 1.5V11.25a1.5 1.5 0 01-1.5 1.5H11.5L3.75 18.25l2.75-5.5H6A1.5 1.5 0 0 0 4.5 11.25V6.75A1.5 1.5 0 0 1 6 5.25z" />
-          <circle cx="9" cy="9.35" r="1.05" fill="currentColor" />
-          <circle cx="12" cy="9.35" r="1.05" fill="currentColor" />
-          <circle cx="15" cy="9.35" r="1.05" fill="currentColor" />
-        </svg>
-      </span>
-      <span class="app-tab-label" id="label-tab-chat">Chat with Philosopher</span>
+      <span class="app-tab-icon" id="icon-tab-chat" aria-hidden="true"></span>
+      <span class="app-tab-label" id="label-tab-chat">Dialogue</span>
     </button>
     <button type="button" class="app-tab" role="tab" id="tab-btn-profile" aria-controls="tab-panel-profile" aria-selected="false" tabindex="-1">
       <span class="app-tab-icon" aria-hidden="true">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.4 4.9 5.4.8-3.9 3.8.9 5.4L12 15.4 7.2 17.9l.9-5.4-3.9-3.8 5.4-.8L12 3z"/></svg>
       </span>
-      <span class="app-tab-label" id="label-tab-profile">My Philosophy Profile</span>
+      <span class="app-tab-label" id="label-tab-profile">My Type</span>
     </button>
-    <button type="button" class="app-tab" role="tab" id="tab-btn-knowledge" aria-controls="tab-panel-knowledge" aria-selected="false" tabindex="-1">
-      <span class="app-tab-icon" aria-hidden="true">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M12 2v20"></path>
-          <path d="M2 12h20"></path>
-          <path d="M4.5 7.5c2.5-2.5 12.5-2.5 15 0"></path>
-          <path d="M4.5 16.5c2.5 2.5 12.5 2.5 15 0"></path>
-        </svg>
-      </span>
-      <span class="app-tab-label" id="label-tab-knowledge">Knowledge Map</span>
-    </button>
-  </nav>
+</nav>
 
   <!-- History Panel -->
   <aside class="history-panel" id="history-panel" hidden style="display:none">
@@ -702,6 +683,20 @@
           </div>
         </div>
       </div>
+      <div class="share-social" id="share-social" role="group" aria-label="Share on social media">
+        <a class="share-social-btn" id="share-link-x" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="share-social-label" id="label-share-x">X</span>
+        </a>
+        <a class="share-social-btn" id="share-link-facebook" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="share-social-label" id="label-share-facebook">Facebook</span>
+        </a>
+        <a class="share-social-btn" id="share-link-whatsapp" href="#" target="_blank" rel="noopener noreferrer">
+          <span class="share-social-label" id="label-share-whatsapp">WhatsApp</span>
+        </a>
+        <button type="button" class="share-social-btn share-social-btn--native" id="btn-share-native" hidden>
+          <span class="share-social-label" id="label-share-native">More apps</span>
+        </button>
+      </div>
       <div class="share-actions">
         <button class="share-btn share-btn-primary" id="btn-download-card">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -746,6 +741,105 @@
           <span id="label-export-footer-brand">daily dilemmas · philosophy</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Philosopher gateway (tab chat + after answering) -->
+  <div class="modal-overlay" id="chat-pick-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="chat-pick-title">
+    <div class="modal chat-pick-modal philosopher-gateway-modal">
+      <div class="modal-header philosopher-gateway-header">
+        <button type="button" class="btn-icon btn-gateway-back" id="btn-gateway-back" hidden aria-label="Back">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <h2 class="modal-title philosopher-gateway-title" id="chat-pick-title">Choose your philosopher</h2>
+        <button type="button" class="btn-close" id="btn-close-chat-pick" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div id="philosopher-gateway-grid-wrap" class="philosopher-gateway-grid-wrap">
+        <div class="philosopher-gateway-grid" id="philosopher-gateway-grid" role="listbox"></div>
+      </div>
+      <div id="philosopher-gateway-actions" class="philosopher-gateway-actions" hidden>
+        <div class="philosopher-gateway-selected">
+          <img id="gateway-selected-portrait" class="philosopher-gateway-hero-portrait" alt="" width="80" height="80" decoding="async" loading="lazy" />
+          <p class="philosopher-gateway-selected-name" id="gateway-selected-name"></p>
+          <p class="philosopher-gateway-selected-vibe" id="gateway-selected-vibe"></p>
+        </div>
+        <button type="button" class="btn-next btn-next--secondary philosopher-gateway-action-btn" id="btn-gateway-profile">
+          <span id="label-gateway-profile">Philosopher Profile</span>
+        </button>
+        <button type="button" class="btn-next philosopher-gateway-action-btn" id="btn-gateway-start-chat">
+          <span id="label-gateway-start-chat">Start Conversation</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Forum: post a dilemma -->
+  <div class="modal-overlay" id="forum-compose-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="forum-compose-title">
+    <div class="modal forum-compose-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="forum-compose-title">Post a dilemma</h2>
+        <button class="btn-close" id="btn-close-forum-compose" type="button" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <form id="forum-compose-form" class="forum-compose-form" novalidate>
+        <div class="forum-compose-field">
+          <label class="forum-compose-label" for="forum-compose-topic" id="forum-compose-topic-label">Topic</label>
+          <input type="text" id="forum-compose-topic" class="forum-compose-input" autocomplete="off" />
+          <span class="forum-compose-counter" id="forum-compose-topic-count" aria-live="polite"></span>
+          <p class="forum-compose-error" id="forum-compose-topic-error" hidden role="alert"></p>
+        </div>
+        <div class="forum-compose-field">
+          <label class="forum-compose-label" for="forum-compose-description" id="forum-compose-description-label">Description</label>
+          <textarea id="forum-compose-description" class="forum-compose-textarea" rows="5"></textarea>
+          <span class="forum-compose-counter" id="forum-compose-description-count" aria-live="polite"></span>
+          <p class="forum-compose-error" id="forum-compose-description-error" hidden role="alert"></p>
+        </div>
+        <div class="forum-compose-field">
+          <label class="forum-compose-label" for="forum-compose-option-a" id="forum-compose-option-a-label">Vote A</label>
+          <input type="text" id="forum-compose-option-a" class="forum-compose-input" autocomplete="off" />
+          <span class="forum-compose-counter" id="forum-compose-option-a-count" aria-live="polite"></span>
+          <p class="forum-compose-error" id="forum-compose-option-a-error" hidden role="alert"></p>
+        </div>
+        <div class="forum-compose-field">
+          <label class="forum-compose-label" for="forum-compose-option-b" id="forum-compose-option-b-label">Vote B</label>
+          <input type="text" id="forum-compose-option-b" class="forum-compose-input" autocomplete="off" />
+          <span class="forum-compose-counter" id="forum-compose-option-b-count" aria-live="polite"></span>
+          <p class="forum-compose-error" id="forum-compose-option-b-error" hidden role="alert"></p>
+        </div>
+        <div class="forum-compose-actions">
+          <button type="button" class="forum-avatar-picker-btn" id="btn-forum-compose-avatar" aria-haspopup="dialog" aria-controls="forum-avatar-overlay" aria-label="Choose avatar">
+            <span class="forum-avatar-picker-preview" aria-hidden="true"></span>
+          </button>
+          <div class="forum-compose-actions-buttons">
+            <button type="button" class="share-btn share-btn-secondary" id="btn-forum-compose-cancel">Cancel</button>
+            <button type="submit" class="share-btn share-btn-primary" id="btn-forum-compose-submit">Post</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Forum: choose anonymous avatar -->
+  <div class="modal-overlay" id="forum-avatar-overlay" hidden style="display:none" role="dialog" aria-modal="true" aria-labelledby="forum-avatar-title">
+    <div class="modal forum-avatar-modal">
+      <div class="modal-header">
+        <h2 class="modal-title" id="forum-avatar-title">Choose your avatar</h2>
+        <button class="btn-close" id="btn-close-forum-avatar" type="button" aria-label="Close">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+      <div class="forum-avatar-tabs" id="forum-avatar-tabs" role="tablist"></div>
+      <div class="forum-avatar-grid" id="forum-avatar-grid" role="listbox" aria-labelledby="forum-avatar-title"></div>
     </div>
   </div>
 
@@ -848,12 +942,18 @@
   </template>
 
   <script src="i18n.zh-hant.js"></script>
+  <script src="data/philosophy-profile.copy.zh-hant.js"></script>
   <script src="data/concept-notes.en.js"></script>
   <script src="data/concept-notes.zh-hant.js"></script>
   <script src="data/philosopher-profile-scroll.en.js"></script>
   <script src="data/philosopher-profile-scroll.zh-hant.js"></script>
   <script src="data/philosophy-profile.model.en.js"></script>
   <script src="data/philosophy-profile.engine.js"></script>
+  <script src="data/forum-sample-copy.js"></script>
+  <script src="data/forum-sample-posts.js"></script>
+  <script src="data/forum-avatar-catalog.js"></script>
+  <script src="data/ui-icons.js"></script>
+  <script src="forum-panel.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

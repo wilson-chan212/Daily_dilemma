@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none" aria-hidden="true">
+  <!-- Style 1: editorial line  matches dilemma card illustrations (thin outline, cream ground, one cool accent) -->
+  <rect width="512" height="512" rx="32" fill="#f5f0e8"/>
+  <path fill="#e8dfd0" d="M0 340h512v172H0z"/>
+  <g stroke="#2c2824" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M96 380c48-8 96-12 160-12s112 4 160 12"/>
+    <path d="M140 380v-24M220 380v-32M300 380v-20M372 380v-28"/>
+    <path d="M168 248c0-36 28-64 64-64s64 28 64 64v132H168V248z"/>
+    <path d="M196 220c12-20 32-32 52-32s40 12 52 32"/>
+    <circle cx="216" cy="268" r="4" fill="#2c2824" stroke="none"/>
+    <circle cx="280" cy="268" r="4" fill="#2c2824" stroke="none"/>
+    <path d="M228 292c10 8 28 8 38 0"/>
+    <path d="M232 196c-8-12-24-18-40-18s-32 6-40 18"/>
+    <rect x="292" y="292" width="56" height="56" rx="6" fill="#d4dce8" stroke="#2c2824"/>
+    <rect x="276" y="236" width="56" height="56" rx="6" fill="#c5d4e8" stroke="#2c2824"/>
+    <rect x="260" y="180" width="56" height="56" rx="6" fill="#b8c9e0" stroke="#2c2824"/>
+    <path d="M268 180h40l20-28h-80l20 28z" fill="#4a6fa5" stroke="#2c2824"/>
+    <path d="M248 348h24v32h-24zM272 332h24v48h-24zM296 316h24v64h-24z"/>
+  </g>
+</svg>
